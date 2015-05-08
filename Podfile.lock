@@ -1,10 +1,13 @@
 PODS:
   - Google-Maps-iOS-SDK (1.9.2)
+  - ISHTTPOperation (1.2.0)
 
 DEPENDENCIES:
   - Google-Maps-iOS-SDK
+  - ISHTTPOperation
 
 SPEC CHECKSUMS:
   Google-Maps-iOS-SDK: 4c008abdb68e03ae125c7f674be841d369e2b3de
+  ISHTTPOperation: dfe4b6b2b3d7803688b22df2c46ea9827081e723
 
-COCOAPODS: 0.37.0.beta.1
+COCOAPODS: 0.37.0
