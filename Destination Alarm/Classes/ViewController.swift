@@ -35,9 +35,11 @@ class ViewController: UIViewController {
 extension ViewController: CLLocationManagerDelegate {
 
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
-        var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude:newLocation.coordinate.latitude,longitude:newLocation.coordinate.longitude)
-        var now :GMSCameraPosition = GMSCameraPosition.cameraWithLatitude(coordinate.latitude,longitude:coordinate.longitude,zoom:17)
-        self.mapview.camera = now
+        self.mapview.camera = GMSCameraPosition.cameraWithLatitude(
+            newLocation.coordinate.latitude,
+            longitude:newLocation.coordinate.longitude,
+            zoom: 17
+        )
     }
 
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
@@ -49,4 +51,3 @@ extension ViewController: CLLocationManagerDelegate {
 /// MARK: - GMSMapViewDelegate
 extension ViewController: GMSMapViewDelegate {
 }
-
