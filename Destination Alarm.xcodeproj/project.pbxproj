@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		D366E983623A2E8C3EB3D64F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 534D789B2FF603908C0DCECC /* libPods.a */; };
+		E662B5621B1132D300F0DAB2 /* DACoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B5611B1132D300F0DAB2 /* DACoreDataManager.swift */; };
+		E662B5631B1132D300F0DAB2 /* DACoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B5611B1132D300F0DAB2 /* DACoreDataManager.swift */; };
+		E662B5651B1132F100F0DAB2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E662B5641B1132F100F0DAB2 /* CoreData.framework */; };
+		E671BC331B07F783002394F6 /* DASearchBoxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E671BC321B07F783002394F6 /* DASearchBoxView.xib */; };
 		E67AD2741AFC46EF00FE0E28 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67AD2731AFC46EF00FE0E28 /* SwiftyJSON.swift */; };
 		E67AD2761AFC47AC00FE0E28 /* DAConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67AD2751AFC47AC00FE0E28 /* DAConstant.swift */; };
 		E6E5C2591AC6044E001FB516 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6E5C2581AC6044E001FB516 /* Images.xcassets */; };
@@ -23,7 +27,6 @@
 		E6E5C2A41AC6051C001FB516 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5C2A21AC6051C001FB516 /* InterfaceController.swift */; };
 		E6E5C2A51AC6051C001FB516 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5C2A31AC6051C001FB516 /* NotificationController.swift */; };
 		E6EEB4E91AC60A8500073354 /* PushNotificationPayload.apns in Resources */ = {isa = PBXBuildFile; fileRef = E6EEB4E61AC60A8500073354 /* PushNotificationPayload.apns */; };
-		E6EEB4EC1AC60C1400073354 /* GoogleMapAPIKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6EEB4EB1AC60C1400073354 /* GoogleMapAPIKey.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +64,9 @@
 		49B8C82E86FF40F43B94B2F3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4B670EFB4CC3DB0DBA3BB537 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		534D789B2FF603908C0DCECC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E662B5611B1132D300F0DAB2 /* DACoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DACoreDataManager.swift; sourceTree = "<group>"; };
+		E662B5641B1132F100F0DAB2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		E671BC321B07F783002394F6 /* DASearchBoxView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DASearchBoxView.xib; sourceTree = "<group>"; };
 		E67AD2721AFC46EF00FE0E28 /* SwiftyJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwiftyJSON.h; path = SwiftyJSON/Source/SwiftyJSON.h; sourceTree = "<group>"; };
 		E67AD2731AFC46EF00FE0E28 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = SwiftyJSON/Source/SwiftyJSON.swift; sourceTree = "<group>"; };
 		E67AD2751AFC47AC00FE0E28 /* DAConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAConstant.swift; sourceTree = "<group>"; };
@@ -82,7 +88,6 @@
 		E6E5C2A31AC6051C001FB516 /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		E6E5C2A61AC60546001FB516 /* Destination Alarm-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Destination Alarm-Bridging-Header.h"; sourceTree = "<group>"; };
 		E6EEB4E61AC60A8500073354 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		E6EEB4EB1AC60C1400073354 /* GoogleMapAPIKey.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GoogleMapAPIKey.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E662B5651B1132F100F0DAB2 /* CoreData.framework in Frameworks */,
 				D366E983623A2E8C3EB3D64F /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -116,9 +122,33 @@
 		AE884208584959C1ECEA6CD8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E662B5641B1132F100F0DAB2 /* CoreData.framework */,
 				534D789B2FF603908C0DCECC /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E662B55D1B1131F200F0DAB2 /* Crime */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Crime;
+			sourceTree = "<group>";
+		};
+		E662B55E1B11328100F0DAB2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E662B5611B1132D300F0DAB2 /* DACoreDataManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E671BC311B07F747002394F6 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				E671BC321B07F783002394F6 /* DASearchBoxView.xib */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		E67AD26F1AFC469D00FE0E28 /* Map */ = {
@@ -224,7 +254,10 @@
 				E6E5C29A1AC60510001FB516 /* LaunchScreen.xib */,
 				E6E5C29B1AC60510001FB516 /* Main.storyboard */,
 				E6E5C2A61AC60546001FB516 /* Destination Alarm-Bridging-Header.h */,
+				E671BC311B07F747002394F6 /* Search */,
 				E67AD26F1AFC469D00FE0E28 /* Map */,
+				E662B55D1B1131F200F0DAB2 /* Crime */,
+				E662B55E1B11328100F0DAB2 /* Model */,
 				E67AD2711AFC46CD00FE0E28 /* SwiftyJSON */,
 			);
 			path = Classes;
@@ -250,7 +283,6 @@
 		E6EEB4E11AC609B300073354 /* Plists */ = {
 			isa = PBXGroup;
 			children = (
-				E6EEB4EB1AC60C1400073354 /* GoogleMapAPIKey.plist */,
 			);
 			path = Plists;
 			sourceTree = "<group>";
@@ -387,9 +419,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6E5C29F1AC60510001FB516 /* Main.storyboard in Resources */,
-				E6EEB4EC1AC60C1400073354 /* GoogleMapAPIKey.plist in Resources */,
 				E6E5C29E1AC60510001FB516 /* LaunchScreen.xib in Resources */,
 				E6E5C2591AC6044E001FB516 /* Images.xcassets in Resources */,
+				E671BC331B07F783002394F6 /* DASearchBoxView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,6 +484,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E662B5621B1132D300F0DAB2 /* DACoreDataManager.swift in Sources */,
 				E67AD2741AFC46EF00FE0E28 /* SwiftyJSON.swift in Sources */,
 				E6E5C2A01AC60510001FB516 /* ViewController.swift in Sources */,
 				E67AD2761AFC47AC00FE0E28 /* DAConstant.swift in Sources */,
@@ -464,6 +497,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6E5C2A51AC6051C001FB516 /* NotificationController.swift in Sources */,
+				E662B5631B1132D300F0DAB2 /* DACoreDataManager.swift in Sources */,
 				E6E5C2A41AC6051C001FB516 /* InterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
