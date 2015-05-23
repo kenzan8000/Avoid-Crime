@@ -1,5 +1,6 @@
 import Foundation
 import CoreData
+import CoreLocation
 
 
 /// MARK: - DACrime
@@ -21,19 +22,22 @@ class DACrime: NSManagedObject {
      * @param radius radius of miles
      * @return Array<DACrime>
      */
-/*
-    class func fetch(#location: CLLocation, radius: radius) -> Array<DACrime> {
+    class func fetch(#location: CLLocation, radius: Double) -> Array<DACrime> {
         var context = DACoreDataManager.sharedInstance.managedObjectContext
 
         var fetchRequest = NSFetchRequest()
         let entity = NSEntityDescription.entityForName("DACrime", inManagedObjectContext:context)
         fetchRequest.entity = entity
         fetchRequest.fetchBatchSize = 20
+
+        let coordinate = location.coordinate
+        let latOffset = DAMapMath.latitudePerRadius(radius, location: location)
+        let longOffset = DAMapMath.longitudePerRadius(radius, location: location)
         let predicaets = [
-            NSPredicate(format: "lat < %@", NSNumber(float: )),
-            NSPredicate(format: "lat > %@", NSNumber(float: )),
-            NSPredicate(format: "long < %@", NSNumber(float: )),
-            NSPredicate(format: "long > %@", NSNumber(float: )),
+            NSPredicate(format: "lat < %@", NSNumber(double: coordinate.latitude + latOffset)),
+            NSPredicate(format: "lat > %@", NSNumber(double: coordinate.latitude - latOffset)),
+            NSPredicate(format: "long < %@", NSNumber(double: coordinate.longitude + longOffset)),
+            NSPredicate(format: "long > %@", NSNumber(double: coordinate.longitude - longOffset)),
         ]
         fetchRequest.predicate = NSCompoundPredicate.andPredicateWithSubpredicates(predicaets)
 
@@ -41,7 +45,6 @@ class DACrime: NSManagedObject {
         let crimes = context.executeFetchRequest(fetchRequest, error: &error) as! Array<DACrime>
         return crimes
     }
-*/
 
 
     /**
