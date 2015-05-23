@@ -11,8 +11,13 @@
 		E662B5621B1132D300F0DAB2 /* DACoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B5611B1132D300F0DAB2 /* DACoreDataManager.swift */; };
 		E662B5631B1132D300F0DAB2 /* DACoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B5611B1132D300F0DAB2 /* DACoreDataManager.swift */; };
 		E662B5651B1132F100F0DAB2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E662B5641B1132F100F0DAB2 /* CoreData.framework */; };
+		E662B5681B1133BF00F0DAB2 /* DAModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E662B5661B1133BF00F0DAB2 /* DAModel.xcdatamodeld */; };
+		E662B5691B1133BF00F0DAB2 /* DAModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E662B5661B1133BF00F0DAB2 /* DAModel.xcdatamodeld */; };
+		E662B56B1B113F6F00F0DAB2 /* DACrime.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B56A1B113F6F00F0DAB2 /* DACrime.swift */; };
+		E662B56C1B113F6F00F0DAB2 /* DACrime.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B56A1B113F6F00F0DAB2 /* DACrime.swift */; };
+		E662B56F1B113FA300F0DAB2 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B56E1B113FA300F0DAB2 /* SwiftyJSON.swift */; };
+		E662B5701B113FA300F0DAB2 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B56E1B113FA300F0DAB2 /* SwiftyJSON.swift */; };
 		E671BC331B07F783002394F6 /* DASearchBoxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E671BC321B07F783002394F6 /* DASearchBoxView.xib */; };
-		E67AD2741AFC46EF00FE0E28 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67AD2731AFC46EF00FE0E28 /* SwiftyJSON.swift */; };
 		E67AD2761AFC47AC00FE0E28 /* DAConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67AD2751AFC47AC00FE0E28 /* DAConstant.swift */; };
 		E6E5C2591AC6044E001FB516 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6E5C2581AC6044E001FB516 /* Images.xcassets */; };
 		E6E5C27F1AC6046E001FB516 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6E5C27E1AC6046E001FB516 /* Images.xcassets */; };
@@ -66,9 +71,11 @@
 		534D789B2FF603908C0DCECC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E662B5611B1132D300F0DAB2 /* DACoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DACoreDataManager.swift; sourceTree = "<group>"; };
 		E662B5641B1132F100F0DAB2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		E662B5671B1133BF00F0DAB2 /* DAModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DAModel.xcdatamodel; sourceTree = "<group>"; };
+		E662B56A1B113F6F00F0DAB2 /* DACrime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DACrime.swift; sourceTree = "<group>"; };
+		E662B56D1B113FA300F0DAB2 /* SwiftyJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwiftyJSON.h; path = SwiftyJSON/Source/SwiftyJSON.h; sourceTree = "<group>"; };
+		E662B56E1B113FA300F0DAB2 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = SwiftyJSON/Source/SwiftyJSON.swift; sourceTree = "<group>"; };
 		E671BC321B07F783002394F6 /* DASearchBoxView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DASearchBoxView.xib; sourceTree = "<group>"; };
-		E67AD2721AFC46EF00FE0E28 /* SwiftyJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwiftyJSON.h; path = SwiftyJSON/Source/SwiftyJSON.h; sourceTree = "<group>"; };
-		E67AD2731AFC46EF00FE0E28 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = SwiftyJSON/Source/SwiftyJSON.swift; sourceTree = "<group>"; };
 		E67AD2751AFC47AC00FE0E28 /* DAConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAConstant.swift; sourceTree = "<group>"; };
 		E6E5C24C1AC6044E001FB516 /* Destination Alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Destination Alarm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6E5C2581AC6044E001FB516 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -131,6 +138,7 @@
 		E662B55D1B1131F200F0DAB2 /* Crime */ = {
 			isa = PBXGroup;
 			children = (
+				E662B56A1B113F6F00F0DAB2 /* DACrime.swift */,
 			);
 			path = Crime;
 			sourceTree = "<group>";
@@ -139,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				E662B5611B1132D300F0DAB2 /* DACoreDataManager.swift */,
+				E662B5661B1133BF00F0DAB2 /* DAModel.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -161,8 +170,8 @@
 		E67AD2711AFC46CD00FE0E28 /* SwiftyJSON */ = {
 			isa = PBXGroup;
 			children = (
-				E67AD2721AFC46EF00FE0E28 /* SwiftyJSON.h */,
-				E67AD2731AFC46EF00FE0E28 /* SwiftyJSON.swift */,
+				E662B56D1B113FA300F0DAB2 /* SwiftyJSON.h */,
+				E662B56E1B113FA300F0DAB2 /* SwiftyJSON.swift */,
 			);
 			name = SwiftyJSON;
 			sourceTree = "<group>";
@@ -484,11 +493,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E662B5681B1133BF00F0DAB2 /* DAModel.xcdatamodeld in Sources */,
 				E662B5621B1132D300F0DAB2 /* DACoreDataManager.swift in Sources */,
-				E67AD2741AFC46EF00FE0E28 /* SwiftyJSON.swift in Sources */,
 				E6E5C2A01AC60510001FB516 /* ViewController.swift in Sources */,
 				E67AD2761AFC47AC00FE0E28 /* DAConstant.swift in Sources */,
 				E6E5C29D1AC60510001FB516 /* AppDelegate.swift in Sources */,
+				E662B56F1B113FA300F0DAB2 /* SwiftyJSON.swift in Sources */,
+				E662B56B1B113F6F00F0DAB2 /* DACrime.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,8 +507,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E662B56C1B113F6F00F0DAB2 /* DACrime.swift in Sources */,
 				E6E5C2A51AC6051C001FB516 /* NotificationController.swift in Sources */,
 				E662B5631B1132D300F0DAB2 /* DACoreDataManager.swift in Sources */,
+				E662B5701B113FA300F0DAB2 /* SwiftyJSON.swift in Sources */,
+				E662B5691B1133BF00F0DAB2 /* DAModel.xcdatamodeld in Sources */,
 				E6E5C2A41AC6051C001FB516 /* InterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -732,6 +746,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E662B5661B1133BF00F0DAB2 /* DAModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E662B5671B1133BF00F0DAB2 /* DAModel.xcdatamodel */,
+			);
+			currentVersion = E662B5671B1133BF00F0DAB2 /* DAModel.xcdatamodel */;
+			path = DAModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E6E5C2441AC6044E001FB516 /* Project object */;
 }
