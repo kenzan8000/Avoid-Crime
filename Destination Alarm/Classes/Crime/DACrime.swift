@@ -17,14 +17,12 @@ class DACrime: NSManagedObject {
 
     /**
      * fetch datas from coredata
-     * @param lat latitude
-     * @param long longitude
+     * @param location location
      * @param radius radius of miles
      * @return Array<DACrime>
      */
 /*
-    class func fetch(#lat: NSNumber, long: NSNumber, radius: radius) -> Array<DACrime> {
-
+    class func fetch(#location: CLLocation, radius: radius) -> Array<DACrime> {
         var context = DACoreDataManager.sharedInstance.managedObjectContext
 
         var fetchRequest = NSFetchRequest()
@@ -32,16 +30,16 @@ class DACrime: NSManagedObject {
         fetchRequest.entity = entity
         fetchRequest.fetchBatchSize = 20
         let predicaets = [
-            NSPredicate(format: "lat < %@", NSNumber(float: lat.floatValue + 1.0)),
-            NSPredicate(format: "lat > %@", NSNumber(float: lat.floatValue - 1.0)),
-            NSPredicate(format: "long < %@", NSNumber(float: long.floatValue + 1.0)),
-            NSPredicate(format: "long > %@", NSNumber(float: long.floatValue - 1.0)),
+            NSPredicate(format: "lat < %@", NSNumber(float: )),
+            NSPredicate(format: "lat > %@", NSNumber(float: )),
+            NSPredicate(format: "long < %@", NSNumber(float: )),
+            NSPredicate(format: "long > %@", NSNumber(float: )),
         ]
         fetchRequest.predicate = NSCompoundPredicate.andPredicateWithSubpredicates(predicaets)
 
         var error: NSError? = nil
-        let sensorDatas = context.executeFetchRequest(fetchRequest, error: &error) as! Array<DACrime>
-        return sensorDatas
+        let crimes = context.executeFetchRequest(fetchRequest, error: &error) as! Array<DACrime>
+        return crimes
     }
 */
 
