@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>0FFECC58-E3E7-4FBD-8B32-2BEF0DA00EA5</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Destination Alarm</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C861FC00CEE0F6A6BE81FCFF6785FAA78C58EBB3</key>
+		<string>https://github.com/SwiftyJSON/SwiftyJSON.git</string>
+		<key>F9ECD0A4FDAC664D962229BC7D9F62568020AD65</key>
+		<string>https://github.com/kenzan8000/Destination-Alarm.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Destination Alarm.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C861FC00CEE0F6A6BE81FCFF6785FAA78C58EBB3</key>
+		<string>..Destination%20Alarm/Classes/SwiftyJSON</string>
+		<key>F9ECD0A4FDAC664D962229BC7D9F62568020AD65</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/kenzan8000/Destination-Alarm.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F9ECD0A4FDAC664D962229BC7D9F62568020AD65</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F9ECD0A4FDAC664D962229BC7D9F62568020AD65</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Destination%20Alarm</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C861FC00CEE0F6A6BE81FCFF6785FAA78C58EBB3</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SwiftyJSON</string>
+		</dict>
+	</array>
+</dict>
+</plist>
