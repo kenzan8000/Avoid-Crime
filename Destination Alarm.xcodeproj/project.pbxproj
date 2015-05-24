@@ -27,6 +27,7 @@
 		E662B5821B114C3800F0DAB2 /* DACrimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B5801B114C3800F0DAB2 /* DACrimeManager.swift */; };
 		E671BC331B07F783002394F6 /* DASearchBoxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E671BC321B07F783002394F6 /* DASearchBoxView.xib */; };
 		E67AD2761AFC47AC00FE0E28 /* DAConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67AD2751AFC47AC00FE0E28 /* DAConstant.swift */; };
+		E6BBE6E61B11AECA008F928C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BBE6E51B11AECA008F928C /* main.swift */; };
 		E6E5C2591AC6044E001FB516 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6E5C2581AC6044E001FB516 /* Images.xcassets */; };
 		E6E5C27F1AC6046E001FB516 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6E5C27E1AC6046E001FB516 /* Images.xcassets */; };
 		E6E5C2831AC6046E001FB516 /* Destination Alarm WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = E6E5C2821AC6046E001FB516 /* Destination Alarm WatchKit App.app */; };
@@ -89,6 +90,7 @@
 		E662B5801B114C3800F0DAB2 /* DACrimeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DACrimeManager.swift; sourceTree = "<group>"; };
 		E671BC321B07F783002394F6 /* DASearchBoxView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DASearchBoxView.xib; sourceTree = "<group>"; };
 		E67AD2751AFC47AC00FE0E28 /* DAConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAConstant.swift; sourceTree = "<group>"; };
+		E6BBE6E51B11AECA008F928C /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		E6E5C24C1AC6044E001FB516 /* Destination Alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Destination Alarm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6E5C2581AC6044E001FB516 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E6E5C2661AC6044E001FB516 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				E67AD2751AFC47AC00FE0E28 /* DAConstant.swift */,
+				E6BBE6E51B11AECA008F928C /* main.swift */,
 				E6E5C2991AC60510001FB516 /* AppDelegate.swift */,
 				E6E5C29C1AC60510001FB516 /* ViewController.swift */,
 				E6E5C29A1AC60510001FB516 /* LaunchScreen.xib */,
@@ -519,6 +522,7 @@
 			files = (
 				E662B5681B1133BF00F0DAB2 /* DAModel.xcdatamodeld in Sources */,
 				E662B5621B1132D300F0DAB2 /* DACoreDataManager.swift in Sources */,
+				E6BBE6E61B11AECA008F928C /* main.swift in Sources */,
 				E6E5C2A01AC60510001FB516 /* ViewController.swift in Sources */,
 				E67AD2761AFC47AC00FE0E28 /* DAConstant.swift in Sources */,
 				E662B5811B114C3800F0DAB2 /* DACrimeManager.swift in Sources */,

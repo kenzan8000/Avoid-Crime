@@ -2,15 +2,18 @@ PODS:
   - Google-Maps-iOS-SDK (1.9.2)
   - ionicons (2.0.1)
   - ISHTTPOperation (1.2.0)
+  - Touchpose (1.2.0)
 
 DEPENDENCIES:
   - Google-Maps-iOS-SDK
   - ionicons
   - ISHTTPOperation
+  - Touchpose
 
 SPEC CHECKSUMS:
   Google-Maps-iOS-SDK: 4c008abdb68e03ae125c7f674be841d369e2b3de
   ionicons: c7b0867373392e85c17f613d19ade04ccfbe5a7c
   ISHTTPOperation: dfe4b6b2b3d7803688b22df2c46ea9827081e723
+  Touchpose: 219ef3dc3d1932b384ea502ec6df2f003667129b
 
 COCOAPODS: 0.37.1

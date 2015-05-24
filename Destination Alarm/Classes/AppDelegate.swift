@@ -1,7 +1,6 @@
 import UIKit
 
-
-@UIApplicationMain
+//@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
@@ -10,7 +9,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Google Map
         GMSServices.provideAPIKey(DAGoogleMap.APIKey)
-        DANSStringFromClass(NSString)
+
+        // UI setting
+        (application as! QTouchposeApplication).alwaysShowTouches = true
+        (application as! QTouchposeApplication).touchEndAnimationDuration = 0.35
 
         return true
     }
