@@ -31,8 +31,8 @@ class DACrime: NSManagedObject {
         fetchRequest.fetchBatchSize = 20
 
         let coordinate = location.coordinate
-        let latOffset = DAMapMath.latitudePerRadius(radius, location: location)
-        let longOffset = DAMapMath.longitudePerRadius(radius, location: location)
+        let latOffset = DAMapMath.degreeOfLatitudePerRadius(radius, location: location)
+        let longOffset = DAMapMath.degreeOfLongitudePerRadius(radius, location: location)
         let predicaets = [
             NSPredicate(format: "lat < %@", NSNumber(double: coordinate.latitude + latOffset)),
             NSPredicate(format: "lat > %@", NSNumber(double: coordinate.latitude - latOffset)),

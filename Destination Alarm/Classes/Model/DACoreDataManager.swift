@@ -7,8 +7,8 @@ class DACoreDataManager {
     /// MARK: - class method
     static let sharedInstance = DACoreDataManager()
 
-    /// MARK: - property
 
+    /// MARK: - property
     var managedObjectModel: NSManagedObjectModel {
         let modelURL = NSBundle.mainBundle().URLForResource("DAModel", withExtension: "momd")
         return NSManagedObjectModel(contentsOfURL: modelURL!)!
