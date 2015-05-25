@@ -71,13 +71,13 @@ class ViewController: UIViewController {
             queries: [ "origin" : "\(coordinate.latitude),\(coordinate.longitude)", "destination" : "37.7932,-122.4145", ],
             completionHandler: { [unowned self] (json) in
                 // render routes
-                self.mapView.clear()
                 self.mapView.drawRoute(json: json)
                 // render way points
                 let waypoints = DAGoogleMapClient.sharedInstance.waypoints
                 for waypoint in waypoints {
-                    let marker = GMSMarker(position: waypoint)
+                    var marker = GMSMarker(position: waypoint)
                     marker.map = self.mapView
+                    marker.draggable = true
                 }
             }
         )
@@ -89,10 +89,12 @@ class ViewController: UIViewController {
 extension ViewController: CLLocationManagerDelegate {
 
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
+        let location = self.mapView.myLocation
+        if location == nil { return }
         self.mapView.camera = GMSCameraPosition.cameraWithLatitude(
-            newLocation.coordinate.latitude,
-            longitude:newLocation.coordinate.longitude,
-            zoom: 17
+            location.coordinate.latitude,
+            longitude: location.coordinate.longitude,
+            zoom: DAGoogleMap.Zoom
         )
     }
 
@@ -115,9 +117,12 @@ extension ViewController: GMSMapViewDelegate {
     }
 
     func mapView(mapView: GMSMapView,  didBeginDraggingMarker marker: GMSMarker) {
+        DAGoogleMapClient.sharedInstance.startMovingWaypoint(marker.position)
     }
 
     func mapView(mapView: GMSMapView,  didEndDraggingMarker marker: GMSMarker) {
+        DAGoogleMapClient.sharedInstance.endMovingWaypoint(marker.position)
+        self.renderDirectoin()
     }
 
     func mapView(mapView: GMSMapView,  didDragMarker marker:GMSMarker) {

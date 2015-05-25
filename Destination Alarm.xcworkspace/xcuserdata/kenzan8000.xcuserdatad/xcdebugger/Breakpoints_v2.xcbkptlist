@@ -17,6 +17,38 @@
             endingLineNumber = "47"
             landmarkName = "getRow(location:radius:completionHandler:)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Destination_Alarm.DACrimeClient.(getRow (Destination_Alarm.DACrimeClient) -&gt; (location : ObjectiveC.CLLocation, radius : Swift.Double, completionHandler : (json : Destination_Alarm.JSON) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "Destination Alarm"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kenzan8000/Dropbox/workspace/job/kenzan8000/Destination%20Alarm/Destination%20Alarm/Classes/Crime/DACrimeClient.swift"
+                  timestampString = "454232137.486692"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "832">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[2] = Value Promoted from InOut&gt; of Destination_Alarm.DACrimeClient.(getRow (Destination_Alarm.DACrimeClient) -&gt; (location : ObjectiveC.CLLocation, radius : Swift.Double, completionHandler : (json : Destination_Alarm.JSON) -&gt; ()) -&gt; ()).(closure #1).(closure #1)"
+                  moduleName = "Destination Alarm"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kenzan8000/Dropbox/workspace/job/kenzan8000/Destination%20Alarm/Destination%20Alarm/Classes/Crime/DACrimeClient.swift"
+                  timestampString = "454232137.486961"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "112">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

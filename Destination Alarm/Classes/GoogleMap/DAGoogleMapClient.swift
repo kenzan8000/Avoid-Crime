@@ -8,6 +8,8 @@ class DAGoogleMapClient: AnyObject {
 
     /// waypoints for routing
     var waypoints: [CLLocationCoordinate2D] = []
+    /// dragging waypoint
+    private var draggingWaypoint: CLLocationCoordinate2D!
 
 
     /// MARK: - class method
@@ -81,6 +83,35 @@ class DAGoogleMapClient: AnyObject {
      */
     func removeAllWaypoints() {
         self.waypoints = []
+    }
+
+    /**
+     * startMovingWaypoint
+     * @param waypoint waypoint
+     */
+    func startMovingWaypoint(waypoint: CLLocationCoordinate2D) {
+        self.draggingWaypoint = waypoint
+    }
+
+    /**
+     * endMovingWaypoint
+     * @param waypoint waypoint
+     */
+    func endMovingWaypoint(waypoint: CLLocationCoordinate2D) {
+        var index = -1
+        for var i = 0; i < self.waypoints.count; i++ {
+            let location1 = CLLocation(latitude: self.waypoints[i].latitude, longitude: self.waypoints[i].longitude)
+            let location2 = CLLocation(latitude: self.draggingWaypoint.latitude, longitude: self.draggingWaypoint.longitude)
+            let meter = location1.distanceFromLocation(location2)
+            if meter > 10 { continue }
+            //if self.waypoints[i].latitude != self.draggingWaypoint.latitude || self.waypoints[i].longitude != self.draggingWaypoint.longitude { continue }
+            index = i
+            break
+        }
+        self.draggingWaypoint = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+        if index >= 0 {
+            self.waypoints[index] = waypoint
+        }
     }
 
 }

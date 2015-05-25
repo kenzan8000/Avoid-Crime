@@ -12,7 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // UI setting
         (application as! QTouchposeApplication).alwaysShowTouches = true
-        (application as! QTouchposeApplication).touchEndAnimationDuration = 0.35
+        (application as! QTouchposeApplication).touchEndAnimationDuration = 0.50
 
         return true
     }

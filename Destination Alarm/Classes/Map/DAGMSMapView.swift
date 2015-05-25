@@ -3,6 +3,8 @@ class DAGMSMapView: GMSMapView {
 
     /// MARK: - api
     func drawRoute(#json: JSON) {
+        self.clear()
+
         let pathes = self.encodedPathes(json: json)
         for pathString in pathes {
             let path = GMSPath(fromEncodedPath: pathString)
