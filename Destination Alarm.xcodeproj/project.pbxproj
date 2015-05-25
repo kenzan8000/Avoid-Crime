@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D366E983623A2E8C3EB3D64F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 534D789B2FF603908C0DCECC /* libPods.a */; };
 		E60F6C761B12E0FC009BC03B /* DAGMSMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60F6C751B12E0FC009BC03B /* DAGMSMapView.swift */; };
+		E60F6C7A1B13E07D009BC03B /* DADestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60F6C791B13E07D009BC03B /* DADestination.swift */; };
 		E662B5621B1132D300F0DAB2 /* DACoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B5611B1132D300F0DAB2 /* DACoreDataManager.swift */; };
 		E662B5651B1132F100F0DAB2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E662B5641B1132F100F0DAB2 /* CoreData.framework */; };
 		E662B5681B1133BF00F0DAB2 /* DAModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E662B5661B1133BF00F0DAB2 /* DAModel.xcdatamodeld */; };
@@ -47,6 +48,7 @@
 		4B670EFB4CC3DB0DBA3BB537 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		534D789B2FF603908C0DCECC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E60F6C751B12E0FC009BC03B /* DAGMSMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAGMSMapView.swift; sourceTree = "<group>"; };
+		E60F6C791B13E07D009BC03B /* DADestination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DADestination.swift; sourceTree = "<group>"; };
 		E662B5611B1132D300F0DAB2 /* DACoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DACoreDataManager.swift; sourceTree = "<group>"; };
 		E662B5641B1132F100F0DAB2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		E662B5671B1133BF00F0DAB2 /* DAModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DAModel.xcdatamodel; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 		E671BC311B07F747002394F6 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				E60F6C791B13E07D009BC03B /* DADestination.swift */,
 				E671BC321B07F783002394F6 /* DASearchBoxView.xib */,
 			);
 			path = Search;
@@ -339,6 +342,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E662B5681B1133BF00F0DAB2 /* DAModel.xcdatamodeld in Sources */,
+				E60F6C7A1B13E07D009BC03B /* DADestination.swift in Sources */,
 				E662B5621B1132D300F0DAB2 /* DACoreDataManager.swift in Sources */,
 				E6ED99831B12D00C0071CD63 /* DACrimeClient.swift in Sources */,
 				E6ED997D1B12CFE00071CD63 /* DAConstant.swift in Sources */,

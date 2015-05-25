@@ -38,6 +38,21 @@ class ViewController: UIViewController {
      * @param button UIButton
      **/
     @IBAction func touchedUpInside(#button: UIButton) {
+        // place autocomplete API
+        let location = self.mapView.myLocation
+        if location == nil { return }
+        DAGoogleMapClient.sharedInstance.getPlaceAutoComplete(
+            input: "Super Duper",
+            radius: 5,
+            location: location.coordinate,
+            completionHandler: { [unowned self] (json) in
+                let destinations = DADestination.destinations(json: json)
+                for destination in destinations {
+                    println(destination.desc)
+                }
+            }
+        )
+/*
         // geocode API
         let location = self.mapView.myLocation
         if location == nil { return }
@@ -48,6 +63,7 @@ class ViewController: UIViewController {
             completionHandler: { [unowned self] (json) in
             }
         )
+*/
 /*
         // render direction
         DAGoogleMapClient.sharedInstance.removeAllWaypoints()

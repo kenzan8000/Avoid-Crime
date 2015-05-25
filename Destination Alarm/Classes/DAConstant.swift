@@ -32,7 +32,9 @@ let kURIGoogleMapAPI =                  "https://maps.googleapis.com/maps/api"
 
 struct DAGoogleMap {
     /// API key
-    static let APIKey =                 "AIzaSyAdv1alDFQn2fVExouRjWC5I6-A2tKP3f8"
+    static let APIKey =                 "AIzaSyApytPqdYzVALpmnnoRRyCU403RQ5Nvucs"
+    static let BrowserAPIKey =          "AIzaSyCn7YSKdp2bZbcwMMsyqIWnOJ4-Xq8xOpY"
+
     /// zoom
     static let Zoom: Float =            20.0
 
@@ -40,19 +42,20 @@ struct DAGoogleMap {
     struct API {
         static let Directions =        kURIGoogleMapAPI + "/directions/json" /// directions API
         static let GeoCode =           kURIGoogleMapAPI + "/geocode/json" /// geocode API
+        static let PlaceAutoComplete = kURIGoogleMapAPI + "/place/autocomplete/json" /// autocomplete API
     }
 
     /// MARK: - status code
-    static let Status =            "status"
+    static let Status =                     "status"
     struct Statuses {
-        static let OK = "OK"
-        static let NotFound = "NOT_FOUND"
-        static let ZeroResults = "ZERO_RESULTS"
-        static let MaxWayPointsExceeded = "MAX_WAYPOINTS_EXCEEDED"
-        static let InvalidRequest = "INVALID_REQUEST"
-        static let OverQueryLimit = "OVER_QUERY_LIMIT"
-        static let RequestDenied = "REQUEST_DENIED"
-        static let UnknownError = "UNKNOWN_ERROR"
+        static let OK =                     "OK"
+        static let NotFound =               "NOT_FOUND"
+        static let ZeroResults =            "ZERO_RESULTS"
+        static let MaxWayPointsExceeded =   "MAX_WAYPOINTS_EXCEEDED"
+        static let InvalidRequest =         "INVALID_REQUEST"
+        static let OverQueryLimit =         "OVER_QUERY_LIMIT"
+        static let RequestDenied =          "REQUEST_DENIED"
+        static let UnknownError =           "UNKNOWN_ERROR"
     }
 
     /// MARK: - travel mode
@@ -75,4 +78,3 @@ struct DASFGovernment {
         static let Row =                kURISFGovernmentAPI + "/views/w5k3-8ah8/rows.json" /// row API
     }
 }
-

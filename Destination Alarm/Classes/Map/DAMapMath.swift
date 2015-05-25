@@ -7,6 +7,24 @@ class DAMapMath {
     /// MARK: - class method
 
     /**
+     * get mile from meter
+     * @param meter
+     * @return mile
+     */
+    class func mileFromMeter(meter: Double) -> Double {
+        return meter / 1609.344
+    }
+
+    /**
+     * get meter from mile
+     * @param mile
+     * @return meter
+     */
+    class func meterFromMile(mile: Double) -> Double {
+        return mile * 1609.344
+    }
+
+    /**
      * get longitude degree from miles
      * @param radius mile
      * @param location CLLocation

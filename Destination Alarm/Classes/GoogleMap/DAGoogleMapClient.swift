@@ -92,7 +92,35 @@ class DAGoogleMapClient: AnyObject {
                 var responseJSON = JSON([:])
                 if object != nil { responseJSON = JSON(data: object as! NSData) }
                 dispatch_async(dispatch_get_main_queue(), {
-                    println("\(responseJSON)")
+                    completionHandler(json: responseJSON)
+                })
+            }
+        )
+    }
+
+    /**
+     * request google map API (https://developers.google.com/places/webservice/autocomplete)
+     * @param input search words
+     * @param radius mile
+     * @param location location
+     * @param completionHandler (json: JSON) -> Void
+     */
+    func getPlaceAutoComplete(#input: String, radius: Double, location: CLLocationCoordinate2D, completionHandler: (json: JSON) -> Void) {
+        // make request
+        let queries = [
+            "input" : input,
+            "radius" : "\(DAMapMath.meterFromMile(radius))",
+            "location" : "\(location.latitude),\(location.longitude)", // latitude,longitude
+            "sensor" : "false",
+            "key" : DAGoogleMap.BrowserAPIKey,
+        ]
+        let request = NSMutableURLRequest(URL: NSURL(URLString: DAGoogleMap.API.PlaceAutoComplete, queries: queries)!)
+
+        // request
+        ISHTTPOperation.sendRequest(request, handler:{ (response: NSHTTPURLResponse!, object: AnyObject!, error: NSError!) -> Void in
+                var responseJSON = JSON([:])
+                if object != nil { responseJSON = JSON(data: object as! NSData) }
+                dispatch_async(dispatch_get_main_queue(), {
                     completionHandler(json: responseJSON)
                 })
             }
@@ -133,7 +161,6 @@ class DAGoogleMapClient: AnyObject {
             let location2 = CLLocation(latitude: self.draggingWaypoint.latitude, longitude: self.draggingWaypoint.longitude)
             let meter = location1.distanceFromLocation(location2)
             if meter > 10 { continue }
-            //if self.waypoints[i].latitude != self.draggingWaypoint.latitude || self.waypoints[i].longitude != self.draggingWaypoint.longitude { continue }
             index = i
             break
         }
