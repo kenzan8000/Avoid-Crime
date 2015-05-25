@@ -38,11 +38,21 @@ class ViewController: UIViewController {
      * @param button UIButton
      **/
     @IBAction func touchedUpInside(#button: UIButton) {
-
+        // geocode API
+        let location = self.mapView.myLocation
+        if location == nil { return }
+        DAGoogleMapClient.sharedInstance.getGeocode(
+            address: "24th St. Mission Street",
+            radius: 5,
+            location: location.coordinate,
+            completionHandler: { [unowned self] (json) in
+            }
+        )
+/*
         // render direction
         DAGoogleMapClient.sharedInstance.removeAllWaypoints()
         self.renderDirectoin()
-
+*/
 /*
     // crime API
         let location = self.mapView.myLocation

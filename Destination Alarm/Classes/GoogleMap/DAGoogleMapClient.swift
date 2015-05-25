@@ -20,7 +20,7 @@ class DAGoogleMapClient: AnyObject {
     /// MARK: - public api
 
     /**
-     * request google map route API (https://developers.google.com/maps/documentation/directions/)
+     * request google map directions API (https://developers.google.com/maps/documentation/directions/)
      * @param queries URI queries
      *  e.g. 1
      *  {
@@ -64,6 +64,35 @@ class DAGoogleMapClient: AnyObject {
                 var responseJSON = JSON([:])
                 if object != nil { responseJSON = JSON(data: object as! NSData) }
                 dispatch_async(dispatch_get_main_queue(), {
+                    completionHandler(json: responseJSON)
+                })
+            }
+        )
+    }
+
+    /**
+     * request google map geocode API (https://developers.google.com/maps/documentation/geocoding/)
+     * @param address address
+     * @param radius mile
+     * @param location location
+     * @param completionHandler (json: JSON) -> Void
+     */
+    func getGeocode(#address: String, radius: Double, location: CLLocationCoordinate2D, completionHandler: (json: JSON) -> Void) {
+        // make request
+        let offsetLong = DAMapMath.degreeOfLongitudePerRadius(radius, location: CLLocation(latitude: location.latitude, longitude: location.longitude))
+        let offsetLat = DAMapMath.degreeOfLatitudePerRadius(radius, location: CLLocation(latitude: location.latitude, longitude: location.longitude))
+        let queries = [
+            "address" : address,
+            "bounds" : "\(location.latitude-offsetLat),\(location.longitude-offsetLong)|\(location.latitude+offsetLat),\(location.longitude+offsetLong)", // latitude,longitude
+        ]
+        let request = NSMutableURLRequest(URL: NSURL(URLString: DAGoogleMap.API.GeoCode, queries: queries)!)
+
+        // request
+        ISHTTPOperation.sendRequest(request, handler:{ (response: NSHTTPURLResponse!, object: AnyObject!, error: NSError!) -> Void in
+                var responseJSON = JSON([:])
+                if object != nil { responseJSON = JSON(data: object as! NSData) }
+                dispatch_async(dispatch_get_main_queue(), {
+                    println("\(responseJSON)")
                     completionHandler(json: responseJSON)
                 })
             }

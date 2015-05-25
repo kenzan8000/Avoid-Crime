@@ -34,11 +34,25 @@ struct DAGoogleMap {
     /// API key
     static let APIKey =                 "AIzaSyAdv1alDFQn2fVExouRjWC5I6-A2tKP3f8"
     /// zoom
-    static let Zoom: Float =            15.0
+    static let Zoom: Float =            20.0
 
     /// MARK: - API
     struct API {
         static let Directions =        kURIGoogleMapAPI + "/directions/json" /// directions API
+        static let GeoCode =           kURIGoogleMapAPI + "/geocode/json" /// geocode API
+    }
+
+    /// MARK: - status code
+    static let Status =            "status"
+    struct Statuses {
+        static let OK = "OK"
+        static let NotFound = "NOT_FOUND"
+        static let ZeroResults = "ZERO_RESULTS"
+        static let MaxWayPointsExceeded = "MAX_WAYPOINTS_EXCEEDED"
+        static let InvalidRequest = "INVALID_REQUEST"
+        static let OverQueryLimit = "OVER_QUERY_LIMIT"
+        static let RequestDenied = "REQUEST_DENIED"
+        static let UnknownError = "UNKNOWN_ERROR"
     }
 
     /// MARK: - travel mode
