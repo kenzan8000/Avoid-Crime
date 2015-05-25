@@ -36,7 +36,7 @@ class DAGoogleMapClient: AnyObject {
      *      "region" : ".us",
      *      "departure_time" : "1343605500",
      *      "arrival_time" : "1343605500",
-     *      "mode": "bicycling",
+     *      "mode": "bicycling", // driving, walking, bicycling
      *      "sensor": "false",
      *  }
      * @param completionHandler (json: JSON) -> Void
@@ -44,7 +44,6 @@ class DAGoogleMapClient: AnyObject {
     func getRoute(#queries: Dictionary<String, AnyObject>, completionHandler: (json: JSON) -> Void) {
         // make request
         var q: Dictionary<String, AnyObject> = [
-            "mode": "bicycling",
             "sensor": "false",
         ]
         // waypoints

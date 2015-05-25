@@ -5,7 +5,7 @@ import UIKit
 class ViewController: UIViewController {
 
     /// MARK: - property
-    @IBOutlet weak var mapView : GMSMapView!
+    @IBOutlet weak var mapView : DAGMSMapView!
     var locationManager: CLLocationManager!
 
 
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
      * @param button UIButton
      **/
     @IBAction func touchedUpInside(#button: UIButton) {
-/*
+
         // google map direction API
         let location = self.mapView.myLocation
         if location == nil { return }
@@ -47,9 +47,11 @@ class ViewController: UIViewController {
         DAGoogleMapClient.sharedInstance.getRoute(
             queries: [ "origin" : "\(coordinate.latitude),\(coordinate.longitude)", "destination" : "37.7932,-122.4145", ],
             completionHandler: { [unowned self] (json) in
+                println("\(json)")
+                self.mapView.drawRoute(json: json)
             }
         )
-*/
+
 /*
     // crime API
         let location = self.mapView.myLocation

@@ -38,6 +38,14 @@ struct DAGoogleMap {
     struct API {
         static let Directions =        kURIGoogleMapAPI + "/directions/json" /// directions API
     }
+
+    /// MARK: - travel mode
+    static let TravelMode =            "mode"
+    struct TravelModes {
+        static let Driving =           "driving"
+        static let Walking =           "walking"
+        static let Bicycling =         "bicycling"
+    }
 }
 
 
