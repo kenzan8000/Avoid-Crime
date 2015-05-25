@@ -5,7 +5,7 @@ import UIKit
 class ViewController: UIViewController {
 
     /// MARK: - property
-    @IBOutlet weak var mapview : GMSMapView!
+    @IBOutlet weak var mapView : GMSMapView!
     var locationManager: CLLocationManager!
 
 
@@ -13,9 +13,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.mapview.myLocationEnabled = true
-        self.mapview.delegate = self
+        // google map view
+        self.mapView.myLocationEnabled = true
+        self.mapView.delegate = self
 
+        // location manager
         self.locationManager = CLLocationManager()
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -28,6 +30,26 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
+
+    /// MARK: - event listener
+
+    /**
+     * called when touched button
+     * @param button UIButton
+     **/
+    @IBAction func touchedUpInside(#button: UIButton) {
+/*
+    // crime API
+        let location = self.mapView.myLocation
+        if location == nil { return }
+        DACrimeClient.sharedInstance.getRow(
+            location: location,
+            radius: 3.0,
+            completionHandler: { [unowned self] (json) in
+            }
+        )
+*/
+    }
 }
 
 
@@ -35,7 +57,7 @@ class ViewController: UIViewController {
 extension ViewController: CLLocationManagerDelegate {
 
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
-        self.mapview.camera = GMSCameraPosition.cameraWithLatitude(
+        self.mapView.camera = GMSCameraPosition.cameraWithLatitude(
             newLocation.coordinate.latitude,
             longitude:newLocation.coordinate.longitude,
             zoom: 17

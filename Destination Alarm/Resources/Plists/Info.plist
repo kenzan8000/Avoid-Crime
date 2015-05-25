@@ -22,6 +22,8 @@
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Allow this application to monitor your location</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>ionicons.ttf</string>

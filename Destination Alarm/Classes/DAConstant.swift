@@ -48,19 +48,7 @@ let kURISFGovernmentAPI =               "https://data.sfgov.org/api"
 struct DASFGovernment {
     /// MARK: - API
     struct API {
-        static let Row =                "/views/w5k3-8ah8/rows.json"
+        static let Row =                kURISFGovernmentAPI + "/views/w5k3-8ah8/rows.json" /// row API
     }
 }
-/*
-Content-Type: application/json
-Content-Length:
 
-accessType:DOWNLOAD
-method:clustered2
-min_lon:-122.44828466022
-max_lon:-122.37575772847
-min_lat:37.77697600598
-max_lat:37.79230641032
-target_node_clusters:250
-min_distance_between_clusters:0.0030525141384952644
-*/
