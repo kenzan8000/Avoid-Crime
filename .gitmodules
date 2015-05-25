@@ -1,1 +1,3 @@
-
+[submodule "SwiftyJSON"]
+    path=Destination Alarm/Classes/SwiftyJSON
+    url=https://github.com/SwiftyJSON/SwiftyJSON.git
