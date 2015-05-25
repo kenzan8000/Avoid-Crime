@@ -9,56 +9,24 @@
 /* Begin PBXBuildFile section */
 		D366E983623A2E8C3EB3D64F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 534D789B2FF603908C0DCECC /* libPods.a */; };
 		E662B5621B1132D300F0DAB2 /* DACoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B5611B1132D300F0DAB2 /* DACoreDataManager.swift */; };
-		E662B5631B1132D300F0DAB2 /* DACoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B5611B1132D300F0DAB2 /* DACoreDataManager.swift */; };
 		E662B5651B1132F100F0DAB2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E662B5641B1132F100F0DAB2 /* CoreData.framework */; };
 		E662B5681B1133BF00F0DAB2 /* DAModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E662B5661B1133BF00F0DAB2 /* DAModel.xcdatamodeld */; };
-		E662B5691B1133BF00F0DAB2 /* DAModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E662B5661B1133BF00F0DAB2 /* DAModel.xcdatamodeld */; };
 		E662B56B1B113F6F00F0DAB2 /* DACrime.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B56A1B113F6F00F0DAB2 /* DACrime.swift */; };
-		E662B56C1B113F6F00F0DAB2 /* DACrime.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B56A1B113F6F00F0DAB2 /* DACrime.swift */; };
 		E662B56F1B113FA300F0DAB2 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B56E1B113FA300F0DAB2 /* SwiftyJSON.swift */; };
-		E662B5701B113FA300F0DAB2 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B56E1B113FA300F0DAB2 /* SwiftyJSON.swift */; };
 		E662B5741B1148BA00F0DAB2 /* DAMapMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B5731B1148BA00F0DAB2 /* DAMapMath.swift */; };
-		E662B5751B1148BA00F0DAB2 /* DAMapMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B5731B1148BA00F0DAB2 /* DAMapMath.swift */; };
 		E662B57C1B114C0E00F0DAB2 /* NSMutableURLRequest+HTTPBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B5781B114C0E00F0DAB2 /* NSMutableURLRequest+HTTPBody.swift */; };
-		E662B57D1B114C0E00F0DAB2 /* NSMutableURLRequest+HTTPBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B5781B114C0E00F0DAB2 /* NSMutableURLRequest+HTTPBody.swift */; };
 		E662B57E1B114C0E00F0DAB2 /* NSURL+Queries.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B5791B114C0E00F0DAB2 /* NSURL+Queries.swift */; };
-		E662B57F1B114C0E00F0DAB2 /* NSURL+Queries.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B5791B114C0E00F0DAB2 /* NSURL+Queries.swift */; };
 		E671BC331B07F783002394F6 /* DASearchBoxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E671BC321B07F783002394F6 /* DASearchBoxView.xib */; };
 		E6BBE6E61B11AECA008F928C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BBE6E51B11AECA008F928C /* main.swift */; };
 		E6E5C2591AC6044E001FB516 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6E5C2581AC6044E001FB516 /* Images.xcassets */; };
-		E6E5C27F1AC6046E001FB516 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6E5C27E1AC6046E001FB516 /* Images.xcassets */; };
-		E6E5C2831AC6046E001FB516 /* Destination Alarm WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = E6E5C2821AC6046E001FB516 /* Destination Alarm WatchKit App.app */; };
-		E6E5C28B1AC6046E001FB516 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6E5C2891AC6046E001FB516 /* Interface.storyboard */; };
-		E6E5C28D1AC6046E001FB516 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6E5C28C1AC6046E001FB516 /* Images.xcassets */; };
-		E6E5C2901AC6046E001FB516 /* Destination Alarm WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E6E5C2751AC6046E001FB516 /* Destination Alarm WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E6E5C29D1AC60510001FB516 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5C2991AC60510001FB516 /* AppDelegate.swift */; };
 		E6E5C29E1AC60510001FB516 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6E5C29A1AC60510001FB516 /* LaunchScreen.xib */; };
 		E6E5C29F1AC60510001FB516 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6E5C29B1AC60510001FB516 /* Main.storyboard */; };
 		E6E5C2A01AC60510001FB516 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5C29C1AC60510001FB516 /* ViewController.swift */; };
-		E6E5C2A41AC6051C001FB516 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5C2A21AC6051C001FB516 /* InterfaceController.swift */; };
-		E6E5C2A51AC6051C001FB516 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5C2A31AC6051C001FB516 /* NotificationController.swift */; };
 		E6ED997D1B12CFE00071CD63 /* DAConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ED997C1B12CFE00071CD63 /* DAConstant.swift */; };
-		E6ED997E1B12CFE00071CD63 /* DAConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ED997C1B12CFE00071CD63 /* DAConstant.swift */; };
 		E6ED99831B12D00C0071CD63 /* DACrimeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ED99821B12D00C0071CD63 /* DACrimeClient.swift */; };
-		E6EEB4E91AC60A8500073354 /* PushNotificationPayload.apns in Resources */ = {isa = PBXBuildFile; fileRef = E6EEB4E61AC60A8500073354 /* PushNotificationPayload.apns */; };
+		E6ED99861B12D8240071CD63 /* DAGoogleMapClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ED99851B12D8240071CD63 /* DAGoogleMapClient.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		E6E5C2841AC6046E001FB516 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E6E5C2441AC6044E001FB516 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E6E5C2811AC6046E001FB516;
-			remoteInfo = "Destination Alarm WatchKit App";
-		};
-		E6E5C28E1AC6046E001FB516 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E6E5C2441AC6044E001FB516 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E6E5C2741AC6046E001FB516;
-			remoteInfo = "Destination Alarm WatchKit Extension";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		E6E5C2971AC6046E001FB516 /* Embed App Extensions */ = {
@@ -67,7 +35,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				E6E5C2901AC6046E001FB516 /* Destination Alarm WatchKit Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -91,24 +58,14 @@
 		E6BBE6E51B11AECA008F928C /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		E6E5C24C1AC6044E001FB516 /* Destination Alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Destination Alarm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6E5C2581AC6044E001FB516 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		E6E5C2661AC6044E001FB516 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E6E5C2671AC6044E001FB516 /* Destination_AlarmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination_AlarmTests.swift; sourceTree = "<group>"; };
-		E6E5C2751AC6046E001FB516 /* Destination Alarm WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Destination Alarm WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E6E5C27E1AC6046E001FB516 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		E6E5C2821AC6046E001FB516 /* Destination Alarm WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Destination Alarm WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E6E5C2881AC6046E001FB516 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E6E5C28A1AC6046E001FB516 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		E6E5C28C1AC6046E001FB516 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E6E5C2991AC60510001FB516 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6E5C29A1AC60510001FB516 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		E6E5C29B1AC60510001FB516 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E6E5C29C1AC60510001FB516 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E6E5C2A21AC6051C001FB516 /* InterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
-		E6E5C2A31AC6051C001FB516 /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		E6E5C2A61AC60546001FB516 /* Destination Alarm-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Destination Alarm-Bridging-Header.h"; sourceTree = "<group>"; };
 		E6ED997C1B12CFE00071CD63 /* DAConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAConstant.swift; sourceTree = "<group>"; };
 		E6ED99821B12D00C0071CD63 /* DACrimeClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DACrimeClient.swift; sourceTree = "<group>"; };
-		E6EEB4E61AC60A8500073354 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		E6ED99851B12D8240071CD63 /* DAGoogleMapClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAGoogleMapClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,13 +75,6 @@
 			files = (
 				E662B5651B1132F100F0DAB2 /* CoreData.framework in Frameworks */,
 				D366E983623A2E8C3EB3D64F /* libPods.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E6E5C2721AC6046E001FB516 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,9 +155,6 @@
 			isa = PBXGroup;
 			children = (
 				E6E5C24E1AC6044E001FB516 /* Destination Alarm */,
-				E6E5C2641AC6044E001FB516 /* Destination AlarmTests */,
-				E6E5C2761AC6046E001FB516 /* Destination Alarm WatchKit Extension */,
-				E6E5C2861AC6046E001FB516 /* Destination Alarm WatchKit App */,
 				E6E5C24D1AC6044E001FB516 /* Products */,
 				7A8D2390FA96E7F18342BC2D /* Pods */,
 				AE884208584959C1ECEA6CD8 /* Frameworks */,
@@ -218,8 +165,6 @@
 			isa = PBXGroup;
 			children = (
 				E6E5C24C1AC6044E001FB516 /* Destination Alarm.app */,
-				E6E5C2751AC6046E001FB516 /* Destination Alarm WatchKit Extension.appex */,
-				E6E5C2821AC6046E001FB516 /* Destination Alarm WatchKit App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -234,51 +179,6 @@
 			path = "Destination Alarm";
 			sourceTree = "<group>";
 		};
-		E6E5C2641AC6044E001FB516 /* Destination AlarmTests */ = {
-			isa = PBXGroup;
-			children = (
-				E6E5C2671AC6044E001FB516 /* Destination_AlarmTests.swift */,
-				E6E5C2651AC6044E001FB516 /* Supporting Files */,
-			);
-			path = "Destination AlarmTests";
-			sourceTree = "<group>";
-		};
-		E6E5C2651AC6044E001FB516 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				E6E5C2661AC6044E001FB516 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E6E5C2761AC6046E001FB516 /* Destination Alarm WatchKit Extension */ = {
-			isa = PBXGroup;
-			children = (
-				E6E5C2A11AC6051C001FB516 /* Classes */,
-				E6EEB4E41AC60A8500073354 /* Resources */,
-				E6E5C27E1AC6046E001FB516 /* Images.xcassets */,
-			);
-			path = "Destination Alarm WatchKit Extension";
-			sourceTree = "<group>";
-		};
-		E6E5C2861AC6046E001FB516 /* Destination Alarm WatchKit App */ = {
-			isa = PBXGroup;
-			children = (
-				E6E5C2891AC6046E001FB516 /* Interface.storyboard */,
-				E6E5C28C1AC6046E001FB516 /* Images.xcassets */,
-				E6E5C2871AC6046E001FB516 /* Supporting Files */,
-			);
-			path = "Destination Alarm WatchKit App";
-			sourceTree = "<group>";
-		};
-		E6E5C2871AC6046E001FB516 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				E6E5C2881AC6046E001FB516 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		E6E5C2981AC60510001FB516 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,6 +191,7 @@
 				E6E5C2A61AC60546001FB516 /* Destination Alarm-Bridging-Header.h */,
 				E671BC311B07F747002394F6 /* Search */,
 				E67AD26F1AFC469D00FE0E28 /* Map */,
+				E6ED99841B12D8240071CD63 /* GoogleMap */,
 				E662B55D1B1131F200F0DAB2 /* Crime */,
 				E662B55E1B11328100F0DAB2 /* Model */,
 				E662B5761B114C0E00F0DAB2 /* NSFoundation+Extension */,
@@ -299,13 +200,12 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		E6E5C2A11AC6051C001FB516 /* Classes */ = {
+		E6ED99841B12D8240071CD63 /* GoogleMap */ = {
 			isa = PBXGroup;
 			children = (
-				E6E5C2A21AC6051C001FB516 /* InterfaceController.swift */,
-				E6E5C2A31AC6051C001FB516 /* NotificationController.swift */,
+				E6ED99851B12D8240071CD63 /* DAGoogleMapClient.swift */,
 			);
-			path = Classes;
+			path = GoogleMap;
 			sourceTree = "<group>";
 		};
 		E6EEB4E01AC609B300073354 /* Resources */ = {
@@ -317,30 +217,6 @@
 			sourceTree = "<group>";
 		};
 		E6EEB4E11AC609B300073354 /* Plists */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Plists;
-			sourceTree = "<group>";
-		};
-		E6EEB4E41AC60A8500073354 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				E6EEB4E51AC60A8500073354 /* APNS */,
-				E6EEB4E71AC60A8500073354 /* Plists */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		E6EEB4E51AC60A8500073354 /* APNS */ = {
-			isa = PBXGroup;
-			children = (
-				E6EEB4E61AC60A8500073354 /* PushNotificationPayload.apns */,
-			);
-			path = APNS;
-			sourceTree = "<group>";
-		};
-		E6EEB4E71AC60A8500073354 /* Plists */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -364,45 +240,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				E6E5C28F1AC6046E001FB516 /* PBXTargetDependency */,
 			);
 			name = "Destination Alarm";
 			productName = "Destination Alarm";
 			productReference = E6E5C24C1AC6044E001FB516 /* Destination Alarm.app */;
 			productType = "com.apple.product-type.application";
-		};
-		E6E5C2741AC6046E001FB516 /* Destination Alarm WatchKit Extension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E6E5C2941AC6046E001FB516 /* Build configuration list for PBXNativeTarget "Destination Alarm WatchKit Extension" */;
-			buildPhases = (
-				E6E5C2711AC6046E001FB516 /* Sources */,
-				E6E5C2721AC6046E001FB516 /* Frameworks */,
-				E6E5C2731AC6046E001FB516 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E6E5C2851AC6046E001FB516 /* PBXTargetDependency */,
-			);
-			name = "Destination Alarm WatchKit Extension";
-			productName = "Destination Alarm WatchKit Extension";
-			productReference = E6E5C2751AC6046E001FB516 /* Destination Alarm WatchKit Extension.appex */;
-			productType = "com.apple.product-type.watchkit-extension";
-		};
-		E6E5C2811AC6046E001FB516 /* Destination Alarm WatchKit App */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E6E5C2911AC6046E001FB516 /* Build configuration list for PBXNativeTarget "Destination Alarm WatchKit App" */;
-			buildPhases = (
-				E6E5C2801AC6046E001FB516 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Destination Alarm WatchKit App";
-			productName = "Destination Alarm WatchKit App";
-			productReference = E6E5C2821AC6046E001FB516 /* Destination Alarm WatchKit App.app */;
-			productType = "com.apple.product-type.application.watchapp";
 		};
 /* End PBXNativeTarget section */
 
@@ -421,12 +263,6 @@
 							};
 						};
 					};
-					E6E5C2741AC6046E001FB516 = {
-						CreatedOnToolsVersion = 6.2;
-					};
-					E6E5C2811AC6046E001FB516 = {
-						CreatedOnToolsVersion = 6.2;
-					};
 				};
 			};
 			buildConfigurationList = E6E5C2471AC6044E001FB516 /* Build configuration list for PBXProject "Destination Alarm" */;
@@ -443,8 +279,6 @@
 			projectRoot = "";
 			targets = (
 				E6E5C24B1AC6044E001FB516 /* Destination Alarm */,
-				E6E5C2741AC6046E001FB516 /* Destination Alarm WatchKit Extension */,
-				E6E5C2811AC6046E001FB516 /* Destination Alarm WatchKit App */,
 			);
 		};
 /* End PBXProject section */
@@ -458,25 +292,6 @@
 				E6E5C29E1AC60510001FB516 /* LaunchScreen.xib in Resources */,
 				E6E5C2591AC6044E001FB516 /* Images.xcassets in Resources */,
 				E671BC331B07F783002394F6 /* DASearchBoxView.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E6E5C2731AC6046E001FB516 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E6E5C2831AC6046E001FB516 /* Destination Alarm WatchKit App.app in Resources */,
-				E6E5C27F1AC6046E001FB516 /* Images.xcassets in Resources */,
-				E6EEB4E91AC60A8500073354 /* PushNotificationPayload.apns in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E6E5C2801AC6046E001FB516 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E6E5C28B1AC6046E001FB516 /* Interface.storyboard in Resources */,
-				E6E5C28D1AC6046E001FB516 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,6 +341,7 @@
 				E6ED997D1B12CFE00071CD63 /* DAConstant.swift in Sources */,
 				E6BBE6E61B11AECA008F928C /* main.swift in Sources */,
 				E6E5C2A01AC60510001FB516 /* ViewController.swift in Sources */,
+				E6ED99861B12D8240071CD63 /* DAGoogleMapClient.swift in Sources */,
 				E6E5C29D1AC60510001FB516 /* AppDelegate.swift in Sources */,
 				E662B56F1B113FA300F0DAB2 /* SwiftyJSON.swift in Sources */,
 				E662B56B1B113F6F00F0DAB2 /* DACrime.swift in Sources */,
@@ -535,48 +351,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E6E5C2711AC6046E001FB516 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E662B56C1B113F6F00F0DAB2 /* DACrime.swift in Sources */,
-				E6ED997E1B12CFE00071CD63 /* DAConstant.swift in Sources */,
-				E662B57D1B114C0E00F0DAB2 /* NSMutableURLRequest+HTTPBody.swift in Sources */,
-				E6E5C2A51AC6051C001FB516 /* NotificationController.swift in Sources */,
-				E662B5631B1132D300F0DAB2 /* DACoreDataManager.swift in Sources */,
-				E662B5701B113FA300F0DAB2 /* SwiftyJSON.swift in Sources */,
-				E662B5751B1148BA00F0DAB2 /* DAMapMath.swift in Sources */,
-				E662B57F1B114C0E00F0DAB2 /* NSURL+Queries.swift in Sources */,
-				E662B5691B1133BF00F0DAB2 /* DAModel.xcdatamodeld in Sources */,
-				E6E5C2A41AC6051C001FB516 /* InterfaceController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		E6E5C2851AC6046E001FB516 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E6E5C2811AC6046E001FB516 /* Destination Alarm WatchKit App */;
-			targetProxy = E6E5C2841AC6046E001FB516 /* PBXContainerItemProxy */;
-		};
-		E6E5C28F1AC6046E001FB516 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E6E5C2741AC6046E001FB516 /* Destination Alarm WatchKit Extension */;
-			targetProxy = E6E5C28E1AC6046E001FB516 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		E6E5C2891AC6046E001FB516 /* Interface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E6E5C28A1AC6046E001FB516 /* Base */,
-			);
-			name = Interface.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E6E5C2691AC6044E001FB516 /* Debug */ = {
@@ -613,7 +388,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -649,7 +424,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -664,6 +439,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Destination Alarm/Resources/Plists/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -680,65 +456,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Destination Alarm/Resources/Plists/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Destination Alarm/Classes/Destination Alarm-Bridging-Header.h";
-			};
-			name = Release;
-		};
-		E6E5C2921AC6046E001FB516 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				IBSC_MODULE = Destination_Alarm_WatchKit_Extension;
-				INFOPLIST_FILE = "Destination Alarm WatchKit App/Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 4;
-				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
-			};
-			name = Debug;
-		};
-		E6E5C2931AC6046E001FB516 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				IBSC_MODULE = Destination_Alarm_WatchKit_Extension;
-				INFOPLIST_FILE = "Destination Alarm WatchKit App/Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 4;
-				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
-			};
-			name = Release;
-		};
-		E6E5C2951AC6046E001FB516 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Destination Alarm WatchKit Extension/Resources/Plists/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				OTHER_SWIFT_FLAGS = "-D DEBUG";
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		E6E5C2961AC6046E001FB516 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = "Destination Alarm WatchKit Extension/Resources/Plists/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -759,24 +481,6 @@
 			buildConfigurations = (
 				E6E5C26C1AC6044E001FB516 /* Debug */,
 				E6E5C26D1AC6044E001FB516 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E6E5C2911AC6046E001FB516 /* Build configuration list for PBXNativeTarget "Destination Alarm WatchKit App" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E6E5C2921AC6046E001FB516 /* Debug */,
-				E6E5C2931AC6046E001FB516 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E6E5C2941AC6046E001FB516 /* Build configuration list for PBXNativeTarget "Destination Alarm WatchKit Extension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E6E5C2951AC6046E001FB516 /* Debug */,
-				E6E5C2961AC6046E001FB516 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

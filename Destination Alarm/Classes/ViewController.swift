@@ -39,6 +39,18 @@ class ViewController: UIViewController {
      **/
     @IBAction func touchedUpInside(#button: UIButton) {
 /*
+        // google map direction API
+        let location = self.mapView.myLocation
+        if location == nil { return }
+        let coordinate = location.coordinate
+        DAGoogleMapClient.sharedInstance.removeAllWaypoints()
+        DAGoogleMapClient.sharedInstance.getRoute(
+            queries: [ "origin" : "\(coordinate.latitude),\(coordinate.longitude)", "destination" : "37.7932,-122.4145", ],
+            completionHandler: { [unowned self] (json) in
+            }
+        )
+*/
+/*
     // crime API
         let location = self.mapView.myLocation
         if location == nil { return }
