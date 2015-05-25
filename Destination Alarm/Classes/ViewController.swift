@@ -39,18 +39,9 @@ class ViewController: UIViewController {
      **/
     @IBAction func touchedUpInside(#button: UIButton) {
 
-        // google map direction API
-        let location = self.mapView.myLocation
-        if location == nil { return }
-        let coordinate = location.coordinate
+        // render direction
         DAGoogleMapClient.sharedInstance.removeAllWaypoints()
-        DAGoogleMapClient.sharedInstance.getRoute(
-            queries: [ "origin" : "\(coordinate.latitude),\(coordinate.longitude)", "destination" : "37.7932,-122.4145", ],
-            completionHandler: { [unowned self] (json) in
-                println("\(json)")
-                self.mapView.drawRoute(json: json)
-            }
-        )
+        self.renderDirectoin()
 
 /*
     // crime API
@@ -63,6 +54,33 @@ class ViewController: UIViewController {
             }
         )
 */
+    }
+
+
+    /// MARK: - private api
+
+    /**
+     * render direction
+     */
+    func renderDirectoin() {
+        // google map direction API
+        let location = self.mapView.myLocation
+        if location == nil { return }
+        let coordinate = location.coordinate
+        DAGoogleMapClient.sharedInstance.getRoute(
+            queries: [ "origin" : "\(coordinate.latitude),\(coordinate.longitude)", "destination" : "37.7932,-122.4145", ],
+            completionHandler: { [unowned self] (json) in
+                // render routes
+                self.mapView.clear()
+                self.mapView.drawRoute(json: json)
+                // render way points
+                let waypoints = DAGoogleMapClient.sharedInstance.waypoints
+                for waypoint in waypoints {
+                    let marker = GMSMarker(position: waypoint)
+                    marker.map = self.mapView
+                }
+            }
+        )
     }
 }
 
@@ -86,4 +104,23 @@ extension ViewController: CLLocationManagerDelegate {
 
 /// MARK: - GMSMapViewDelegate
 extension ViewController: GMSMapViewDelegate {
+
+    func mapView(mapView: GMSMapView, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
+        DAGoogleMapClient.sharedInstance.appendWaypoint(coordinate)
+        self.renderDirectoin()
+    }
+
+    func mapView(mapView: GMSMapView, didTapMarker marker: GMSMarker) -> Bool {
+        return true
+    }
+
+    func mapView(mapView: GMSMapView,  didBeginDraggingMarker marker: GMSMarker) {
+    }
+
+    func mapView(mapView: GMSMapView,  didEndDraggingMarker marker: GMSMarker) {
+    }
+
+    func mapView(mapView: GMSMapView,  didDragMarker marker:GMSMarker) {
+    }
+
 }
