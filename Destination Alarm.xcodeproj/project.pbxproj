@@ -10,6 +10,9 @@
 		D366E983623A2E8C3EB3D64F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 534D789B2FF603908C0DCECC /* libPods.a */; };
 		E60F6C761B12E0FC009BC03B /* DAGMSMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60F6C751B12E0FC009BC03B /* DAGMSMapView.swift */; };
 		E60F6C7A1B13E07D009BC03B /* DADestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60F6C791B13E07D009BC03B /* DADestination.swift */; };
+		E60F6C7C1B13E62D009BC03B /* DASearchBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60F6C7B1B13E62D009BC03B /* DASearchBoxView.swift */; };
+		E60F6C7E1B13F2E9009BC03B /* DASearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60F6C7D1B13F2E9009BC03B /* DASearchResultView.swift */; };
+		E60F6C801B13F5B9009BC03B /* DASearchResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E60F6C7F1B13F5B9009BC03B /* DASearchResultView.xib */; };
 		E662B5621B1132D300F0DAB2 /* DACoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B5611B1132D300F0DAB2 /* DACoreDataManager.swift */; };
 		E662B5651B1132F100F0DAB2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E662B5641B1132F100F0DAB2 /* CoreData.framework */; };
 		E662B5681B1133BF00F0DAB2 /* DAModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E662B5661B1133BF00F0DAB2 /* DAModel.xcdatamodeld */; };
@@ -49,6 +52,9 @@
 		534D789B2FF603908C0DCECC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E60F6C751B12E0FC009BC03B /* DAGMSMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAGMSMapView.swift; sourceTree = "<group>"; };
 		E60F6C791B13E07D009BC03B /* DADestination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DADestination.swift; sourceTree = "<group>"; };
+		E60F6C7B1B13E62D009BC03B /* DASearchBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DASearchBoxView.swift; sourceTree = "<group>"; };
+		E60F6C7D1B13F2E9009BC03B /* DASearchResultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DASearchResultView.swift; sourceTree = "<group>"; };
+		E60F6C7F1B13F5B9009BC03B /* DASearchResultView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DASearchResultView.xib; sourceTree = "<group>"; };
 		E662B5611B1132D300F0DAB2 /* DACoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DACoreDataManager.swift; sourceTree = "<group>"; };
 		E662B5641B1132F100F0DAB2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		E662B5671B1133BF00F0DAB2 /* DAModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DAModel.xcdatamodel; sourceTree = "<group>"; };
@@ -134,7 +140,10 @@
 			isa = PBXGroup;
 			children = (
 				E60F6C791B13E07D009BC03B /* DADestination.swift */,
+				E60F6C7B1B13E62D009BC03B /* DASearchBoxView.swift */,
 				E671BC321B07F783002394F6 /* DASearchBoxView.xib */,
+				E60F6C7D1B13F2E9009BC03B /* DASearchResultView.swift */,
+				E60F6C7F1B13F5B9009BC03B /* DASearchResultView.xib */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -297,6 +306,7 @@
 				E6E5C29F1AC60510001FB516 /* Main.storyboard in Resources */,
 				E6E5C29E1AC60510001FB516 /* LaunchScreen.xib in Resources */,
 				E6E5C2591AC6044E001FB516 /* Images.xcassets in Resources */,
+				E60F6C801B13F5B9009BC03B /* DASearchResultView.xib in Resources */,
 				E671BC331B07F783002394F6 /* DASearchBoxView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,6 +357,7 @@
 				E6ED99831B12D00C0071CD63 /* DACrimeClient.swift in Sources */,
 				E6ED997D1B12CFE00071CD63 /* DAConstant.swift in Sources */,
 				E6BBE6E61B11AECA008F928C /* main.swift in Sources */,
+				E60F6C7E1B13F2E9009BC03B /* DASearchResultView.swift in Sources */,
 				E6E5C2A01AC60510001FB516 /* ViewController.swift in Sources */,
 				E6ED99861B12D8240071CD63 /* DAGoogleMapClient.swift in Sources */,
 				E6E5C29D1AC60510001FB516 /* AppDelegate.swift in Sources */,
@@ -356,6 +367,7 @@
 				E662B57E1B114C0E00F0DAB2 /* NSURL+Queries.swift in Sources */,
 				E662B57C1B114C0E00F0DAB2 /* NSMutableURLRequest+HTTPBody.swift in Sources */,
 				E662B5741B1148BA00F0DAB2 /* DAMapMath.swift in Sources */,
+				E60F6C7C1B13E62D009BC03B /* DASearchBoxView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

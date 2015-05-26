@@ -1,7 +1,11 @@
 /// MARK: - DAGMSMapView
 class DAGMSMapView: GMSMapView {
 
-    /// MARK: - api
+    /// MARK: - class method
+    static let sharedInstance = DAGMSMapView()
+
+
+    /// MARK: - public api
     func drawRoute(#json: JSON) {
         self.clear()
 

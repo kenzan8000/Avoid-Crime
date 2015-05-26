@@ -5,7 +5,11 @@ import UIKit
 class ViewController: UIViewController {
 
     /// MARK: - property
-    @IBOutlet weak var mapView : DAGMSMapView!
+    @IBOutlet weak var testButton: UIButton!
+
+    var mapView : DAGMSMapView!
+    var searchBoxView : DASearchBoxView!
+    var searchResultView : DASearchResultView!
     var locationManager: CLLocationManager!
 
 
@@ -14,8 +18,28 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         // google map view
+        self.mapView = DAGMSMapView.sharedInstance
+        self.mapView.frame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height)
         self.mapView.myLocationEnabled = true
         self.mapView.delegate = self
+        self.view.addSubview(self.mapView)
+
+        // search result
+        let searchResultNib = UINib(nibName: DANSStringFromClass(DASearchResultView), bundle:nil)
+        let searchResultViews = searchResultNib.instantiateWithOwner(nil, options: nil)
+        self.searchResultView = searchResultViews[0] as! DASearchResultView
+        self.searchResultView.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height)
+        self.searchResultView.hidden = true
+        self.searchResultView.delegate = self
+        self.view.addSubview(self.searchResultView)
+
+        // search box
+        let searchBoxNib = UINib(nibName: DANSStringFromClass(DASearchBoxView), bundle:nil)
+        let searchBoxViews = searchBoxNib.instantiateWithOwner(nil, options: nil)
+        self.searchBoxView = searchBoxViews[0] as! DASearchBoxView
+        self.searchBoxView.frame = CGRectMake(10, 20, UIScreen.mainScreen().bounds.width-10*2, self.searchBoxView.frame.size.height)
+        self.searchBoxView.delegate = self
+        self.view.addSubview(self.searchBoxView)
 
         // location manager
         self.locationManager = CLLocationManager()
@@ -24,6 +48,10 @@ class ViewController: UIViewController {
         self.locationManager.requestAlwaysAuthorization()
         self.locationManager.distanceFilter = 300
         self.locationManager.startUpdatingLocation()
+
+        self.view.bringSubviewToFront(self.searchResultView)
+        self.view.bringSubviewToFront(self.searchBoxView)
+        self.view.bringSubviewToFront(self.testButton)
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,20 +66,6 @@ class ViewController: UIViewController {
      * @param button UIButton
      **/
     @IBAction func touchedUpInside(#button: UIButton) {
-        // place autocomplete API
-        let location = self.mapView.myLocation
-        if location == nil { return }
-        DAGoogleMapClient.sharedInstance.getPlaceAutoComplete(
-            input: "Super Duper",
-            radius: 5,
-            location: location.coordinate,
-            completionHandler: { [unowned self] (json) in
-                let destinations = DADestination.destinations(json: json)
-                for destination in destinations {
-                    println(destination.desc)
-                }
-            }
-        )
 /*
         // geocode API
         let location = self.mapView.myLocation
@@ -155,3 +169,31 @@ extension ViewController: GMSMapViewDelegate {
     }
 
 }
+
+
+/// MARK: - DASearchBoxViewDelegate
+extension ViewController: DASearchBoxViewDelegate {
+
+    func touchedUpInside(#searchBoxView: DASearchBoxView) {
+    }
+
+    func searchDidFinish(#searchBoxView: DASearchBoxView, destinations: [DADestination]) {
+        self.searchResultView.updateDestinations(destinations)
+        self.searchResultView.hidden = false
+    }
+
+}
+
+
+/// MARK: - DASearchResultViewDelegate
+extension ViewController: DASearchResultViewDelegate {
+
+    func didSelectRow(#searchResultView: DASearchResultView, selectedDestination: DADestination) {
+        self.searchBoxView.setSearchText(selectedDestination.desc)
+        self.searchResultView.hidden = true
+    }
+
+}
+
+
+
