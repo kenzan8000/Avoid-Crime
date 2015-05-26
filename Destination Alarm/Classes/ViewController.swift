@@ -6,10 +6,11 @@ class ViewController: UIViewController {
 
     /// MARK: - property
     @IBOutlet weak var testButton: UIButton!
+    var destinationString: String = "37.7932,-122.4145"
 
-    var mapView : DAGMSMapView!
-    var searchBoxView : DASearchBoxView!
-    var searchResultView : DASearchResultView!
+    var mapView: DAGMSMapView!
+    var searchBoxView: DASearchBoxView!
+    var searchResultView: DASearchResultView!
     var locationManager: CLLocationManager!
 
 
@@ -78,11 +79,9 @@ class ViewController: UIViewController {
             }
         )
 */
-/*
         // render direction
         DAGoogleMapClient.sharedInstance.removeAllWaypoints()
         self.renderDirectoin()
-*/
 /*
     // crime API
         let location = self.mapView.myLocation
@@ -108,7 +107,7 @@ class ViewController: UIViewController {
         if location == nil { return }
         let coordinate = location.coordinate
         DAGoogleMapClient.sharedInstance.getRoute(
-            queries: [ "origin" : "\(coordinate.latitude),\(coordinate.longitude)", "destination" : "37.7932,-122.4145", ],
+            queries: [ "origin" : "\(coordinate.latitude),\(coordinate.longitude)", "destination" : self.destinationString, ],
             completionHandler: { [unowned self] (json) in
                 // render routes
                 self.mapView.drawRoute(json: json)
@@ -191,9 +190,9 @@ extension ViewController: DASearchResultViewDelegate {
     func didSelectRow(#searchResultView: DASearchResultView, selectedDestination: DADestination) {
         self.searchBoxView.setSearchText(selectedDestination.desc)
         self.searchResultView.hidden = true
+        self.destinationString = selectedDestination.desc
+        self.renderDirectoin()
     }
 
 }
-
-
 

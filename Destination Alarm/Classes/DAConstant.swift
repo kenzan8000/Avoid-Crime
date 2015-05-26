@@ -36,7 +36,7 @@ struct DAGoogleMap {
     static let BrowserAPIKey =          kDAGoogleMapBrowserAPIKey
 
     /// zoom
-    static let Zoom: Float =            20.0
+    static let Zoom: Float =            13.0
 
     /// MARK: - API
     struct API {
