@@ -32,8 +32,8 @@ let kURIGoogleMapAPI =                  "https://maps.googleapis.com/maps/api"
 
 struct DAGoogleMap {
     /// API key
-    static let APIKey =                 "AIzaSyApytPqdYzVALpmnnoRRyCU403RQ5Nvucs"
-    static let BrowserAPIKey =          "AIzaSyCn7YSKdp2bZbcwMMsyqIWnOJ4-Xq8xOpY"
+    static let APIKey =                 kDAGoogleMapAPIKey
+    static let BrowserAPIKey =          kDAGoogleMapBrowserAPIKey
 
     /// zoom
     static let Zoom: Float =            20.0

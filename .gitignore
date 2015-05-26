@@ -1,6 +1,6 @@
 .svn
 build/*
-/Destination Alarm/Classes/SwiftyJSON/
+/Destination Alarm/Classes/DAConstant-Private.swift
 *.pbxuser
 !default.pbxuser
 *.mode1v3
