@@ -43,6 +43,8 @@ class DASearchBoxView: UIView {
 
     @IBAction func touchedUpInside(#button: UIButton) {
         if button == self.endButton {
+            self.searchTextField.text = ""
+            self.endSearch()
         }
     }
 
@@ -79,13 +81,11 @@ class DASearchBoxView: UIView {
         self.searchTextField.text =  searchText
     }
 
-
-    /// MARK: - private api
-
     /**
      * end searching
      **/
-    private func endSearch() {
+    func endSearch() {
+        self.searchTextField.resignFirstResponder()
         if self.delegate != nil {
             self.delegate?.touchedUpInside(searchBoxView: self)
         }

@@ -7,10 +7,10 @@ import CoreLocation
 class DACrime: NSManagedObject {
 
     /// MARK: - property
-    @NSManaged var crime_id: NSNumber
+    @NSManaged var desc: String
+    @NSManaged var resolution: String
     @NSManaged var lat: NSNumber
     @NSManaged var long: NSNumber
-    @NSManaged var size: NSNumber
     @NSManaged var timestamp: NSDate
 
 
@@ -50,31 +50,35 @@ class DACrime: NSManagedObject {
     /**
      * save json datas to coredata
      * @param json JSON
-     *  [
-     *      {
-     *          "pathToRoot":[
-     *              16,
-     *              0
-     *          ],
-     *          "box":{"lat1": 37.7832593295025, "lon1": -122.415910622743, "lat2": 37.7849141859562, "lon2": -122.411115854179},
-     *          "centroid":{
-     *              "lat": 37.7841468713255,
-     *              "lon": -122.41394143505319
-     *          },
-     *          "size": 89,
-     *          "polygon":[{"lat": 37.7850141859562, "lon": -122.41140909352606 }, {"lat": 37.78461206112599, "lon": -122.411015854179}],
-     *          "points":[{"sid": 12564300, "lat": 37.7848656939526, "lon": -122.412784096502 }, ...]
-     *          "id": 22
-     *      },
-     *      ...
-     *  ]
-     * @param date timestamp
+     * [
+     *   {
+     *     "time" : "08:42",
+     *     "category" : "LARCENY/THEFT",
+     *     "pddistrict" : "SOUTHERN",
+     *     "pdid" : "13054930206362",
+     *     "location" : {
+     *       "needs_recoding" : false,
+     *       "longitude" : "-122.407633520742",
+     *       "latitude" : "37.7841893501425",
+     *       "human_address" : "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"\"}"
+     *     },
+     *     "address" : "800 Block of MARKET ST",
+     *     "descript" : "PETTY THEFT SHOPLIFTING",
+     *     "dayofweek" : "Tuesday",
+     *     "resolution" : "ARREST, BOOKED",
+     *     "date" : "2015-02-03T00:00:00",
+     *     "y" : "37.7841893501425",
+     *     "x" : "-122.407633520742",
+     *     "incidntnum" : "130549302"
+     *   },
+     *   ...
+     * ]
      */
-    class func save(#json: JSON, date: NSDate) {
+    class func save(#json: JSON) {
         let crimeDatas: Array<JSON> = json.arrayValue
 
         for crimeData in crimeDatas {
-            DACrime.insertCrime(json: crimeData, date: date)
+            DACrime.insertCrime(json: crimeData)
         }
 
         var error: NSError? = nil
@@ -85,24 +89,29 @@ class DACrime: NSManagedObject {
     /**
      * insert new crime
      * @param json JSON
-     *  {
-     *      "pathToRoot":[
-     *          16,
-     *          0
-     *      ],
-     *      "box":{"lat1": 37.7832593295025, "lon1": -122.415910622743, "lat2": 37.7849141859562, "lon2": -122.411115854179},
-     *      "centroid":{
-     *          "lat": 37.7841468713255,
-     *          "lon": -122.41394143505319
-     *      },
-     *      "size": 89,
-     *      "polygon":[{"lat": 37.7850141859562, "lon": -122.41140909352606 }, {"lat": 37.78461206112599, "lon": -122.411015854179}],
-     *      "points":[{"sid": 12564300, "lat": 37.7848656939526, "lon": -122.412784096502 }, ...]
-     *      "id": 22
-     *  }
-     * @param date timestamp
+     * {
+     *   "time" : "08:42",
+     *   "category" : "LARCENY/THEFT",
+     *   "pddistrict" : "SOUTHERN",
+     *   "pdid" : "13054930206362",
+     *   "location" : {
+     *     "needs_recoding" : false,
+     *     "longitude" : "-122.407633520742",
+     *     "latitude" : "37.7841893501425",
+     *     "human_address" : "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"\"}"
+     *   },
+     *   "address" : "800 Block of MARKET ST",
+     *   "descript" : "PETTY THEFT SHOPLIFTING",
+     *   "dayofweek" : "Tuesday",
+     *   "resolution" : "ARREST, BOOKED",
+     *   "date" : "2015-02-03T00:00:00",
+     *   "y" : "37.7841893501425",
+     *   "x" : "-122.407633520742",
+     *   "incidntnum" : "130549302"
+     * }
      */
-    class func insertCrime(#json: JSON, date: NSDate) {
+    class func insertCrime(#json: JSON) {
+/*
         let children = json["children"].arrayValue
 
         // insert child
@@ -122,5 +131,6 @@ class DACrime: NSManagedObject {
         for child in children {
             DACrime.insertCrime(json: child, date: date)
         }
+*/
     }
 }

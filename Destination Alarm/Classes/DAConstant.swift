@@ -75,6 +75,6 @@ let kURISFGovernmentAPI =               "https://data.sfgov.org/api"
 struct DASFGovernment {
     /// MARK: - API
     struct API {
-        static let Row =                kURISFGovernmentAPI + "/views/w5k3-8ah8/rows.json" /// row API
+        static let GetCrime =                kURISFGovernmentAPI + "/resource/tmnf-yvry.json" /// Get Crime
     }
 }

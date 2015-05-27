@@ -83,12 +83,8 @@ class ViewController: UIViewController {
         DAGoogleMapClient.sharedInstance.removeAllWaypoints()
         self.renderDirectoin()
 /*
-    // crime API
-        let location = self.mapView.myLocation
-        if location == nil { return }
-        DACrimeClient.sharedInstance.getRow(
-            location: location,
-            radius: 3.0,
+        // crime API
+        DACrimeClient.sharedInstance.getCrime(
             completionHandler: { [unowned self] (json) in
             }
         )
@@ -147,6 +143,7 @@ extension ViewController: CLLocationManagerDelegate {
 extension ViewController: GMSMapViewDelegate {
 
     func mapView(mapView: GMSMapView, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
+        self.searchBoxView.endSearch()
         DAGoogleMapClient.sharedInstance.appendWaypoint(coordinate)
         self.renderDirectoin()
     }
