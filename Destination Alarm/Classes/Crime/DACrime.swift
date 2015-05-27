@@ -111,26 +111,18 @@ class DACrime: NSManagedObject {
      * }
      */
     class func insertCrime(#json: JSON) {
-/*
-        let children = json["children"].arrayValue
-
-        // insert child
-        if children.count == 0 {
-            var context = DACoreDataManager.sharedInstance.managedObjectContext
-            var crime = NSEntityDescription.insertNewObjectForEntityForName("DACrime", inManagedObjectContext: context) as! DACrime
-            crime.crime_id = json["id"].numberValue
-            if let centroid = json["centroid"].dictionary {
-                crime.lat = centroid["lat"]!.numberValue
-                crime.long = centroid["lon"]!.numberValue
-            }
-            crime.size = json["size"].numberValue
-            crime.timestamp = date
+        var context = DACoreDataManager.sharedInstance.managedObjectContext
+        var crime = NSEntityDescription.insertNewObjectForEntityForName("DACrime", inManagedObjectContext: context) as! DACrime
+        crime.desc = json["descript"].stringValue
+        crime.resolution = json["resolution"].stringValue
+        if let location = json["location"].dictionary {
+            crime.lat = location["latitude"]!.numberValue
+            crime.long = location["longitude"]!.numberValue
         }
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm"
+        let yyyyMMddhhmm = (json["date"].stringValue).stringByReplacingOccurrencesOfString("T00:00:00", withString: "") + " " + json["time"].stringValue
+        crime.timestamp = dateFormatter.dateFromString(yyyyMMddhhmm)!
 
-        // insert children
-        for child in children {
-            DACrime.insertCrime(json: child, date: date)
-        }
-*/
     }
 }
