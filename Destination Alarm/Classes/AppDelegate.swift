@@ -27,6 +27,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
+/*
+        // crime API
+        DACrimeClient.sharedInstance.getCrime(
+            completionHandler: { [unowned self] (json) in
+                DACrime.save(json: json)
+            }
+        )
+*/
     }
 
     func applicationWillTerminate(application: UIApplication) {

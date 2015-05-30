@@ -4,5 +4,6 @@ xcodeproj 'Destination Alarm'
 
 pod 'ionicons'
 pod 'Touchpose'
+pod 'BFPaperButton'
 pod 'ISHTTPOperation'
 pod 'Google-Maps-iOS-SDK'

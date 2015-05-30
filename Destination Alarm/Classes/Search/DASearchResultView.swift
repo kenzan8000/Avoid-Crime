@@ -34,6 +34,17 @@ class DASearchResultView: UIView {
     /// MARK: - public api
 
     /**
+     * design
+     **/
+    func design() {
+        self.resultTableView.layer.shadowOffset = CGSizeMake(0.0, 0.0)
+        self.resultTableView.layer.shadowColor = UIColor.blackColor().CGColor
+        self.resultTableView.layer.shadowOpacity = 0.2
+        var rect = self.resultTableView.bounds
+        self.resultTableView.layer.shadowPath = UIBezierPath(rect: rect).CGPath
+    }
+
+    /**
      * update destinations
      * @param destinations destinations
      **/

@@ -7,50 +7,75 @@
     <customFonts key="customFonts">
         <mutableArray key="ionicons.ttf">
             <string>Ionicons</string>
+            <string>Ionicons</string>
         </mutableArray>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DASearchBoxView" customModule="Destination_Alarm" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="58"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" id="nAW-hs-e2U">
-                    <rect key="frame" x="10" y="0.0" width="300" height="64"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <rect key="frame" x="20" y="10" width="280" height="48"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                     <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GdC-ri-JN5">
+                            <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Ionicons" family="Ionicons" pointSize="15"/>
+                            <state key="normal" title="←">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="touchedUpInsideButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="eom-Yd-SgV"/>
+                            </connections>
+                        </button>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="1wD-Si-WQc">
-                            <rect key="frame" x="0.0" y="0.0" width="300" height="64"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <rect key="frame" x="48" y="0.0" width="184" height="48"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
                                 <outlet property="delegate" destination="iN0-l3-epB" id="5pk-ZT-dMn"/>
                             </connections>
                         </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GAO-6q-qyP" customClass="BFPaperButton">
+                            <rect key="frame" x="0.0" y="0.0" width="280" height="48"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <state key="normal">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="touchedUpInsideButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="SAs-j2-8tv"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7QH-AD-J0A">
+                            <rect key="frame" x="232" y="0.0" width="48" height="48"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                            <fontDescription key="fontDescription" name="Ionicons" family="Ionicons" pointSize="15"/>
+                            <state key="normal" title="✕">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="touchedUpInsideButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="sEI-KK-wyn"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7QH-AD-J0A">
-                    <rect key="frame" x="248" y="0.0" width="64" height="64"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="Ionicons" family="Ionicons" pointSize="15"/>
-                    <state key="normal" title="✕">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="touchedUpInsideButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="sEI-KK-wyn"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="endButton" destination="7QH-AD-J0A" id="HAi-Hf-AXm"/>
+                <outlet property="activeButton" destination="GAO-6q-qyP" id="xh9-8g-4Km"/>
+                <outlet property="backButton" destination="GdC-ri-JN5" id="BaZ-Hi-cKi"/>
+                <outlet property="clearButton" destination="7QH-AD-J0A" id="wIw-Y6-pAf"/>
                 <outlet property="searchTextField" destination="1wD-Si-WQc" id="joE-iC-rjF"/>
+                <outlet property="searchTextFieldBackgroundView" destination="nAW-hs-e2U" id="Rlz-TU-GnY"/>
             </connections>
-            <point key="canvasLocation" x="318" y="337"/>
+            <point key="canvasLocation" x="318" y="342"/>
         </view>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

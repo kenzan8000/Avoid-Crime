@@ -19,7 +19,7 @@ class DACrimeClient {
         var dateComponents = NSDateComponents()
         let calendar = NSCalendar.currentCalendar()
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-01T00:00:00"
+        dateFormatter.dateFormat = "yyyy-MM"
         dateComponents.month = -3
         let threeMonthsAgo = calendar.dateByAddingComponents(dateComponents, toDate: NSDate(), options: NSCalendarOptions(0))
         dateComponents.month = -2
@@ -29,7 +29,7 @@ class DACrimeClient {
         let url = NSURL(
             URLString: DASFGovernment.API.GetCrime,
             queries: [
-                "$where" : "date > \(dateFormatter.stringFromDate(threeMonthsAgo!)) and date < \(dateFormatter.stringFromDate(twoMonthsAgo!))",
+                "$where" : "date > '\(dateFormatter.stringFromDate(threeMonthsAgo!))-01T00:00:00' and date < '\(dateFormatter.stringFromDate(twoMonthsAgo!))-01T00:00:00'",
             ]
         )
 

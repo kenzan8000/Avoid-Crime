@@ -6,7 +6,7 @@ class ViewController: UIViewController {
 
     /// MARK: - property
     @IBOutlet weak var testButton: UIButton!
-    var destinationString: String = "37.7932,-122.4145"
+    var destinationString: String = ""
 
     var mapView: DAGMSMapView!
     var searchBoxView: DASearchBoxView!
@@ -33,14 +33,15 @@ class ViewController: UIViewController {
         self.searchResultView.hidden = true
         self.searchResultView.delegate = self
         self.view.addSubview(self.searchResultView)
+        self.searchResultView.design()
 
         // search box
         let searchBoxNib = UINib(nibName: DANSStringFromClass(DASearchBoxView), bundle:nil)
         let searchBoxViews = searchBoxNib.instantiateWithOwner(nil, options: nil)
         self.searchBoxView = searchBoxViews[0] as! DASearchBoxView
-        self.searchBoxView.frame = CGRectMake(10, 20, UIScreen.mainScreen().bounds.width-10*2, self.searchBoxView.frame.size.height)
         self.searchBoxView.delegate = self
         self.view.addSubview(self.searchBoxView)
+        self.searchBoxView.design(parentView: self.view)
 
         // location manager
         self.locationManager = CLLocationManager()
@@ -81,23 +82,18 @@ class ViewController: UIViewController {
 */
         // render direction
         DAGoogleMapClient.sharedInstance.removeAllWaypoints()
-        self.renderDirectoin()
-/*
-        // crime API
-        DACrimeClient.sharedInstance.getCrime(
-            completionHandler: { [unowned self] (json) in
-            }
-        )
-*/
+        self.requestDirectoin()
     }
 
 
     /// MARK: - private api
 
     /**
-     * render direction
+     * request dirction API and render direction
      */
-    func renderDirectoin() {
+    func requestDirectoin() {
+        if self.destinationString == "" { return }
+
         // google map direction API
         let location = self.mapView.myLocation
         if location == nil { return }
@@ -143,9 +139,8 @@ extension ViewController: CLLocationManagerDelegate {
 extension ViewController: GMSMapViewDelegate {
 
     func mapView(mapView: GMSMapView, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
-        self.searchBoxView.endSearch()
         DAGoogleMapClient.sharedInstance.appendWaypoint(coordinate)
-        self.renderDirectoin()
+        self.requestDirectoin()
     }
 
     func mapView(mapView: GMSMapView, didTapMarker marker: GMSMarker) -> Bool {
@@ -158,7 +153,7 @@ extension ViewController: GMSMapViewDelegate {
 
     func mapView(mapView: GMSMapView,  didEndDraggingMarker marker: GMSMarker) {
         DAGoogleMapClient.sharedInstance.endMovingWaypoint(marker.position)
-        self.renderDirectoin()
+        self.requestDirectoin()
     }
 
     func mapView(mapView: GMSMapView,  didDragMarker marker:GMSMarker) {
@@ -170,12 +165,16 @@ extension ViewController: GMSMapViewDelegate {
 /// MARK: - DASearchBoxViewDelegate
 extension ViewController: DASearchBoxViewDelegate {
 
-    func touchedUpInside(#searchBoxView: DASearchBoxView) {
+    func searchBoxWasActive(#searchBoxView: DASearchBoxView) {
+        self.searchResultView.hidden = false
+    }
+
+    func searchBoxWasInactive(#searchBoxView: DASearchBoxView) {
+        self.searchResultView.hidden = true
     }
 
     func searchDidFinish(#searchBoxView: DASearchBoxView, destinations: [DADestination]) {
         self.searchResultView.updateDestinations(destinations)
-        self.searchResultView.hidden = false
     }
 
 }
@@ -185,10 +184,11 @@ extension ViewController: DASearchBoxViewDelegate {
 extension ViewController: DASearchResultViewDelegate {
 
     func didSelectRow(#searchResultView: DASearchResultView, selectedDestination: DADestination) {
+        self.searchBoxView.endSearch()
         self.searchBoxView.setSearchText(selectedDestination.desc)
-        self.searchResultView.hidden = true
+        if self.destinationString == selectedDestination.desc { return }
         self.destinationString = selectedDestination.desc
-        self.renderDirectoin()
+        self.requestDirectoin()
     }
 
 }
