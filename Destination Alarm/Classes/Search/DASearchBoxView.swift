@@ -47,6 +47,20 @@ class DASearchBoxView: UIView {
         self.searchTextField.addTarget(self, action: Selector("didChangeTextField:"), forControlEvents: .EditingChanged)
         self.activeButton.isRaised = false
         self.clearButton.hidden = true
+
+        let backImage = IonIcons.imageWithIcon(
+            ion_ios_arrow_back,
+            size: 24.0,
+            color: UIColor.grayColor()
+        )
+        self.backButton.setImage(backImage, forState: .Normal)
+
+        let closeImage = IonIcons.imageWithIcon(
+            ion_ios_close_empty,
+            size: 36.0,
+            color: UIColor.grayColor()
+        )
+        self.clearButton.setImage(closeImage, forState: .Normal)
     }
 
 
@@ -74,6 +88,9 @@ class DASearchBoxView: UIView {
         let destination = textField.text
         if destination == nil || destination == "" {
             self.clearButton.hidden = true
+            if self.delegate != nil {
+                self.delegate?.searchDidFinish(searchBoxView: self, destinations: [] as [DADestination])
+            }
             return
         }
         self.clearButton.hidden = false
