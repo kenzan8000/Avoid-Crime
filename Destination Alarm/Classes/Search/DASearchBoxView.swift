@@ -83,8 +83,6 @@ class DASearchBoxView: UIView {
     }
 
     func didChangeTextField(textField: UITextField) {
-//        ISHTTPOperationQueue.cancelOperationsWithPath()
-
         let destination = textField.text
         if destination == nil || destination == "" {
             self.clearButton.hidden = true
@@ -97,6 +95,8 @@ class DASearchBoxView: UIView {
 
         let location = DAGMSMapView.sharedInstance.myLocation
         if location == nil { return }
+
+        DAGoogleMapClient.sharedInstance.cancelGetPlaceAutoComplete()
 
         // place autocomplete API
         DAGoogleMapClient.sharedInstance.getPlaceAutoComplete(

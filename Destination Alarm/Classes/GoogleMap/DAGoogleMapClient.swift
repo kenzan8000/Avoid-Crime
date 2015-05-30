@@ -60,7 +60,7 @@ class DAGoogleMapClient: AnyObject {
         let request = NSMutableURLRequest(URL: NSURL(URLString: DAGoogleMap.API.Directions, queries: q)!)
 
         // request
-        ISHTTPOperation.sendRequest(request, handler:{ (response: NSHTTPURLResponse!, object: AnyObject!, error: NSError!) -> Void in
+        var operation = ISHTTPOperation(request: request, handler:{ (response: NSHTTPURLResponse!, object: AnyObject!, error: NSError!) -> Void in
                 var responseJSON = JSON([:])
                 if object != nil { responseJSON = JSON(data: object as! NSData) }
                 dispatch_async(dispatch_get_main_queue(), {
@@ -68,6 +68,14 @@ class DAGoogleMapClient: AnyObject {
                 })
             }
         )
+        DAGoogleMapOperationQueue.defaultQueue().addOperation(operation)
+    }
+
+    /**
+     * cancel direction API
+     **/
+    func cancelGetRoute() {
+        DAGoogleMapOperationQueue.defaultQueue().cancelOperationsWithPath(NSURL(string: DAGoogleMap.API.Directions)!.path)
     }
 
     /**
@@ -88,7 +96,7 @@ class DAGoogleMapClient: AnyObject {
         let request = NSMutableURLRequest(URL: NSURL(URLString: DAGoogleMap.API.GeoCode, queries: queries)!)
 
         // request
-        ISHTTPOperation.sendRequest(request, handler:{ (response: NSHTTPURLResponse!, object: AnyObject!, error: NSError!) -> Void in
+        var operation = ISHTTPOperation(request: request, handler:{ (response: NSHTTPURLResponse!, object: AnyObject!, error: NSError!) -> Void in
                 var responseJSON = JSON([:])
                 if object != nil { responseJSON = JSON(data: object as! NSData) }
                 dispatch_async(dispatch_get_main_queue(), {
@@ -96,6 +104,14 @@ class DAGoogleMapClient: AnyObject {
                 })
             }
         )
+        DAGoogleMapOperationQueue.defaultQueue().addOperation(operation)
+    }
+
+    /**
+     * cancel geocode API
+     **/
+    func cancelGetGeocode() {
+        DAGoogleMapOperationQueue.defaultQueue().cancelOperationsWithPath(NSURL(string: DAGoogleMap.API.GeoCode)!.path)
     }
 
     /**
@@ -117,7 +133,7 @@ class DAGoogleMapClient: AnyObject {
         let request = NSMutableURLRequest(URL: NSURL(URLString: DAGoogleMap.API.PlaceAutoComplete, queries: queries)!)
 
         // request
-        ISHTTPOperation.sendRequest(request, handler:{ (response: NSHTTPURLResponse!, object: AnyObject!, error: NSError!) -> Void in
+        var operation = ISHTTPOperation(request: request, handler:{ (response: NSHTTPURLResponse!, object: AnyObject!, error: NSError!) -> Void in
                 var responseJSON = JSON([:])
                 if object != nil { responseJSON = JSON(data: object as! NSData) }
                 dispatch_async(dispatch_get_main_queue(), {
@@ -125,6 +141,14 @@ class DAGoogleMapClient: AnyObject {
                 })
             }
         )
+        DAGoogleMapOperationQueue.defaultQueue().addOperation(operation)
+    }
+
+    /**
+     * cancel get place auto complete API
+     **/
+    func cancelGetPlaceAutoComplete() {
+        DAGoogleMapOperationQueue.defaultQueue().cancelOperationsWithPath(NSURL(string: DAGoogleMap.API.PlaceAutoComplete)!.path)
     }
 
     /**

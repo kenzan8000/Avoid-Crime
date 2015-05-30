@@ -35,8 +35,8 @@ class DACrimeClient {
 
         // request
         let request = NSURLRequest(URL: url!)
-        ISHTTPOperation.sendRequest(
-            request,
+        var operation = ISHTTPOperation(
+            request: request,
             handler:{ (response: NSHTTPURLResponse!, object: AnyObject!, error: NSError!) -> Void in
                 var responseJSON = JSON([:])
                 if object != nil { responseJSON = JSON(data: object as! NSData) }
@@ -46,7 +46,16 @@ class DACrimeClient {
                 })
             }
         )
+        DACrimeOperationQueue.defaultQueue().addOperation(operation)
     }
+
+    /**
+     * cancel get crime API
+     **/
+    func cancelGetCrime() {
+        DACrimeOperationQueue.defaultQueue().cancelOperationsWithPath(NSURL(string: DASFGovernment.API.GetCrime)!.path)
+    }
+
 
 }
 

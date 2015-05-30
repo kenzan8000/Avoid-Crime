@@ -80,7 +80,6 @@ class ViewController: UIViewController {
             }
         )
 */
-        // render direction
         DAGoogleMapClient.sharedInstance.removeAllWaypoints()
         self.requestDirectoin()
     }
@@ -93,6 +92,8 @@ class ViewController: UIViewController {
      */
     func requestDirectoin() {
         if self.destinationString == "" { return }
+
+        DAGoogleMapClient.sharedInstance.cancelGetRoute()
 
         // google map direction API
         let location = self.mapView.myLocation
