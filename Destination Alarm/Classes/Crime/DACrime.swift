@@ -120,7 +120,7 @@ class DACrime: NSManagedObject {
             crime.long = location["longitude"]!.numberValue
         }
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-mm-dd hh:mm"
+        dateFormatter.dateFormat = "yyyy-mm-dd HH:mm"
         dateFormatter.locale = NSLocale(localeIdentifier: "en_US")
         dateFormatter.timeZone = NSTimeZone(abbreviation: "UTC")
         let yyyymmddhhmm = (json["date"].stringValue).stringByReplacingOccurrencesOfString("T00:00:00", withString: " ") + json["time"].stringValue
