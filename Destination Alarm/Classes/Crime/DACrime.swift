@@ -46,7 +46,6 @@ class DACrime: NSManagedObject {
         return crimes
     }
 
-
     /**
      * save json datas to coredata
      * @param json JSON
@@ -75,6 +74,8 @@ class DACrime: NSManagedObject {
      * ]
      */
     class func save(#json: JSON) {
+        if DACrime.haveData() { return }
+
         let crimeDatas: Array<JSON> = json.arrayValue
         var context = DACoreDataManager.sharedInstance.managedObjectContext
 
@@ -96,6 +97,14 @@ class DACrime: NSManagedObject {
 
         var error: NSError? = nil
         !context.save(&error)
+    }
+
+    /**
+     * check if client needs to get new crime data
+     * @return Bool
+     **/
+    class func hasData() -> Bool {
+        return false
     }
 
 }
