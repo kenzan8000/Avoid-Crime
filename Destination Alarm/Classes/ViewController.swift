@@ -82,6 +82,9 @@ class ViewController: UIViewController {
 */
         DAGoogleMapClient.sharedInstance.removeAllWaypoints()
         self.requestDirectoin()
+
+        //let hoge = DACrime.fetch(location: self.mapView.myLocation, radius: 30.0)
+        //println(hoge)
     }
 
 

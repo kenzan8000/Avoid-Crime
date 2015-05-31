@@ -76,54 +76,26 @@ class DACrime: NSManagedObject {
      */
     class func save(#json: JSON) {
         let crimeDatas: Array<JSON> = json.arrayValue
+        var context = DACoreDataManager.sharedInstance.managedObjectContext
 
         for crimeData in crimeDatas {
-            DACrime.insertCrime(json: crimeData)
+            var crime = NSEntityDescription.insertNewObjectForEntityForName("DACrime", inManagedObjectContext: context) as! DACrime
+            crime.desc = crimeData["descript"].stringValue
+            crime.resolution = crimeData["resolution"].stringValue
+            if let location = crimeData["location"].dictionary {
+                crime.lat = location["latitude"]!.numberValue
+                crime.long = location["longitude"]!.numberValue
+            }
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "yyyy-mm-dd HH:mm"
+            dateFormatter.locale = NSLocale(localeIdentifier: "en_US")
+            dateFormatter.timeZone = NSTimeZone(abbreviation: "UTC")
+            let yyyymmddhhmm = (crimeData["date"].stringValue).stringByReplacingOccurrencesOfString("T00:00:00", withString: " ") + crimeData["time"].stringValue
+            crime.timestamp = dateFormatter.dateFromString(yyyymmddhhmm)!
         }
 
         var error: NSError? = nil
-        var context = DACoreDataManager.sharedInstance.managedObjectContext
         !context.save(&error)
     }
 
-    /**
-     * insert new crime
-     * @param json JSON
-     * {
-     *   "time" : "08:42",
-     *   "category" : "LARCENY/THEFT",
-     *   "pddistrict" : "SOUTHERN",
-     *   "pdid" : "13054930206362",
-     *   "location" : {
-     *     "needs_recoding" : false,
-     *     "longitude" : "-122.407633520742",
-     *     "latitude" : "37.7841893501425",
-     *     "human_address" : "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"\"}"
-     *   },
-     *   "address" : "800 Block of MARKET ST",
-     *   "descript" : "PETTY THEFT SHOPLIFTING",
-     *   "dayofweek" : "Tuesday",
-     *   "resolution" : "ARREST, BOOKED",
-     *   "date" : "2015-02-03T00:00:00",
-     *   "y" : "37.7841893501425",
-     *   "x" : "-122.407633520742",
-     *   "incidntnum" : "130549302"
-     * }
-     */
-    class func insertCrime(#json: JSON) {
-        var context = DACoreDataManager.sharedInstance.managedObjectContext
-        var crime = NSEntityDescription.insertNewObjectForEntityForName("DACrime", inManagedObjectContext: context) as! DACrime
-        crime.desc = json["descript"].stringValue
-        crime.resolution = json["resolution"].stringValue
-        if let location = json["location"].dictionary {
-            crime.lat = location["latitude"]!.numberValue
-            crime.long = location["longitude"]!.numberValue
-        }
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-mm-dd HH:mm"
-        dateFormatter.locale = NSLocale(localeIdentifier: "en_US")
-        dateFormatter.timeZone = NSTimeZone(abbreviation: "UTC")
-        let yyyymmddhhmm = (json["date"].stringValue).stringByReplacingOccurrencesOfString("T00:00:00", withString: " ") + json["time"].stringValue
-        crime.timestamp = dateFormatter.dateFromString(yyyymmddhhmm)!
-    }
 }
