@@ -6,6 +6,11 @@ class DAGMSMapView: GMSMapView {
 
 
     /// MARK: - public api
+
+    /**
+     * draw route
+     * @param json json response from google map direction API
+     **/
     func drawRoute(#json: JSON) {
         self.clear()
 
@@ -16,6 +21,18 @@ class DAGMSMapView: GMSMapView {
             line.strokeWidth = 4.0
             line.tappable = true
             line.map = self
+        }
+    }
+
+    /**
+     * draw waypoint
+     * @param waypoints waypoint location array
+     **/
+    func drawWaypoints(waypoints: [CLLocationCoordinate2D]) {
+        for waypoint in waypoints {
+            var marker = GMSMarker(position: waypoint)
+            marker.map = self
+            marker.draggable = true
         }
     }
 

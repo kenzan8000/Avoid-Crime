@@ -21,7 +21,7 @@
                     <rect key="frame" x="20" y="10" width="280" height="48"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GdC-ri-JN5">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GdC-ri-JN5">
                             <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Ionicons" family="Ionicons" pointSize="15"/>
@@ -51,7 +51,7 @@
                                 <action selector="touchedUpInsideButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="SAs-j2-8tv"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7QH-AD-J0A">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7QH-AD-J0A">
                             <rect key="frame" x="232" y="0.0" width="48" height="48"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" heightSizable="YES"/>
                             <fontDescription key="fontDescription" name="Ionicons" family="Ionicons" pointSize="15"/>

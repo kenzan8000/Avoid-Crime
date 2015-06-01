@@ -109,11 +109,7 @@ class ViewController: UIViewController {
                 self.mapView.drawRoute(json: json)
                 // render way points
                 let waypoints = DAGoogleMapClient.sharedInstance.waypoints
-                for waypoint in waypoints {
-                    var marker = GMSMarker(position: waypoint)
-                    marker.map = self.mapView
-                    marker.draggable = true
-                }
+                self.mapView.drawWaypoints(waypoints)
             }
         )
     }
@@ -181,6 +177,9 @@ extension ViewController: DASearchBoxViewDelegate {
         self.searchResultView.updateDestinations(destinations)
     }
 
+    func clearButtonTouchedUpInside(#searchBoxView: DASearchBoxView) {
+        if self.searchBoxView.isActive { return }
+    }
 }
 
 

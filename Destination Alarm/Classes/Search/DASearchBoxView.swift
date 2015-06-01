@@ -23,6 +23,12 @@ protocol DASearchBoxViewDelegate {
      */
     func searchDidFinish(#searchBoxView: DASearchBoxView, destinations: [DADestination])
 
+    /**
+     * called when clear button is touched up inside
+     * @param searchBoxView DASearchBoxView
+     */
+    func clearButtonTouchedUpInside(#searchBoxView: DASearchBoxView)
+
 }
 
 
@@ -36,6 +42,9 @@ class DASearchBoxView: UIView {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var clearButton: UIButton!
     var delegate: DASearchBoxViewDelegate?
+    var isActive: Bool {
+        return self.activeButton.hidden
+    }
 
 
     /// MARK: - life cycle
@@ -77,6 +86,7 @@ class DASearchBoxView: UIView {
             self.searchTextField.text = ""
             self.clearButton.hidden = true
             if self.delegate != nil {
+                self.delegate?.clearButtonTouchedUpInside(searchBoxView: self)
                 self.delegate?.searchDidFinish(searchBoxView: self, destinations: [] as [DADestination])
             }
         }
