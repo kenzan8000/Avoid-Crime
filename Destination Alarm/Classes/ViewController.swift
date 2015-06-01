@@ -165,6 +165,7 @@ extension ViewController: DASearchBoxViewDelegate {
 
     func clearButtonTouchedUpInside(#searchBoxView: DASearchBoxView) {
         if self.searchBoxView.isActive { return }
+        DAGoogleMapClient.sharedInstance.removeAllWaypoints()
         self.destinationString = ""
         self.mapView.clear()
     }
