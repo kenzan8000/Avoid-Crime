@@ -68,23 +68,8 @@ class ViewController: UIViewController {
      * @param button UIButton
      **/
     @IBAction func touchedUpInside(#button: UIButton) {
-/*
-        // geocode API
-        let location = self.mapView.myLocation
-        if location == nil { return }
-        DAGoogleMapClient.sharedInstance.getGeocode(
-            address: "24th St. Mission Street",
-            radius: 5,
-            location: location.coordinate,
-            completionHandler: { [unowned self] (json) in
-            }
-        )
-*/
         DAGoogleMapClient.sharedInstance.removeAllWaypoints()
         self.requestDirectoin()
-
-        //let hoge = DACrime.fetch(location: self.mapView.myLocation, radius: 30.0)
-        //println(hoge)
     }
 
 
@@ -171,6 +156,7 @@ extension ViewController: DASearchBoxViewDelegate {
 
     func searchBoxWasInactive(#searchBoxView: DASearchBoxView) {
         self.searchResultView.hidden = true
+        self.searchBoxView.setSearchText(self.destinationString)
     }
 
     func searchDidFinish(#searchBoxView: DASearchBoxView, destinations: [DADestination]) {
@@ -179,6 +165,8 @@ extension ViewController: DASearchBoxViewDelegate {
 
     func clearButtonTouchedUpInside(#searchBoxView: DASearchBoxView) {
         if self.searchBoxView.isActive { return }
+        self.destinationString = ""
+        self.mapView.clear()
     }
 }
 

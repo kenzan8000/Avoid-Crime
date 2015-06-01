@@ -38,6 +38,7 @@ class DAGMSMapView: GMSMapView {
 
 
     /// MARK: - private api
+
     /**
      * return encodedPath
      * @param json json
