@@ -74,11 +74,14 @@ class DACrime: NSManagedObject {
      * ]
      */
     class func save(#json: JSON) {
-        if DACrime.haveData() { return }
+        if DACrime.hasData() { return }
 
         let crimeDatas: Array<JSON> = json.arrayValue
         var context = DACoreDataManager.sharedInstance.managedObjectContext
 
+        let dateFormatter = NSDateFormatter()
+
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         for crimeData in crimeDatas {
             var crime = NSEntityDescription.insertNewObjectForEntityForName("DACrime", inManagedObjectContext: context) as! DACrime
             crime.desc = crimeData["descript"].stringValue
@@ -87,16 +90,19 @@ class DACrime: NSManagedObject {
                 crime.lat = location["latitude"]!.numberValue
                 crime.long = location["longitude"]!.numberValue
             }
-            let dateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "yyyy-mm-dd HH:mm"
-            dateFormatter.locale = NSLocale(localeIdentifier: "en_US")
-            dateFormatter.timeZone = NSTimeZone(abbreviation: "UTC")
             let yyyymmddhhmm = (crimeData["date"].stringValue).stringByReplacingOccurrencesOfString("T00:00:00", withString: " ") + crimeData["time"].stringValue
             crime.timestamp = dateFormatter.dateFromString(yyyymmddhhmm)!
         }
 
         var error: NSError? = nil
         !context.save(&error)
+
+        if error == nil {
+            dateFormatter.dateFormat = "yyyy/MM"
+            let currentYearMonth = dateFormatter.stringFromDate(NSDate())
+            NSUserDefaults().setObject(currentYearMonth, forKey: DAUserDefaults.CrimeYearMonth)
+            NSUserDefaults().synchronize()
+        }
     }
 
     /**
@@ -104,7 +110,13 @@ class DACrime: NSManagedObject {
      * @return Bool
      **/
     class func hasData() -> Bool {
-        return false
+        let crimeYearMonth = NSUserDefaults().stringForKey(DAUserDefaults.CrimeYearMonth)
+
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy/MM"
+        let currentYearMonth = dateFormatter.stringFromDate(NSDate())
+
+        return (crimeYearMonth == currentYearMonth)
     }
 
 }

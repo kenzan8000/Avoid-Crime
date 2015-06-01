@@ -13,6 +13,9 @@ func DALOG(str: String) {
 #endif
 }
 
+
+/// MARK: - function
+
 /**
  * return class name
  * @param classType classType
@@ -22,6 +25,13 @@ func DANSStringFromClass(classType:AnyClass) -> String {
     let classString = NSStringFromClass(classType.self)
     let range = classString.rangeOfString(".", options: NSStringCompareOptions.CaseInsensitiveSearch, range: Range<String.Index>(start:classString.startIndex, end: classString.endIndex), locale: nil)
     return classString.substringFromIndex(range!.endIndex)
+}
+
+
+/// MARK: - UserDefaults
+
+struct DAUserDefaults {
+    static let CrimeYearMonth =         "DAUserDefaults.CrimeYearMonth"
 }
 
 
