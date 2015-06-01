@@ -22,8 +22,9 @@ class DAGMSMapView: GMSMapView {
         }
 
         let locations = self.endLocations(json: json)
-        for location in locations {
-            var marker = GMSMarker(position: location)
+        let index = locations.count - 1
+        if index >= 0 {
+            var marker = GMSMarker(position: locations[index])
             marker.map = self
         }
     }
