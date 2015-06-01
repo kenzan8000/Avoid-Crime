@@ -90,6 +90,7 @@ class ViewController: UIViewController {
         DAGoogleMapClient.sharedInstance.getRoute(
             queries: [ "origin" : "\(coordinate.latitude),\(coordinate.longitude)", "destination" : self.destinationString, ],
             completionHandler: { [unowned self] (json) in
+                self.mapView.clear()
                 // render routes
                 self.mapView.drawRoute(json: json)
                 // render way points
@@ -184,4 +185,13 @@ extension ViewController: DASearchResultViewDelegate {
     }
 
 }
+/*
+    var indicatorView: TYMActivityIndicatorView!
+        self.indicatorView = TYMActivityIndicatorView(activityIndicatorStyle: TYMActivityIndicatorViewStyleNormal)
+        self.indicatorView.backgroundImage = nil
+        self.indicatorView.hidesWhenStopped = true
+        self.indicatorView.stopAnimating()
+        self.addSubview(self.indicatorView)
 
+        self.indicatorView.center = self.center
+*/

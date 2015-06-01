@@ -12,8 +12,6 @@ class DAGMSMapView: GMSMapView {
      * @param json json response from google map direction API
      **/
     func drawRoute(#json: JSON) {
-        self.clear()
-
         let pathes = self.encodedPathes(json: json)
         for pathString in pathes {
             let path = GMSPath(fromEncodedPath: pathString)
@@ -21,6 +19,12 @@ class DAGMSMapView: GMSMapView {
             line.strokeWidth = 4.0
             line.tappable = true
             line.map = self
+        }
+
+        let locations = self.endLocations(json: json)
+        for location in locations {
+            var marker = GMSMarker(position: location)
+            marker.map = self
         }
     }
 
@@ -56,6 +60,25 @@ class DAGMSMapView: GMSMapView {
         }
 
         return pathes
+    }
+
+    /**
+     * return end location
+     * @param json json
+     * @return [CLLocationCoordinate2D]
+     **/
+    private func endLocations(#json: JSON) -> [CLLocationCoordinate2D] {
+        var locations: [CLLocationCoordinate2D] = []
+        let routes = json["routes"].arrayValue
+        for route in routes {
+            let legs = route["legs"].arrayValue
+            for leg in legs {
+                if let locationDictionary = leg["end_location"].dictionary {
+                    locations.append(CLLocationCoordinate2D(latitude: locationDictionary["lat"]!.doubleValue, longitude: locationDictionary["lng"]!.doubleValue))
+                }
+            }
+        }
+        return locations
     }
 }
 
