@@ -68,7 +68,7 @@ class ViewController: UIViewController {
      * @param button UIButton
      **/
     @IBAction func touchedUpInside(#button: UIButton) {
-        DAGoogleMapClient.sharedInstance.removeAllWaypoints()
+        self.mapView.removeAllWaypoints()
         self.requestDirectoin()
     }
 
@@ -91,11 +91,8 @@ class ViewController: UIViewController {
             queries: [ "origin" : "\(coordinate.latitude),\(coordinate.longitude)", "destination" : self.destinationString, ],
             completionHandler: { [unowned self] (json) in
                 self.mapView.clear()
-                // render routes
-                self.mapView.drawRoute(json: json)
-                // render way points
-                let waypoints = DAGoogleMapClient.sharedInstance.waypoints
-                self.mapView.drawWaypoints(waypoints)
+                self.mapView.drawRoute(json: json) // render routes
+                self.mapView.drawWaypoints() // render way points
             }
         )
     }
@@ -125,7 +122,7 @@ extension ViewController: CLLocationManagerDelegate {
 extension ViewController: GMSMapViewDelegate {
 
     func mapView(mapView: GMSMapView, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
-        DAGoogleMapClient.sharedInstance.appendWaypoint(coordinate)
+        self.mapView.appendWaypoint(coordinate)
         self.requestDirectoin()
     }
 
@@ -134,11 +131,11 @@ extension ViewController: GMSMapViewDelegate {
     }
 
     func mapView(mapView: GMSMapView,  didBeginDraggingMarker marker: GMSMarker) {
-        DAGoogleMapClient.sharedInstance.startMovingWaypoint(marker.position)
+        self.mapView.startMovingWaypoint(marker.position)
     }
 
     func mapView(mapView: GMSMapView,  didEndDraggingMarker marker: GMSMarker) {
-        DAGoogleMapClient.sharedInstance.endMovingWaypoint(marker.position)
+        self.mapView.endMovingWaypoint(marker.position)
         self.requestDirectoin()
     }
 
@@ -166,7 +163,7 @@ extension ViewController: DASearchBoxViewDelegate {
 
     func clearButtonTouchedUpInside(#searchBoxView: DASearchBoxView) {
         if self.searchBoxView.isActive { return }
-        DAGoogleMapClient.sharedInstance.removeAllWaypoints()
+        self.mapView.removeAllWaypoints()
         self.destinationString = ""
         self.mapView.clear()
     }

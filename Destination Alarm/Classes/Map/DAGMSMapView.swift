@@ -1,8 +1,14 @@
 /// MARK: - DAGMSMapView
 class DAGMSMapView: GMSMapView {
 
-    /// MARK: - class method
+    /// MARK: - properties
+
     static let sharedInstance = DAGMSMapView()
+
+    /// dragging waypoint
+    private var draggingWaypoint: CLLocationCoordinate2D!
+    /// waypoints for routing
+    var waypoints: [CLLocationCoordinate2D] = []
 
 
     /// MARK: - public api
@@ -31,13 +37,75 @@ class DAGMSMapView: GMSMapView {
 
     /**
      * draw waypoint
-     * @param waypoints waypoint location array
      **/
-    func drawWaypoints(waypoints: [CLLocationCoordinate2D]) {
-        for waypoint in waypoints {
+    func drawWaypoints() {
+        for waypoint in self.waypoints {
             var marker = GMSMarker(position: waypoint)
             marker.map = self
             marker.draggable = true
+        }
+    }
+
+    /**
+     * draw waypoint marker
+     * @param location location
+     **/
+    func drawWaypointMaker(location: CLLocationCoordinate2D) {
+        var marker = GMSMarker(position: location)
+        marker.map = self
+        marker.draggable = true
+    }
+
+    /**
+     * draw destination marker
+     * @param location location
+     **/
+    func drawDestinationMaker(location: CLLocationCoordinate2D) {
+        var marker = GMSMarker(position: location)
+        marker.map = self
+        marker.draggable = false
+    }
+
+    /**
+     * add waypoint for routing
+     * @param waypoint waypoint
+     */
+    func appendWaypoint(waypoint: CLLocationCoordinate2D) {
+        self.waypoints.append(waypoint)
+    }
+
+    /**
+     * remove all waypoints for routing
+     */
+    func removeAllWaypoints() {
+        self.waypoints = []
+    }
+
+    /**
+     * startMovingWaypoint
+     * @param waypoint waypoint
+     */
+    func startMovingWaypoint(waypoint: CLLocationCoordinate2D) {
+        self.draggingWaypoint = waypoint
+    }
+
+    /**
+     * endMovingWaypoint
+     * @param waypoint waypoint
+     */
+    func endMovingWaypoint(waypoint: CLLocationCoordinate2D) {
+        var index = -1
+        for var i = 0; i < self.waypoints.count; i++ {
+            let location1 = CLLocation(latitude: self.waypoints[i].latitude, longitude: self.waypoints[i].longitude)
+            let location2 = CLLocation(latitude: self.draggingWaypoint.latitude, longitude: self.draggingWaypoint.longitude)
+            let meter = location1.distanceFromLocation(location2)
+            if meter > 10 { continue }
+            index = i
+            break
+        }
+        self.draggingWaypoint = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+        if index >= 0 {
+            self.waypoints[index] = waypoint
         }
     }
 
