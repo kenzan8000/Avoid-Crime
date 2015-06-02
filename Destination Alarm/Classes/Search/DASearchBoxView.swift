@@ -58,8 +58,8 @@ class DASearchBoxView: UIView {
         self.clearButton.hidden = true
 
         let backImage = IonIcons.imageWithIcon(
-            ion_ios_arrow_back,
-            size: 24.0,
+            ion_arrow_left_c,
+            size: 20.0,
             color: UIColor.grayColor()
         )
         self.backButton.setImage(backImage, forState: .Normal)
