@@ -145,6 +145,7 @@ class DASearchBoxView: UIView {
      **/
     func setSearchText(searchText: String) {
         self.searchTextField.text =  searchText
+        self.clearButton.hidden = (self.searchTextField.text == nil || self.searchTextField.text == "")
     }
 
     /**
@@ -155,6 +156,7 @@ class DASearchBoxView: UIView {
         self.activeButton.hidden = true
         self.backButton.hidden = false
         if self.delegate != nil { self.delegate?.searchBoxWasActive(searchBoxView: self) }
+        self.clearButton.hidden = (self.searchTextField.text == nil || self.searchTextField.text == "")
     }
 
     /**
@@ -165,6 +167,7 @@ class DASearchBoxView: UIView {
         self.activeButton.hidden = false
         self.backButton.hidden = true
         if self.delegate != nil { self.delegate?.searchBoxWasInactive(searchBoxView: self) }
+        self.clearButton.hidden = (self.searchTextField.text == nil || self.searchTextField.text == "")
     }
 
 }

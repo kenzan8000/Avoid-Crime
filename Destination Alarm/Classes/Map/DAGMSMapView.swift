@@ -30,8 +30,7 @@ class DAGMSMapView: GMSMapView {
         let locations = self.endLocations(json: json)
         let index = locations.count - 1
         if index >= 0 {
-            var marker = GMSMarker(position: locations[index])
-            marker.map = self
+            self.drawDestinationMaker(location: locations[index])
         }
     }
 
@@ -50,7 +49,7 @@ class DAGMSMapView: GMSMapView {
      * draw waypoint marker
      * @param location location
      **/
-    func drawWaypointMaker(location: CLLocationCoordinate2D) {
+    func drawWaypointMaker(#location: CLLocationCoordinate2D) {
         var marker = GMSMarker(position: location)
         marker.map = self
         marker.draggable = true
@@ -60,7 +59,7 @@ class DAGMSMapView: GMSMapView {
      * draw destination marker
      * @param location location
      **/
-    func drawDestinationMaker(location: CLLocationCoordinate2D) {
+    func drawDestinationMaker(#location: CLLocationCoordinate2D) {
         var marker = GMSMarker(position: location)
         marker.map = self
         marker.draggable = false
