@@ -9,37 +9,39 @@ class DAGMSMapView: GMSMapView {
     private var draggingWaypoint: CLLocationCoordinate2D!
     /// waypoints for routing
     var waypoints: [CLLocationCoordinate2D] = []
+    /// route json
+    private var routeJSON: JSON?
+    /// crimes
+    private var crimes: [DACrime]?
 
 
     /// MARK: - public api
 
     /**
-     * draw route
-     * @param json json response from google map direction API
+     * draw all markers, route, overlays and something like that
      **/
-    func drawRoute(#json: JSON) {
-        let pathes = self.encodedPathes(json: json)
-        for pathString in pathes {
-            let path = GMSPath(fromEncodedPath: pathString)
-            var line = GMSPolyline(path: path)
-            line.strokeWidth = 4.0
-            line.tappable = true
-            line.map = self
-        }
+    func draw() {
+        self.clear()
 
-        let locations = self.endLocations(json: json)
-        let index = locations.count - 1
-        if index >= 0 {
-            self.drawDestination(location: locations[index])
-        }
-
-        self.drawWaypoints()
+        if self.routeJSON != nil { self.drawRoute() }
+        if self.crimes != nil { self.drawCrimes() }
     }
 
-    func drawCrimes(crimes: [DACrime]) {
-        for crime in crimes {
-            self.drawCrime(crime)
-        }
+    /**
+     * set route json
+     * @param json json
+     **/
+    func setRouteJSON(json: JSON?) {
+        self.routeJSON = json
+        if json == nil { self.removeAllWaypoints() }
+    }
+
+    /**
+     * set crimes
+     * @param crimes [DACrime]
+     **/
+    func setCrimes(crimes: [DACrime]?) {
+        self.crimes = crimes
     }
 
     /**
@@ -89,6 +91,28 @@ class DAGMSMapView: GMSMapView {
     /// MARK: - private api
 
     /**
+     * draw route
+     **/
+    private func drawRoute() {
+        let pathes = self.encodedPathes()
+        for pathString in pathes {
+            let path = GMSPath(fromEncodedPath: pathString)
+            var line = GMSPolyline(path: path)
+            line.strokeWidth = 4.0
+            line.tappable = true
+            line.map = self
+        }
+
+        let locations = self.endLocations()
+        let index = locations.count - 1
+        if index >= 0 {
+            self.drawDestination(location: locations[index])
+        }
+
+        self.drawWaypoints()
+    }
+
+    /**
      * draw waypoint
      **/
     private func drawWaypoints() {
@@ -118,6 +142,17 @@ class DAGMSMapView: GMSMapView {
     }
 
     /**
+     * draw crimes
+     **/
+    private func drawCrimes() {
+        if self.crimes == nil { return }
+        let drawingCrimes = self.crimes as [DACrime]!
+        for crime in drawingCrimes {
+            self.drawCrime(crime)
+        }
+    }
+
+    /**
      * draw crime marker
      * @param crime DACrime
      **/
@@ -130,14 +165,15 @@ class DAGMSMapView: GMSMapView {
 
     /**
      * return encodedPath
-     * @param json json
      * @return [String]
      **/
-    private func encodedPathes(#json: JSON) -> [String] {
+    private func encodedPathes() -> [String] {
         // make pathes
         var pathes = [] as [String]
+        let json = self.routeJSON
+        if json == nil { return pathes }
 
-        let routes = json["routes"].arrayValue
+        let routes = json!["routes"].arrayValue
         for route in routes {
             let overviewPolyline = route["overview_polyline"].dictionaryValue
             let path = overviewPolyline["points"]!.stringValue
@@ -149,12 +185,14 @@ class DAGMSMapView: GMSMapView {
 
     /**
      * return end location
-     * @param json json
      * @return [CLLocationCoordinate2D]
      **/
-    private func endLocations(#json: JSON) -> [CLLocationCoordinate2D] {
+    private func endLocations() -> [CLLocationCoordinate2D] {
         var locations: [CLLocationCoordinate2D] = []
-        let routes = json["routes"].arrayValue
+        let json = self.routeJSON
+        if json == nil { return locations }
+
+        let routes = json!["routes"].arrayValue
         for route in routes {
             let legs = route["legs"].arrayValue
             for leg in legs {
@@ -166,4 +204,3 @@ class DAGMSMapView: GMSMapView {
         return locations
     }
 }
-

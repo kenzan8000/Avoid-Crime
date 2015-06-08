@@ -99,8 +99,8 @@ class ViewController: UIViewController {
         DAGoogleMapClient.sharedInstance.getRoute(
             queries: [ "origin" : "\(coordinate.latitude),\(coordinate.longitude)", "destination" : self.destinationString, ],
             completionHandler: { [unowned self] (json) in
-                self.mapView.clear()
-                self.mapView.drawRoute(json: json) // render routes
+                self.mapView.setRouteJSON(json)
+                self.mapView.draw()
             }
         )
     }
@@ -171,9 +171,9 @@ extension ViewController: DASearchBoxViewDelegate {
 
     func clearButtonTouchedUpInside(#searchBoxView: DASearchBoxView) {
         if self.searchBoxView.isActive { return }
-        self.mapView.removeAllWaypoints()
+        self.mapView.setRouteJSON(nil)
         self.destinationString = ""
-        self.mapView.clear()
+        self.mapView.draw()
     }
 }
 
@@ -196,8 +196,10 @@ extension ViewController: DASearchResultViewDelegate {
 extension ViewController: DACrimeCheckBoxViewDelegate {
 
     func crimeCheckBoxView(crimeCheckBoxView: DACrimeCheckBoxView, wasOn: Bool) {
+        if wasOn {
+            //DACrime.fetch(location: self.mapView.myLocation, radius: )
+        }
     }
-
 }
 /*
     var indicatorView: TYMActivityIndicatorView!
