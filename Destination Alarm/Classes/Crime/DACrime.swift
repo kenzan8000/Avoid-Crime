@@ -25,26 +25,40 @@ class DACrime: NSManagedObject {
     class func fetch(#location: CLLocation, radius: Double) -> Array<DACrime> {
         var context = DACoreDataManager.sharedInstance.managedObjectContext
 
+        // make fetch request
         var fetchRequest = NSFetchRequest()
         let entity = NSEntityDescription.entityForName("DACrime", inManagedObjectContext:context)
         fetchRequest.entity = entity
         fetchRequest.fetchBatchSize = 20
-
+            // time
+        var threeMonthsAgo = NSDate.da_monthAgo(months: 3)
+        var twoMonthsAgo = NSDate.da_monthAgo(months: 2)
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM"
+        let twoMonthsAgoString = "\(dateFormatter.stringFromDate(twoMonthsAgo!))-01"
+        let threeMonthsAgoString = "\(dateFormatter.stringFromDate(threeMonthsAgo!))-01"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        twoMonthsAgo = dateFormatter.dateFromString(twoMonthsAgoString)
+        threeMonthsAgo = dateFormatter.dateFromString(threeMonthsAgoString)
+            // rect
         let coordinate = location.coordinate
         let latOffset = DAMapMath.degreeOfLatitudePerRadius(radius, location: location)
         let longOffset = DAMapMath.degreeOfLongitudePerRadius(radius, location: location)
         let predicaets = [
-            NSPredicate(format: "lat < %@", NSNumber(double: coordinate.latitude + latOffset)),
-            NSPredicate(format: "lat > %@", NSNumber(double: coordinate.latitude - latOffset)),
-            NSPredicate(format: "long < %@", NSNumber(double: coordinate.longitude + longOffset)),
-            NSPredicate(format: "long > %@", NSNumber(double: coordinate.longitude - longOffset)),
+            NSPredicate(format: "(timestamp >= %@) AND (timestamp < %@)", threeMonthsAgo!, twoMonthsAgo!),
+            NSPredicate(format: "(lat <= %@) AND (lat >= %@)", NSNumber(double: coordinate.latitude + latOffset), NSNumber(double: coordinate.latitude - latOffset)),
+            NSPredicate(format: "(long <= %@) AND (long > %@)", NSNumber(double: coordinate.longitude + longOffset), NSNumber(double: coordinate.longitude - longOffset)),
         ]
         fetchRequest.predicate = NSCompoundPredicate.andPredicateWithSubpredicates(predicaets)
 
+        // return crimes
         var error: NSError? = nil
         let crimes = context.executeFetchRequest(fetchRequest, error: &error)
-        if error != nil { return [] }
-        if crimes == nil { return [] }
+        if error != nil || crimes == nil {
+            NSUserDefaults().setObject("", forKey: DAUserDefaults.CrimeYearMonth)
+            NSUserDefaults().synchronize()
+            return []
+        }
         return crimes as! Array<DACrime>
     }
 

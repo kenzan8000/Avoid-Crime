@@ -15,15 +15,10 @@ class DACrimeClient {
      * @param completionHandler (json: JSON) -> Void
      */
     func getCrime(#completionHandler: (json: JSON) -> Void) {
-        // date 3 months and 2 months ago
-        var dateComponents = NSDateComponents()
-        let calendar = NSCalendar.currentCalendar()
+        let threeMonthsAgo = NSDate.da_monthAgo(months: 3)
+        let twoMonthsAgo = NSDate.da_monthAgo(months: 2)
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM"
-        dateComponents.month = -3
-        let threeMonthsAgo = calendar.dateByAddingComponents(dateComponents, toDate: NSDate(), options: NSCalendarOptions(0))
-        dateComponents.month = -2
-        let twoMonthsAgo = calendar.dateByAddingComponents(dateComponents, toDate: NSDate(), options: NSCalendarOptions(0))
 
         // API URL
         let url = NSURL(

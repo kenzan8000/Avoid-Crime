@@ -23,8 +23,8 @@ class DAGMSMapView: GMSMapView {
     func draw() {
         self.clear()
 
-        if self.routeJSON != nil { self.drawRoute() }
         if self.crimes != nil { self.drawCrimes() }
+        if self.routeJSON != nil { self.drawRoute() }
     }
 
     /**
