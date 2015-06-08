@@ -11,6 +11,7 @@ class ViewController: UIViewController {
     var mapView: DAGMSMapView!
     var searchBoxView: DASearchBoxView!
     var searchResultView: DASearchResultView!
+    var crimeCheckBoxView: DACrimeCheckBoxView!
     var locationManager: CLLocationManager!
 
 
@@ -43,6 +44,13 @@ class ViewController: UIViewController {
         self.view.addSubview(self.searchBoxView)
         self.searchBoxView.design(parentView: self.view)
 
+        // crime checkbox
+        let crimeCheckBoxNib = UINib(nibName: DANSStringFromClass(DACrimeCheckBoxView), bundle:nil)
+        let crimeCheckBoxViews = crimeCheckBoxNib.instantiateWithOwner(nil, options: nil)
+        self.crimeCheckBoxView = crimeCheckBoxViews[0] as! DACrimeCheckBoxView
+        self.view.addSubview(self.crimeCheckBoxView)
+        self.crimeCheckBoxView.design(parentView: self.view)
+
         // location manager
         self.locationManager = CLLocationManager()
         self.locationManager.delegate = self
@@ -53,6 +61,7 @@ class ViewController: UIViewController {
 
         self.view.bringSubviewToFront(self.searchResultView)
         self.view.bringSubviewToFront(self.searchBoxView)
+        self.view.bringSubviewToFront(self.crimeCheckBoxView)
         self.view.bringSubviewToFront(self.testButton)
     }
 
@@ -92,7 +101,6 @@ class ViewController: UIViewController {
             completionHandler: { [unowned self] (json) in
                 self.mapView.clear()
                 self.mapView.drawRoute(json: json) // render routes
-                self.mapView.drawWaypoints() // render way points
             }
         )
     }
@@ -182,6 +190,15 @@ extension ViewController: DASearchResultViewDelegate {
     }
 
 }
+
+
+/// MARK: - DACrimeCheckBoxViewDelegate
+extension ViewController: DACrimeCheckBoxViewDelegate {
+
+    func crimeCheckBoxView(crimeCheckBoxView: DACrimeCheckBoxView, wasOn: Bool) {
+    }
+
+}
 /*
     var indicatorView: TYMActivityIndicatorView!
         self.indicatorView = TYMActivityIndicatorView(activityIndicatorStyle: TYMActivityIndicatorViewStyleNormal)
@@ -192,3 +209,4 @@ extension ViewController: DASearchResultViewDelegate {
 
         self.indicatorView.center = self.center
 */
+//    DACrime.fetch(location: , radius: 12.5)

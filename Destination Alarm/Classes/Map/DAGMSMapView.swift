@@ -30,39 +30,16 @@ class DAGMSMapView: GMSMapView {
         let locations = self.endLocations(json: json)
         let index = locations.count - 1
         if index >= 0 {
-            self.drawDestinationMaker(location: locations[index])
+            self.drawDestination(location: locations[index])
         }
+
+        self.drawWaypoints()
     }
 
-    /**
-     * draw waypoint
-     **/
-    func drawWaypoints() {
-        for waypoint in self.waypoints {
-            var marker = GMSMarker(position: waypoint)
-            marker.map = self
-            marker.draggable = true
+    func drawCrimes(crimes: [DACrime]) {
+        for crime in crimes {
+            self.drawCrime(crime)
         }
-    }
-
-    /**
-     * draw waypoint marker
-     * @param location location
-     **/
-    func drawWaypointMaker(#location: CLLocationCoordinate2D) {
-        var marker = GMSMarker(position: location)
-        marker.map = self
-        marker.draggable = true
-    }
-
-    /**
-     * draw destination marker
-     * @param location location
-     **/
-    func drawDestinationMaker(#location: CLLocationCoordinate2D) {
-        var marker = GMSMarker(position: location)
-        marker.map = self
-        marker.draggable = false
     }
 
     /**
@@ -110,6 +87,46 @@ class DAGMSMapView: GMSMapView {
 
 
     /// MARK: - private api
+
+    /**
+     * draw waypoint
+     **/
+    private func drawWaypoints() {
+        for waypoint in self.waypoints {
+            self.drawWaypoint(location: waypoint)
+        }
+    }
+
+    /**
+     * draw waypoint marker
+     * @param location location
+     **/
+    private func drawWaypoint(#location: CLLocationCoordinate2D) {
+        var marker = GMSMarker(position: location)
+        marker.map = self
+        marker.draggable = true
+    }
+
+    /**
+     * draw destination marker
+     * @param location location
+     **/
+    private func drawDestination(#location: CLLocationCoordinate2D) {
+        var marker = GMSMarker(position: location)
+        marker.map = self
+        marker.draggable = false
+    }
+
+    /**
+     * draw crime marker
+     * @param crime DACrime
+     **/
+    private func drawCrime(crime: DACrime) {
+        let location = CLLocationCoordinate2DMake(crime.lat.doubleValue, crime.long.doubleValue)
+        var marker = GMSMarker(position: location)
+        marker.map = self
+        marker.draggable = false
+    }
 
     /**
      * return encodedPath

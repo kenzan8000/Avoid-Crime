@@ -25,6 +25,8 @@
 		E662B57E1B114C0E00F0DAB2 /* NSURL+Queries.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B5791B114C0E00F0DAB2 /* NSURL+Queries.swift */; };
 		E671BC331B07F783002394F6 /* DASearchBoxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E671BC321B07F783002394F6 /* DASearchBoxView.xib */; };
 		E6BBE6E61B11AECA008F928C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BBE6E51B11AECA008F928C /* main.swift */; };
+		E6C574411B2511DC0011D795 /* DACrimeCheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C5743F1B2511DC0011D795 /* DACrimeCheckBoxView.swift */; };
+		E6C574421B2511DC0011D795 /* DACrimeCheckBoxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6C574401B2511DC0011D795 /* DACrimeCheckBoxView.xib */; };
 		E6E30E411B13FBA8003EB782 /* DAConstant-Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E30E401B13FBA8003EB782 /* DAConstant-Private.swift */; };
 		E6E5C2591AC6044E001FB516 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6E5C2581AC6044E001FB516 /* Images.xcassets */; };
 		E6E5C29D1AC60510001FB516 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5C2991AC60510001FB516 /* AppDelegate.swift */; };
@@ -71,6 +73,8 @@
 		E662B5791B114C0E00F0DAB2 /* NSURL+Queries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+Queries.swift"; sourceTree = "<group>"; };
 		E671BC321B07F783002394F6 /* DASearchBoxView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DASearchBoxView.xib; sourceTree = "<group>"; };
 		E6BBE6E51B11AECA008F928C /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		E6C5743F1B2511DC0011D795 /* DACrimeCheckBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DACrimeCheckBoxView.swift; sourceTree = "<group>"; };
+		E6C574401B2511DC0011D795 /* DACrimeCheckBoxView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DACrimeCheckBoxView.xib; sourceTree = "<group>"; };
 		E6E30E401B13FBA8003EB782 /* DAConstant-Private.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DAConstant-Private.swift"; sourceTree = "<group>"; };
 		E6E5C24C1AC6044E001FB516 /* Destination Alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Destination Alarm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6E5C2581AC6044E001FB516 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -121,6 +125,8 @@
 				E662B56A1B113F6F00F0DAB2 /* DACrime.swift */,
 				E6ED99821B12D00C0071CD63 /* DACrimeClient.swift */,
 				E62D9F2D1B1A813200AAE406 /* DACrimeOperationQueue.swift */,
+				E6C5743F1B2511DC0011D795 /* DACrimeCheckBoxView.swift */,
+				E6C574401B2511DC0011D795 /* DACrimeCheckBoxView.xib */,
 			);
 			path = Crime;
 			sourceTree = "<group>";
@@ -317,6 +323,7 @@
 				E6E5C2591AC6044E001FB516 /* Images.xcassets in Resources */,
 				E60F6C801B13F5B9009BC03B /* DASearchResultView.xib in Resources */,
 				E671BC331B07F783002394F6 /* DASearchBoxView.xib in Resources */,
+				E6C574421B2511DC0011D795 /* DACrimeCheckBoxView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +381,7 @@
 				E6E5C29D1AC60510001FB516 /* AppDelegate.swift in Sources */,
 				E60F6C761B12E0FC009BC03B /* DAGMSMapView.swift in Sources */,
 				E62D9F2C1B1A812300AAE406 /* DAGoogleMapOperationQueue.swift in Sources */,
+				E6C574411B2511DC0011D795 /* DACrimeCheckBoxView.swift in Sources */,
 				E662B56F1B113FA300F0DAB2 /* SwiftyJSON.swift in Sources */,
 				E662B56B1B113F6F00F0DAB2 /* DACrime.swift in Sources */,
 				E662B57E1B114C0E00F0DAB2 /* NSURL+Queries.swift in Sources */,

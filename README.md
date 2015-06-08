@@ -8,7 +8,7 @@ Map app to avoid crime
 
 ## Installation
 
-### 1. Clone and install Pods
+##### 1. Clone and install Pods
 
 ```
 git clone https://github.com/kenzan8000/Avoid-Crime.git
@@ -16,7 +16,7 @@ cd Avoid-Crime
 pod install
 ```
 
-### 2. Add /Destination Alarm/Classes/DAConstant-Private.swift
+##### 2. Add /Destination Alarm/Classes/DAConstant-Private.swift
 
 ```swift
 /// Google Map API key
