@@ -31,14 +31,14 @@ class DACrime: NSManagedObject {
         fetchRequest.fetchBatchSize = 20
             // time
         let currentDate = NSDate()
-        var threeMonthsAgo = currentDate.da_monthAgo(months: 3)
-        var threeMonthsAgoADayLater = threeMonthsAgo!.da_daysLater(days: 1)
+        var startDate = currentDate.da_monthAgo(months: DASFGovernment.Crime.MonthsAgo)
+        var endDate = startDate!.da_daysLater(days: DASFGovernment.Crime.Days)
             // rect
         let coordinate = location.coordinate
         let latOffset = DAMapMath.degreeOfLatitudePerRadius(radius, location: location)
         let longOffset = DAMapMath.degreeOfLongitudePerRadius(radius, location: location)
         let predicaets = [
-            NSPredicate(format: "(timestamp >= %@) AND (timestamp < %@)", threeMonthsAgo!, threeMonthsAgoADayLater!),
+            NSPredicate(format: "(timestamp >= %@) AND (timestamp < %@)", startDate!, endDate!),
             NSPredicate(format: "(lat <= %@) AND (lat >= %@)", NSNumber(double: coordinate.latitude + latOffset), NSNumber(double: coordinate.latitude - latOffset)),
             NSPredicate(format: "(long <= %@) AND (long > %@)", NSNumber(double: coordinate.longitude + longOffset), NSNumber(double: coordinate.longitude - longOffset)),
         ]
@@ -109,7 +109,7 @@ class DACrime: NSManagedObject {
         !context.save(&error)
 
         if error == nil {
-            dateFormatter.dateFormat = "yyyy/MM-dd"
+            dateFormatter.dateFormat = "yyyy-MM-dd"
             let currentYearMonth = dateFormatter.stringFromDate(NSDate())
             NSUserDefaults().setObject(currentYearMonth, forKey: DAUserDefaults.CrimeYearMonth)
             NSUserDefaults().synchronize()
@@ -124,7 +124,7 @@ class DACrime: NSManagedObject {
         let crimeYearMonth = NSUserDefaults().stringForKey(DAUserDefaults.CrimeYearMonth)
 
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy/MM-dd"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         let currentYearMonth = dateFormatter.stringFromDate(NSDate())
 
         return (crimeYearMonth == currentYearMonth)

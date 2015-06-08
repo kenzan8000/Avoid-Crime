@@ -87,4 +87,10 @@ struct DASFGovernment {
     struct API {
         static let GetCrime =                kURISFGovernmentAPI + "/resource/tmnf-yvry.json" /// Get Crime
     }
+
+    /// MARK: - Crime
+    struct Crime {
+        static let Days =                     1
+        static let MonthsAgo =                1
+    }
 }

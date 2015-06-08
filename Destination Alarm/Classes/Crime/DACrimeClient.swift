@@ -16,8 +16,8 @@ class DACrimeClient {
      */
     func getCrime(#completionHandler: (json: JSON) -> Void) {
         let currentDate = NSDate()
-        let threeMonthsAgo = currentDate.da_monthAgo(months: 3)
-        let threeMonthsAgoADayLater = threeMonthsAgo!.da_daysLater(days: 1)
+        var startDate = currentDate.da_monthAgo(months: DASFGovernment.Crime.MonthsAgo)
+        var endDate = startDate!.da_daysLater(days: DASFGovernment.Crime.Days)
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
 
@@ -25,8 +25,7 @@ class DACrimeClient {
         let url = NSURL(
             URLString: DASFGovernment.API.GetCrime,
             queries: [
-                "$where" : "date >= '\(dateFormatter.stringFromDate(threeMonthsAgo!))T00:00:00' and date < '\(dateFormatter.stringFromDate(threeMonthsAgoADayLater!))T00:00:00' and category != 'NON-CRIMINAL'",
-//date >= '2015-03-01T00:00:00' and date < '2015-03-02T00:00:00' and category != 'NON-CRIMINAL'
+                "$where" : "date >= '\(dateFormatter.stringFromDate(startDate!))T00:00:00' and date < '\(dateFormatter.stringFromDate(endDate!))T00:00:00' and category != 'NON-CRIMINAL'",
             ]
         )
 
