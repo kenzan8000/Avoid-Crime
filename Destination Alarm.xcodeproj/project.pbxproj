@@ -27,6 +27,9 @@
 		E6BBE6E61B11AECA008F928C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BBE6E51B11AECA008F928C /* main.swift */; };
 		E6C574411B2511DC0011D795 /* DACrimeCheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C5743F1B2511DC0011D795 /* DACrimeCheckBoxView.swift */; };
 		E6C574421B2511DC0011D795 /* DACrimeCheckBoxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6C574401B2511DC0011D795 /* DACrimeCheckBoxView.xib */; };
+		E6C574441B251FF80011D795 /* DACrimeMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C574431B251FF80011D795 /* DACrimeMarker.swift */; };
+		E6C574471B2520780011D795 /* DADestinationMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C574451B2520780011D795 /* DADestinationMarker.swift */; };
+		E6C574481B2520780011D795 /* DAWaypointMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C574461B2520780011D795 /* DAWaypointMarker.swift */; };
 		E6E30E411B13FBA8003EB782 /* DAConstant-Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E30E401B13FBA8003EB782 /* DAConstant-Private.swift */; };
 		E6E5C2591AC6044E001FB516 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6E5C2581AC6044E001FB516 /* Images.xcassets */; };
 		E6E5C29D1AC60510001FB516 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5C2991AC60510001FB516 /* AppDelegate.swift */; };
@@ -75,6 +78,9 @@
 		E6BBE6E51B11AECA008F928C /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		E6C5743F1B2511DC0011D795 /* DACrimeCheckBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DACrimeCheckBoxView.swift; sourceTree = "<group>"; };
 		E6C574401B2511DC0011D795 /* DACrimeCheckBoxView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DACrimeCheckBoxView.xib; sourceTree = "<group>"; };
+		E6C574431B251FF80011D795 /* DACrimeMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DACrimeMarker.swift; sourceTree = "<group>"; };
+		E6C574451B2520780011D795 /* DADestinationMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DADestinationMarker.swift; sourceTree = "<group>"; };
+		E6C574461B2520780011D795 /* DAWaypointMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAWaypointMarker.swift; sourceTree = "<group>"; };
 		E6E30E401B13FBA8003EB782 /* DAConstant-Private.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DAConstant-Private.swift"; sourceTree = "<group>"; };
 		E6E5C24C1AC6044E001FB516 /* Destination Alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Destination Alarm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6E5C2581AC6044E001FB516 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -125,6 +131,7 @@
 				E662B56A1B113F6F00F0DAB2 /* DACrime.swift */,
 				E6ED99821B12D00C0071CD63 /* DACrimeClient.swift */,
 				E62D9F2D1B1A813200AAE406 /* DACrimeOperationQueue.swift */,
+				E6C574431B251FF80011D795 /* DACrimeMarker.swift */,
 				E6C5743F1B2511DC0011D795 /* DACrimeCheckBoxView.swift */,
 				E6C574401B2511DC0011D795 /* DACrimeCheckBoxView.xib */,
 			);
@@ -157,6 +164,8 @@
 				E671BC321B07F783002394F6 /* DASearchBoxView.xib */,
 				E60F6C7D1B13F2E9009BC03B /* DASearchResultView.swift */,
 				E60F6C7F1B13F5B9009BC03B /* DASearchResultView.xib */,
+				E6C574451B2520780011D795 /* DADestinationMarker.swift */,
+				E6C574461B2520780011D795 /* DAWaypointMarker.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -370,6 +379,7 @@
 				E662B5681B1133BF00F0DAB2 /* DAModel.xcdatamodeld in Sources */,
 				E60F6C7A1B13E07D009BC03B /* DADestination.swift in Sources */,
 				E662B5621B1132D300F0DAB2 /* DACoreDataManager.swift in Sources */,
+				E6C574441B251FF80011D795 /* DACrimeMarker.swift in Sources */,
 				E6ED99831B12D00C0071CD63 /* DACrimeClient.swift in Sources */,
 				E6ED997D1B12CFE00071CD63 /* DAConstant.swift in Sources */,
 				E62D9F2E1B1A813200AAE406 /* DACrimeOperationQueue.swift in Sources */,
@@ -379,11 +389,13 @@
 				E6E5C2A01AC60510001FB516 /* ViewController.swift in Sources */,
 				E6ED99861B12D8240071CD63 /* DAGoogleMapClient.swift in Sources */,
 				E6E5C29D1AC60510001FB516 /* AppDelegate.swift in Sources */,
+				E6C574471B2520780011D795 /* DADestinationMarker.swift in Sources */,
 				E60F6C761B12E0FC009BC03B /* DAGMSMapView.swift in Sources */,
 				E62D9F2C1B1A812300AAE406 /* DAGoogleMapOperationQueue.swift in Sources */,
 				E6C574411B2511DC0011D795 /* DACrimeCheckBoxView.swift in Sources */,
 				E662B56F1B113FA300F0DAB2 /* SwiftyJSON.swift in Sources */,
 				E662B56B1B113F6F00F0DAB2 /* DACrime.swift in Sources */,
+				E6C574481B2520780011D795 /* DAWaypointMarker.swift in Sources */,
 				E662B57E1B114C0E00F0DAB2 /* NSURL+Queries.swift in Sources */,
 				E662B57C1B114C0E00F0DAB2 /* NSMutableURLRequest+HTTPBody.swift in Sources */,
 				E662B5741B1148BA00F0DAB2 /* DAMapMath.swift in Sources */,

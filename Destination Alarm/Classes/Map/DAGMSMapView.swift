@@ -102,7 +102,7 @@ class DAGMSMapView: GMSMapView {
      * @param location location
      **/
     private func drawWaypoint(#location: CLLocationCoordinate2D) {
-        var marker = GMSMarker(position: location)
+        var marker = DAWaypointMarker(position: location)
         marker.map = self
         marker.draggable = true
     }
@@ -112,7 +112,7 @@ class DAGMSMapView: GMSMapView {
      * @param location location
      **/
     private func drawDestination(#location: CLLocationCoordinate2D) {
-        var marker = GMSMarker(position: location)
+        var marker = DADestinationMarker(position: location)
         marker.map = self
         marker.draggable = false
     }
@@ -123,7 +123,7 @@ class DAGMSMapView: GMSMapView {
      **/
     private func drawCrime(crime: DACrime) {
         let location = CLLocationCoordinate2DMake(crime.lat.doubleValue, crime.long.doubleValue)
-        var marker = GMSMarker(position: location)
+        var marker = DACrimeMarker(position: location)
         marker.map = self
         marker.draggable = false
     }
