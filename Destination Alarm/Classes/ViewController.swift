@@ -48,6 +48,7 @@ class ViewController: UIViewController {
         let crimeCheckBoxNib = UINib(nibName: DANSStringFromClass(DACrimeCheckBoxView), bundle:nil)
         let crimeCheckBoxViews = crimeCheckBoxNib.instantiateWithOwner(nil, options: nil)
         self.crimeCheckBoxView = crimeCheckBoxViews[0] as! DACrimeCheckBoxView
+        self.crimeCheckBoxView.delegate = self
         self.view.addSubview(self.crimeCheckBoxView)
         self.crimeCheckBoxView.design(parentView: self.view)
 
@@ -196,9 +197,8 @@ extension ViewController: DASearchResultViewDelegate {
 extension ViewController: DACrimeCheckBoxViewDelegate {
 
     func crimeCheckBoxView(crimeCheckBoxView: DACrimeCheckBoxView, wasOn: Bool) {
-        if wasOn {
-            //DACrime.fetch(location: self.mapView.myLocation, radius: )
-        }
+        self.mapView.setCrimes(wasOn ? DACrime.fetch(location: self.mapView.myLocation, radius: 12.5) : nil)
+        self.mapView.draw()
     }
 }
 /*

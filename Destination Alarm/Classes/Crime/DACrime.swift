@@ -42,8 +42,10 @@ class DACrime: NSManagedObject {
         fetchRequest.predicate = NSCompoundPredicate.andPredicateWithSubpredicates(predicaets)
 
         var error: NSError? = nil
-        let crimes = context.executeFetchRequest(fetchRequest, error: &error) as! Array<DACrime>
-        return crimes
+        let crimes = context.executeFetchRequest(fetchRequest, error: &error)
+        if error != nil { return [] }
+        if crimes == nil { return [] }
+        return crimes as! Array<DACrime>
     }
 
     /**
