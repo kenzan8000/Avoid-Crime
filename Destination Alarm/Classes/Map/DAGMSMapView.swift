@@ -22,7 +22,6 @@ class DAGMSMapView: GMSMapView {
      **/
     func draw() {
         self.clear()
-
         if self.crimes != nil { self.drawCrimes() }
         if self.routeJSON != nil { self.drawRoute() }
     }
@@ -127,6 +126,7 @@ class DAGMSMapView: GMSMapView {
      **/
     private func drawWaypoint(#location: CLLocationCoordinate2D) {
         var marker = DAWaypointMarker(position: location)
+        marker.icon = DACrimeMarker.markerImageWithColor(UIColor.blueColor())
         marker.map = self
         marker.draggable = true
     }
@@ -157,8 +157,8 @@ class DAGMSMapView: GMSMapView {
      * @param crime DACrime
      **/
     private func drawCrime(crime: DACrime) {
-        let location = CLLocationCoordinate2DMake(crime.lat.doubleValue, crime.long.doubleValue)
-        var marker = DACrimeMarker(position: location)
+        var marker = DACrimeMarker(position: CLLocationCoordinate2DMake(crime.lat.doubleValue, crime.long.doubleValue))
+        marker.icon = DACrimeMarker.markerImageWithColor(UIColor.blackColor())
         marker.map = self
         marker.draggable = false
     }

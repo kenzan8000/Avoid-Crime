@@ -80,7 +80,7 @@ struct DAGoogleMap {
 
 /// MARK: - SF Government
 
-let kURISFGovernmentAPI =               "https://data.sfgov.org/api"
+let kURISFGovernmentAPI =               "https://data.sfgov.org"
 
 struct DASFGovernment {
     /// MARK: - API

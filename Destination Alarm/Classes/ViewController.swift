@@ -60,9 +60,9 @@ class ViewController: UIViewController {
         self.locationManager.distanceFilter = 300
         self.locationManager.startUpdatingLocation()
 
+        self.view.bringSubviewToFront(self.crimeCheckBoxView)
         self.view.bringSubviewToFront(self.searchResultView)
         self.view.bringSubviewToFront(self.searchBoxView)
-        self.view.bringSubviewToFront(self.crimeCheckBoxView)
         self.view.bringSubviewToFront(self.testButton)
     }
 
@@ -176,6 +176,7 @@ extension ViewController: DASearchBoxViewDelegate {
         self.destinationString = ""
         self.mapView.draw()
     }
+
 }
 
 
@@ -187,6 +188,7 @@ extension ViewController: DASearchResultViewDelegate {
         self.searchBoxView.setSearchText(selectedDestination.desc)
         if self.destinationString == selectedDestination.desc { return }
         self.destinationString = selectedDestination.desc
+        self.mapView.removeAllWaypoints()
         self.requestDirectoin()
     }
 
@@ -197,9 +199,12 @@ extension ViewController: DASearchResultViewDelegate {
 extension ViewController: DACrimeCheckBoxViewDelegate {
 
     func crimeCheckBoxView(crimeCheckBoxView: DACrimeCheckBoxView, wasOn: Bool) {
-        self.mapView.setCrimes(wasOn ? DACrime.fetch(location: self.mapView.myLocation, radius: 12.5) : nil)
+        let location = self.mapView.myLocation
+        let on = wasOn && (location != nil)
+        self.mapView.setCrimes(on ? DACrime.fetch(location: location, radius: 15.0) : nil)
         self.mapView.draw()
     }
+
 }
 /*
     var indicatorView: TYMActivityIndicatorView!

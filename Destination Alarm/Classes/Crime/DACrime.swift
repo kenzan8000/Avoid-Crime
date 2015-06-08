@@ -7,8 +7,7 @@ import CoreLocation
 class DACrime: NSManagedObject {
 
     /// MARK: - property
-    @NSManaged var desc: String
-    @NSManaged var resolution: String
+    @NSManaged var category: String
     @NSManaged var lat: NSNumber
     @NSManaged var long: NSNumber
     @NSManaged var timestamp: NSDate
@@ -31,21 +30,15 @@ class DACrime: NSManagedObject {
         fetchRequest.entity = entity
         fetchRequest.fetchBatchSize = 20
             // time
-        var threeMonthsAgo = NSDate.da_monthAgo(months: 3)
-        var twoMonthsAgo = NSDate.da_monthAgo(months: 2)
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM"
-        let twoMonthsAgoString = "\(dateFormatter.stringFromDate(twoMonthsAgo!))-01"
-        let threeMonthsAgoString = "\(dateFormatter.stringFromDate(threeMonthsAgo!))-01"
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        twoMonthsAgo = dateFormatter.dateFromString(twoMonthsAgoString)
-        threeMonthsAgo = dateFormatter.dateFromString(threeMonthsAgoString)
+        let currentDate = NSDate()
+        var threeMonthsAgo = currentDate.da_monthAgo(months: 3)
+        var threeMonthsAgoADayLater = threeMonthsAgo!.da_daysLater(days: 1)
             // rect
         let coordinate = location.coordinate
         let latOffset = DAMapMath.degreeOfLatitudePerRadius(radius, location: location)
         let longOffset = DAMapMath.degreeOfLongitudePerRadius(radius, location: location)
         let predicaets = [
-            NSPredicate(format: "(timestamp >= %@) AND (timestamp < %@)", threeMonthsAgo!, twoMonthsAgo!),
+            NSPredicate(format: "(timestamp >= %@) AND (timestamp < %@)", threeMonthsAgo!, threeMonthsAgoADayLater!),
             NSPredicate(format: "(lat <= %@) AND (lat >= %@)", NSNumber(double: coordinate.latitude + latOffset), NSNumber(double: coordinate.latitude - latOffset)),
             NSPredicate(format: "(long <= %@) AND (long > %@)", NSNumber(double: coordinate.longitude + longOffset), NSNumber(double: coordinate.longitude - longOffset)),
         ]
@@ -99,22 +92,24 @@ class DACrime: NSManagedObject {
 
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         for crimeData in crimeDatas {
+            let yyyymmddhhmm = (crimeData["date"].stringValue).stringByReplacingOccurrencesOfString("T00:00:00", withString: " ") + crimeData["time"].stringValue
+            let timestamp = dateFormatter.dateFromString(yyyymmddhhmm)
+            if timestamp == nil { continue }
+
             var crime = NSEntityDescription.insertNewObjectForEntityForName("DACrime", inManagedObjectContext: context) as! DACrime
-            crime.desc = crimeData["descript"].stringValue
-            crime.resolution = crimeData["resolution"].stringValue
+            crime.category = crimeData["category"].stringValue
             if let location = crimeData["location"].dictionary {
                 crime.lat = location["latitude"]!.numberValue
                 crime.long = location["longitude"]!.numberValue
             }
-            let yyyymmddhhmm = (crimeData["date"].stringValue).stringByReplacingOccurrencesOfString("T00:00:00", withString: " ") + crimeData["time"].stringValue
-            crime.timestamp = dateFormatter.dateFromString(yyyymmddhhmm)!
+            crime.timestamp = timestamp!
         }
 
         var error: NSError? = nil
         !context.save(&error)
 
         if error == nil {
-            dateFormatter.dateFormat = "yyyy/MM"
+            dateFormatter.dateFormat = "yyyy/MM-dd"
             let currentYearMonth = dateFormatter.stringFromDate(NSDate())
             NSUserDefaults().setObject(currentYearMonth, forKey: DAUserDefaults.CrimeYearMonth)
             NSUserDefaults().synchronize()
@@ -129,7 +124,7 @@ class DACrime: NSManagedObject {
         let crimeYearMonth = NSUserDefaults().stringForKey(DAUserDefaults.CrimeYearMonth)
 
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy/MM"
+        dateFormatter.dateFormat = "yyyy/MM-dd"
         let currentYearMonth = dateFormatter.stringFromDate(NSDate())
 
         return (crimeYearMonth == currentYearMonth)

@@ -4,20 +4,54 @@ import Foundation
 /// MARK: - NSURL+Ago
 extension NSDate {
 
-    /// MARK: - class method
+    /// MARK: - public api
 
     /**
-     * get the Date ~ month ago
+     * get the Date ~ months ago
      * @param months months
      * @return NSDate
      */
-    class func da_monthAgo(#months: Int) -> NSDate? {
-        // date 3 months and 2 months ago
+    func da_monthAgo(#months: Int) -> NSDate? {
         var dateComponents = NSDateComponents()
         let calendar = NSCalendar.currentCalendar()
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM"
         dateComponents.month = -months
-        return calendar.dateByAddingComponents(dateComponents, toDate: NSDate(), options: NSCalendarOptions(0))
+        return calendar.dateByAddingComponents(dateComponents, toDate: self, options: NSCalendarOptions(0))
     }
+
+    /**
+     * get the Date ~ months later
+     * @param months months
+     * @return NSDate
+     */
+    func da_monthLater(#months: Int) -> NSDate? {
+        var dateComponents = NSDateComponents()
+        let calendar = NSCalendar.currentCalendar()
+        dateComponents.month = months
+        return calendar.dateByAddingComponents(dateComponents, toDate: self, options: NSCalendarOptions(0))
+    }
+
+    /**
+     * get the Date ~ days ago
+     * @param days days
+     * @return NSDate
+     */
+    func da_daysAgo(#days: Int) -> NSDate? {
+        var dateComponents = NSDateComponents()
+        let calendar = NSCalendar.currentCalendar()
+        dateComponents.day = -days
+        return calendar.dateByAddingComponents(dateComponents, toDate: self, options: NSCalendarOptions(0))
+    }
+
+    /**
+     * get the Date ~ days later
+     * @param days days
+     * @return NSDate
+     */
+    func da_daysLater(#days: Int) -> NSDate? {
+        var dateComponents = NSDateComponents()
+        let calendar = NSCalendar.currentCalendar()
+        dateComponents.day = days
+        return calendar.dateByAddingComponents(dateComponents, toDate: self, options: NSCalendarOptions(0))
+    }
+
 }
