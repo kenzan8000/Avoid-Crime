@@ -33,6 +33,13 @@ class DACrime: NSManagedObject {
         let currentDate = NSDate()
         var startDate = currentDate.da_monthAgo(months: DASFGovernment.Crime.MonthsAgo)
         var endDate = startDate!.da_daysLater(days: DASFGovernment.Crime.Days)
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let startDateString = dateFormatter.stringFromDate(startDate!)
+        let endDateString = dateFormatter.stringFromDate(endDate!)
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        startDate = dateFormatter.dateFromString(startDateString+" 00:00:00")
+        endDate = dateFormatter.dateFromString(endDateString+" 00:00:00")
             // rect
         let coordinate = location.coordinate
         let latOffset = DAMapMath.degreeOfLatitudePerRadius(radius, location: location)

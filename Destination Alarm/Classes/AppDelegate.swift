@@ -7,6 +7,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        let hoge: GMSMarker
         // Google Map
         GMSServices.provideAPIKey(DAGoogleMap.APIKey)
 
