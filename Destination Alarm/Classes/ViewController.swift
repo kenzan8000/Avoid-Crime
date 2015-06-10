@@ -11,7 +11,8 @@ class ViewController: UIViewController {
     var mapView: DAGMSMapView!
     var searchBoxView: DASearchBoxView!
     var searchResultView: DASearchResultView!
-    var crimeCheckBoxView: DACrimeCheckBoxView!
+    //var crimeCheckBoxView: DACheckBoxView!
+    var horizontalTableView: DAHorizontalTableView!
     var locationManager: CLLocationManager!
 
 
@@ -19,6 +20,32 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.doSettings()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
+
+    /// MARK: - event listener
+
+    /**
+     * called when touched button
+     * @param button UIButton
+     **/
+    @IBAction func touchedUpInside(#button: UIButton) {
+        self.mapView.removeAllWaypoints()
+        self.requestDirectoin()
+    }
+
+
+    /// MARK: - private api
+
+    /**
+     * do settings
+     **/
+    private func doSettings() {
         // google map view
         self.mapView = DAGMSMapView.sharedInstance
         self.mapView.frame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height)
@@ -44,13 +71,21 @@ class ViewController: UIViewController {
         self.view.addSubview(self.searchBoxView)
         self.searchBoxView.design(parentView: self.view)
 
+        // horizontal table view
+        let horizontalTableViewNib = UINib(nibName: DANSStringFromClass(DAHorizontalTableView), bundle:nil)
+        let horizontalTableViews = horizontalTableViewNib.instantiateWithOwner(nil, options: nil)
+        self.horizontalTableView = horizontalTableViews[0] as! DAHorizontalTableView
+        self.horizontalTableView.frame = CGRectMake(0, self.view.frame.size.height-self.horizontalTableView.frame.size.height, self.view.frame.size.width, self.horizontalTableView.frame.size.height)
+        self.view.addSubview(self.horizontalTableView)
+        self.horizontalTableView.doSettings()
+        self.horizontalTableView.delegate = self
         // crime checkbox
-        let crimeCheckBoxNib = UINib(nibName: DANSStringFromClass(DACrimeCheckBoxView), bundle:nil)
-        let crimeCheckBoxViews = crimeCheckBoxNib.instantiateWithOwner(nil, options: nil)
-        self.crimeCheckBoxView = crimeCheckBoxViews[0] as! DACrimeCheckBoxView
-        self.crimeCheckBoxView.delegate = self
-        self.view.addSubview(self.crimeCheckBoxView)
-        self.crimeCheckBoxView.design(parentView: self.view)
+//        let crimeCheckBoxNib = UINib(nibName: DANSStringFromClass(DACheckBoxView), bundle:nil)
+//        let crimeCheckBoxViews = crimeCheckBoxNib.instantiateWithOwner(nil, options: nil)
+//        self.crimeCheckBoxView = crimeCheckBoxViews[0] as! DACheckBoxView
+//        self.crimeCheckBoxView.delegate = self
+//        self.view.addSubview(self.crimeCheckBoxView)
+//        self.crimeCheckBoxView.design(parentView: self.view)
 
         // location manager
         self.locationManager = CLLocationManager()
@@ -60,35 +95,17 @@ class ViewController: UIViewController {
         self.locationManager.distanceFilter = 300
         self.locationManager.startUpdatingLocation()
 
-        self.view.bringSubviewToFront(self.crimeCheckBoxView)
+        //self.view.bringSubviewToFront(self.crimeCheckBoxView)
+        self.view.bringSubviewToFront(self.horizontalTableView)
         self.view.bringSubviewToFront(self.searchResultView)
         self.view.bringSubviewToFront(self.searchBoxView)
         self.view.bringSubviewToFront(self.testButton)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
-
-    /// MARK: - event listener
-
-    /**
-     * called when touched button
-     * @param button UIButton
-     **/
-    @IBAction func touchedUpInside(#button: UIButton) {
-        self.mapView.removeAllWaypoints()
-        self.requestDirectoin()
-    }
-
-
-    /// MARK: - private api
-
     /**
      * request dirction API and render direction
      */
-    func requestDirectoin() {
+    private func requestDirectoin() {
         if self.destinationString == "" { return }
 
         DAGoogleMapClient.sharedInstance.cancelGetRoute()
@@ -195,10 +212,10 @@ extension ViewController: DASearchResultViewDelegate {
 }
 
 
-/// MARK: - DACrimeCheckBoxViewDelegate
-extension ViewController: DACrimeCheckBoxViewDelegate {
+/// MARK: - DAHorizontalTableViewDelegate
+extension ViewController: DAHorizontalTableViewDelegate {
 
-    func crimeCheckBoxView(crimeCheckBoxView: DACrimeCheckBoxView, wasOn: Bool) {
+    func tableView(tableView: DAHorizontalTableView, indexPath: NSIndexPath, wasOn: Bool) {
         let location = self.mapView.myLocation
         let on = wasOn && (location != nil)
         self.mapView.setCrimes(on ? DACrime.fetch(location: location, radius: 15.0) : nil)
@@ -206,14 +223,3 @@ extension ViewController: DACrimeCheckBoxViewDelegate {
     }
 
 }
-/*
-    var indicatorView: TYMActivityIndicatorView!
-        self.indicatorView = TYMActivityIndicatorView(activityIndicatorStyle: TYMActivityIndicatorViewStyleNormal)
-        self.indicatorView.backgroundImage = nil
-        self.indicatorView.hidesWhenStopped = true
-        self.indicatorView.stopAnimating()
-        self.addSubview(self.indicatorView)
-
-        self.indicatorView.center = self.center
-*/
-//    DACrime.fetch(location: , radius: 12.5)

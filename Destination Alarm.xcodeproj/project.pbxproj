@@ -15,6 +15,11 @@
 		E60F6C801B13F5B9009BC03B /* DASearchResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E60F6C7F1B13F5B9009BC03B /* DASearchResultView.xib */; };
 		E62D9F2C1B1A812300AAE406 /* DAGoogleMapOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62D9F2B1B1A812300AAE406 /* DAGoogleMapOperationQueue.swift */; };
 		E62D9F2E1B1A813200AAE406 /* DACrimeOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62D9F2D1B1A813200AAE406 /* DACrimeOperationQueue.swift */; };
+		E6556A5C1B2793FF00E6C943 /* DAHorizontalTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6556A591B2793FF00E6C943 /* DAHorizontalTableView.swift */; };
+		E6556A5E1B2797E700E6C943 /* DAHorizontalTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6556A5D1B2797E700E6C943 /* DAHorizontalTableView.xib */; };
+		E6556A601B27991000E6C943 /* DAHorizontalTableViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6556A5F1B27991000E6C943 /* DAHorizontalTableViewData.swift */; };
+		E6556A621B2799F000E6C943 /* DAHorizontalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6556A611B2799F000E6C943 /* DAHorizontalTableViewCell.swift */; };
+		E6556A641B279D5700E6C943 /* DAHorizontalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6556A631B279D5600E6C943 /* DAHorizontalTableViewCell.xib */; };
 		E662B5621B1132D300F0DAB2 /* DACoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B5611B1132D300F0DAB2 /* DACoreDataManager.swift */; };
 		E662B5651B1132F100F0DAB2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E662B5641B1132F100F0DAB2 /* CoreData.framework */; };
 		E662B5681B1133BF00F0DAB2 /* DAModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E662B5661B1133BF00F0DAB2 /* DAModel.xcdatamodeld */; };
@@ -26,8 +31,6 @@
 		E671BC331B07F783002394F6 /* DASearchBoxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E671BC321B07F783002394F6 /* DASearchBoxView.xib */; };
 		E6A00A571B25305700994A57 /* NSDate+Ago.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A00A561B25305700994A57 /* NSDate+Ago.swift */; };
 		E6BBE6E61B11AECA008F928C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BBE6E51B11AECA008F928C /* main.swift */; };
-		E6C574411B2511DC0011D795 /* DACrimeCheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C5743F1B2511DC0011D795 /* DACrimeCheckBoxView.swift */; };
-		E6C574421B2511DC0011D795 /* DACrimeCheckBoxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6C574401B2511DC0011D795 /* DACrimeCheckBoxView.xib */; };
 		E6C574441B251FF80011D795 /* DACrimeMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C574431B251FF80011D795 /* DACrimeMarker.swift */; };
 		E6C574471B2520780011D795 /* DADestinationMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C574451B2520780011D795 /* DADestinationMarker.swift */; };
 		E6C574481B2520780011D795 /* DAWaypointMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C574461B2520780011D795 /* DAWaypointMarker.swift */; };
@@ -66,6 +69,11 @@
 		E60F6C7F1B13F5B9009BC03B /* DASearchResultView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DASearchResultView.xib; sourceTree = "<group>"; };
 		E62D9F2B1B1A812300AAE406 /* DAGoogleMapOperationQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAGoogleMapOperationQueue.swift; sourceTree = "<group>"; };
 		E62D9F2D1B1A813200AAE406 /* DACrimeOperationQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DACrimeOperationQueue.swift; sourceTree = "<group>"; };
+		E6556A591B2793FF00E6C943 /* DAHorizontalTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAHorizontalTableView.swift; sourceTree = "<group>"; };
+		E6556A5D1B2797E700E6C943 /* DAHorizontalTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAHorizontalTableView.xib; sourceTree = "<group>"; };
+		E6556A5F1B27991000E6C943 /* DAHorizontalTableViewData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAHorizontalTableViewData.swift; sourceTree = "<group>"; };
+		E6556A611B2799F000E6C943 /* DAHorizontalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAHorizontalTableViewCell.swift; sourceTree = "<group>"; };
+		E6556A631B279D5600E6C943 /* DAHorizontalTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAHorizontalTableViewCell.xib; sourceTree = "<group>"; };
 		E662B5611B1132D300F0DAB2 /* DACoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DACoreDataManager.swift; sourceTree = "<group>"; };
 		E662B5641B1132F100F0DAB2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		E662B5671B1133BF00F0DAB2 /* DAModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DAModel.xcdatamodel; sourceTree = "<group>"; };
@@ -78,8 +86,6 @@
 		E671BC321B07F783002394F6 /* DASearchBoxView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DASearchBoxView.xib; sourceTree = "<group>"; };
 		E6A00A561B25305700994A57 /* NSDate+Ago.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Ago.swift"; sourceTree = "<group>"; };
 		E6BBE6E51B11AECA008F928C /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		E6C5743F1B2511DC0011D795 /* DACrimeCheckBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DACrimeCheckBoxView.swift; sourceTree = "<group>"; };
-		E6C574401B2511DC0011D795 /* DACrimeCheckBoxView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DACrimeCheckBoxView.xib; sourceTree = "<group>"; };
 		E6C574431B251FF80011D795 /* DACrimeMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DACrimeMarker.swift; sourceTree = "<group>"; };
 		E6C574451B2520780011D795 /* DADestinationMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DADestinationMarker.swift; sourceTree = "<group>"; };
 		E6C574461B2520780011D795 /* DAWaypointMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAWaypointMarker.swift; sourceTree = "<group>"; };
@@ -127,6 +133,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E6556A561B2793FF00E6C943 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				E6556A591B2793FF00E6C943 /* DAHorizontalTableView.swift */,
+				E6556A5D1B2797E700E6C943 /* DAHorizontalTableView.xib */,
+				E6556A611B2799F000E6C943 /* DAHorizontalTableViewCell.swift */,
+				E6556A631B279D5600E6C943 /* DAHorizontalTableViewCell.xib */,
+				E6556A5F1B27991000E6C943 /* DAHorizontalTableViewData.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		E662B55D1B1131F200F0DAB2 /* Crime */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,8 +152,6 @@
 				E6ED99821B12D00C0071CD63 /* DACrimeClient.swift */,
 				E62D9F2D1B1A813200AAE406 /* DACrimeOperationQueue.swift */,
 				E6C574431B251FF80011D795 /* DACrimeMarker.swift */,
-				E6C5743F1B2511DC0011D795 /* DACrimeCheckBoxView.swift */,
-				E6C574401B2511DC0011D795 /* DACrimeCheckBoxView.xib */,
 			);
 			path = Crime;
 			sourceTree = "<group>";
@@ -235,6 +251,7 @@
 				E6ED99841B12D8240071CD63 /* GoogleMap */,
 				E662B55D1B1131F200F0DAB2 /* Crime */,
 				E662B55E1B11328100F0DAB2 /* Model */,
+				E6556A561B2793FF00E6C943 /* UI */,
 				E662B5761B114C0E00F0DAB2 /* NSFoundation+Extension */,
 				E67AD2711AFC46CD00FE0E28 /* SwiftyJSON */,
 			);
@@ -330,12 +347,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6556A641B279D5700E6C943 /* DAHorizontalTableViewCell.xib in Resources */,
 				E6E5C29F1AC60510001FB516 /* Main.storyboard in Resources */,
+				E6556A5E1B2797E700E6C943 /* DAHorizontalTableView.xib in Resources */,
 				E6E5C29E1AC60510001FB516 /* LaunchScreen.xib in Resources */,
 				E6E5C2591AC6044E001FB516 /* Images.xcassets in Resources */,
 				E60F6C801B13F5B9009BC03B /* DASearchResultView.xib in Resources */,
 				E671BC331B07F783002394F6 /* DASearchBoxView.xib in Resources */,
-				E6C574421B2511DC0011D795 /* DACrimeCheckBoxView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +406,7 @@
 				E6ED997D1B12CFE00071CD63 /* DAConstant.swift in Sources */,
 				E62D9F2E1B1A813200AAE406 /* DACrimeOperationQueue.swift in Sources */,
 				E6BBE6E61B11AECA008F928C /* main.swift in Sources */,
+				E6556A5C1B2793FF00E6C943 /* DAHorizontalTableView.swift in Sources */,
 				E6E30E411B13FBA8003EB782 /* DAConstant-Private.swift in Sources */,
 				E60F6C7E1B13F2E9009BC03B /* DASearchResultView.swift in Sources */,
 				E6E5C2A01AC60510001FB516 /* ViewController.swift in Sources */,
@@ -396,13 +415,14 @@
 				E6C574471B2520780011D795 /* DADestinationMarker.swift in Sources */,
 				E60F6C761B12E0FC009BC03B /* DAGMSMapView.swift in Sources */,
 				E62D9F2C1B1A812300AAE406 /* DAGoogleMapOperationQueue.swift in Sources */,
-				E6C574411B2511DC0011D795 /* DACrimeCheckBoxView.swift in Sources */,
 				E662B56F1B113FA300F0DAB2 /* SwiftyJSON.swift in Sources */,
 				E662B56B1B113F6F00F0DAB2 /* DACrime.swift in Sources */,
 				E6C574481B2520780011D795 /* DAWaypointMarker.swift in Sources */,
 				E662B57E1B114C0E00F0DAB2 /* NSURL+Queries.swift in Sources */,
 				E662B57C1B114C0E00F0DAB2 /* NSMutableURLRequest+HTTPBody.swift in Sources */,
+				E6556A621B2799F000E6C943 /* DAHorizontalTableViewCell.swift in Sources */,
 				E662B5741B1148BA00F0DAB2 /* DAMapMath.swift in Sources */,
+				E6556A601B27991000E6C943 /* DAHorizontalTableViewData.swift in Sources */,
 				E60F6C7C1B13E62D009BC03B /* DASearchBoxView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -497,6 +517,7 @@
 				INFOPLIST_FILE = "Destination Alarm/Resources/Plists/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LINKER_DISPLAYS_MANGLED_NAMES = NO;
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Destination Alarm/Classes/Destination Alarm-Bridging-Header.h";
@@ -514,6 +535,7 @@
 				INFOPLIST_FILE = "Destination Alarm/Resources/Plists/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LINKER_DISPLAYS_MANGLED_NAMES = NO;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Destination Alarm/Classes/Destination Alarm-Bridging-Header.h";
