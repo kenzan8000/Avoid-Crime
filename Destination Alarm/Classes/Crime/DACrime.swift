@@ -17,6 +17,50 @@ class DACrime: NSManagedObject {
 
     /**
      * fetch datas from coredata
+     * @param minimumCoordinate CLLocationCoordinate2D
+     * @param maximumCoordinate CLLocationCoordinate2D
+     * @return Array<DACrime>
+     */
+    class func fetch(#minimumCoordinate: CLLocationCoordinate2D, maximumCoordinate: CLLocationCoordinate2D) -> Array<DACrime> {
+        var context = DACoreDataManager.sharedInstance.managedObjectContext
+
+        // make fetch request
+        var fetchRequest = NSFetchRequest()
+        let entity = NSEntityDescription.entityForName("DACrime", inManagedObjectContext:context)
+        fetchRequest.entity = entity
+        fetchRequest.fetchBatchSize = 20
+            // time
+        let currentDate = NSDate()
+        var startDate = currentDate.da_monthAgo(months: DASFGovernment.Crime.MonthsAgo)
+        var endDate = startDate!.da_daysLater(days: DASFGovernment.Crime.Days)
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let startDateString = dateFormatter.stringFromDate(startDate!)
+        let endDateString = dateFormatter.stringFromDate(endDate!)
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        startDate = dateFormatter.dateFromString(startDateString+" 00:00:00")
+        endDate = dateFormatter.dateFromString(endDateString+" 00:00:00")
+            // rect
+        let predicaets = [
+            NSPredicate(format: "(timestamp >= %@) AND (timestamp < %@)", startDate!, endDate!),
+            NSPredicate(format: "(lat <= %@) AND (lat >= %@)", NSNumber(double: maximumCoordinate.latitude), NSNumber(double: minimumCoordinate.latitude)),
+            NSPredicate(format: "(long <= %@) AND (long >= %@)", NSNumber(double: maximumCoordinate.longitude), NSNumber(double: minimumCoordinate.longitude)),
+        ]
+        fetchRequest.predicate = NSCompoundPredicate.andPredicateWithSubpredicates(predicaets)
+
+        // return crimes
+        var error: NSError? = nil
+        let crimes = context.executeFetchRequest(fetchRequest, error: &error)
+        if error != nil || crimes == nil {
+            NSUserDefaults().setObject("", forKey: DAUserDefaults.CrimeYearMonth)
+            NSUserDefaults().synchronize()
+            return []
+        }
+        return crimes as! Array<DACrime>
+    }
+
+    /**
+     * fetch datas from coredata
      * @param location location
      * @param radius radius of miles
      * @return Array<DACrime>
@@ -47,7 +91,7 @@ class DACrime: NSManagedObject {
         let predicaets = [
             NSPredicate(format: "(timestamp >= %@) AND (timestamp < %@)", startDate!, endDate!),
             NSPredicate(format: "(lat <= %@) AND (lat >= %@)", NSNumber(double: coordinate.latitude + latOffset), NSNumber(double: coordinate.latitude - latOffset)),
-            NSPredicate(format: "(long <= %@) AND (long > %@)", NSNumber(double: coordinate.longitude + longOffset), NSNumber(double: coordinate.longitude - longOffset)),
+            NSPredicate(format: "(long <= %@) AND (long >= %@)", NSNumber(double: coordinate.longitude + longOffset), NSNumber(double: coordinate.longitude - longOffset)),
         ]
         fetchRequest.predicate = NSCompoundPredicate.andPredicateWithSubpredicates(predicaets)
 

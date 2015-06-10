@@ -16,6 +16,9 @@ class DAGMSMapView: GMSMapView {
     /// crime marker type
     private var crimeMarkerType = DAMarker.None
 
+    /// crime marker type
+    private var heatmapView: UIImageView?
+
 
     /// MARK: - public api
 
@@ -24,6 +27,10 @@ class DAGMSMapView: GMSMapView {
      **/
     func draw() {
         self.clear()
+        if self.heatmapView != nil {
+            self.heatmapView!.removeFromSuperview()
+            self.heatmapView = nil
+        }
 
         // crime
         if self.crimes != nil {
@@ -66,7 +73,48 @@ class DAGMSMapView: GMSMapView {
      **/
     func setCrimes(crimes: [DACrime]?) {
         self.crimes = crimes
+        if self.crimes == nil { self.crimeMarkerType = DAMarker.None }
+        else if self.crimes!.count == 0 { self.crimeMarkerType = DAMarker.None }
     }
+
+    /**
+     * get minimum coordinate
+     * @return CLLocationCoordinate2D
+     **/
+    func getMinimumCoordinate() -> CLLocationCoordinate2D {
+        var min = self.projection.coordinateForPoint(CGPointMake(0, 0))
+        let points = [
+            CGPointMake(0, self.frame.size.height),
+            CGPointMake(self.frame.size.width, 0),
+            CGPointMake(self.frame.size.width, self.frame.size.height),
+        ]
+        for point in points {
+            let coordinate = self.projection.coordinateForPoint(point)
+            if min.latitude > coordinate.latitude { min.latitude = coordinate.latitude }
+            if min.longitude > coordinate.longitude { min.longitude = coordinate.longitude }
+        }
+        return min
+    }
+
+    /**
+     * get maximum coordinate
+     * @return CLLocationCoordinate2D
+     **/
+    func getMaximumCoordinate() -> CLLocationCoordinate2D {
+        var max = self.projection.coordinateForPoint(CGPointMake(0, 0))
+        let points = [
+            CGPointMake(0, self.frame.size.height),
+            CGPointMake(self.frame.size.width, 0),
+            CGPointMake(self.frame.size.width, self.frame.size.height),
+        ]
+        for point in points {
+            let coordinate = self.projection.coordinateForPoint(point)
+            if max.latitude < coordinate.latitude { max.latitude = coordinate.latitude }
+            if max.longitude < coordinate.longitude { max.longitude = coordinate.longitude }
+        }
+        return max
+    }
+
 
     /**
      * add waypoint for routing
@@ -193,6 +241,7 @@ class DAGMSMapView: GMSMapView {
         if self.crimes == nil { return }
 
         let drawingCrimes = self.crimes as [DACrime]!
+        if drawingCrimes.count == 0 { return }
         var min = CLLocationCoordinate2DMake(drawingCrimes[0].lat.doubleValue, drawingCrimes[0].long.doubleValue)
         var max = CLLocationCoordinate2DMake(drawingCrimes[0].lat.doubleValue, drawingCrimes[0].long.doubleValue)
 
@@ -210,12 +259,16 @@ class DAGMSMapView: GMSMapView {
         }
         let center = self.projection.coordinateForPoint(CGPointMake(self.frame.size.width/2.0, self.frame.size.height))
         var marker = DACrimeHeatmapMarker(position: center)
-        marker.map = self
+        //marker.map = self
         marker.draggable = false
         marker.boost = 1.0
         marker.weights = weights
         marker.locations = locations
-        marker.draw()
+        //marker.draw()
+        let image = marker.heatmapImage(map: self)
+        self.heatmapView = UIImageView(frame: self.frame)
+        self.heatmapView!.image = image
+        self.addSubview(self.heatmapView!)
     }
 
     /**

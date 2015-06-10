@@ -158,6 +158,8 @@ extension ViewController: GMSMapViewDelegate {
     }
 
     func mapView(mapView: GMSMapView, didChangeCameraPosition position: GMSCameraPosition) {
+        let crimes = DACrime.fetch(minimumCoordinate: self.mapView.getMinimumCoordinate(), maximumCoordinate: self.mapView.getMaximumCoordinate())
+        if crimes.count > 0 { self.mapView.setCrimes(crimes) }
         self.mapView.draw()
     }
 
@@ -214,9 +216,14 @@ extension ViewController: DAHorizontalTableViewDelegate {
     func tableView(tableView: DAHorizontalTableView, indexPath: NSIndexPath, wasOn: Bool) {
         let markerType = tableView.dataSource[indexPath.row].markerType
         self.mapView.setCrimeMarkerType(markerType)
-        let location = self.mapView.myLocation
-        let on = wasOn && (location != nil)
-        self.mapView.setCrimes(on ? DACrime.fetch(location: location, radius: 15.0) : nil)
+
+        //let location = self.mapView.myLocation
+        //let on = wasOn && (location != nil)
+        //self.mapView.setCrimes(on ? DACrime.fetch(location: location, radius: 15.0) : nil)
+
+        let on = wasOn
+        self.mapView.setCrimes(on ? DACrime.fetch(minimumCoordinate: self.mapView.getMinimumCoordinate(), maximumCoordinate: self.mapView.getMaximumCoordinate()) : nil)
+
         self.mapView.draw()
     }
 
