@@ -75,6 +75,7 @@ struct DAGoogleMap {
         static let Walking =           "walking"
         static let Bicycling =         "bicycling"
     }
+
 }
 
 
@@ -93,4 +94,14 @@ struct DASFGovernment {
         static let Days =                     1
         static let MonthsAgo =                1
     }
+}
+
+
+/// MARK: - marker
+enum DAMarker {
+    case None
+    case Destination
+    case Waypoint
+    case CrimePoint
+    case CrimeHeatmap
 }

@@ -13,6 +13,8 @@ class DAGMSMapView: GMSMapView {
     private var routeJSON: JSON?
     /// crimes
     private var crimes: [DACrime]?
+    /// crime marker type
+    private var crimeMarkerType = DAMarker.None
 
 
     /// MARK: - public api
@@ -22,7 +24,22 @@ class DAGMSMapView: GMSMapView {
      **/
     func draw() {
         self.clear()
-        if self.crimes != nil { self.drawCrimes() }
+
+        // crime
+        if self.crimes != nil {
+            switch (self.crimeMarkerType) {
+                case DAMarker.CrimePoint:
+                    self.drawCrimeMakers()
+                    break
+                case DAMarker.CrimeHeatmap:
+                    self.drawCrimeHeatmap()
+                    break
+                default:
+                    break
+            }
+        }
+
+        // route
         if self.routeJSON != nil { self.drawRoute() }
     }
 
@@ -33,6 +50,14 @@ class DAGMSMapView: GMSMapView {
     func setRouteJSON(json: JSON?) {
         self.routeJSON = json
         if json == nil { self.removeAllWaypoints() }
+    }
+
+    /**
+     * set crime marker type
+     * @param markerType DAMarker
+     **/
+    func setCrimeMarkerType(markerType: DAMarker) {
+        self.crimeMarkerType = markerType
     }
 
     /**
@@ -143,11 +168,11 @@ class DAGMSMapView: GMSMapView {
     /**
      * draw crimes
      **/
-    private func drawCrimes() {
+    private func drawCrimeMakers() {
         if self.crimes == nil { return }
         let drawingCrimes = self.crimes as [DACrime]!
         for crime in drawingCrimes {
-            self.drawCrime(crime)
+            self.drawCrimeMaker(crime)
         }
     }
 
@@ -155,10 +180,42 @@ class DAGMSMapView: GMSMapView {
      * draw crime marker
      * @param crime DACrime
      **/
-    private func drawCrime(crime: DACrime) {
+    private func drawCrimeMaker(crime: DACrime) {
         var marker = DACrimeMarker(position: CLLocationCoordinate2DMake(crime.lat.doubleValue, crime.long.doubleValue))
         marker.doSettings(crime: crime)
         marker.map = self
+    }
+
+    /**
+     * draw crime heatmap
+     **/
+    private func drawCrimeHeatmap() {
+        if self.crimes == nil { return }
+
+        let drawingCrimes = self.crimes as [DACrime]!
+        var min = CLLocationCoordinate2DMake(drawingCrimes[0].lat.doubleValue, drawingCrimes[0].long.doubleValue)
+        var max = CLLocationCoordinate2DMake(drawingCrimes[0].lat.doubleValue, drawingCrimes[0].long.doubleValue)
+
+        var locations: [CLLocation] = []
+        var weights: [NSNumber] = []
+        for crime in drawingCrimes {
+            let lat = crime.lat.doubleValue
+            let long = crime.long.doubleValue
+            locations.append(CLLocation(latitude: lat, longitude: long))
+            weights.append(NSNumber(double: 1.0))
+            if lat < min.latitude { min.latitude = lat }
+            if long < min.longitude { min.longitude = long }
+            if lat > max.latitude { max.latitude = lat }
+            if long > max.longitude { max.longitude = long }
+        }
+        let center = self.projection.coordinateForPoint(CGPointMake(self.frame.size.width/2.0, self.frame.size.height))
+        var marker = DACrimeHeatmapMarker(position: center)
+        marker.map = self
+        marker.draggable = false
+        marker.boost = 1.0
+        marker.weights = weights
+        marker.locations = locations
+        marker.draw()
     }
 
     /**

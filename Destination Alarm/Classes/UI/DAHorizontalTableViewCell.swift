@@ -19,7 +19,6 @@ class DAHorizontalTableViewCell: UIView {
 
     /// MARK: - property
 
-    var data: DAHorizontalTableViewData!
     var delegate: DAHorizontalTableViewCellDelegate?
 
     @IBOutlet weak var checkBoxButton: UIButton!
@@ -45,24 +44,24 @@ class DAHorizontalTableViewCell: UIView {
         if button == self.checkBoxButton {
             let isOn = (self.checkBoxButton.imageForState(.Normal) == nil)
             self.setCheckBox(isOn: isOn)
+
+            // delegate
+            if self.delegate != nil {
+                self.delegate?.horizontalTableViewCell(self, wasOn: isOn)
+            }
         }
     }
 
 
-    /// MARK: - private api
+    /// MARK: - publc api
 
     /**
      * toggle checkbox on and off
      * @param isOn Bool
      **/
-    private func setCheckBox(#isOn: Bool) {
+    func setCheckBox(#isOn: Bool) {
         let icon = (isOn) ? IonIcons.imageWithIcon(ion_ios_checkmark_empty, size: self.frame.size.width, color: UIColor.grayColor()) : nil
         self.checkBoxButton.setImage(icon, forState: .Normal)
-
-        // delegate
-        if self.delegate != nil {
-            self.delegate?.horizontalTableViewCell(self, wasOn: isOn)
-        }
     }
 
 }

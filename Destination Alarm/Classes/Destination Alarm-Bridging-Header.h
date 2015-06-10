@@ -5,6 +5,7 @@
 /// ui
 #import "QTouchposeApplication.h"
 #import "BFPaperButton.h"
+#import "LFHeatMap.h"
 #import "TYMActivityIndicatorView.h"
 /// network
 #import "ISHTTPOperation.h"

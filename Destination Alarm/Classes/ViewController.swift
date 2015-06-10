@@ -79,13 +79,6 @@ class ViewController: UIViewController {
         self.view.addSubview(self.horizontalTableView)
         self.horizontalTableView.doSettings()
         self.horizontalTableView.delegate = self
-        // crime checkbox
-//        let crimeCheckBoxNib = UINib(nibName: DANSStringFromClass(DACheckBoxView), bundle:nil)
-//        let crimeCheckBoxViews = crimeCheckBoxNib.instantiateWithOwner(nil, options: nil)
-//        self.crimeCheckBoxView = crimeCheckBoxViews[0] as! DACheckBoxView
-//        self.crimeCheckBoxView.delegate = self
-//        self.view.addSubview(self.crimeCheckBoxView)
-//        self.crimeCheckBoxView.design(parentView: self.view)
 
         // location manager
         self.locationManager = CLLocationManager()
@@ -95,7 +88,6 @@ class ViewController: UIViewController {
         self.locationManager.distanceFilter = 300
         self.locationManager.startUpdatingLocation()
 
-        //self.view.bringSubviewToFront(self.crimeCheckBoxView)
         self.view.bringSubviewToFront(self.horizontalTableView)
         self.view.bringSubviewToFront(self.searchResultView)
         self.view.bringSubviewToFront(self.searchBoxView)
@@ -165,6 +157,10 @@ extension ViewController: GMSMapViewDelegate {
         self.requestDirectoin()
     }
 
+    func mapView(mapView: GMSMapView, didChangeCameraPosition position: GMSCameraPosition) {
+        self.mapView.draw()
+    }
+
     func mapView(mapView: GMSMapView,  didDragMarker marker:GMSMarker) {
     }
 
@@ -216,6 +212,8 @@ extension ViewController: DASearchResultViewDelegate {
 extension ViewController: DAHorizontalTableViewDelegate {
 
     func tableView(tableView: DAHorizontalTableView, indexPath: NSIndexPath, wasOn: Bool) {
+        let markerType = tableView.dataSource[indexPath.row].markerType
+        self.mapView.setCrimeMarkerType(markerType)
         let location = self.mapView.myLocation
         let on = wasOn && (location != nil)
         self.mapView.setCrimes(on ? DACrime.fetch(location: location, radius: 15.0) : nil)

@@ -7,7 +7,7 @@ class DAWaypointMarker: GMSMarker {
      * do settings (design, draggable, etc)
      **/
     func doSettings() {
-        self.icon = DACrimeMarker.markerImageWithColor(UIColor.blueColor())
+        self.icon = DAWaypointMarker.markerImageWithColor(UIColor.blueColor())
         self.draggable = true
     }
 
