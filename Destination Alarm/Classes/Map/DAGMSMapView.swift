@@ -14,7 +14,7 @@ class DAGMSMapView: GMSMapView {
     /// crimes
     private var crimes: [DACrime]?
     /// crime marker type
-    private var crimeMarkerType = DAMarker.None
+    private var crimeMarkerType = DAVisualization.None
 
     /// crime marker type
     private var heatmapView: UIImageView?
@@ -35,10 +35,10 @@ class DAGMSMapView: GMSMapView {
         // crime
         if self.crimes != nil {
             switch (self.crimeMarkerType) {
-                case DAMarker.CrimePoint:
+                case DAVisualization.CrimePoint:
                     self.drawCrimeMakers()
                     break
-                case DAMarker.CrimeHeatmap:
+                case DAVisualization.CrimeHeatmap:
                     self.drawCrimeHeatmap()
                     break
                 default:
@@ -61,9 +61,9 @@ class DAGMSMapView: GMSMapView {
 
     /**
      * set crime marker type
-     * @param markerType DAMarker
+     * @param markerType DAVisualization
      **/
-    func setCrimeMarkerType(markerType: DAMarker) {
+    func setCrimeMarkerType(markerType: DAVisualization) {
         self.crimeMarkerType = markerType
     }
 
@@ -73,8 +73,8 @@ class DAGMSMapView: GMSMapView {
      **/
     func setCrimes(crimes: [DACrime]?) {
         self.crimes = crimes
-        if self.crimes == nil { self.crimeMarkerType = DAMarker.None }
-        else if self.crimes!.count == 0 { self.crimeMarkerType = DAMarker.None }
+        if self.crimes == nil { self.crimeMarkerType = DAVisualization.None }
+        else if self.crimes!.count == 0 { self.crimeMarkerType = DAVisualization.None }
     }
 
     /**

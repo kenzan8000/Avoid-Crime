@@ -216,6 +216,16 @@ extension ViewController: DAHorizontalTableViewDelegate {
     func tableView(tableView: DAHorizontalTableView, indexPath: NSIndexPath, wasOn: Bool) {
         let markerType = tableView.dataSource[indexPath.row].markerType
         self.mapView.setCrimeMarkerType(markerType)
+        switch (markerType) {
+            case DAVisualization.CrimePoint:
+                DACrime.requestToGetNewCrimes()
+                break
+            case DAVisualization.CrimeHeatmap:
+                DACrime.requestToGetNewCrimes()
+                break
+            default:
+                break
+        }
 
         //let location = self.mapView.myLocation
         //let on = wasOn && (location != nil)

@@ -16,6 +16,20 @@ class DACrime: NSManagedObject {
     /// MARK: - class method
 
     /**
+     * GET crime data from SFGovernment
+     **/
+    class func requestToGetNewCrimes() {
+        // crime API
+        if DACrime.hasData() { return }
+        DACrimeClient.sharedInstance.cancelGetCrime()
+        DACrimeClient.sharedInstance.getCrime(
+            completionHandler: { (json) in
+                DACrime.save(json: json)
+            }
+        )
+    }
+
+    /**
      * fetch datas from coredata
      * @param minimumCoordinate CLLocationCoordinate2D
      * @param maximumCoordinate CLLocationCoordinate2D

@@ -42,8 +42,8 @@ class DAHorizontalTableView: UIView {
         // cells
         var offset: CGFloat = 0.0
         let markerTypes = [
-            DAMarker.CrimePoint,
-            DAMarker.CrimeHeatmap,
+            DAVisualization.CrimePoint,
+            DAVisualization.CrimeHeatmap,
         ]
 
         for var i = 0; i < markerTypes.count; i++ {

@@ -98,7 +98,7 @@ struct DASFGovernment {
 
 
 /// MARK: - marker
-enum DAMarker {
+enum DAVisualization {
     case None
     case Destination
     case Waypoint
