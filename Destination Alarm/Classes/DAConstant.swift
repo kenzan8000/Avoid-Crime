@@ -93,6 +93,35 @@ struct DASFGovernment {
     struct Crime {
         static let Days =                     1
         static let MonthsAgo =                1
+
+        static let Weights = [
+            "ASSAULT" : NSNumber(double: 1.0),
+            "ROBBERY" : NSNumber(double: 0.5),
+            "LARCENY/THEFT" : NSNumber(double: 0.25),
+            "DRUG/NARCOTIC" : NSNumber(double: 0.5),
+            "ARSON" : NSNumber(double: 0.5),
+            "WEAPON LAWS" : NSNumber(double: 1.0),
+            "MISSING PERSON" : NSNumber(double: 1.0),
+            "VANDALISM" : NSNumber(double: 0.75),
+            "VEHICLE THEFT" : NSNumber(double: 1.0),
+            "OTHER OFFENSES" : NSNumber(double: 1.0),
+            "STOLEN PROPERTY" : NSNumber(double: 1.0),
+            "PROSTITUTION" : NSNumber(double: 1.0),
+            "DRIVING UNDER THE INFLUENCE" : NSNumber(double: 0.75),
+            "DRUNKENNESS" : NSNumber(double: 0.5),
+            "BURGLARY" : NSNumber(double: 0.25),
+            "SUSPICIOUS OCC" : NSNumber(double: 0.5),
+            "SEX OFFENSES), FORCIBLE" : NSNumber(double: 1.0),
+            "KIDNAPPING" : NSNumber(double: 1.0),
+            "DISORDERLY CONDUCT" : NSNumber(double: 0.5),
+            "SECONDARY CODES" : NSNumber(double: 0.5),
+            "TRESPASS" : NSNumber(double: 0.25),
+            "FRAUD" : NSNumber(double: 0.25),
+            "FORGERY/COUNTERFEITING" : NSNumber(double: 0.25),
+            "WARRANTS" : NSNumber(double: 0.25),
+            "LOITERING" : NSNumber(double: 1.0),
+            "THE OTHERS" : NSNumber(double: 0.25),
+        ]
     }
 }
 

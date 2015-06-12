@@ -16,9 +16,6 @@ class DAGMSMapView: GMSMapView {
     /// crime marker type
     private var crimeMarkerType = DAVisualization.None
 
-    /// crime marker type
-    private var heatmapView: UIImageView?
-
 
     /// MARK: - public api
 
@@ -27,10 +24,6 @@ class DAGMSMapView: GMSMapView {
      **/
     func draw() {
         self.clear()
-        if self.heatmapView != nil {
-            self.heatmapView!.removeFromSuperview()
-            self.heatmapView = nil
-        }
 
         // crime
         if self.crimes != nil {
@@ -242,33 +235,14 @@ class DAGMSMapView: GMSMapView {
 
         let drawingCrimes = self.crimes as [DACrime]!
         if drawingCrimes.count == 0 { return }
-        var min = CLLocationCoordinate2DMake(drawingCrimes[0].lat.doubleValue, drawingCrimes[0].long.doubleValue)
-        var max = CLLocationCoordinate2DMake(drawingCrimes[0].lat.doubleValue, drawingCrimes[0].long.doubleValue)
 
-        var locations: [CLLocation] = []
-        var weights: [NSNumber] = []
-        for crime in drawingCrimes {
-            let lat = crime.lat.doubleValue
-            let long = crime.long.doubleValue
-            locations.append(CLLocation(latitude: lat, longitude: long))
-            weights.append(NSNumber(double: 1.0))
-            if lat < min.latitude { min.latitude = lat }
-            if long < min.longitude { min.longitude = long }
-            if lat > max.latitude { max.latitude = lat }
-            if long > max.longitude { max.longitude = long }
-        }
-        let center = self.projection.coordinateForPoint(CGPointMake(self.frame.size.width/2.0, self.frame.size.height))
-        var marker = DACrimeHeatmapMarker(position: center)
-        //marker.map = self
-        marker.draggable = false
-        marker.boost = 1.0
-        marker.weights = weights
-        marker.locations = locations
-        //marker.draw()
-        let image = marker.heatmapImage(map: self)
-        self.heatmapView = UIImageView(frame: self.frame)
-        self.heatmapView!.image = image
-        self.addSubview(self.heatmapView!)
+        let overlay = GMSGroundOverlay(
+            position: self.projection.coordinateForPoint(CGPointMake(self.frame.size.width / 2.0, self.frame.size.height / 2.0)),
+            icon: UIImage.heatmapImage(map: self, crimes: drawingCrimes),
+            zoomLevel: CGFloat(self.camera.zoom)
+        )
+        overlay.bearing = self.camera.bearing
+        overlay.map = self
     }
 
     /**

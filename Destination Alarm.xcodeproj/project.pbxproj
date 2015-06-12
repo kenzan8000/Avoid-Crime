@@ -15,7 +15,7 @@
 		E60F6C801B13F5B9009BC03B /* DASearchResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E60F6C7F1B13F5B9009BC03B /* DASearchResultView.xib */; };
 		E62D9F2C1B1A812300AAE406 /* DAGoogleMapOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62D9F2B1B1A812300AAE406 /* DAGoogleMapOperationQueue.swift */; };
 		E62D9F2E1B1A813200AAE406 /* DACrimeOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62D9F2D1B1A813200AAE406 /* DACrimeOperationQueue.swift */; };
-		E64C700E1B2815D900D08371 /* DACrimeHeatmapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64C700D1B2815D900D08371 /* DACrimeHeatmapMarker.swift */; };
+		E64C700E1B2815D900D08371 /* UIImage+DACrimeHeatmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64C700D1B2815D900D08371 /* UIImage+DACrimeHeatmap.swift */; };
 		E6556A5C1B2793FF00E6C943 /* DAHorizontalTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6556A591B2793FF00E6C943 /* DAHorizontalTableView.swift */; };
 		E6556A5E1B2797E700E6C943 /* DAHorizontalTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6556A5D1B2797E700E6C943 /* DAHorizontalTableView.xib */; };
 		E6556A601B27991000E6C943 /* DAHorizontalTableViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6556A5F1B27991000E6C943 /* DAHorizontalTableViewData.swift */; };
@@ -70,7 +70,7 @@
 		E60F6C7F1B13F5B9009BC03B /* DASearchResultView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DASearchResultView.xib; sourceTree = "<group>"; };
 		E62D9F2B1B1A812300AAE406 /* DAGoogleMapOperationQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAGoogleMapOperationQueue.swift; sourceTree = "<group>"; };
 		E62D9F2D1B1A813200AAE406 /* DACrimeOperationQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DACrimeOperationQueue.swift; sourceTree = "<group>"; };
-		E64C700D1B2815D900D08371 /* DACrimeHeatmapMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DACrimeHeatmapMarker.swift; sourceTree = "<group>"; };
+		E64C700D1B2815D900D08371 /* UIImage+DACrimeHeatmap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+DACrimeHeatmap.swift"; sourceTree = "<group>"; };
 		E6556A591B2793FF00E6C943 /* DAHorizontalTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAHorizontalTableView.swift; sourceTree = "<group>"; };
 		E6556A5D1B2797E700E6C943 /* DAHorizontalTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAHorizontalTableView.xib; sourceTree = "<group>"; };
 		E6556A5F1B27991000E6C943 /* DAHorizontalTableViewData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAHorizontalTableViewData.swift; sourceTree = "<group>"; };
@@ -154,7 +154,7 @@
 				E6ED99821B12D00C0071CD63 /* DACrimeClient.swift */,
 				E62D9F2D1B1A813200AAE406 /* DACrimeOperationQueue.swift */,
 				E6C574431B251FF80011D795 /* DACrimeMarker.swift */,
-				E64C700D1B2815D900D08371 /* DACrimeHeatmapMarker.swift */,
+				E64C700D1B2815D900D08371 /* UIImage+DACrimeHeatmap.swift */,
 			);
 			path = Crime;
 			sourceTree = "<group>";
@@ -404,7 +404,7 @@
 				E60F6C7A1B13E07D009BC03B /* DADestination.swift in Sources */,
 				E6A00A571B25305700994A57 /* NSDate+Ago.swift in Sources */,
 				E662B5621B1132D300F0DAB2 /* DACoreDataManager.swift in Sources */,
-				E64C700E1B2815D900D08371 /* DACrimeHeatmapMarker.swift in Sources */,
+				E64C700E1B2815D900D08371 /* UIImage+DACrimeHeatmap.swift in Sources */,
 				E6C574441B251FF80011D795 /* DACrimeMarker.swift in Sources */,
 				E6ED99831B12D00C0071CD63 /* DACrimeClient.swift in Sources */,
 				E6ED997D1B12CFE00071CD63 /* DAConstant.swift in Sources */,
