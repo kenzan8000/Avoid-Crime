@@ -8,6 +8,7 @@ class DACrime: NSManagedObject {
 
     /// MARK: - property
     @NSManaged var category: String
+    @NSManaged var desc: String
     @NSManaged var lat: NSNumber
     @NSManaged var long: NSNumber
     @NSManaged var timestamp: NSDate
@@ -163,6 +164,7 @@ class DACrime: NSManagedObject {
 
             var crime = NSEntityDescription.insertNewObjectForEntityForName("DACrime", inManagedObjectContext: context) as! DACrime
             crime.category = crimeData["category"].stringValue
+            crime.desc = crimeData["descript"].stringValue
             if let location = crimeData["location"].dictionary {
                 crime.lat = location["latitude"]!.numberValue
                 crime.long = location["longitude"]!.numberValue

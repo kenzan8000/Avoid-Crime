@@ -8,13 +8,14 @@ class DACrimeMarker: GMSMarker {
      * @param crime DACrime
      **/
     func doSettings(#crime: DACrime) {
-
-        //self.icon = DACrimeMarker.markerImageWithColor(UIColor.blackColor())
+        // settings
         var iconName = crime.category.lowercaseString.stringByReplacingOccurrencesOfString("/", withString: ":", options: nil, range: nil)
         var image = UIImage(named: "marker_"+iconName)
         if image == nil { image = UIImage(named: "marker_question") }
         self.icon = image
         self.draggable = false
+        self.title = crime.category
+        self.snippet = crime.desc
     }
 
 }

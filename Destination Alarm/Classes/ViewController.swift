@@ -5,7 +5,6 @@ import UIKit
 class ViewController: UIViewController {
 
     /// MARK: - property
-    @IBOutlet weak var testButton: UIButton!
     var destinationString: String = ""
 
     var mapView: DAGMSMapView!
@@ -34,8 +33,6 @@ class ViewController: UIViewController {
      * @param button UIButton
      **/
     @IBAction func touchedUpInside(#button: UIButton) {
-        self.mapView.removeAllWaypoints()
-        self.requestDirectoin()
     }
 
 
@@ -90,7 +87,6 @@ class ViewController: UIViewController {
         self.view.bringSubviewToFront(self.horizontalTableView)
         self.view.bringSubviewToFront(self.searchResultView)
         self.view.bringSubviewToFront(self.searchBoxView)
-        self.view.bringSubviewToFront(self.testButton)
     }
 
     /**
@@ -144,6 +140,7 @@ extension ViewController: GMSMapViewDelegate {
     }
 
     func mapView(mapView: GMSMapView, didTapMarker marker: GMSMarker) -> Bool {
+        self.mapView.selectedMarker = marker
         return true
     }
 
@@ -155,6 +152,10 @@ extension ViewController: GMSMapViewDelegate {
         self.mapView.endMovingWaypoint(marker.position)
         self.requestDirectoin()
     }
+/*
+    func mapView(mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView {
+    }
+*/
 
     func mapView(mapView: GMSMapView, didChangeCameraPosition position: GMSCameraPosition) {
         if !(self.mapView.isDraggingNow()) {
