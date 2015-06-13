@@ -11,7 +11,6 @@ class ViewController: UIViewController {
     var mapView: DAGMSMapView!
     var searchBoxView: DASearchBoxView!
     var searchResultView: DASearchResultView!
-    //var crimeCheckBoxView: DACheckBoxView!
     var horizontalTableView: DAHorizontalTableView!
     var locationManager: CLLocationManager!
 
@@ -158,9 +157,11 @@ extension ViewController: GMSMapViewDelegate {
     }
 
     func mapView(mapView: GMSMapView, didChangeCameraPosition position: GMSCameraPosition) {
-        let crimes = DACrime.fetch(minimumCoordinate: self.mapView.getMinimumCoordinate(), maximumCoordinate: self.mapView.getMaximumCoordinate())
-        if crimes.count > 0 { self.mapView.setCrimes(crimes) }
-        self.mapView.draw()
+        if !(self.mapView.isDraggingNow()) {
+            let crimes = DACrime.fetch(minimumCoordinate: self.mapView.getMinimumCoordinate(), maximumCoordinate: self.mapView.getMaximumCoordinate())
+            if crimes.count > 0 { self.mapView.setCrimes(crimes) }
+            self.mapView.draw()
+        }
     }
 
     func mapView(mapView: GMSMapView,  didDragMarker marker:GMSMarker) {

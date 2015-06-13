@@ -6,7 +6,7 @@ class DAGMSMapView: GMSMapView {
     static let sharedInstance = DAGMSMapView()
 
     /// dragging waypoint
-    private var draggingWaypoint: CLLocationCoordinate2D!
+    private var draggingWaypoint: CLLocationCoordinate2D?
     /// waypoints for routing
     var waypoints: [CLLocationCoordinate2D] = []
     /// route json
@@ -140,16 +140,22 @@ class DAGMSMapView: GMSMapView {
         var index = -1
         for var i = 0; i < self.waypoints.count; i++ {
             let location1 = CLLocation(latitude: self.waypoints[i].latitude, longitude: self.waypoints[i].longitude)
-            let location2 = CLLocation(latitude: self.draggingWaypoint.latitude, longitude: self.draggingWaypoint.longitude)
+            let location2 = CLLocation(latitude: self.draggingWaypoint!.latitude, longitude: self.draggingWaypoint!.longitude)
             let meter = location1.distanceFromLocation(location2)
             if meter > 10 { continue }
             index = i
             break
         }
-        self.draggingWaypoint = CLLocationCoordinate2D(latitude: 0, longitude: 0)
-        if index >= 0 {
-            self.waypoints[index] = waypoint
-        }
+        self.draggingWaypoint = nil
+        if index >= 0 { self.waypoints[index] = waypoint }
+    }
+
+    /**
+     * is dragging now?
+     * @return BOOL
+     **/
+    func isDraggingNow() -> Bool {
+        return (self.draggingWaypoint != nil)
     }
 
 
