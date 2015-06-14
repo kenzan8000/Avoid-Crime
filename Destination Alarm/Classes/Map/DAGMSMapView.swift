@@ -170,7 +170,8 @@ class DAGMSMapView: GMSMapView {
             let path = GMSPath(fromEncodedPath: pathString)
             var line = GMSPolyline(path: path)
             line.strokeWidth = 4.0
-            line.tappable = true
+            line.tappable = false
+            line.strokeColor = UIColor(red: CGFloat(35.0/255.0), green: CGFloat(150.0/255.0), blue: CGFloat(80.0/255.0), alpha: 1.0)
             line.map = self
         }
 
