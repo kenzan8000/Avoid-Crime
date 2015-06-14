@@ -30,17 +30,16 @@ class DACrimeButton: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        // shadow
-        self.buttonBackgroundView.layer.shadowOffset = CGSizeMake(0.0, 0.0)
-        self.buttonBackgroundView.layer.shadowColor = UIColor.blackColor().CGColor
-        self.buttonBackgroundView.layer.shadowOpacity = 0.2
-        self.buttonBackgroundView.layer.shadowPath = UIBezierPath(rect: self.buttonBackgroundView.bounds).CGPath
         // rounded corner
         self.buttonBackgroundView.layer.cornerRadius = self.buttonBackgroundView.frame.size.width / 2.0
         self.buttonBackgroundView.layer.masksToBounds = true
         // rounded corner
         self.button.layer.cornerRadius = self.buttonBackgroundView.frame.size.width / 2.0
         self.button.layer.masksToBounds = true
+        // border
+        self.button.layer.borderColor = UIColor.grayColor().CGColor
+        self.button.layer.borderWidth = 0.5
+        self.button.clipsToBounds = true
 
         self.setCheckBox(isOn: false)
     }
@@ -74,7 +73,7 @@ class DACrimeButton: UIView {
      * @param isOn Bool
      **/
     func setCheckBox(#isOn: Bool) {
-        self.button.alpha = (isOn) ? 1.0 : 0.5
+        self.button.alpha = (isOn) ? 1.0 : 0.65
     }
 
 }
