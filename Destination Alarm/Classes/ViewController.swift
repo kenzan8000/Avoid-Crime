@@ -10,7 +10,8 @@ class ViewController: UIViewController {
     var mapView: DAGMSMapView!
     var searchBoxView: DASearchBoxView!
     var searchResultView: DASearchResultView!
-    var horizontalTableView: DAHorizontalTableView!
+    var crimePointButton: DACrimeButton!
+    var crimeHeatmapButton: DACrimeButton!
     var locationManager: CLLocationManager!
 
 
@@ -67,14 +68,29 @@ class ViewController: UIViewController {
         self.view.addSubview(self.searchBoxView)
         self.searchBoxView.design(parentView: self.view)
 
-        // horizontal table view
-        let horizontalTableViewNib = UINib(nibName: DANSStringFromClass(DAHorizontalTableView), bundle:nil)
-        let horizontalTableViews = horizontalTableViewNib.instantiateWithOwner(nil, options: nil)
-        self.horizontalTableView = horizontalTableViews[0] as! DAHorizontalTableView
-        self.horizontalTableView.frame = CGRectMake(0, self.view.frame.size.height-self.horizontalTableView.frame.size.height, self.view.frame.size.width, self.horizontalTableView.frame.size.height)
-        self.view.addSubview(self.horizontalTableView)
-        self.horizontalTableView.doSettings()
-        self.horizontalTableView.delegate = self
+        // crime buttons
+        let crimePointButtonNib = UINib(nibName: DANSStringFromClass(DACrimeButton), bundle:nil)
+        let crimePointButtons = crimePointButtonNib.instantiateWithOwner(nil, options: nil)
+        self.crimePointButton = crimePointButtons[0] as! DACrimeButton
+        let crimeHeatmapButtonNib = UINib(nibName: DANSStringFromClass(DACrimeButton), bundle:nil)
+        let crimeHeatmapButtons = crimeHeatmapButtonNib.instantiateWithOwner(nil, options: nil)
+        self.crimeHeatmapButton = crimeHeatmapButtons[0] as! DACrimeButton
+        let crimeButtons = [self.crimeHeatmapButton, self.crimePointButton]
+        let crimeButtonImages = [UIImage(named: "button_crime_heatmap")!, UIImage(named: "button_crime_point")!]
+        let xOffset: CGFloat = 20.0
+        let yOffset: CGFloat = 10.0
+        for var i = 0; i < crimeButtons.count; i++ {
+            var crimeButton = crimeButtons[i]
+            crimeButton.frame = CGRectMake(
+                self.view.frame.size.width - crimeButton.frame.size.width - xOffset,
+                self.view.frame.size.height - (crimeButton.frame.size.height + yOffset) * CGFloat(i+1),
+                crimeButton.frame.size.width,
+                crimeButton.frame.size.height
+            )
+            crimeButton.setImage(crimeButtonImages[i])
+            self.view.addSubview(crimeButton)
+            crimeButton.delegate = self
+        }
 
         // location manager
         self.locationManager = CLLocationManager()
@@ -84,7 +100,6 @@ class ViewController: UIViewController {
         self.locationManager.distanceFilter = 300
         self.locationManager.startUpdatingLocation()
 
-        self.view.bringSubviewToFront(self.horizontalTableView)
         self.view.bringSubviewToFront(self.searchResultView)
         self.view.bringSubviewToFront(self.searchBoxView)
     }
@@ -212,26 +227,21 @@ extension ViewController: DASearchResultViewDelegate {
 }
 
 
-/// MARK: - DAHorizontalTableViewDelegate
-extension ViewController: DAHorizontalTableViewDelegate {
+/// MARK: - DACrimeButtonDelegate
+extension ViewController: DACrimeButtonDelegate {
 
-    func tableView(tableView: DAHorizontalTableView, indexPath: NSIndexPath, wasOn: Bool) {
-        let markerType = tableView.dataSource[indexPath.row].markerType
-        self.mapView.setCrimeMarkerType(markerType)
-        switch (markerType) {
-            case DAVisualization.CrimePoint:
-                DACrime.requestToGetNewCrimes()
-                break
-            case DAVisualization.CrimeHeatmap:
-                DACrime.requestToGetNewCrimes()
-                break
-            default:
-                break
+    func crimeButton(crimeButton: DACrimeButton, wasOn: Bool) {
+        var markerType = DAVisualization.None
+        if crimeButton == self.crimePointButton {
+            markerType = DAVisualization.CrimePoint
+            self.crimeHeatmapButton.setCheckBox(isOn: false)
         }
-
-        //let location = self.mapView.myLocation
-        //let on = wasOn && (location != nil)
-        //self.mapView.setCrimes(on ? DACrime.fetch(location: location, radius: 15.0) : nil)
+        else if crimeButton == self.crimeHeatmapButton {
+            markerType = DAVisualization.CrimeHeatmap
+            self.crimePointButton.setCheckBox(isOn: false)
+        }
+        self.mapView.setCrimeMarkerType(markerType)
+        if markerType != DAVisualization.None { DACrime.requestToGetNewCrimes() }
 
         let on = wasOn
         self.mapView.setCrimes(on ? DACrime.fetch(minimumCoordinate: self.mapView.getMinimumCoordinate(), maximumCoordinate: self.mapView.getMaximumCoordinate()) : nil)

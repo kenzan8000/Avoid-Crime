@@ -7,31 +7,31 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="Bl4-ai-eKI" customClass="DAHorizontalTableViewCell" customModule="Destination_Alarm" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="64" height="48"/>
+        <view contentMode="scaleToFill" id="Bl4-ai-eKI" customClass="DACrimeButton" customModule="Destination_Alarm" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" id="FNY-mQ-2H0">
-                    <rect key="frame" x="20" y="12" width="24" height="24"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6Bj-y0-rLc">
-                    <rect key="frame" x="8" y="0.0" width="48" height="48"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="touchedUpInsideButton:" destination="Bl4-ai-eKI" eventType="touchUpInside" id="evC-pj-Zbe"/>
+                        <action selector="touchedUpInsideButton:" destination="Bl4-ai-eKI" eventType="touchUpInside" id="8bw-vv-p3Y"/>
                     </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="checkBoxButton" destination="6Bj-y0-rLc" id="s0S-Cb-ivd"/>
-                <outlet property="checkBoxButtonBackgroundView" destination="FNY-mQ-2H0" id="7Ki-Sw-tRw"/>
+                <outlet property="button" destination="6Bj-y0-rLc" id="zUn-D1-zqz"/>
+                <outlet property="buttonBackgroundView" destination="FNY-mQ-2H0" id="nvN-OT-oP1"/>
             </connections>
             <point key="canvasLocation" x="318" y="342"/>
         </view>
