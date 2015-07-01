@@ -25,13 +25,11 @@ extension UIImage {
             points.append(NSValue(CGPoint: map.projection.pointForCoordinate(location.coordinate)))
         }
 
-        let image = LFHeatMap.heatMapWithRect(
+        let image = DACrimeHeatmap.crimeHeatmapWithRect(
             map.frame,
             boost: 1.0,
             points: points,
-            weights: weights,
-            weightsAdjustmentEnabled: false,
-            groupingEnabled: true
+            weights: weights
         )
 
         return image

@@ -13,6 +13,7 @@
 		E60F6C7C1B13E62D009BC03B /* DASearchBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60F6C7B1B13E62D009BC03B /* DASearchBoxView.swift */; };
 		E60F6C7E1B13F2E9009BC03B /* DASearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60F6C7D1B13F2E9009BC03B /* DASearchResultView.swift */; };
 		E60F6C801B13F5B9009BC03B /* DASearchResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E60F6C7F1B13F5B9009BC03B /* DASearchResultView.xib */; };
+		E6151FF71B32573C0085A992 /* yelp_categories.json in Resources */ = {isa = PBXBuildFile; fileRef = E6151FF61B32573C0085A992 /* yelp_categories.json */; };
 		E62D9F2C1B1A812300AAE406 /* DAGoogleMapOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62D9F2B1B1A812300AAE406 /* DAGoogleMapOperationQueue.swift */; };
 		E62D9F2E1B1A813200AAE406 /* DACrimeOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62D9F2D1B1A813200AAE406 /* DACrimeOperationQueue.swift */; };
 		E638F9D91B2CF9060069A870 /* DACrimeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E638F9D81B2CF9060069A870 /* DACrimeButton.swift */; };
@@ -28,6 +29,7 @@
 		E662B57E1B114C0E00F0DAB2 /* NSURL+Queries.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B5791B114C0E00F0DAB2 /* NSURL+Queries.swift */; };
 		E671BC331B07F783002394F6 /* DASearchBoxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E671BC321B07F783002394F6 /* DASearchBoxView.xib */; };
 		E6A00A571B25305700994A57 /* NSDate+Ago.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A00A561B25305700994A57 /* NSDate+Ago.swift */; };
+		E6A936371B437D75003456A0 /* DACrimeHeatmap.m in Sources */ = {isa = PBXBuildFile; fileRef = E6A936361B437D75003456A0 /* DACrimeHeatmap.m */; };
 		E6BBE6E61B11AECA008F928C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BBE6E51B11AECA008F928C /* main.swift */; };
 		E6C574441B251FF80011D795 /* DACrimeMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C574431B251FF80011D795 /* DACrimeMarker.swift */; };
 		E6C574471B2520780011D795 /* DADestinationMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C574451B2520780011D795 /* DADestinationMarker.swift */; };
@@ -65,6 +67,7 @@
 		E60F6C7B1B13E62D009BC03B /* DASearchBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DASearchBoxView.swift; sourceTree = "<group>"; };
 		E60F6C7D1B13F2E9009BC03B /* DASearchResultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DASearchResultView.swift; sourceTree = "<group>"; };
 		E60F6C7F1B13F5B9009BC03B /* DASearchResultView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DASearchResultView.xib; sourceTree = "<group>"; };
+		E6151FF61B32573C0085A992 /* yelp_categories.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = yelp_categories.json; sourceTree = "<group>"; };
 		E62D9F2B1B1A812300AAE406 /* DAGoogleMapOperationQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAGoogleMapOperationQueue.swift; sourceTree = "<group>"; };
 		E62D9F2D1B1A813200AAE406 /* DACrimeOperationQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DACrimeOperationQueue.swift; sourceTree = "<group>"; };
 		E638F9D81B2CF9060069A870 /* DACrimeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DACrimeButton.swift; sourceTree = "<group>"; };
@@ -81,6 +84,8 @@
 		E662B5791B114C0E00F0DAB2 /* NSURL+Queries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+Queries.swift"; sourceTree = "<group>"; };
 		E671BC321B07F783002394F6 /* DASearchBoxView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DASearchBoxView.xib; sourceTree = "<group>"; };
 		E6A00A561B25305700994A57 /* NSDate+Ago.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Ago.swift"; sourceTree = "<group>"; };
+		E6A936351B437D75003456A0 /* DACrimeHeatmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACrimeHeatmap.h; sourceTree = "<group>"; };
+		E6A936361B437D75003456A0 /* DACrimeHeatmap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACrimeHeatmap.m; sourceTree = "<group>"; };
 		E6BBE6E51B11AECA008F928C /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		E6C574431B251FF80011D795 /* DACrimeMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DACrimeMarker.swift; sourceTree = "<group>"; };
 		E6C574451B2520780011D795 /* DADestinationMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DADestinationMarker.swift; sourceTree = "<group>"; };
@@ -129,9 +134,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E6151FF41B3255F80085A992 /* Yelp */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Yelp;
+			sourceTree = "<group>";
+		};
+		E6151FF51B32573C0085A992 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				E6151FF61B32573C0085A992 /* yelp_categories.json */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
 		E662B55D1B1131F200F0DAB2 /* Crime */ = {
 			isa = PBXGroup;
 			children = (
+				E6A936351B437D75003456A0 /* DACrimeHeatmap.h */,
+				E6A936361B437D75003456A0 /* DACrimeHeatmap.m */,
 				E662B56A1B113F6F00F0DAB2 /* DACrime.swift */,
 				E6ED99821B12D00C0071CD63 /* DACrimeClient.swift */,
 				E62D9F2D1B1A813200AAE406 /* DACrimeOperationQueue.swift */,
@@ -235,8 +257,9 @@
 				E6E5C2A61AC60546001FB516 /* Destination Alarm-Bridging-Header.h */,
 				E671BC311B07F747002394F6 /* Search */,
 				E67AD26F1AFC469D00FE0E28 /* Map */,
-				E6ED99841B12D8240071CD63 /* GoogleMap */,
 				E662B55D1B1131F200F0DAB2 /* Crime */,
+				E6ED99841B12D8240071CD63 /* GoogleMap */,
+				E6151FF41B3255F80085A992 /* Yelp */,
 				E662B55E1B11328100F0DAB2 /* Model */,
 				E662B5761B114C0E00F0DAB2 /* NSFoundation+Extension */,
 				E67AD2711AFC46CD00FE0E28 /* SwiftyJSON */,
@@ -257,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				E6EEB4E11AC609B300073354 /* Plists */,
+				E6151FF51B32573C0085A992 /* JSON */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -335,6 +359,7 @@
 			files = (
 				E6E5C29F1AC60510001FB516 /* Main.storyboard in Resources */,
 				E638F9DB1B2CF9800069A870 /* DACrimeButton.xib in Resources */,
+				E6151FF71B32573C0085A992 /* yelp_categories.json in Resources */,
 				E6E5C29E1AC60510001FB516 /* LaunchScreen.xib in Resources */,
 				E6E5C2591AC6044E001FB516 /* Images.xcassets in Resources */,
 				E60F6C801B13F5B9009BC03B /* DASearchResultView.xib in Resources */,
@@ -400,6 +425,7 @@
 				E6C574471B2520780011D795 /* DADestinationMarker.swift in Sources */,
 				E60F6C761B12E0FC009BC03B /* DAGMSMapView.swift in Sources */,
 				E62D9F2C1B1A812300AAE406 /* DAGoogleMapOperationQueue.swift in Sources */,
+				E6A936371B437D75003456A0 /* DACrimeHeatmap.m in Sources */,
 				E638F9D91B2CF9060069A870 /* DACrimeButton.swift in Sources */,
 				E662B56F1B113FA300F0DAB2 /* SwiftyJSON.swift in Sources */,
 				E662B56B1B113F6F00F0DAB2 /* DACrime.swift in Sources */,

@@ -171,7 +171,6 @@ extension ViewController: GMSMapViewDelegate {
     func mapView(mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView {
     }
 */
-
     func mapView(mapView: GMSMapView, didChangeCameraPosition position: GMSCameraPosition) {
         if !(self.mapView.isDraggingNow()) {
             let crimes = DACrime.fetch(minimumCoordinate: self.mapView.getMinimumCoordinate(), maximumCoordinate: self.mapView.getMaximumCoordinate())
