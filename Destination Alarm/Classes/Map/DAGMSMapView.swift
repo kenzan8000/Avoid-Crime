@@ -171,8 +171,9 @@ class DAGMSMapView: GMSMapView {
             var line = GMSPolyline(path: path)
             line.strokeWidth = 4.0
             line.tappable = false
-            line.strokeColor = UIColor(red: CGFloat(35.0/255.0), green: CGFloat(150.0/255.0), blue: CGFloat(80.0/255.0), alpha: 1.0)
+            line.strokeColor = UIColor(red: CGFloat(35.0/255.0), green: CGFloat(150.0/255.0), blue: CGFloat(232.0/255.0), alpha: 1.0)
             line.map = self
+            line.zIndex = DAGoogleMap.ZIndex.Route
         }
 
         let locations = self.endLocations()
@@ -201,6 +202,7 @@ class DAGMSMapView: GMSMapView {
         var marker = DAWaypointMarker(position: location)
         marker.doSettings()
         marker.map = self
+        marker.zIndex = DAGoogleMap.ZIndex.Waypoint
     }
 
     /**
@@ -211,6 +213,7 @@ class DAGMSMapView: GMSMapView {
         var marker = DADestinationMarker(position: location)
         marker.doSettings()
         marker.map = self
+        marker.zIndex = DAGoogleMap.ZIndex.Destination
     }
 
     /**
@@ -232,6 +235,7 @@ class DAGMSMapView: GMSMapView {
         var marker = DACrimeMarker(position: CLLocationCoordinate2DMake(crime.lat.doubleValue, crime.long.doubleValue))
         marker.doSettings(crime: crime)
         marker.map = self
+        marker.zIndex = DAGoogleMap.ZIndex.Icon
     }
 
     /**
@@ -250,6 +254,7 @@ class DAGMSMapView: GMSMapView {
         )
         overlay.bearing = self.camera.bearing
         overlay.map = self
+        overlay.zIndex = DAGoogleMap.ZIndex.Heatmap
     }
 
     /**

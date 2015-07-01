@@ -48,6 +48,15 @@ struct DAGoogleMap {
     /// zoom
     static let Zoom: Float =            13.0
 
+    /// z index
+    struct ZIndex {
+        static let Heatmap: Int32 =            30
+        static let Icon: Int32 =               40
+        static let Route: Int32 =              50
+        static let Waypoint: Int32 =           60
+        static let Destination: Int32 =        70
+    }
+
     /// MARK: - API
     struct API {
         static let Directions =        kURIGoogleMapAPI + "/directions/json" /// directions API
