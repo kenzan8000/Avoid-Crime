@@ -385,29 +385,29 @@ inline static int isqrt(int x)
                 // Normalize density to 0..1
                 floatDensity = (float)density[i] / (float)maxDensity;
 
-                if (floatDensity < 0.20) {
-                    rgba[indexOrigin] = 0;
-                    rgba[indexOrigin+1] = 64 * floatDensity / 0.20;
+                if (floatDensity < 0.25) {
+                    rgba[indexOrigin] = 32;
+                    rgba[indexOrigin+1] = 64;
                     rgba[indexOrigin+2] = 0;
-                    rgba[indexOrigin+3] = (rgba[indexOrigin+1] < 64) ? 0 : 96;//floatDensity * 128;
+                    rgba[indexOrigin+3] = 64;
                 }
-                else if (floatDensity < 0.40) {
-                    rgba[indexOrigin] = 128 * (floatDensity - 0.20) / 0.20;
-                    rgba[indexOrigin+1] = 64 + 64 * (floatDensity - 0.20) / 0.20;
+                else if (floatDensity < 0.50) {
+                    rgba[indexOrigin] = 32 + 96 * (floatDensity - 0.25) / 0.25;
+                    rgba[indexOrigin+1] = 64 + 64 * (floatDensity - 0.25) / 0.25;
                     rgba[indexOrigin+2] = 0;
-                    rgba[indexOrigin+3] = 128;//floatDensity * 160;
+                    rgba[indexOrigin+3] = 64 + 64  * (floatDensity - 0.25) / 0.25;
                 }
-                else if (floatDensity < 0.60) {
-                    rgba[indexOrigin] = 128 + 64 * (floatDensity - 0.40) / 0.20;
-                    rgba[indexOrigin+1] = 128 - 64 * (floatDensity - 0.40) / 0.20;
+                else if (floatDensity < 0.75) {
+                    rgba[indexOrigin] = 128 + 64 * (floatDensity - 0.50) / 0.25;
+                    rgba[indexOrigin+1] = 128 - 64 * (floatDensity - 0.50) / 0.25;
                     rgba[indexOrigin+2] = 0;
-                    rgba[indexOrigin+3] = 160;//floatDensity * 192;
+                    rgba[indexOrigin+3] = 128 + 64 * (floatDensity - 0.50) / 0.25;
                 }
                 else {
-                    rgba[indexOrigin] = 192 + 64 * (floatDensity - 0.60) / 0.40;
-                    rgba[indexOrigin+1] = 64 - 64 * (floatDensity - 0.60) / 0.40;
+                    rgba[indexOrigin] = 192 + 64 * (floatDensity - 0.75) / 0.25;
+                    rgba[indexOrigin+1] = 64 - 64 * (floatDensity - 0.75) / 0.25;
                     rgba[indexOrigin+2] = 0;
-                    rgba[indexOrigin+3] = 192;//floatDensity * 224;
+                    rgba[indexOrigin+3] = 192 + 63 * (floatDensity - 0.75) / 0.25;
                 }
 
             }
