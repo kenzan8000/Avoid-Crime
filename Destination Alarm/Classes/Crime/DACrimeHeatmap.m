@@ -375,24 +375,32 @@ inline static int isqrt(int x)
     i = 0;
     float floatDensity;
     uint indexOrigin;
+    width = rect.size.width;
+    height = rect.size.height;
     for (int y = 0; y < height; y++)
     {
         for (int x = 0; x < width; x++, i++)
         {
-            if (density[i] > 0)
+            //if (density[i] > 0)
             {
                 indexOrigin = 4*i;
                 // Normalize density to 0..1
                 floatDensity = (float)density[i] / (float)maxDensity;
 
-                if (floatDensity < 0.25) {
+                if (density[i] == 0) {
                     rgba[indexOrigin] = 32;
                     rgba[indexOrigin+1] = 64;
                     rgba[indexOrigin+2] = 0;
-                    rgba[indexOrigin+3] = 64;
+                    rgba[indexOrigin+3] = 32;
+                }
+                else if (floatDensity < 0.25) {
+                    rgba[indexOrigin] = 32 + 32 * floatDensity / 0.25;
+                    rgba[indexOrigin+1] = 64;
+                    rgba[indexOrigin+2] = 0;
+                    rgba[indexOrigin+3] = 32 + 32 * floatDensity / 0.25;
                 }
                 else if (floatDensity < 0.50) {
-                    rgba[indexOrigin] = 32 + 96 * (floatDensity - 0.25) / 0.25;
+                    rgba[indexOrigin] = 64 + 64 * (floatDensity - 0.25) / 0.25;
                     rgba[indexOrigin+1] = 64 + 64 * (floatDensity - 0.25) / 0.25;
                     rgba[indexOrigin+2] = 0;
                     rgba[indexOrigin+3] = 64 + 64  * (floatDensity - 0.25) / 0.25;
