@@ -48,6 +48,7 @@ class ViewController: UIViewController {
         self.mapView.frame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height)
         self.mapView.myLocationEnabled = true
         self.mapView.delegate = self
+        //self.mapView.mapType = kGMSTypeNone
         self.view.addSubview(self.mapView)
 
         // search result
