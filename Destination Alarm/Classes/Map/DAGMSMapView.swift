@@ -180,10 +180,10 @@ class DAGMSMapView: GMSMapView {
     }
 
     /**
-     * is dragging now?
+     * is editing now?
      * @return BOOL
      **/
-    func isDraggingNow() -> Bool {
+    func isEditingNow() -> Bool {
         return (self.editingPoint != nil)
     }
 

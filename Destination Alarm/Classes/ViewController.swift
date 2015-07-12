@@ -181,8 +181,10 @@ extension ViewController: GMSMapViewDelegate {
 
     func mapView(mapView: GMSMapView, didLongPressAtCoordinate coordinate: CLLocationCoordinate2D) {
         // append destination or waypoint
-        self.mapView.appendPoint(coordinate)
-        self.requestDirectoin()
+        if !(self.mapView.isEditingNow()) {
+            self.mapView.appendPoint(coordinate)
+            self.requestDirectoin()
+        }
     }
 
     func mapView(mapView: GMSMapView, didTapMarker marker: GMSMarker) -> Bool {
@@ -209,7 +211,7 @@ extension ViewController: GMSMapViewDelegate {
     }
 */
     func mapView(mapView: GMSMapView, didChangeCameraPosition position: GMSCameraPosition) {
-        if !(self.mapView.isDraggingNow()) {
+        if !(self.mapView.isEditingNow()) {
             let crimes = DACrime.fetch(minimumCoordinate: self.mapView.getMinimumCoordinate(), maximumCoordinate: self.mapView.getMaximumCoordinate())
             if crimes.count > 0 { self.mapView.setCrimes(crimes) }
             self.mapView.draw()
