@@ -62,6 +62,7 @@ class DACrime: NSManagedObject {
             NSPredicate(format: "(long <= %@) AND (long >= %@)", NSNumber(double: maximumCoordinate.longitude), NSNumber(double: minimumCoordinate.longitude)),
         ]
         fetchRequest.predicate = NSCompoundPredicate.andPredicateWithSubpredicates(predicaets)
+        fetchRequest.returnsObjectsAsFaults = false
 
         // return crimes
         var error: NSError? = nil
@@ -109,6 +110,7 @@ class DACrime: NSManagedObject {
             NSPredicate(format: "(long <= %@) AND (long >= %@)", NSNumber(double: coordinate.longitude + longOffset), NSNumber(double: coordinate.longitude - longOffset)),
         ]
         fetchRequest.predicate = NSCompoundPredicate.andPredicateWithSubpredicates(predicaets)
+        fetchRequest.returnsObjectsAsFaults = false
 
         // return crimes
         var error: NSError? = nil

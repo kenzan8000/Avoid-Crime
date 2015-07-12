@@ -1,13 +1,13 @@
 /// MARK: - DADestinationMarker
 class DADestinationMarker: GMSMarker {
 
-    /// MARK: - public api
+    /// MARK: - initialization
 
-    /**
-     * do settings (design, draggable, etc)
-     **/
-    func doSettings() {
-        self.draggable = false
+    convenience init(position: CLLocationCoordinate2D) {
+        self.init()
+
+        self.position = position
+        self.draggable = true
     }
 
 

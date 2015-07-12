@@ -200,7 +200,6 @@ class DAGMSMapView: GMSMapView {
      **/
     private func drawWaypoint(#location: CLLocationCoordinate2D) {
         var marker = DAWaypointMarker(position: location)
-        marker.doSettings()
         marker.map = self
         marker.zIndex = DAGoogleMap.ZIndex.Waypoint
     }
@@ -211,7 +210,6 @@ class DAGMSMapView: GMSMapView {
      **/
     private func drawDestination(#location: CLLocationCoordinate2D) {
         var marker = DADestinationMarker(position: location)
-        marker.doSettings()
         marker.map = self
         marker.zIndex = DAGoogleMap.ZIndex.Destination
     }
@@ -232,8 +230,7 @@ class DAGMSMapView: GMSMapView {
      * @param crime DACrime
      **/
     private func drawCrimeMaker(crime: DACrime) {
-        var marker = DACrimeMarker(position: CLLocationCoordinate2DMake(crime.lat.doubleValue, crime.long.doubleValue))
-        marker.doSettings(crime: crime)
+        var marker = DACrimeMarker(position: CLLocationCoordinate2DMake(crime.lat.doubleValue, crime.long.doubleValue), crime: crime)
         marker.map = self
         marker.zIndex = DAGoogleMap.ZIndex.Icon
     }

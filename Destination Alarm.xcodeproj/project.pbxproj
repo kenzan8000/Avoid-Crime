@@ -13,6 +13,7 @@
 		E60F6C7C1B13E62D009BC03B /* DASearchBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60F6C7B1B13E62D009BC03B /* DASearchBoxView.swift */; };
 		E60F6C7E1B13F2E9009BC03B /* DASearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60F6C7D1B13F2E9009BC03B /* DASearchResultView.swift */; };
 		E60F6C801B13F5B9009BC03B /* DASearchResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E60F6C7F1B13F5B9009BC03B /* DASearchResultView.xib */; };
+		E61238731B531DE90004D643 /* UIImage+DAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61238721B531DE90004D643 /* UIImage+DAView.swift */; };
 		E6151FF71B32573C0085A992 /* yelp_categories.json in Resources */ = {isa = PBXBuildFile; fileRef = E6151FF61B32573C0085A992 /* yelp_categories.json */; };
 		E62D9F2C1B1A812300AAE406 /* DAGoogleMapOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62D9F2B1B1A812300AAE406 /* DAGoogleMapOperationQueue.swift */; };
 		E62D9F2E1B1A813200AAE406 /* DACrimeOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62D9F2D1B1A813200AAE406 /* DACrimeOperationQueue.swift */; };
@@ -67,6 +68,7 @@
 		E60F6C7B1B13E62D009BC03B /* DASearchBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DASearchBoxView.swift; sourceTree = "<group>"; };
 		E60F6C7D1B13F2E9009BC03B /* DASearchResultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DASearchResultView.swift; sourceTree = "<group>"; };
 		E60F6C7F1B13F5B9009BC03B /* DASearchResultView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DASearchResultView.xib; sourceTree = "<group>"; };
+		E61238721B531DE90004D643 /* UIImage+DAView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+DAView.swift"; sourceTree = "<group>"; };
 		E6151FF61B32573C0085A992 /* yelp_categories.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = yelp_categories.json; sourceTree = "<group>"; };
 		E62D9F2B1B1A812300AAE406 /* DAGoogleMapOperationQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAGoogleMapOperationQueue.swift; sourceTree = "<group>"; };
 		E62D9F2D1B1A813200AAE406 /* DACrimeOperationQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DACrimeOperationQueue.swift; sourceTree = "<group>"; };
@@ -132,6 +134,14 @@
 				534D789B2FF603908C0DCECC /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E61238711B531DE90004D643 /* UIKit+Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E61238721B531DE90004D643 /* UIImage+DAView.swift */,
+			);
+			path = "UIKit+Extension";
 			sourceTree = "<group>";
 		};
 		E6151FF41B3255F80085A992 /* Yelp */ = {
@@ -261,6 +271,7 @@
 				E6ED99841B12D8240071CD63 /* GoogleMap */,
 				E6151FF41B3255F80085A992 /* Yelp */,
 				E662B55E1B11328100F0DAB2 /* Model */,
+				E61238711B531DE90004D643 /* UIKit+Extension */,
 				E662B5761B114C0E00F0DAB2 /* NSFoundation+Extension */,
 				E67AD2711AFC46CD00FE0E28 /* SwiftyJSON */,
 			);
@@ -414,6 +425,7 @@
 				E64C700E1B2815D900D08371 /* UIImage+DACrimeHeatmap.swift in Sources */,
 				E6C574441B251FF80011D795 /* DACrimeMarker.swift in Sources */,
 				E6ED99831B12D00C0071CD63 /* DACrimeClient.swift in Sources */,
+				E61238731B531DE90004D643 /* UIImage+DAView.swift in Sources */,
 				E6ED997D1B12CFE00071CD63 /* DAConstant.swift in Sources */,
 				E62D9F2E1B1A813200AAE406 /* DACrimeOperationQueue.swift in Sources */,
 				E6BBE6E61B11AECA008F928C /* main.swift in Sources */,

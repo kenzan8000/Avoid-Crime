@@ -1,14 +1,19 @@
 /// MARK: - DACrimeMarker
 class DACrimeMarker: GMSMarker {
 
-    /// MARK: - public api
+    /// MARK: - initialization
 
     /**
-     * do settings (design, draggable, etc)
+     * constructor
+     * @param position CLLocationCoordinate2D
      * @param crime DACrime
+     * @return DACrimeMarker
      **/
-    func doSettings(#crime: DACrime) {
-        // settings
+    convenience init(position: CLLocationCoordinate2D, crime: DACrime) {
+        self.init()
+
+        self.position = position
+
         var iconName = crime.category.lowercaseString.stringByReplacingOccurrencesOfString("/", withString: ":", options: nil, range: nil)
         var image = UIImage(named: "marker_"+iconName)
         if image == nil { image = UIImage(named: "marker_question") }
