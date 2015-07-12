@@ -389,15 +389,20 @@ inline static int isqrt(int x)
 
                 if (density[i] == 0) {
                     rgba[indexOrigin] = 0;
-                    rgba[indexOrigin+1] = 64;
+                    //rgba[indexOrigin+1] = 64;
+                    rgba[indexOrigin+1] = 0;
                     rgba[indexOrigin+2] = 0;
-                    rgba[indexOrigin+3] = 8;
+                    //rgba[indexOrigin+3] = 8;
+                    rgba[indexOrigin+3] = 0;
                 }
                 else if (floatDensity < 0.25) {
-                    rgba[indexOrigin] = 64 * floatDensity / 0.25;
-                    rgba[indexOrigin+1] = 64;
+                    //rgba[indexOrigin] = 64 * floatDensity / 0.25;
+                    //rgba[indexOrigin+1] = 64;
+                    rgba[indexOrigin] = 0;
+                    rgba[indexOrigin+1] = 0;
                     rgba[indexOrigin+2] = 0;
-                    rgba[indexOrigin+3] = 8 + 56 * floatDensity / 0.25;
+                    //rgba[indexOrigin+3] = 8 + 56 * floatDensity / 0.25;
+                    rgba[indexOrigin+3] = 0;
                 }
                 else if (floatDensity < 0.50) {
                     rgba[indexOrigin] = 64 + 64 * (floatDensity - 0.25) / 0.25;

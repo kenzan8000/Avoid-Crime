@@ -47,6 +47,7 @@ class ViewController: UIViewController {
         self.mapView = DAGMSMapView.sharedInstance
         self.mapView.frame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height)
         self.mapView.myLocationEnabled = true
+        self.mapView.settings.myLocationButton = true
         self.mapView.delegate = self
         //self.mapView.mapType = kGMSTypeNone
         self.view.addSubview(self.mapView)
@@ -78,13 +79,13 @@ class ViewController: UIViewController {
         self.crimeHeatmapButton = crimeHeatmapButtons[0] as! DACrimeButton
         let crimeButtons = [self.crimeHeatmapButton, self.crimePointButton]
         let crimeButtonImages = [UIImage(named: "button_crime_heatmap")!, UIImage(named: "button_crime_point")!]
-        let xOffset: CGFloat = 20.0
+        let xOffset: CGFloat = 10.0
         let yOffset: CGFloat = 10.0
         for var i = 0; i < crimeButtons.count; i++ {
             var crimeButton = crimeButtons[i]
             crimeButton.frame = CGRectMake(
                 self.view.frame.size.width - crimeButton.frame.size.width - xOffset,
-                self.view.frame.size.height - (crimeButton.frame.size.height + yOffset) * CGFloat(i+1),
+                self.view.frame.size.height - (crimeButton.frame.size.height + yOffset) * CGFloat(i+2),
                 crimeButton.frame.size.width,
                 crimeButton.frame.size.height
             )
@@ -109,6 +110,10 @@ class ViewController: UIViewController {
      * request dirction API and render direction
      */
     private func requestDirectoin() {
+        if self.destinationString == "" {
+            if self.mapView.destination == nil { return }
+            self.destinationString = "\(self.mapView.destination!.latitude),\(self.mapView.destination!.longitude)"
+        }
         if self.destinationString == "" { return }
 
         DAGoogleMapClient.sharedInstance.cancelGetRoute()
@@ -147,15 +152,46 @@ extension ViewController: CLLocationManagerDelegate {
 }
 
 
+/// MARK: - UIActionSheetDelegate
+extension ViewController: UIActionSheetDelegate {
+
+    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+        // delete editing marker
+        if buttonIndex == 0 {
+            self.mapView.deleteEditingMarker()
+            self.mapView.draw()
+        }
+/*
+        // done editing
+        else {
+            self.mapView.editingMarker!.map = nil
+            self.mapView.editingMarker = nil
+        }
+*/
+    }
+
+}
+
+
 /// MARK: - GMSMapViewDelegate
 extension ViewController: GMSMapViewDelegate {
 
     func mapView(mapView: GMSMapView, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
-        self.mapView.appendWaypoint(coordinate)
+    }
+
+    func mapView(mapView: GMSMapView, didLongPressAtCoordinate coordinate: CLLocationCoordinate2D) {
+        // append destination or waypoint
+        self.mapView.appendPoint(coordinate)
         self.requestDirectoin()
     }
 
     func mapView(mapView: GMSMapView, didTapMarker marker: GMSMarker) -> Bool {
+        // destination or waypoint
+        if marker.isKindOfClass(DADestinationMarker) || marker.isKindOfClass(DAWaypointMarker) {
+            self.mapView.editingMarker = marker
+            return false
+        }
+
         self.mapView.selectedMarker = marker
         return true
     }
@@ -183,6 +219,19 @@ extension ViewController: GMSMapViewDelegate {
     func mapView(mapView: GMSMapView,  didDragMarker marker:GMSMarker) {
     }
 
+    /**
+     * show action sheet if you deletes marker or not
+     **/
+    func showDeleteMarkerActionSheet() {
+        let actionSheet = UIActionSheet()
+        actionSheet.delegate = self
+        actionSheet.addButtonWithTitle("Delete")
+        actionSheet.destructiveButtonIndex = 0
+        actionSheet.addButtonWithTitle("Cancel")
+        actionSheet.cancelButtonIndex = 1
+        actionSheet.showInView(self.view)
+    }
+
 }
 
 
@@ -206,6 +255,7 @@ extension ViewController: DASearchBoxViewDelegate {
         if self.searchBoxView.isActive { return }
         self.mapView.setRouteJSON(nil)
         self.destinationString = ""
+        self.mapView.destination = nil
         self.mapView.draw()
     }
 
@@ -220,7 +270,7 @@ extension ViewController: DASearchResultViewDelegate {
         self.searchBoxView.setSearchText(selectedDestination.desc)
         if self.destinationString == selectedDestination.desc { return }
         self.destinationString = selectedDestination.desc
-        self.mapView.removeAllWaypoints()
+        self.mapView.removeAllPoints()
         self.requestDirectoin()
     }
 

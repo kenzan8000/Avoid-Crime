@@ -5,10 +5,16 @@ class DAGMSMapView: GMSMapView {
 
     static let sharedInstance = DAGMSMapView()
 
-    /// dragging waypoint
-    private var draggingWaypoint: CLLocationCoordinate2D?
+    /// editing point
+    var editingPoint: CLLocationCoordinate2D?
+    /// editing marker
+    var editingMarker: GMSMarker?
+
     /// waypoints for routing
     var waypoints: [CLLocationCoordinate2D] = []
+    /// destination
+    var destination: CLLocationCoordinate2D?
+
     /// route json
     private var routeJSON: JSON?
     /// crimes
@@ -49,7 +55,13 @@ class DAGMSMapView: GMSMapView {
      **/
     func setRouteJSON(json: JSON?) {
         self.routeJSON = json
-        if json == nil { self.removeAllWaypoints() }
+        if json == nil { self.removeAllPoints() }
+
+        let locations = self.endLocations()
+        let index = locations.count - 1
+        if index >= 0 {
+            self.destination = locations[index]
+        }
     }
 
     /**
@@ -110,18 +122,41 @@ class DAGMSMapView: GMSMapView {
 
 
     /**
-     * add waypoint for routing
-     * @param waypoint waypoint
+     * add point for routing
+     * @param point(destination or waypoint) CLLocationCoordinate2D
      */
-    func appendWaypoint(waypoint: CLLocationCoordinate2D) {
-        self.waypoints.append(waypoint)
+    func appendPoint(point: CLLocationCoordinate2D) {
+        if self.destination == nil {
+            self.destination = point
+        }
+        else {
+            self.waypoints.append(point)
+        }
     }
 
     /**
-     * remove all waypoints for routing
+     * remove all points for routing
      */
-    func removeAllWaypoints() {
+    func removeAllPoints() {
+        self.destination = nil
         self.waypoints = []
+    }
+
+    /**
+     * delete editing marker
+     **/
+    func deleteEditingMarker() {
+        if self.editingMarker == nil { return }
+
+        // destination
+        if self.editingMarker!.isKindOfClass(DADestinationMarker) {
+        }
+        // waypoint
+        else if self.editingMarker!.isKindOfClass(DAWaypointMarker) {
+        }
+
+        self.editingMarker!.map = nil
+        self.editingMarker = nil
     }
 
     /**
@@ -129,7 +164,7 @@ class DAGMSMapView: GMSMapView {
      * @param waypoint waypoint
      */
     func startMovingWaypoint(waypoint: CLLocationCoordinate2D) {
-        self.draggingWaypoint = waypoint
+        self.editingPoint = waypoint
     }
 
     /**
@@ -137,17 +172,11 @@ class DAGMSMapView: GMSMapView {
      * @param waypoint waypoint
      */
     func endMovingWaypoint(waypoint: CLLocationCoordinate2D) {
-        var index = -1
-        for var i = 0; i < self.waypoints.count; i++ {
-            let location1 = CLLocation(latitude: self.waypoints[i].latitude, longitude: self.waypoints[i].longitude)
-            let location2 = CLLocation(latitude: self.draggingWaypoint!.latitude, longitude: self.draggingWaypoint!.longitude)
-            let meter = location1.distanceFromLocation(location2)
-            if meter > 10 { continue }
-            index = i
-            break
-        }
-        self.draggingWaypoint = nil
-        if index >= 0 { self.waypoints[index] = waypoint }
+        if self.editingPoint == nil { return }
+
+        let index = self.waypointIndex(waypoint: self.editingPoint!)
+        self.editingPoint = nil
+        if index != nil { self.waypoints[index!] = waypoint }
     }
 
     /**
@@ -155,7 +184,7 @@ class DAGMSMapView: GMSMapView {
      * @return BOOL
      **/
     func isDraggingNow() -> Bool {
-        return (self.draggingWaypoint != nil)
+        return (self.editingPoint != nil)
     }
 
 
@@ -176,10 +205,8 @@ class DAGMSMapView: GMSMapView {
             line.zIndex = DAGoogleMap.ZIndex.Route
         }
 
-        let locations = self.endLocations()
-        let index = locations.count - 1
-        if index >= 0 {
-            self.drawDestination(location: locations[index])
+        if self.destination != nil {
+            self.drawDestination(location: self.destination!)
         }
 
         self.drawWaypoints()
@@ -189,7 +216,8 @@ class DAGMSMapView: GMSMapView {
      * draw waypoint
      **/
     private func drawWaypoints() {
-        for waypoint in self.waypoints {
+        for var i = 0; i < self.waypoints.count; i++ {
+            var waypoint = self.waypoints[i]
             self.drawWaypoint(location: waypoint)
         }
     }
@@ -294,4 +322,23 @@ class DAGMSMapView: GMSMapView {
         }
         return locations
     }
+
+    /**
+     * return waypoints index from location
+     * @param waypoint CLLocationCoordinate2D
+     * @return Int or nil
+     **/
+    private func waypointIndex(#waypoint: CLLocationCoordinate2D) -> Int? {
+        var index = -1
+        for var i = 0; i < self.waypoints.count; i++ {
+            let location1 = CLLocation(latitude: self.waypoints[i].latitude, longitude: self.waypoints[i].longitude)
+            let location2 = CLLocation(latitude: waypoint.latitude, longitude: waypoint.longitude)
+            let meter = location1.distanceFromLocation(location2)
+            if meter > 10 { continue }
+            index = i
+            break
+        }
+        return (index >= 0) ? index : nil
+    }
+
 }
