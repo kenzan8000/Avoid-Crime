@@ -231,6 +231,50 @@ class DAGMSMapView: GMSMapView {
         self.animateToBearing(angle)
     }
 
+    /**
+     * return routeDuration
+     * @return String ex) "7 mins"
+     **/
+    func routeDuration() -> String {
+        let json = self.routeJSON
+        if json == nil { return "" }
+
+        let routes = json!["routes"].arrayValue
+        for route in routes {
+            var seconds = 0
+            let legs = route["legs"].arrayValue
+            for leg in legs {
+                let duration = leg["duration"].dictionaryValue
+                seconds += duration["value"]!.intValue
+            }
+            let hour = seconds / 3600
+            let min = (seconds % 3600) / 60
+            if hour > 0 { return "\(hour) hr \(min) min" }
+            else { return "\(min) min" }
+        }
+        return ""
+    }
+
+    /**
+     * return endAddress
+     * @return String ex) "711B Market Street, San Francisco, CA 94103, USA"
+     **/
+    func endAddress() -> String {
+        let json = self.routeJSON
+        if json == nil { return "" }
+
+        let routes = json!["routes"].arrayValue
+        for route in routes {
+            let legs = route["legs"].arrayValue
+            if legs.count > 0 {
+                let leg = legs[legs.count - 1]
+                return leg["end_address"].stringValue
+            }
+
+        }
+        return ""
+    }
+
 
     /// MARK: - private api
 

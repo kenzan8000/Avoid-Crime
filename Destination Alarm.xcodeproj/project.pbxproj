@@ -14,6 +14,8 @@
 		E60F6C7E1B13F2E9009BC03B /* DASearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60F6C7D1B13F2E9009BC03B /* DASearchResultView.swift */; };
 		E60F6C801B13F5B9009BC03B /* DASearchResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E60F6C7F1B13F5B9009BC03B /* DASearchResultView.xib */; };
 		E61238731B531DE90004D643 /* UIImage+DAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61238721B531DE90004D643 /* UIImage+DAView.swift */; };
+		E61238761B536AB20004D643 /* DADurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61238741B536AB20004D643 /* DADurationView.swift */; };
+		E61238771B536AB20004D643 /* DADurationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61238751B536AB20004D643 /* DADurationView.xib */; };
 		E6151FF71B32573C0085A992 /* yelp_categories.json in Resources */ = {isa = PBXBuildFile; fileRef = E6151FF61B32573C0085A992 /* yelp_categories.json */; };
 		E62D9F2C1B1A812300AAE406 /* DAGoogleMapOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62D9F2B1B1A812300AAE406 /* DAGoogleMapOperationQueue.swift */; };
 		E62D9F2E1B1A813200AAE406 /* DACrimeOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62D9F2D1B1A813200AAE406 /* DACrimeOperationQueue.swift */; };
@@ -69,6 +71,8 @@
 		E60F6C7D1B13F2E9009BC03B /* DASearchResultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DASearchResultView.swift; sourceTree = "<group>"; };
 		E60F6C7F1B13F5B9009BC03B /* DASearchResultView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DASearchResultView.xib; sourceTree = "<group>"; };
 		E61238721B531DE90004D643 /* UIImage+DAView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+DAView.swift"; sourceTree = "<group>"; };
+		E61238741B536AB20004D643 /* DADurationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DADurationView.swift; sourceTree = "<group>"; };
+		E61238751B536AB20004D643 /* DADurationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DADurationView.xib; sourceTree = "<group>"; };
 		E6151FF61B32573C0085A992 /* yelp_categories.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = yelp_categories.json; sourceTree = "<group>"; };
 		E62D9F2B1B1A812300AAE406 /* DAGoogleMapOperationQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAGoogleMapOperationQueue.swift; sourceTree = "<group>"; };
 		E62D9F2D1B1A813200AAE406 /* DACrimeOperationQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DACrimeOperationQueue.swift; sourceTree = "<group>"; };
@@ -202,6 +206,8 @@
 				E671BC321B07F783002394F6 /* DASearchBoxView.xib */,
 				E60F6C7D1B13F2E9009BC03B /* DASearchResultView.swift */,
 				E60F6C7F1B13F5B9009BC03B /* DASearchResultView.xib */,
+				E61238741B536AB20004D643 /* DADurationView.swift */,
+				E61238751B536AB20004D643 /* DADurationView.xib */,
 				E6C574451B2520780011D795 /* DADestinationMarker.swift */,
 				E6C574461B2520780011D795 /* DAWaypointMarker.swift */,
 			);
@@ -369,6 +375,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6E5C29F1AC60510001FB516 /* Main.storyboard in Resources */,
+				E61238771B536AB20004D643 /* DADurationView.xib in Resources */,
 				E638F9DB1B2CF9800069A870 /* DACrimeButton.xib in Resources */,
 				E6151FF71B32573C0085A992 /* yelp_categories.json in Resources */,
 				E6E5C29E1AC60510001FB516 /* LaunchScreen.xib in Resources */,
@@ -439,6 +446,7 @@
 				E62D9F2C1B1A812300AAE406 /* DAGoogleMapOperationQueue.swift in Sources */,
 				E6A936371B437D75003456A0 /* DACrimeHeatmap.m in Sources */,
 				E638F9D91B2CF9060069A870 /* DACrimeButton.swift in Sources */,
+				E61238761B536AB20004D643 /* DADurationView.swift in Sources */,
 				E662B56F1B113FA300F0DAB2 /* SwiftyJSON.swift in Sources */,
 				E662B56B1B113F6F00F0DAB2 /* DACrime.swift in Sources */,
 				E6C574481B2520780011D795 /* DAWaypointMarker.swift in Sources */,

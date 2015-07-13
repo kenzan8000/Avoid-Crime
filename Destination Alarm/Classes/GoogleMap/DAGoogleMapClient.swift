@@ -42,6 +42,7 @@ class DAGoogleMapClient: AnyObject {
         // make request
         var q: Dictionary<String, AnyObject> = [
             "sensor": "false",
+            "mode": "walking",
         ]
         // waypoints
         let waypoints = DAGMSMapView.sharedInstance.waypoints

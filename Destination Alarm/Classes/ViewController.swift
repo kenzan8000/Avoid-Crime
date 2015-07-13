@@ -10,6 +10,7 @@ class ViewController: UIViewController {
     var mapView: DAGMSMapView!
     var searchBoxView: DASearchBoxView!
     var searchResultView: DASearchResultView!
+    var durationView: DADurationView!
     var crimePointButton: DACrimeButton!
     var crimeHeatmapButton: DACrimeButton!
     var locationManager: CLLocationManager!
@@ -50,6 +51,7 @@ class ViewController: UIViewController {
         self.mapView.settings.myLocationButton = true
         self.mapView.delegate = self
         //self.mapView.mapType = kGMSTypeNone
+        self.mapView.padding = UIEdgeInsetsMake(0.0, 0.0, 48.0, 0.0)
         self.view.addSubview(self.mapView)
 
         // search result
@@ -70,6 +72,14 @@ class ViewController: UIViewController {
         self.view.addSubview(self.searchBoxView)
         self.searchBoxView.design(parentView: self.view)
 
+        // duration view
+        let durationViewNib = UINib(nibName: DANSStringFromClass(DADurationView), bundle:nil)
+        let durationViews = durationViewNib.instantiateWithOwner(nil, options: nil)
+        self.durationView = durationViews[0] as! DADurationView
+        self.view.addSubview(self.durationView)
+        self.durationView.design(parentView: self.view)
+        self.durationView.delegate = self
+
         // crime buttons
         let crimePointButtonNib = UINib(nibName: DANSStringFromClass(DACrimeButton), bundle:nil)
         let crimePointButtons = crimePointButtonNib.instantiateWithOwner(nil, options: nil)
@@ -85,7 +95,7 @@ class ViewController: UIViewController {
             var crimeButton = crimeButtons[i]
             crimeButton.frame = CGRectMake(
                 self.view.frame.size.width - crimeButton.frame.size.width - xOffset,
-                self.view.frame.size.height - (crimeButton.frame.size.height + yOffset) * CGFloat(i+2),
+                self.view.frame.size.height - (crimeButton.frame.size.height + yOffset) * CGFloat(i+2) - 48.0,
                 crimeButton.frame.size.width,
                 crimeButton.frame.size.height
             )
@@ -111,9 +121,11 @@ class ViewController: UIViewController {
      * @param doUpdateCamera Bool if camera updates when routing has done
      */
     private func requestDirectoin(#doUpdateCamera: Bool) {
+        var didRequestDestinationFromCoordinate = false
         if self.destinationString == "" {
             if self.mapView.destination == nil { return }
-            self.destinationString =  String(format: "%.4f,%.4f", self.mapView.destination!.latitude, self.mapView.destination!.longitude)
+            didRequestDestinationFromCoordinate = true
+            self.destinationString = String(format: "%.4f,%.4f", self.mapView.destination!.latitude, self.mapView.destination!.longitude)
         }
         if self.destinationString == "" { return }
         self.searchBoxView.setSearchText(self.destinationString)
@@ -129,7 +141,16 @@ class ViewController: UIViewController {
             completionHandler: { [unowned self] (json) in
                 self.mapView.setRouteJSON(json)
                 self.mapView.draw()
+
+                // update camera
                 if doUpdateCamera { self.mapView.updateCameraWhenRoutingHasDone() }
+
+                // duration view
+                if didRequestDestinationFromCoordinate {
+                    self.destinationString = self.mapView.endAddress()
+                    self.searchBoxView.setSearchText(self.destinationString)
+                }
+                self.durationView.show(destinationString: self.destinationString, durationString: self.mapView.routeDuration())
             }
         )
     }
@@ -168,6 +189,7 @@ extension ViewController: UIActionSheetDelegate {
         if doDeleteDestination { self.searchBoxView.setSearchText("") }
 
         // delete editing marker
+        self.durationView.hide()
         self.mapView.deleteEditingMarker()
         self.mapView.draw()
 
@@ -175,8 +197,6 @@ extension ViewController: UIActionSheetDelegate {
         if doRequestDirectoin {
             self.requestDirectoin(doUpdateCamera: false)
         }
-
-        // Delete
     }
 
 }
@@ -213,6 +233,7 @@ extension ViewController: GMSMapViewDelegate {
     }
 
     func mapView(mapView: GMSMapView,  didEndDraggingMarker marker: GMSMarker) {
+        self.durationView.hide()
         self.mapView.endMovingMarker(marker)
         if marker.isKindOfClass(DADestinationMarker) { self.destinationString = "" }
         self.requestDirectoin(doUpdateCamera: false)
@@ -267,6 +288,9 @@ extension ViewController: DASearchBoxViewDelegate {
     func clearButtonTouchedUpInside(#searchBoxView: DASearchBoxView) {
         if self.searchBoxView.isActive { return }
 
+        DAGoogleMapClient.sharedInstance.cancelGetRoute()
+
+        self.durationView.hide()
         self.mapView.setRouteJSON(nil)
         self.destinationString = ""
         self.mapView.destination = nil
@@ -287,6 +311,15 @@ extension ViewController: DASearchResultViewDelegate {
         self.destinationString = selectedDestination.desc
         self.mapView.removeAllPoints()
         self.requestDirectoin(doUpdateCamera: true)
+    }
+
+}
+
+
+/// MARK: - DADurationViewDelegate
+extension ViewController: DADurationViewDelegate {
+
+    func touchedUpInside(#durationView: DADurationView) {
     }
 
 }
