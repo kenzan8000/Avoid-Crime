@@ -208,6 +208,29 @@ class DAGMSMapView: GMSMapView {
         return (self.editingPosition != nil || self.editingMarker != nil)
     }
 
+    /**
+     * update camera when routing has done
+     **/
+    func updateCameraWhenRoutingHasDone() {
+        let startLocation = self.myLocation
+        if startLocation == nil { return }
+        if self.destination == nil { return }
+        let encodedPathes = self.encodedPathes()
+        if encodedPathes.count == 0 { return }
+
+        let end = self.destination
+        let path = GMSPath(fromEncodedPath: encodedPathes[0])
+        var bounds = GMSCoordinateBounds(path: path)
+        self.moveCamera(GMSCameraUpdate.fitBounds(bounds, withEdgeInsets: UIEdgeInsetsMake(160.0, 20.0, 40.0, 80.0)))
+
+        let startPoint = self.projection.pointForCoordinate(startLocation.coordinate)
+        let endPoint = self.projection.pointForCoordinate(end!)
+        var angle = DAMapMath.angle(pointA: startPoint, pointB: endPoint)
+        angle += 90.0
+        if angle > 360.0 { angle -= 360.0 }
+        self.animateToBearing(angle)
+    }
+
 
     /// MARK: - private api
 

@@ -108,8 +108,9 @@ class ViewController: UIViewController {
 
     /**
      * request dirction API and render direction
+     * @param doUpdateCamera Bool if camera updates when routing has done
      */
-    private func requestDirectoin() {
+    private func requestDirectoin(#doUpdateCamera: Bool) {
         if self.destinationString == "" {
             if self.mapView.destination == nil { return }
             self.destinationString =  String(format: "%.4f,%.4f", self.mapView.destination!.latitude, self.mapView.destination!.longitude)
@@ -128,6 +129,7 @@ class ViewController: UIViewController {
             completionHandler: { [unowned self] (json) in
                 self.mapView.setRouteJSON(json)
                 self.mapView.draw()
+                if doUpdateCamera { self.mapView.updateCameraWhenRoutingHasDone() }
             }
         )
     }
@@ -162,14 +164,19 @@ extension ViewController: UIActionSheetDelegate {
 
         let doRequestDirectoin = self.mapView.editingMarker!.isKindOfClass(DAWaypointMarker)
 
+        let doDeleteDestination = self.mapView.editingMarker!.isKindOfClass(DADestinationMarker)
+        if doDeleteDestination { self.searchBoxView.setSearchText("") }
+
         // delete editing marker
         self.mapView.deleteEditingMarker()
         self.mapView.draw()
 
         // RequestDirectoin
         if doRequestDirectoin {
-            self.requestDirectoin()
+            self.requestDirectoin(doUpdateCamera: false)
         }
+
+        // Delete
     }
 
 }
@@ -182,7 +189,7 @@ extension ViewController: GMSMapViewDelegate {
         // append destination or waypoint
         if !(self.mapView.isEditingNow()) {
             self.mapView.appendPoint(coordinate)
-            self.requestDirectoin()
+            self.requestDirectoin(doUpdateCamera: false)
         }
     }
 
@@ -208,7 +215,7 @@ extension ViewController: GMSMapViewDelegate {
     func mapView(mapView: GMSMapView,  didEndDraggingMarker marker: GMSMarker) {
         self.mapView.endMovingMarker(marker)
         if marker.isKindOfClass(DADestinationMarker) { self.destinationString = "" }
-        self.requestDirectoin()
+        self.requestDirectoin(doUpdateCamera: false)
     }
 /*
     func mapView(mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView {
@@ -259,9 +266,11 @@ extension ViewController: DASearchBoxViewDelegate {
 
     func clearButtonTouchedUpInside(#searchBoxView: DASearchBoxView) {
         if self.searchBoxView.isActive { return }
+
         self.mapView.setRouteJSON(nil)
         self.destinationString = ""
         self.mapView.destination = nil
+
         self.mapView.draw()
     }
 
@@ -277,7 +286,7 @@ extension ViewController: DASearchResultViewDelegate {
         if self.destinationString == selectedDestination.desc { return }
         self.destinationString = selectedDestination.desc
         self.mapView.removeAllPoints()
-        self.requestDirectoin()
+        self.requestDirectoin(doUpdateCamera: true)
     }
 
 }
