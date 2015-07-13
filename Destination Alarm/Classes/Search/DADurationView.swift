@@ -10,6 +10,18 @@ protocol DADurationViewDelegate {
      */
     func touchedUpInside(#durationView: DADurationView)
 
+    /**
+     * called when view will show
+     * @param durationView DADurationView
+     */
+    func willShow(#durationView: DADurationView)
+
+    /**
+     * called when view will hide
+     * @param durationView DADurationView
+     */
+    func willHide(#durationView: DADurationView)
+
 }
 
 
@@ -70,20 +82,24 @@ class DADurationView: UIView {
      * @param durationString String
      **/
     func show(#destinationString: String, durationString: String) {
-        self.hidden = false
-
         self.destinationLabel.text = destinationString
         self.durationLabel.text = durationString
+
+        if self.delegate != nil {
+            self.delegate?.willShow(durationView: self)
+        }
     }
 
     /**
      * hide
      **/
     func hide() {
-        self.hidden = true
-
         self.destinationLabel.text = ""
         self.durationLabel.text = ""
+
+        if self.delegate != nil {
+            self.delegate?.willHide(durationView: self)
+        }
     }
 
 }

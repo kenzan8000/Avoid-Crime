@@ -51,7 +51,7 @@ class ViewController: UIViewController {
         self.mapView.settings.myLocationButton = true
         self.mapView.delegate = self
         //self.mapView.mapType = kGMSTypeNone
-        self.mapView.padding = UIEdgeInsetsMake(0.0, 0.0, 48.0, 0.0)
+        //self.mapView.padding = UIEdgeInsetsMake(0.0, 0.0, 48.0, 0.0)
         self.view.addSubview(self.mapView)
 
         // search result
@@ -89,16 +89,18 @@ class ViewController: UIViewController {
         self.crimeHeatmapButton = crimeHeatmapButtons[0] as! DACrimeButton
         let crimeButtons = [self.crimeHeatmapButton, self.crimePointButton]
         let crimeButtonImages = [UIImage(named: "button_crime_heatmap")!, UIImage(named: "button_crime_point")!]
-        let xOffset: CGFloat = 10.0
-        let yOffset: CGFloat = 10.0
+//        let xOffset: CGFloat = 10.0
+//        let yOffset: CGFloat = 10.0
         for var i = 0; i < crimeButtons.count; i++ {
             var crimeButton = crimeButtons[i]
+/*
             crimeButton.frame = CGRectMake(
                 self.view.frame.size.width - crimeButton.frame.size.width - xOffset,
                 self.view.frame.size.height - (crimeButton.frame.size.height + yOffset) * CGFloat(i+2) - 48.0,
                 crimeButton.frame.size.width,
                 crimeButton.frame.size.height
             )
+*/
             crimeButton.setImage(crimeButtonImages[i])
             self.view.addSubview(crimeButton)
             crimeButton.delegate = self
@@ -112,8 +114,33 @@ class ViewController: UIViewController {
         self.locationManager.distanceFilter = 300
         self.locationManager.startUpdatingLocation()
 
+        self.setButtonPositions(offsetY: 0)
+
         self.view.bringSubviewToFront(self.searchResultView)
         self.view.bringSubviewToFront(self.searchBoxView)
+    }
+
+    /**
+     * set button positions
+     * @param offsetY CGFloat
+     **/
+    private func setButtonPositions(#offsetY: CGFloat) {
+        self.durationView.frame = CGRectMake(0, self.view.frame.size.height - offsetY, self.durationView.frame.size.width, self.durationView.frame.size.height)
+
+        self.mapView.padding = UIEdgeInsetsMake(0.0, 0.0, offsetY, 0.0)
+
+        let crimeButtons = [self.crimeHeatmapButton, self.crimePointButton]
+        let xOffset: CGFloat = 10.0
+        let yOffset: CGFloat = 10.0
+        for var i = 0; i < crimeButtons.count; i++ {
+            var crimeButton = crimeButtons[i]
+            crimeButton.frame = CGRectMake(
+                self.view.frame.size.width - crimeButton.frame.size.width - xOffset,
+                self.view.frame.size.height - (crimeButton.frame.size.height + yOffset) * CGFloat(i+2) - offsetY,
+                crimeButton.frame.size.width,
+                crimeButton.frame.size.height
+            )
+        }
     }
 
     /**
@@ -322,6 +349,25 @@ extension ViewController: DADurationViewDelegate {
     func touchedUpInside(#durationView: DADurationView) {
     }
 
+    func willShow(#durationView: DADurationView) {
+        UIView.animateWithDuration(
+            0.30,
+            delay: 0.0,
+            options: .CurveEaseOut,
+            animations: { [unowned self] in self.setButtonPositions(offsetY: self.durationView.frame.size.height) },
+            completion: { [unowned self] finished in }
+        )
+    }
+
+    func willHide(#durationView: DADurationView) {
+        UIView.animateWithDuration(
+            0.15,
+            delay: 0.0,
+            options: .CurveEaseOut,
+            animations: { [unowned self] in self.setButtonPositions(offsetY: 0) },
+            completion: { [unowned self] finished in }
+        )
+    }
 }
 
 
