@@ -5,10 +5,15 @@ class DAGMSMapView: GMSMapView {
 
     static let sharedInstance = DAGMSMapView()
 
-    /// editing point
-    var editingPoint: CLLocationCoordinate2D?
     /// editing marker
-    var editingMarker: GMSMarker?
+    var editingMarker: GMSMarker? {
+        didSet {
+            if editingMarker != nil { self.editingPosition = editingMarker!.position }
+            else { self.editingPosition = nil }
+        }
+    }
+    /// editing position
+    private var editingPosition: CLLocationCoordinate2D?
 
     /// waypoints for routing
     var waypoints: [CLLocationCoordinate2D] = []
@@ -54,8 +59,12 @@ class DAGMSMapView: GMSMapView {
      * @param json json
      **/
     func setRouteJSON(json: JSON?) {
+        if json == nil {
+            self.removeAllPoints()
+            return
+        }
+
         self.routeJSON = json
-        if json == nil { self.removeAllPoints() }
 
         let locations = self.endLocations()
         let index = locations.count - 1
@@ -138,6 +147,7 @@ class DAGMSMapView: GMSMapView {
      * remove all points for routing
      */
     func removeAllPoints() {
+        self.routeJSON = nil
         self.destination = nil
         self.waypoints = []
     }
@@ -146,37 +156,48 @@ class DAGMSMapView: GMSMapView {
      * delete editing marker
      **/
     func deleteEditingMarker() {
-        if self.editingMarker == nil { return }
+        if !(self.isEditingNow()) { return }
+
+        let marker = self.editingMarker
 
         // destination
-        if self.editingMarker!.isKindOfClass(DADestinationMarker) {
+        if marker!.isKindOfClass(DADestinationMarker) {
+            self.removeAllPoints()
         }
         // waypoint
-        else if self.editingMarker!.isKindOfClass(DAWaypointMarker) {
+        else if marker!.isKindOfClass(DAWaypointMarker) {
+            let index = self.waypointIndex(waypoint: self.editingPosition!)
+            if index != nil { self.waypoints.removeAtIndex(index!) }
         }
 
-        self.editingMarker!.map = nil
         self.editingMarker = nil
     }
 
     /**
-     * startMovingWaypoint
-     * @param waypoint waypoint
+     * startMovingMarker
+     * @param marker GMSMarker
      */
-    func startMovingWaypoint(waypoint: CLLocationCoordinate2D) {
-        self.editingPoint = waypoint
+    func startMovingMarker(marker: GMSMarker) {
+        self.editingMarker = marker
     }
 
     /**
-     * endMovingWaypoint
-     * @param waypoint waypoint
+     * endMovingMarker
+     * @param marker GMSMarker
      */
-    func endMovingWaypoint(waypoint: CLLocationCoordinate2D) {
-        if self.editingPoint == nil { return }
+    func endMovingMarker(marker: GMSMarker) {
+        if !(self.isEditingNow()) { return }
 
-        let index = self.waypointIndex(waypoint: self.editingPoint!)
-        self.editingPoint = nil
-        if index != nil { self.waypoints[index!] = waypoint }
+        var index: Int? = nil
+        if marker.isKindOfClass(DAWaypointMarker) {
+            index = self.waypointIndex(waypoint: self.editingPosition!)
+        }
+        else if marker.isKindOfClass(DADestinationMarker) {
+            self.destination = marker.position
+        }
+
+        self.editingMarker = nil
+        if index != nil { self.waypoints[index!] = marker.position }
     }
 
     /**
@@ -184,7 +205,7 @@ class DAGMSMapView: GMSMapView {
      * @return BOOL
      **/
     func isEditingNow() -> Bool {
-        return (self.editingPoint != nil)
+        return (self.editingPosition != nil || self.editingMarker != nil)
     }
 
 

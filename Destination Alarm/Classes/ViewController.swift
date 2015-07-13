@@ -112,9 +112,10 @@ class ViewController: UIViewController {
     private func requestDirectoin() {
         if self.destinationString == "" {
             if self.mapView.destination == nil { return }
-            self.destinationString = "\(self.mapView.destination!.latitude),\(self.mapView.destination!.longitude)"
+            self.destinationString =  String(format: "%.4f,%.4f", self.mapView.destination!.latitude, self.mapView.destination!.longitude)
         }
         if self.destinationString == "" { return }
+        self.searchBoxView.setSearchText(self.destinationString)
 
         DAGoogleMapClient.sharedInstance.cancelGetRoute()
 
@@ -156,18 +157,19 @@ extension ViewController: CLLocationManagerDelegate {
 extension ViewController: UIActionSheetDelegate {
 
     func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+        if buttonIndex != 0 { return }
+        if !(self.mapView.isEditingNow()) { return }
+
+        let doRequestDirectoin = self.mapView.editingMarker!.isKindOfClass(DAWaypointMarker)
+
         // delete editing marker
-        if buttonIndex == 0 {
-            self.mapView.deleteEditingMarker()
-            self.mapView.draw()
+        self.mapView.deleteEditingMarker()
+        self.mapView.draw()
+
+        // RequestDirectoin
+        if doRequestDirectoin {
+            self.requestDirectoin()
         }
-/*
-        // done editing
-        else {
-            self.mapView.editingMarker!.map = nil
-            self.mapView.editingMarker = nil
-        }
-*/
     }
 
 }
@@ -177,9 +179,6 @@ extension ViewController: UIActionSheetDelegate {
 extension ViewController: GMSMapViewDelegate {
 
     func mapView(mapView: GMSMapView, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
-    }
-
-    func mapView(mapView: GMSMapView, didLongPressAtCoordinate coordinate: CLLocationCoordinate2D) {
         // append destination or waypoint
         if !(self.mapView.isEditingNow()) {
             self.mapView.appendPoint(coordinate)
@@ -187,10 +186,14 @@ extension ViewController: GMSMapViewDelegate {
         }
     }
 
+    func mapView(mapView: GMSMapView, didLongPressAtCoordinate coordinate: CLLocationCoordinate2D) {
+    }
+
     func mapView(mapView: GMSMapView, didTapMarker marker: GMSMarker) -> Bool {
         // destination or waypoint
         if marker.isKindOfClass(DADestinationMarker) || marker.isKindOfClass(DAWaypointMarker) {
             self.mapView.editingMarker = marker
+            self.showDeleteMarkerActionSheet()
             return false
         }
 
@@ -199,11 +202,12 @@ extension ViewController: GMSMapViewDelegate {
     }
 
     func mapView(mapView: GMSMapView,  didBeginDraggingMarker marker: GMSMarker) {
-        self.mapView.startMovingWaypoint(marker.position)
+        self.mapView.startMovingMarker(marker)
     }
 
     func mapView(mapView: GMSMapView,  didEndDraggingMarker marker: GMSMarker) {
-        self.mapView.endMovingWaypoint(marker.position)
+        self.mapView.endMovingMarker(marker)
+        if marker.isKindOfClass(DADestinationMarker) { self.destinationString = "" }
         self.requestDirectoin()
     }
 /*
