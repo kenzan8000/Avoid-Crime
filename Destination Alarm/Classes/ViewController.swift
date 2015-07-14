@@ -54,9 +54,12 @@ class ViewController: UIViewController {
         self.mapView.myLocationEnabled = true
         self.mapView.settings.myLocationButton = true
         self.mapView.delegate = self
-        //self.mapView.mapType = kGMSTypeNone
-        //self.mapView.padding = UIEdgeInsetsMake(0.0, 0.0, 48.0, 0.0)
         self.view.addSubview(self.mapView)
+        self.mapView.camera = GMSCameraPosition.cameraWithLatitude(
+            DAGoogleMap.Latitude,
+            longitude: DAGoogleMap.Longitude,
+            zoom: DAGoogleMap.Zoom
+        )
 
         // search result
         let searchResultNib = UINib(nibName: DANSStringFromClass(DASearchResultView), bundle:nil)

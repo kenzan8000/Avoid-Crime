@@ -45,6 +45,9 @@ struct DAGoogleMap {
     static let APIKey =                 kDAGoogleMapAPIKey
     static let BrowserAPIKey =          kDAGoogleMapBrowserAPIKey
 
+    static let Latitude: CLLocationDegrees =        37.7833
+    static let Longitude: CLLocationDegrees =       -122.4167
+
     /// zoom
     static let Zoom: Float =            13.0
 
