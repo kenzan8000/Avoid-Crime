@@ -40,6 +40,7 @@ class DASearchBoxView: UIView {
     @IBOutlet weak var searchTextFieldBackgroundView: UIView!
     @IBOutlet weak var activeButton: BFPaperButton!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var modeButton: UIButton!
     @IBOutlet weak var clearButton: UIButton!
     var delegate: DASearchBoxViewDelegate?
     var isActive: Bool {
@@ -64,6 +65,9 @@ class DASearchBoxView: UIView {
         )
         self.backButton.setImage(backImage, forState: .Normal)
 
+        self.modeButton.setTitle(ion_android_bicycle, forState: .Normal)
+        self.switchMode()
+
         let closeImage = IonIcons.imageWithIcon(
             ion_ios_close_empty,
             size: 36.0,
@@ -81,6 +85,9 @@ class DASearchBoxView: UIView {
         }
         else if button == self.backButton {
             self.endSearch()
+        }
+        else if button == self.modeButton {
+            self.switchMode()
         }
         else if button == self.clearButton {
             self.searchTextField.text = ""
@@ -155,6 +162,7 @@ class DASearchBoxView: UIView {
         self.searchTextField.becomeFirstResponder()
         self.activeButton.hidden = true
         self.backButton.hidden = false
+        self.modeButton.hidden = true
         if self.delegate != nil { self.delegate?.searchBoxWasActive(searchBoxView: self) }
         self.clearButton.hidden = (self.searchTextField.text == nil || self.searchTextField.text == "")
     }
@@ -166,8 +174,40 @@ class DASearchBoxView: UIView {
         self.searchTextField.resignFirstResponder()
         self.activeButton.hidden = false
         self.backButton.hidden = true
+        self.modeButton.hidden = false
         if self.delegate != nil { self.delegate?.searchBoxWasInactive(searchBoxView: self) }
         self.clearButton.hidden = (self.searchTextField.text == nil || self.searchTextField.text == "")
+    }
+
+    /**
+     * get mode
+     **/
+    func getMode() -> String {
+        if self.modeButton.titleForState(.Normal) == ion_android_bicycle {
+            return "bicycling"
+        }
+        else if self.modeButton.titleForState(.Normal) == ion_android_walk {
+            return "walking"
+        }
+        return ""
+    }
+
+
+    /// MARK: - private api
+
+    /**
+     * switch mode walk or bicycle
+     **/
+    func switchMode() {
+        let title = (self.modeButton.titleForState(.Normal) == ion_android_walk) ? ion_android_bicycle : ion_android_walk
+        self.modeButton.setTitle(title, forState: .Normal)
+
+        let modeImage = IonIcons.imageWithIcon(
+            title,
+            size: 20.0,
+            color: UIColor.grayColor()
+        )
+        self.modeButton.setImage(modeImage, forState: .Normal)
     }
 
 }

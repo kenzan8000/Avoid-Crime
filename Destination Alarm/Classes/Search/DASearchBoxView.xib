@@ -8,6 +8,7 @@
         <mutableArray key="ionicons.ttf">
             <string>Ionicons</string>
             <string>Ionicons</string>
+            <string>Ionicons</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -51,6 +52,18 @@
                                 <action selector="touchedUpInsideButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="SAs-j2-8tv"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Z2K-wI-c1X">
+                            <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Ionicons" family="Ionicons" pointSize="15"/>
+                            <state key="normal">
+                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="touchedUpInsideButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="Y4v-aX-Gbf"/>
+                            </connections>
+                        </button>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7QH-AD-J0A">
                             <rect key="frame" x="232" y="0.0" width="48" height="48"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" heightSizable="YES"/>
@@ -72,6 +85,7 @@
                 <outlet property="activeButton" destination="GAO-6q-qyP" id="xh9-8g-4Km"/>
                 <outlet property="backButton" destination="GdC-ri-JN5" id="BaZ-Hi-cKi"/>
                 <outlet property="clearButton" destination="7QH-AD-J0A" id="wIw-Y6-pAf"/>
+                <outlet property="modeButton" destination="Z2K-wI-c1X" id="RDe-zJ-Sre"/>
                 <outlet property="searchTextField" destination="1wD-Si-WQc" id="joE-iC-rjF"/>
                 <outlet property="searchTextFieldBackgroundView" destination="nAW-hs-e2U" id="Rlz-TU-GnY"/>
             </connections>

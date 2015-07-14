@@ -164,7 +164,7 @@ class ViewController: UIViewController {
         if location == nil { return }
         let coordinate = location.coordinate
         DAGoogleMapClient.sharedInstance.getRoute(
-            queries: [ "origin" : "\(coordinate.latitude),\(coordinate.longitude)", "destination" : self.destinationString, ],
+            queries: [ "origin" : "\(coordinate.latitude),\(coordinate.longitude)", "destination" : self.destinationString, "mode" : self.searchBoxView.getMode(), ],
             completionHandler: { [unowned self] (json) in
                 self.mapView.setRouteJSON(json)
                 self.mapView.draw()
