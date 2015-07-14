@@ -163,6 +163,7 @@ class ViewController: UIViewController {
         }
 
         DAGoogleMapClient.sharedInstance.cancelGetRoute()
+        self.searchBoxView.startRequestRouting()
 
         // google map direction API
         let location = self.mapView.myLocation
@@ -171,6 +172,8 @@ class ViewController: UIViewController {
         DAGoogleMapClient.sharedInstance.getRoute(
             queries: [ "origin" : "\(coordinate.latitude),\(coordinate.longitude)", "destination" : self.destinationString, "mode" : self.searchBoxView.getMode(), ],
             completionHandler: { [unowned self] (json) in
+                self.searchBoxView.endRequestRouting()
+
                 // failed
                 if json[DAGoogleMap.Status].stringValue == DAGoogleMap.Statuses.ZeroResults {
                     self.mapView.removeAllPoints()
@@ -343,6 +346,17 @@ extension ViewController: DASearchBoxViewDelegate {
         if self.destinationString != "" {
             self.requestDirectoin(doUpdateCamera: false)
         }
+    }
+
+    func didCancelRequestRouting(#searchBoxView: DASearchBoxView) {
+        DAGoogleMapClient.sharedInstance.cancelGetRoute()
+        self.searchBoxView.endRequestRouting()
+
+        self.durationView.hide()
+        self.mapView.removeAllPoints()
+        self.destinationString = ""
+
+        self.mapView.draw()
     }
 
 }

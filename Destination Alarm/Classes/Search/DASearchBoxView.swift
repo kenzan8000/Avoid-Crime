@@ -35,6 +35,12 @@ protocol DASearchBoxViewDelegate {
      */
     func modeDidChanged(#searchBoxView: DASearchBoxView)
 
+    /**
+     * called when cancel routing button is touched up inside
+     * @param searchBoxView DASearchBoxView
+     */
+    func didCancelRequestRouting(#searchBoxView: DASearchBoxView)
+
 }
 
 
@@ -48,6 +54,11 @@ class DASearchBoxView: UIView {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var modeButton: UIButton!
     @IBOutlet weak var clearButton: UIButton!
+
+    @IBOutlet weak var cancelRequestRoutingButton: UIButton!
+    @IBOutlet weak var requestOverlayView: UIView!
+    @IBOutlet weak var indicatorView: TYMActivityIndicatorView!
+
     var delegate: DASearchBoxViewDelegate?
     var isActive: Bool {
         return self.activeButton.hidden
@@ -80,6 +91,16 @@ class DASearchBoxView: UIView {
             color: UIColor.grayColor()
         )
         self.clearButton.setImage(closeImage, forState: .Normal)
+
+        let cancelImage = IonIcons.imageWithIcon(
+            ion_ios_close_empty,
+            size: 36.0,
+            color: UIColor(red: CGFloat(35.0/255.0), green: CGFloat(150.0/255.0), blue: CGFloat(232.0/255.0), alpha: 1.0)
+        )
+        self.cancelRequestRoutingButton.setImage(cancelImage, forState: .Normal)
+
+        self.indicatorView.hidesWhenStopped = true
+        self.indicatorView.stopAnimating()
     }
 
 
@@ -104,6 +125,11 @@ class DASearchBoxView: UIView {
             if self.delegate != nil {
                 self.delegate?.clearButtonTouchedUpInside(searchBoxView: self)
                 self.delegate?.searchDidFinish(searchBoxView: self, destinations: [] as [DADestination])
+            }
+        }
+        else if button == self.cancelRequestRoutingButton {
+            if self.delegate != nil {
+                self.delegate?.didCancelRequestRouting(searchBoxView: self)
             }
         }
     }
@@ -160,15 +186,8 @@ class DASearchBoxView: UIView {
      * @param searchText searchText
      **/
     func setSearchText(searchText: String) {
-        self.searchTextField.text =  searchText
+        self.searchTextField.text = searchText
         self.clearButton.hidden = (self.searchTextField.text == nil || self.searchTextField.text == "")
-    }
-
-    /**
-     * get searchText
-     **/
-    func getSearchText() -> String {
-        return self.searchTextField.text
     }
 
     /**
@@ -192,6 +211,33 @@ class DASearchBoxView: UIView {
         self.backButton.hidden = true
         self.modeButton.hidden = false
         if self.delegate != nil { self.delegate?.searchBoxWasInactive(searchBoxView: self) }
+        self.clearButton.hidden = (self.searchTextField.text == nil || self.searchTextField.text == "")
+    }
+
+    /**
+     * start request routing
+     **/
+    func startRequestRouting() {
+        self.requestOverlayView.hidden = false
+        self.indicatorView.activityIndicatorViewStyle = TYMActivityIndicatorViewStyle.Small
+        self.indicatorView.setBackgroundImage(
+            UIImage(named: "clear.png"),
+            forActivityIndicatorStyle:TYMActivityIndicatorViewStyle.Small
+        )
+        self.indicatorView.startAnimating()
+
+        self.modeButton.hidden = true
+        self.clearButton.hidden = true
+    }
+
+    /**
+     * end request routing
+     **/
+    func endRequestRouting() {
+        self.requestOverlayView.hidden = true
+        self.indicatorView.stopAnimating()
+
+        self.modeButton.hidden = false
         self.clearButton.hidden = (self.searchTextField.text == nil || self.searchTextField.text == "")
     }
 

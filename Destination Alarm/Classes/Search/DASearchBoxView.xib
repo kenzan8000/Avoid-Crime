@@ -9,6 +9,7 @@
             <string>Ionicons</string>
             <string>Ionicons</string>
             <string>Ionicons</string>
+            <string>Ionicons</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -33,10 +34,10 @@
                                 <action selector="touchedUpInsideButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="eom-Yd-SgV"/>
                             </connections>
                         </button>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" minimumFontSize="17" id="1wD-Si-WQc">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search Destination..." minimumFontSize="17" id="1wD-Si-WQc">
                             <rect key="frame" x="48" y="0.0" width="184" height="48"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
                                 <outlet property="delegate" destination="iN0-l3-epB" id="5pk-ZT-dMn"/>
@@ -75,6 +76,29 @@
                                 <action selector="touchedUpInsideButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="sEI-KK-wyn"/>
                             </connections>
                         </button>
+                        <view hidden="YES" contentMode="scaleToFill" id="S7x-17-lWb">
+                            <rect key="frame" x="0.0" y="0.0" width="280" height="48"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" id="UOd-5S-IFx" customClass="TYMActivityIndicatorView">
+                                    <rect key="frame" x="12" y="12" width="24" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hED-Z8-tsn">
+                                    <rect key="frame" x="232" y="0.0" width="48" height="48"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                    <fontDescription key="fontDescription" name="Ionicons" family="Ionicons" pointSize="15"/>
+                                    <state key="normal">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="touchedUpInsideButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="6Kg-R7-q3N"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
@@ -84,8 +108,11 @@
             <connections>
                 <outlet property="activeButton" destination="GAO-6q-qyP" id="xh9-8g-4Km"/>
                 <outlet property="backButton" destination="GdC-ri-JN5" id="BaZ-Hi-cKi"/>
+                <outlet property="cancelRequestRoutingButton" destination="hED-Z8-tsn" id="0zm-ob-Dqd"/>
                 <outlet property="clearButton" destination="7QH-AD-J0A" id="wIw-Y6-pAf"/>
+                <outlet property="indicatorView" destination="UOd-5S-IFx" id="ckL-dI-1JU"/>
                 <outlet property="modeButton" destination="Z2K-wI-c1X" id="RDe-zJ-Sre"/>
+                <outlet property="requestOverlayView" destination="S7x-17-lWb" id="ByG-Cw-6C3"/>
                 <outlet property="searchTextField" destination="1wD-Si-WQc" id="joE-iC-rjF"/>
                 <outlet property="searchTextFieldBackgroundView" destination="nAW-hs-e2U" id="Rlz-TU-GnY"/>
             </connections>
