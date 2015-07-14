@@ -5,7 +5,11 @@ import UIKit
 class ViewController: UIViewController {
 
     /// MARK: - property
-    var destinationString: String = ""
+    var destinationString: String = "" {
+        didSet {
+            self.searchBoxView.setSearchText(destinationString)
+        }
+    }
 
     var mapView: DAGMSMapView!
     var searchBoxView: DASearchBoxView!
@@ -154,8 +158,6 @@ class ViewController: UIViewController {
             didRequestDestinationFromCoordinate = true
             self.destinationString = String(format: "%.4f,%.4f", self.mapView.destination!.latitude, self.mapView.destination!.longitude)
         }
-        if self.destinationString == "" { return }
-        self.searchBoxView.setSearchText(self.destinationString)
 
         DAGoogleMapClient.sharedInstance.cancelGetRoute()
 
@@ -166,16 +168,21 @@ class ViewController: UIViewController {
         DAGoogleMapClient.sharedInstance.getRoute(
             queries: [ "origin" : "\(coordinate.latitude),\(coordinate.longitude)", "destination" : self.destinationString, "mode" : self.searchBoxView.getMode(), ],
             completionHandler: { [unowned self] (json) in
+                // failed
+                if json[DAGoogleMap.Status].stringValue == DAGoogleMap.Statuses.ZeroResults {
+                    self.mapView.removeAllPoints()
+                    self.destinationString = ""
+                    return
+                }
+
+                // succeeded
                 self.mapView.setRouteJSON(json)
                 self.mapView.draw()
-
                 // update camera
                 if doUpdateCamera { self.mapView.updateCameraWhenRoutingHasDone() }
-
                 // duration view
                 if didRequestDestinationFromCoordinate {
                     self.destinationString = self.mapView.endAddress()
-                    self.searchBoxView.setSearchText(self.destinationString)
                 }
                 self.durationView.show(destinationString: self.destinationString, durationString: self.mapView.routeDuration())
             }
@@ -213,7 +220,10 @@ extension ViewController: UIActionSheetDelegate {
         let doRequestDirectoin = self.mapView.editingMarker!.isKindOfClass(DAWaypointMarker)
 
         let doDeleteDestination = self.mapView.editingMarker!.isKindOfClass(DADestinationMarker)
-        if doDeleteDestination { self.searchBoxView.setSearchText("") }
+        if doDeleteDestination {
+            self.destinationString = ""
+            self.mapView.removeAllPoints()
+        }
 
         // delete editing marker
         self.durationView.hide()
@@ -262,7 +272,9 @@ extension ViewController: GMSMapViewDelegate {
     func mapView(mapView: GMSMapView,  didEndDraggingMarker marker: GMSMarker) {
         self.durationView.hide()
         self.mapView.endMovingMarker(marker)
-        if marker.isKindOfClass(DADestinationMarker) { self.destinationString = "" }
+        if marker.isKindOfClass(DADestinationMarker) {
+            self.destinationString = ""
+        }
         self.requestDirectoin(doUpdateCamera: false)
     }
 /*
@@ -318,11 +330,16 @@ extension ViewController: DASearchBoxViewDelegate {
         DAGoogleMapClient.sharedInstance.cancelGetRoute()
 
         self.durationView.hide()
-        self.mapView.setRouteJSON(nil)
+        self.mapView.removeAllPoints()
         self.destinationString = ""
-        self.mapView.destination = nil
 
         self.mapView.draw()
+    }
+
+    func modeDidChanged(#searchBoxView: DASearchBoxView) {
+        if self.destinationString != "" {
+            self.requestDirectoin(doUpdateCamera: false)
+        }
     }
 
 }

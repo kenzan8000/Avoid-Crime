@@ -29,6 +29,12 @@ protocol DASearchBoxViewDelegate {
      */
     func clearButtonTouchedUpInside(#searchBoxView: DASearchBoxView)
 
+    /**
+     * called when mode button is touched up inside
+     * @param searchBoxView DASearchBoxView
+     */
+    func modeDidChanged(#searchBoxView: DASearchBoxView)
+
 }
 
 
@@ -88,6 +94,9 @@ class DASearchBoxView: UIView {
         }
         else if button == self.modeButton {
             self.switchMode()
+            if self.delegate != nil {
+                self.delegate?.modeDidChanged(searchBoxView: self)
+            }
         }
         else if button == self.clearButton {
             self.searchTextField.text = ""
@@ -153,6 +162,13 @@ class DASearchBoxView: UIView {
     func setSearchText(searchText: String) {
         self.searchTextField.text =  searchText
         self.clearButton.hidden = (self.searchTextField.text == nil || self.searchTextField.text == "")
+    }
+
+    /**
+     * get searchText
+     **/
+    func getSearchText() -> String {
+        return self.searchTextField.text
     }
 
     /**
