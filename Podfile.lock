@@ -29,6 +29,7 @@ PODS:
   - ionicons (2.0.1)
   - ISHTTPOperation (1.2.0)
   - LFHeatMap (1.0.2)
+  - MTStatusBarOverlay (0.9.1)
   - Touchpose (1.2.0)
   - TYMActivityIndicatorView (0.3.2)
   - UIColor+BFPaperColors (1.7.1)
@@ -41,6 +42,7 @@ DEPENDENCIES:
   - ionicons
   - ISHTTPOperation
   - LFHeatMap
+  - MTStatusBarOverlay
   - Touchpose
   - TYMActivityIndicatorView
 
@@ -48,10 +50,11 @@ SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   BDBOAuth1Manager: 2e28773b58f880fb36b5cd3efcf0b1fefbc78a99
   BFPaperButton: 16b3ec9c2964d24f89f623a4113321d3f003ed60
-  Google-Maps-iOS-SDK: cece581da038080da19c8e38f0dfb2d4770510c9
+  Google-Maps-iOS-SDK: 7f89cc1edb3ca239a410e5bc83cd1e060db3a289
   ionicons: c7b0867373392e85c17f613d19ade04ccfbe5a7c
   ISHTTPOperation: dfe4b6b2b3d7803688b22df2c46ea9827081e723
   LFHeatMap: 433197b20e4d57a9502bc2a2a21300fa851ff3c6
+  MTStatusBarOverlay: 258a1ee369f4dc4b94107d02cfd7f6b1317c421b
   Touchpose: 219ef3dc3d1932b384ea502ec6df2f003667129b
   TYMActivityIndicatorView: 521860f0873be6bf3bbd21ee60d79cdef9f51055
   UIColor+BFPaperColors: b1efa4320e2f56c4b14f73232faf967ba0e5b4a2

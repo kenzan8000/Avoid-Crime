@@ -221,7 +221,7 @@ class DAGMSMapView: GMSMapView {
         let end = self.destination
         let path = GMSPath(fromEncodedPath: encodedPathes[0])
         var bounds = GMSCoordinateBounds(path: path)
-        self.moveCamera(GMSCameraUpdate.fitBounds(bounds, withEdgeInsets: UIEdgeInsetsMake(160.0, 20.0, 40.0, 80.0)))
+        self.moveCamera(GMSCameraUpdate.fitBounds(bounds, withEdgeInsets: UIEdgeInsetsMake(160.0, 20.0, 80.0, 80.0)))
 
         let startPoint = self.projection.pointForCoordinate(startLocation.coordinate)
         let endPoint = self.projection.pointForCoordinate(end!)

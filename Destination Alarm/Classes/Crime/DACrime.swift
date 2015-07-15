@@ -177,7 +177,7 @@ class DACrime: NSManagedObject {
         var error: NSError? = nil
         !context.save(&error)
 
-        if error == nil {
+        if error == nil && crimeDatas.count > 0 {
             dateFormatter.dateFormat = "yyyy-MM-dd"
             let currentYearMonth = dateFormatter.stringFromDate(NSDate())
             NSUserDefaults().setObject(currentYearMonth, forKey: DAUserDefaults.CrimeYearMonth)

@@ -29,13 +29,21 @@ class DACrimeClient {
             ]
         )
 
+        MTStatusBarOverlay.sharedInstance().postMessage("Getting crime data")
+
         // request
         let request = NSURLRequest(URL: url!)
         var operation = ISHTTPOperation(
             request: request,
             handler:{ (response: NSHTTPURLResponse!, object: AnyObject!, error: NSError!) -> Void in
                 var responseJSON = JSON([:])
-                if object != nil { responseJSON = JSON(data: object as! NSData) }
+                if object != nil {
+                    responseJSON = JSON(data: object as! NSData)
+                    MTStatusBarOverlay.sharedInstance().postImmediateFinishMessage("Done", duration:2.0, animated:true)
+                }
+                else {
+                    MTStatusBarOverlay.sharedInstance().postImmediateErrorMessage("Failed", duration:2.0, animated:true)
+                }
 
                 dispatch_async(dispatch_get_main_queue(), {
                     completionHandler(json: responseJSON)

@@ -17,4 +17,5 @@ pod 'BDBOAuth1Manager'
 pod 'Touchpose'
 pod 'BFPaperButton'
 pod 'TYMActivityIndicatorView'
-pod "LFHeatMap"
+pod 'MTStatusBarOverlay'
+pod 'LFHeatMap'
