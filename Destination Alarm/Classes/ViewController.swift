@@ -96,18 +96,8 @@ class ViewController: UIViewController {
         self.crimeHeatmapButton = crimeHeatmapButtons[0] as! DACrimeButton
         let crimeButtons = [self.crimeHeatmapButton, self.crimePointButton]
         let crimeButtonImages = [UIImage(named: "button_crime_heatmap")!, UIImage(named: "button_crime_point")!]
-//        let xOffset: CGFloat = 10.0
-//        let yOffset: CGFloat = 10.0
         for var i = 0; i < crimeButtons.count; i++ {
             var crimeButton = crimeButtons[i]
-/*
-            crimeButton.frame = CGRectMake(
-                self.view.frame.size.width - crimeButton.frame.size.width - xOffset,
-                self.view.frame.size.height - (crimeButton.frame.size.height + yOffset) * CGFloat(i+2) - 48.0,
-                crimeButton.frame.size.width,
-                crimeButton.frame.size.height
-            )
-*/
             crimeButton.setImage(crimeButtonImages[i])
             self.view.addSubview(crimeButton)
             crimeButton.delegate = self
