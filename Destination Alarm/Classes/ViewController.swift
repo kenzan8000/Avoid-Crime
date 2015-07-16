@@ -142,16 +142,24 @@ class ViewController: UIViewController {
             "Set your destination",
             "Check crime on map",
             "Avoid crime",
-            "Have a nice trip!",
+            "Have a safe trip!",
         ]
         let descs = [
-            "San Francisco is is the cultural, commercial, and financial center of Northern California.",
+            "San Francisco is the cultural, commercial, and financial center of Northern California.",
             "Input an address or tap location on map.",
             "Tap button to display crime.",
             "Tap location to pass and avoid crime.",
             "",
         ]
-
+        
+        var offset: CGFloat = 20.0
+        switch self.view.frame.size {
+            case CGSize(width: 320.0, height: 480.0):
+                offset = 60.0
+                break
+            default:
+                break
+        }
         var pages: [EAIntroPage] = []
         for var i = 0; i < titles.count; i++ {
             let page = EAIntroPage()
@@ -163,7 +171,7 @@ class ViewController: UIViewController {
             page.descFont = descFont
             page.descColor = color
             let imageView = UIImageView(image: UIImage(named: "tutorial_\(i+1)"))
-            imageView.frame = CGRectMake(0, 0, self.view.frame.size.width - 20, self.view.frame.size.width - 20)
+            imageView.frame = CGRectMake(0, 0, self.view.frame.size.width - offset, self.view.frame.size.width - offset)
             page.titleIconView = imageView
 
             pages.append(page)
