@@ -32,6 +32,7 @@ func DANSStringFromClass(classType:AnyClass) -> String {
 
 struct DAUserDefaults {
     static let CrimeYearMonth =         "DAUserDefaults.CrimeYearMonth"
+    static let TutorialHasDone =           "DAUserDefaults.TutorialHasDone"
 }
 
 

@@ -8,6 +8,7 @@
 #import "DACrimeHeatmap.h"
 #import "TYMActivityIndicatorView.h"
 #import "MTStatusBarOverlay.h"
+#import "EAIntroView.h"
 /// network
 #import "ISHTTPOperation.h"
 /// json parser

@@ -10,12 +10,11 @@ pod 'Google-Maps-iOS-SDK'
 
 # network
 pod 'ISHTTPOperation'
-pod 'AFNetworking'
-pod 'BDBOAuth1Manager'
 
 # user interface
 pod 'Touchpose'
 pod 'BFPaperButton'
 pod 'TYMActivityIndicatorView'
+pod 'EAIntroView'
 pod 'MTStatusBarOverlay'
 pod 'LFHeatMap'

@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     var searchBoxView: DASearchBoxView!
     var searchResultView: DASearchResultView!
     var durationView: DADurationView!
+    @IBOutlet weak var tutorialButton: UIButton!
     var crimePointButton: DACrimeButton!
     var crimeHeatmapButton: DACrimeButton!
     var locationManager: CLLocationManager!
@@ -25,6 +26,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         self.doSettings()
+
+        let tutorialHasDone = NSUserDefaults().boolForKey(DAUserDefaults.TutorialHasDone)
+        if !tutorialHasDone { self.showTutorial() }
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,6 +43,9 @@ class ViewController: UIViewController {
      * @param button UIButton
      **/
     @IBAction func touchedUpInside(#button: UIButton) {
+        if button == self.tutorialButton {
+            self.showTutorial()
+        }
     }
 
 
@@ -103,6 +110,9 @@ class ViewController: UIViewController {
             crimeButton.delegate = self
         }
 
+        // tutorial button
+        self.tutorialButton.setImage(IonIcons.imageWithIcon(ion_ios_information, size: 32.0, color: UIColor.grayColor()), forState: .Normal)
+
         // location manager
         self.locationManager = CLLocationManager()
         self.locationManager.delegate = self
@@ -112,9 +122,56 @@ class ViewController: UIViewController {
         self.locationManager.startUpdatingLocation()
 
         self.setButtonPositions(offsetY: 0)
+        //self.setButtonPositions(offsetY: self.view.bounds.size.height - self.view.bounds.size.width)
 
+        self.view.bringSubviewToFront(self.tutorialButton)
         self.view.bringSubviewToFront(self.searchResultView)
         self.view.bringSubviewToFront(self.searchBoxView)
+    }
+
+    /**
+     * show tutorial
+     **/
+    private func showTutorial() {
+        let bgColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.75)
+        let color = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        let titleFont = UIFont(name: "HelveticaNeue-Bold", size: 20.0)
+        let descFont = UIFont(name: "HelveticaNeue-Light", size: 14.0)
+        let titles = [
+            "Welcome to San Francisco",
+            "Set your destination",
+            "Check crime on map",
+            "Avoid crime",
+            "Have a nice trip!",
+        ]
+        let descs = [
+            "San Francisco is is the cultural, commercial, and financial center of Northern California.",
+            "Input an address or tap location on map.",
+            "Tap button to display crime.",
+            "Tap location to pass and avoid crime.",
+            "",
+        ]
+
+        var pages: [EAIntroPage] = []
+        for var i = 0; i < titles.count; i++ {
+            let page = EAIntroPage()
+            page.title = titles[i]
+            page.desc = descs[i]
+            page.bgColor = bgColor
+            page.titleFont = titleFont
+            page.titleColor = color
+            page.descFont = descFont
+            page.descColor = color
+            let imageView = UIImageView(image: UIImage(named: "tutorial_\(i+1)"))
+            imageView.frame = CGRectMake(0, 0, self.view.frame.size.width - 20, self.view.frame.size.width - 20)
+            page.titleIconView = imageView
+
+            pages.append(page)
+        }
+
+        let introView = EAIntroView(frame: self.view.bounds, andPages: pages)
+        introView.delegate = self
+        introView.showInView(self.view, animateDuration: 1.0)
     }
 
     /**
@@ -138,6 +195,13 @@ class ViewController: UIViewController {
                 crimeButton.frame.size.height
             )
         }
+
+        self.tutorialButton.frame = CGRectMake(
+            0,
+            self.view.frame.size.height - (self.tutorialButton.frame.size.height) * CGFloat(1) - offsetY,
+            self.tutorialButton.frame.size.width,
+            self.tutorialButton.frame.size.height
+        )
     }
 
     /**
@@ -304,6 +368,17 @@ extension ViewController: GMSMapViewDelegate {
 }
 
 
+/// MARK: - EAIntroDelegate
+extension ViewController: EAIntroDelegate {
+
+    func intro(introView: EAIntroView, pageAppeared page: EAIntroPage, withIndex pageIndex: UInt) {
+        NSUserDefaults().setObject(true, forKey: DAUserDefaults.TutorialHasDone)
+        NSUserDefaults().synchronize()
+    }
+
+}
+
+
 /// MARK: - DASearchBoxViewDelegate
 extension ViewController: DASearchBoxViewDelegate {
 
@@ -378,7 +453,10 @@ extension ViewController: DADurationViewDelegate {
             0.30,
             delay: 0.0,
             options: .CurveEaseOut,
-            animations: { [unowned self] in self.setButtonPositions(offsetY: self.durationView.frame.size.height) },
+            animations: { [unowned self] in
+                self.setButtonPositions(offsetY: self.durationView.frame.size.height)
+                //self.setButtonPositions(offsetY: self.view.bounds.size.height - self.view.bounds.size.width + self.durationView.frame.size.height)
+            },
             completion: { [unowned self] finished in }
         )
     }
@@ -388,7 +466,10 @@ extension ViewController: DADurationViewDelegate {
             0.15,
             delay: 0.0,
             options: .CurveEaseOut,
-            animations: { [unowned self] in self.setButtonPositions(offsetY: 0) },
+            animations: { [unowned self] in
+                self.setButtonPositions(offsetY: 0)
+                //self.setButtonPositions(offsetY: self.view.bounds.size.height - self.view.bounds.size.width)
+            },
             completion: { [unowned self] finished in }
         )
     }
@@ -399,6 +480,7 @@ extension ViewController: DADurationViewDelegate {
 extension ViewController: DACrimeButtonDelegate {
 
     func crimeButton(crimeButton: DACrimeButton, wasOn: Bool) {
+        // crime visualization
         var markerType = DAVisualization.None
         if crimeButton == self.crimePointButton {
             markerType = DAVisualization.CrimePoint

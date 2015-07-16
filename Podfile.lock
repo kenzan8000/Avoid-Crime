@@ -1,30 +1,9 @@
 PODS:
-  - AFNetworking (2.5.4):
-    - AFNetworking/NSURLConnection (= 2.5.4)
-    - AFNetworking/NSURLSession (= 2.5.4)
-    - AFNetworking/Reachability (= 2.5.4)
-    - AFNetworking/Security (= 2.5.4)
-    - AFNetworking/Serialization (= 2.5.4)
-    - AFNetworking/UIKit (= 2.5.4)
-  - AFNetworking/NSURLConnection (2.5.4):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.5.4):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.5.4)
-  - AFNetworking/Security (2.5.4)
-  - AFNetworking/Serialization (2.5.4)
-  - AFNetworking/UIKit (2.5.4):
-    - AFNetworking/NSURLConnection
-    - AFNetworking/NSURLSession
-  - BDBOAuth1Manager (1.5.0):
-    - AFNetworking/NSURLConnection (~> 2.5.0)
-    - AFNetworking/NSURLSession (~> 2.5.0)
   - BFPaperButton (2.0.18):
     - UIColor+BFPaperColors
+  - EAIntroView (2.7.4):
+    - EARestrictedScrollView (~> 0.2.0)
+  - EARestrictedScrollView (0.2.0)
   - Google-Maps-iOS-SDK (1.9.2)
   - ionicons (2.0.1)
   - ISHTTPOperation (1.2.0)
@@ -35,9 +14,8 @@ PODS:
   - UIColor+BFPaperColors (1.7.1)
 
 DEPENDENCIES:
-  - AFNetworking
-  - BDBOAuth1Manager
   - BFPaperButton
+  - EAIntroView
   - Google-Maps-iOS-SDK
   - ionicons
   - ISHTTPOperation
@@ -47,9 +25,9 @@ DEPENDENCIES:
   - TYMActivityIndicatorView
 
 SPEC CHECKSUMS:
-  AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
-  BDBOAuth1Manager: 2e28773b58f880fb36b5cd3efcf0b1fefbc78a99
   BFPaperButton: 16b3ec9c2964d24f89f623a4113321d3f003ed60
+  EAIntroView: 50b85eedf414260e61330070ffe5947e72493a62
+  EARestrictedScrollView: f86d61e16c61d3e93c84f8e96e83122a2a3b7631
   Google-Maps-iOS-SDK: 7f89cc1edb3ca239a410e5bc83cd1e060db3a289
   ionicons: c7b0867373392e85c17f613d19ade04ccfbe5a7c
   ISHTTPOperation: dfe4b6b2b3d7803688b22df2c46ea9827081e723
