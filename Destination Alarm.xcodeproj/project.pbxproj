@@ -40,7 +40,6 @@
 		E6E30E411B13FBA8003EB782 /* DAConstant-Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E30E401B13FBA8003EB782 /* DAConstant-Private.swift */; };
 		E6E5C2591AC6044E001FB516 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6E5C2581AC6044E001FB516 /* Images.xcassets */; };
 		E6E5C29D1AC60510001FB516 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5C2991AC60510001FB516 /* AppDelegate.swift */; };
-		E6E5C29E1AC60510001FB516 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6E5C29A1AC60510001FB516 /* LaunchScreen.xib */; };
 		E6E5C29F1AC60510001FB516 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6E5C29B1AC60510001FB516 /* Main.storyboard */; };
 		E6E5C2A01AC60510001FB516 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5C29C1AC60510001FB516 /* ViewController.swift */; };
 		E6ED997D1B12CFE00071CD63 /* DAConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ED997C1B12CFE00071CD63 /* DAConstant.swift */; };
@@ -100,7 +99,6 @@
 		E6E5C24C1AC6044E001FB516 /* Destination Alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Destination Alarm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6E5C2581AC6044E001FB516 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E6E5C2991AC60510001FB516 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E6E5C29A1AC60510001FB516 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		E6E5C29B1AC60510001FB516 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E6E5C29C1AC60510001FB516 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E6E5C2A61AC60546001FB516 /* Destination Alarm-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Destination Alarm-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -268,7 +266,6 @@
 				E6BBE6E51B11AECA008F928C /* main.swift */,
 				E6E5C2991AC60510001FB516 /* AppDelegate.swift */,
 				E6E5C29C1AC60510001FB516 /* ViewController.swift */,
-				E6E5C29A1AC60510001FB516 /* LaunchScreen.xib */,
 				E6E5C29B1AC60510001FB516 /* Main.storyboard */,
 				E6E5C2A61AC60546001FB516 /* Destination Alarm-Bridging-Header.h */,
 				E671BC311B07F747002394F6 /* Search */,
@@ -345,7 +342,7 @@
 						CreatedOnToolsVersion = 6.2;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -378,7 +375,6 @@
 				E61238771B536AB20004D643 /* DADurationView.xib in Resources */,
 				E638F9DB1B2CF9800069A870 /* DACrimeButton.xib in Resources */,
 				E6151FF71B32573C0085A992 /* yelp_categories.json in Resources */,
-				E6E5C29E1AC60510001FB516 /* LaunchScreen.xib in Resources */,
 				E6E5C2591AC6044E001FB516 /* Images.xcassets in Resources */,
 				E60F6C801B13F5B9009BC03B /* DASearchResultView.xib in Resources */,
 				E671BC331B07F783002394F6 /* DASearchBoxView.xib in Resources */,
@@ -477,7 +473,6 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -519,7 +514,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Kenzan Hase";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -532,6 +527,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "7be4a2cd-35df-4cdf-8ff5-2c0e09265e50";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

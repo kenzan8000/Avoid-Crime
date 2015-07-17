@@ -145,13 +145,13 @@ class ViewController: UIViewController {
             "Have a safe trip!",
         ]
         let descs = [
-            "San Francisco is the cultural, commercial, and financial center of Northern California.",
+            "",
             "Input an address or tap location on map.",
-            "Tap button to display crime.",
+            "Tap buttons to display crime. The skull button shows detail of cirme. The red one shows heatmap.",
             "Tap location to pass and avoid crime.",
             "",
         ]
-        
+
         var offset: CGFloat = 20.0
         switch self.view.frame.size {
             case CGSize(width: 320.0, height: 480.0):

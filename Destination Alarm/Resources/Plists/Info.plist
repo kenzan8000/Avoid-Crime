@@ -28,8 +28,6 @@
 	<array>
 		<string>ionicons.ttf</string>
 	</array>
-	<key>UIBackgroundModes</key>
-	<array/>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
