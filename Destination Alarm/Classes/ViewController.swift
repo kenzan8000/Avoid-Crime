@@ -42,7 +42,7 @@ class ViewController: UIViewController {
      * called when touched button
      * @param button UIButton
      **/
-    @IBAction func touchedUpInside(#button: UIButton) {
+    @IBAction func touchedUpInside(button button: UIButton) {
         if button == self.tutorialButton {
             self.showTutorial()
         }
@@ -104,7 +104,7 @@ class ViewController: UIViewController {
         let crimeButtons = [self.crimeHeatmapButton, self.crimePointButton]
         let crimeButtonImages = [UIImage(named: "button_crime_heatmap")!, UIImage(named: "button_crime_point")!]
         for var i = 0; i < crimeButtons.count; i++ {
-            var crimeButton = crimeButtons[i]
+            let crimeButton = crimeButtons[i]
             crimeButton.setImage(crimeButtonImages[i])
             self.view.addSubview(crimeButton)
             crimeButton.delegate = self
@@ -117,7 +117,9 @@ class ViewController: UIViewController {
         self.locationManager = CLLocationManager()
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        self.locationManager.requestAlwaysAuthorization()
+        if #available(iOS 8.0, *) {
+            self.locationManager.requestAlwaysAuthorization()
+        }
         self.locationManager.distanceFilter = 300
         self.locationManager.startUpdatingLocation()
 
@@ -186,7 +188,7 @@ class ViewController: UIViewController {
      * set button positions
      * @param offsetY CGFloat
      **/
-    private func setButtonPositions(#offsetY: CGFloat) {
+    private func setButtonPositions(offsetY offsetY: CGFloat) {
         self.durationView.frame = CGRectMake(0, self.view.frame.size.height - offsetY, self.durationView.frame.size.width, self.durationView.frame.size.height)
 
         self.mapView.padding = UIEdgeInsetsMake(0.0, 0.0, offsetY, 0.0)
@@ -195,7 +197,7 @@ class ViewController: UIViewController {
         let xOffset: CGFloat = 10.0
         let yOffset: CGFloat = 10.0
         for var i = 0; i < crimeButtons.count; i++ {
-            var crimeButton = crimeButtons[i]
+            let crimeButton = crimeButtons[i]
             crimeButton.frame = CGRectMake(
                 self.view.frame.size.width - crimeButton.frame.size.width - xOffset,
                 self.view.frame.size.height - (crimeButton.frame.size.height + yOffset) * CGFloat(i+2) - offsetY,
@@ -216,7 +218,7 @@ class ViewController: UIViewController {
      * request dirction API and render direction
      * @param doUpdateCamera Bool if camera updates when routing has done
      */
-    private func requestDirectoin(#doUpdateCamera: Bool) {
+    private func requestDirectoin(doUpdateCamera doUpdateCamera: Bool) {
         var didRequestDestinationFromCoordinate = false
         if self.destinationString == "" {
             if self.mapView.destination == nil { return }
@@ -262,7 +264,7 @@ class ViewController: UIViewController {
 /// MARK: - CLLocationManagerDelegate
 extension ViewController: CLLocationManagerDelegate {
 
-    func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
+    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
         let location = self.mapView.myLocation
         if location == nil { return }
         self.mapView.camera = GMSCameraPosition.cameraWithLatitude(
@@ -272,7 +274,7 @@ extension ViewController: CLLocationManagerDelegate {
         )
     }
 
-    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
     }
 
 }
@@ -390,20 +392,20 @@ extension ViewController: EAIntroDelegate {
 /// MARK: - DASearchBoxViewDelegate
 extension ViewController: DASearchBoxViewDelegate {
 
-    func searchBoxWasActive(#searchBoxView: DASearchBoxView) {
+    func searchBoxWasActive(searchBoxView searchBoxView: DASearchBoxView) {
         self.searchResultView.hidden = false
     }
 
-    func searchBoxWasInactive(#searchBoxView: DASearchBoxView) {
+    func searchBoxWasInactive(searchBoxView searchBoxView: DASearchBoxView) {
         self.searchResultView.hidden = true
         self.searchBoxView.setSearchText(self.destinationString)
     }
 
-    func searchDidFinish(#searchBoxView: DASearchBoxView, destinations: [DADestination]) {
+    func searchDidFinish(searchBoxView searchBoxView: DASearchBoxView, destinations: [DADestination]) {
         self.searchResultView.updateDestinations(destinations)
     }
 
-    func clearButtonTouchedUpInside(#searchBoxView: DASearchBoxView) {
+    func clearButtonTouchedUpInside(searchBoxView searchBoxView: DASearchBoxView) {
         if self.searchBoxView.isActive { return }
 
         DAGoogleMapClient.sharedInstance.cancelGetRoute()
@@ -415,13 +417,13 @@ extension ViewController: DASearchBoxViewDelegate {
         self.mapView.draw()
     }
 
-    func modeDidChanged(#searchBoxView: DASearchBoxView) {
+    func modeDidChanged(searchBoxView searchBoxView: DASearchBoxView) {
         if self.destinationString != "" {
             self.requestDirectoin(doUpdateCamera: false)
         }
     }
 
-    func didCancelRequestRouting(#searchBoxView: DASearchBoxView) {
+    func didCancelRequestRouting(searchBoxView searchBoxView: DASearchBoxView) {
         DAGoogleMapClient.sharedInstance.cancelGetRoute()
         self.searchBoxView.endRequestRouting()
 
@@ -438,7 +440,7 @@ extension ViewController: DASearchBoxViewDelegate {
 /// MARK: - DASearchResultViewDelegate
 extension ViewController: DASearchResultViewDelegate {
 
-    func didSelectRow(#searchResultView: DASearchResultView, selectedDestination: DADestination) {
+    func didSelectRow(searchResultView searchResultView: DASearchResultView, selectedDestination: DADestination) {
         self.searchBoxView.endSearch()
         self.searchBoxView.setSearchText(selectedDestination.desc)
         if self.destinationString == selectedDestination.desc { return }
@@ -453,10 +455,10 @@ extension ViewController: DASearchResultViewDelegate {
 /// MARK: - DADurationViewDelegate
 extension ViewController: DADurationViewDelegate {
 
-    func touchedUpInside(#durationView: DADurationView) {
+    func touchedUpInside(durationView durationView: DADurationView) {
     }
 
-    func willShow(#durationView: DADurationView) {
+    func willShow(durationView durationView: DADurationView) {
         UIView.animateWithDuration(
             0.30,
             delay: 0.0,
@@ -469,7 +471,7 @@ extension ViewController: DADurationViewDelegate {
         )
     }
 
-    func willHide(#durationView: DADurationView) {
+    func willHide(durationView durationView: DADurationView) {
         UIView.animateWithDuration(
             0.15,
             delay: 0.0,

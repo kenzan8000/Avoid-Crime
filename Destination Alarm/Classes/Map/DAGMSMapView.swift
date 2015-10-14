@@ -220,7 +220,7 @@ class DAGMSMapView: GMSMapView {
 
         let end = self.destination
         let path = GMSPath(fromEncodedPath: encodedPathes[0])
-        var bounds = GMSCoordinateBounds(path: path)
+        let bounds = GMSCoordinateBounds(path: path)
         self.moveCamera(GMSCameraUpdate.fitBounds(bounds, withEdgeInsets: UIEdgeInsetsMake(160.0, 20.0, 80.0, 80.0)))
 
         let startPoint = self.projection.pointForCoordinate(startLocation.coordinate)
@@ -285,7 +285,7 @@ class DAGMSMapView: GMSMapView {
         let pathes = self.encodedPathes()
         for pathString in pathes {
             let path = GMSPath(fromEncodedPath: pathString)
-            var line = GMSPolyline(path: path)
+            let line = GMSPolyline(path: path)
             line.strokeWidth = 4.0
             line.tappable = false
             line.strokeColor = UIColor(red: CGFloat(35.0/255.0), green: CGFloat(150.0/255.0), blue: CGFloat(232.0/255.0), alpha: 1.0)
@@ -305,7 +305,7 @@ class DAGMSMapView: GMSMapView {
      **/
     private func drawWaypoints() {
         for var i = 0; i < self.waypoints.count; i++ {
-            var waypoint = self.waypoints[i]
+            let waypoint = self.waypoints[i]
             self.drawWaypoint(location: waypoint)
         }
     }
@@ -314,8 +314,8 @@ class DAGMSMapView: GMSMapView {
      * draw waypoint marker
      * @param location location
      **/
-    private func drawWaypoint(#location: CLLocationCoordinate2D) {
-        var marker = DAWaypointMarker(position: location)
+    private func drawWaypoint(location location: CLLocationCoordinate2D) {
+        let marker = DAWaypointMarker(position: location)
         marker.map = self
         marker.zIndex = DAGoogleMap.ZIndex.Waypoint
     }
@@ -324,8 +324,8 @@ class DAGMSMapView: GMSMapView {
      * draw destination marker
      * @param location location
      **/
-    private func drawDestination(#location: CLLocationCoordinate2D) {
-        var marker = DADestinationMarker(position: location)
+    private func drawDestination(location location: CLLocationCoordinate2D) {
+        let marker = DADestinationMarker(position: location)
         marker.map = self
         marker.zIndex = DAGoogleMap.ZIndex.Destination
     }
@@ -346,7 +346,7 @@ class DAGMSMapView: GMSMapView {
      * @param crime DACrime
      **/
     private func drawCrimeMaker(crime: DACrime) {
-        var marker = DACrimeMarker(position: CLLocationCoordinate2DMake(crime.lat.doubleValue, crime.long.doubleValue), crime: crime)
+        let marker = DACrimeMarker(position: CLLocationCoordinate2DMake(crime.lat.doubleValue, crime.long.doubleValue), crime: crime)
         marker.map = self
         marker.zIndex = DAGoogleMap.ZIndex.Icon
     }
@@ -416,7 +416,7 @@ class DAGMSMapView: GMSMapView {
      * @param waypoint CLLocationCoordinate2D
      * @return Int or nil
      **/
-    private func waypointIndex(#waypoint: CLLocationCoordinate2D) -> Int? {
+    private func waypointIndex(waypoint waypoint: CLLocationCoordinate2D) -> Int? {
         var index = -1
         for var i = 0; i < self.waypoints.count; i++ {
             let location1 = CLLocation(latitude: self.waypoints[i].latitude, longitude: self.waypoints[i].longitude)

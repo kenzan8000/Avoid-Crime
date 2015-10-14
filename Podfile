@@ -6,7 +6,7 @@ xcodeproj 'Destination Alarm'
 pod 'ionicons'
 
 # map
-pod 'Google-Maps-iOS-SDK'
+pod 'GoogleMaps'
 
 # network
 pod 'ISHTTPOperation'

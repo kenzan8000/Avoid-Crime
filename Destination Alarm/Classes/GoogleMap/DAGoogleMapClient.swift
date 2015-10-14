@@ -38,7 +38,7 @@ class DAGoogleMapClient: AnyObject {
      *  }
      * @param completionHandler (json: JSON) -> Void
      */
-    func getRoute(#queries: Dictionary<String, AnyObject>, completionHandler: (json: JSON) -> Void) {
+    func getRoute(queries queries: Dictionary<String, AnyObject>, completionHandler: (json: JSON) -> Void) {
         // make request
         var q: Dictionary<String, AnyObject> = [
             "sensor": "false",
@@ -56,7 +56,7 @@ class DAGoogleMapClient: AnyObject {
         let request = NSMutableURLRequest(URL: NSURL(URLString: DAGoogleMap.API.Directions, queries: q)!)
 
         // request
-        var operation = ISHTTPOperation(request: request, handler:{ (response: NSHTTPURLResponse!, object: AnyObject!, error: NSError!) -> Void in
+        let operation = ISHTTPOperation(request: request, handler:{ (response: NSHTTPURLResponse!, object: AnyObject!, error: NSError!) -> Void in
                 var responseJSON = JSON([:])
                 if object != nil { responseJSON = JSON(data: object as! NSData) }
                 dispatch_async(dispatch_get_main_queue(), {
@@ -81,7 +81,7 @@ class DAGoogleMapClient: AnyObject {
      * @param location location
      * @param completionHandler (json: JSON) -> Void
      */
-    func getGeocode(#address: String, radius: Double, location: CLLocationCoordinate2D, completionHandler: (json: JSON) -> Void) {
+    func getGeocode(address address: String, radius: Double, location: CLLocationCoordinate2D, completionHandler: (json: JSON) -> Void) {
         // make request
         let offsetLong = DAMapMath.degreeOfLongitudePerRadius(radius, location: CLLocation(latitude: location.latitude, longitude: location.longitude))
         let offsetLat = DAMapMath.degreeOfLatitudePerRadius(radius, location: CLLocation(latitude: location.latitude, longitude: location.longitude))
@@ -92,7 +92,7 @@ class DAGoogleMapClient: AnyObject {
         let request = NSMutableURLRequest(URL: NSURL(URLString: DAGoogleMap.API.GeoCode, queries: queries)!)
 
         // request
-        var operation = ISHTTPOperation(request: request, handler:{ (response: NSHTTPURLResponse!, object: AnyObject!, error: NSError!) -> Void in
+        let operation = ISHTTPOperation(request: request, handler:{ (response: NSHTTPURLResponse!, object: AnyObject!, error: NSError!) -> Void in
                 var responseJSON = JSON([:])
                 if object != nil { responseJSON = JSON(data: object as! NSData) }
                 dispatch_async(dispatch_get_main_queue(), {
@@ -117,7 +117,7 @@ class DAGoogleMapClient: AnyObject {
      * @param location location
      * @param completionHandler (json: JSON) -> Void
      */
-    func getPlaceAutoComplete(#input: String, radius: Double, location: CLLocationCoordinate2D, completionHandler: (json: JSON) -> Void) {
+    func getPlaceAutoComplete(input input: String, radius: Double, location: CLLocationCoordinate2D, completionHandler: (json: JSON) -> Void) {
         // make request
         let queries = [
             "input" : input,
@@ -129,7 +129,7 @@ class DAGoogleMapClient: AnyObject {
         let request = NSMutableURLRequest(URL: NSURL(URLString: DAGoogleMap.API.PlaceAutoComplete, queries: queries)!)
 
         // request
-        var operation = ISHTTPOperation(request: request, handler:{ (response: NSHTTPURLResponse!, object: AnyObject!, error: NSError!) -> Void in
+        let operation = ISHTTPOperation(request: request, handler:{ (response: NSHTTPURLResponse!, object: AnyObject!, error: NSError!) -> Void in
                 var responseJSON = JSON([:])
                 if object != nil { responseJSON = JSON(data: object as! NSData) }
                 dispatch_async(dispatch_get_main_queue(), {

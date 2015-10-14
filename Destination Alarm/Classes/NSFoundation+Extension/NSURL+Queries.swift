@@ -12,15 +12,15 @@ extension NSURL {
      * @param queries queries
      * @return NSURL
      */
-    convenience init?(#URLString: String, queries: Dictionary<String, AnyObject>) {
+    convenience init?(URLString: String, queries: Dictionary<String, AnyObject>) {
         var string: String = URLString
         var i: Int = 0
         for (key, value) in queries {
             if i == 0 { string += "?" }
             else { string += "&" }
 
-            var encodedKey = NSString(string: "\(key)").stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet()) as String!
-            var encodedValue = NSString(string: "\(value)").stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet()) as String!
+            let encodedKey = NSString(string: "\(key)").stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet()) as String!
+            let encodedValue = NSString(string: "\(value)").stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet()) as String!
             string += encodedKey + "=" + encodedValue
             i++
         }
@@ -39,7 +39,7 @@ extension NSURL {
     func da_queries() -> Dictionary<String, String> {
         var queries : Dictionary<String, String> = Dictionary<String, String>()
 
-        let URLString = self.absoluteString!
+        let URLString = self.absoluteString
         let URLComponents = URLString.componentsSeparatedByString("?")
         if URLComponents.count < 2 { return queries }
 

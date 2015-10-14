@@ -14,10 +14,10 @@ class DACrimeClient {
      * request DASFGovernment.API.GetCrime
      * @param completionHandler (json: JSON) -> Void
      */
-    func getCrime(#completionHandler: (json: JSON) -> Void) {
+    func getCrime(completionHandler completionHandler: (json: JSON) -> Void) {
         let currentDate = NSDate()
-        var startDate = currentDate.da_monthAgo(months: DASFGovernment.Crime.MonthsAgo)
-        var endDate = startDate!.da_daysLater(days: DASFGovernment.Crime.Days)
+        let startDate = currentDate.da_monthAgo(months: DASFGovernment.Crime.MonthsAgo)
+        let endDate = startDate!.da_daysLater(days: DASFGovernment.Crime.Days)
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
 
@@ -33,7 +33,7 @@ class DACrimeClient {
 
         // request
         let request = NSURLRequest(URL: url!)
-        var operation = ISHTTPOperation(
+        let operation = ISHTTPOperation(
             request: request,
             handler:{ (response: NSHTTPURLResponse!, object: AnyObject!, error: NSError!) -> Void in
                 var responseJSON = JSON([:])

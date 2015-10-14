@@ -58,7 +58,7 @@ class DADestination: AnyObject {
      * }
      * @return [DADestination]
      */
-    class func destinations(#json: JSON) -> [DADestination] {
+    class func destinations(json json: JSON) -> [DADestination] {
         var destinations: [DADestination] = []
 
         let predictions: Array<JSON> = json["predictions"].arrayValue

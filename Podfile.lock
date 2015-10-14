@@ -4,8 +4,8 @@ PODS:
   - EAIntroView (2.7.4):
     - EARestrictedScrollView (~> 0.2.0)
   - EARestrictedScrollView (0.2.0)
-  - Google-Maps-iOS-SDK (1.9.2)
-  - ionicons (2.0.1)
+  - GoogleMaps (1.10.3)
+  - ionicons (2.0.2)
   - ISHTTPOperation (1.2.0)
   - LFHeatMap (1.0.2)
   - MTStatusBarOverlay (0.9.1)
@@ -16,7 +16,7 @@ PODS:
 DEPENDENCIES:
   - BFPaperButton
   - EAIntroView
-  - Google-Maps-iOS-SDK
+  - GoogleMaps
   - ionicons
   - ISHTTPOperation
   - LFHeatMap
@@ -28,8 +28,8 @@ SPEC CHECKSUMS:
   BFPaperButton: 16b3ec9c2964d24f89f623a4113321d3f003ed60
   EAIntroView: 50b85eedf414260e61330070ffe5947e72493a62
   EARestrictedScrollView: f86d61e16c61d3e93c84f8e96e83122a2a3b7631
-  Google-Maps-iOS-SDK: 7f89cc1edb3ca239a410e5bc83cd1e060db3a289
-  ionicons: c7b0867373392e85c17f613d19ade04ccfbe5a7c
+  GoogleMaps: 945e4ac3b74bcca3ddada51df256eb7beddb474d
+  ionicons: 5062e3d28d955e2f68cf2b11df2e194c5e6c6147
   ISHTTPOperation: dfe4b6b2b3d7803688b22df2c46ea9827081e723
   LFHeatMap: 433197b20e4d57a9502bc2a2a21300fa851ff3c6
   MTStatusBarOverlay: 258a1ee369f4dc4b94107d02cfd7f6b1317c421b

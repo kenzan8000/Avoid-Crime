@@ -8,38 +8,38 @@ protocol DASearchBoxViewDelegate {
      * called when search box was active
      * @param searchBoxView DASearchBoxView
      */
-    func searchBoxWasActive(#searchBoxView: DASearchBoxView)
+    func searchBoxWasActive(searchBoxView searchBoxView: DASearchBoxView)
 
     /**
      * called when search box was inactive
      * @param searchBoxView DASearchBoxView
      */
-    func searchBoxWasInactive(#searchBoxView: DASearchBoxView)
+    func searchBoxWasInactive(searchBoxView searchBoxView: DASearchBoxView)
 
     /**
      * called when destination search finishes
      * @param searchBoxView DASearchBoxView
      * @param destinations prediction of destinations
      */
-    func searchDidFinish(#searchBoxView: DASearchBoxView, destinations: [DADestination])
+    func searchDidFinish(searchBoxView searchBoxView: DASearchBoxView, destinations: [DADestination])
 
     /**
      * called when clear button is touched up inside
      * @param searchBoxView DASearchBoxView
      */
-    func clearButtonTouchedUpInside(#searchBoxView: DASearchBoxView)
+    func clearButtonTouchedUpInside(searchBoxView searchBoxView: DASearchBoxView)
 
     /**
      * called when mode button is touched up inside
      * @param searchBoxView DASearchBoxView
      */
-    func modeDidChanged(#searchBoxView: DASearchBoxView)
+    func modeDidChanged(searchBoxView searchBoxView: DASearchBoxView)
 
     /**
      * called when cancel routing button is touched up inside
      * @param searchBoxView DASearchBoxView
      */
-    func didCancelRequestRouting(#searchBoxView: DASearchBoxView)
+    func didCancelRequestRouting(searchBoxView searchBoxView: DASearchBoxView)
 
 }
 
@@ -106,7 +106,7 @@ class DASearchBoxView: UIView {
 
     /// MARK: - event listener
 
-    @IBAction func touchedUpInside(#button: UIButton) {
+    @IBAction func touchedUpInside(button button: UIButton) {
         if button == self.activeButton {
             self.startSearch()
         }
@@ -152,7 +152,7 @@ class DASearchBoxView: UIView {
 
         // place autocomplete API
         DAGoogleMapClient.sharedInstance.getPlaceAutoComplete(
-            input: destination,
+            input: destination!,
             radius: 5,
             location: location.coordinate,
             completionHandler: { [unowned self] (json) in
@@ -171,13 +171,13 @@ class DASearchBoxView: UIView {
      * design
      * @param parentView parent view
      */
-    func design(#parentView: UIView) {
+    func design(parentView parentView: UIView) {
         self.frame = CGRectMake(0, 20, parentView.bounds.width, self.frame.size.height)
 
         self.searchTextFieldBackgroundView.layer.shadowOffset = CGSizeMake(0.0, 0.0)
         self.searchTextFieldBackgroundView.layer.shadowColor = UIColor.blackColor().CGColor
         self.searchTextFieldBackgroundView.layer.shadowOpacity = 0.2
-        var rect = self.searchTextFieldBackgroundView.bounds
+        let rect = self.searchTextFieldBackgroundView.bounds
         self.searchTextFieldBackgroundView.layer.shadowPath = UIBezierPath(rect: rect).CGPath
     }
 

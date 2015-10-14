@@ -8,19 +8,19 @@ protocol DADurationViewDelegate {
      * called when view was tapped
      * @param durationView DADurationView
      */
-    func touchedUpInside(#durationView: DADurationView)
+    func touchedUpInside(durationView durationView: DADurationView)
 
     /**
      * called when view will show
      * @param durationView DADurationView
      */
-    func willShow(#durationView: DADurationView)
+    func willShow(durationView durationView: DADurationView)
 
     /**
      * called when view will hide
      * @param durationView DADurationView
      */
-    func willHide(#durationView: DADurationView)
+    func willHide(durationView durationView: DADurationView)
 
 }
 
@@ -61,7 +61,7 @@ class DADurationView: UIView {
      * design
      * @param parentView UIView
      **/
-    func design(#parentView: UIView) {
+    func design(parentView parentView: UIView) {
         // frame
         self.frame = CGRectMake(
             0, parentView.frame.size.height - self.frame.size.height,
@@ -81,7 +81,7 @@ class DADurationView: UIView {
      * @param destinationString String
      * @param durationString String
      **/
-    func show(#destinationString: String, durationString: String) {
+    func show(destinationString destinationString: String, durationString: String) {
         self.destinationLabel.text = destinationString
         self.durationLabel.text = durationString
 

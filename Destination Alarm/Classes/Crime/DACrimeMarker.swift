@@ -14,7 +14,7 @@ class DACrimeMarker: GMSMarker {
 
         self.position = position
 
-        var iconName = crime.category.lowercaseString.stringByReplacingOccurrencesOfString("/", withString: ":", options: nil, range: nil)
+        let iconName = crime.category.lowercaseString.stringByReplacingOccurrencesOfString("/", withString: ":", options: [], range: nil)
         var image = UIImage(named: "marker_"+iconName)
         if image == nil { image = UIImage(named: "marker_question") }
         self.icon = image

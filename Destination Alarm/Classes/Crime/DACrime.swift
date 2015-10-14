@@ -36,11 +36,11 @@ class DACrime: NSManagedObject {
      * @param maximumCoordinate CLLocationCoordinate2D
      * @return Array<DACrime>
      */
-    class func fetch(#minimumCoordinate: CLLocationCoordinate2D, maximumCoordinate: CLLocationCoordinate2D) -> Array<DACrime> {
-        var context = DACoreDataManager.sharedInstance.managedObjectContext
+    class func fetch(minimumCoordinate minimumCoordinate: CLLocationCoordinate2D, maximumCoordinate: CLLocationCoordinate2D) -> [DACrime] {
+        let context = DACoreDataManager.sharedInstance.managedObjectContext
 
         // make fetch request
-        var fetchRequest = NSFetchRequest()
+        let fetchRequest = NSFetchRequest()
         let entity = NSEntityDescription.entityForName("DACrime", inManagedObjectContext:context)
         fetchRequest.entity = entity
         fetchRequest.fetchBatchSize = 20
@@ -61,18 +61,23 @@ class DACrime: NSManagedObject {
             NSPredicate(format: "(lat <= %@) AND (lat >= %@)", NSNumber(double: maximumCoordinate.latitude), NSNumber(double: minimumCoordinate.latitude)),
             NSPredicate(format: "(long <= %@) AND (long >= %@)", NSNumber(double: maximumCoordinate.longitude), NSNumber(double: minimumCoordinate.longitude)),
         ]
-        fetchRequest.predicate = NSCompoundPredicate.andPredicateWithSubpredicates(predicaets)
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicaets)
         fetchRequest.returnsObjectsAsFaults = false
 
         // return crimes
-        var error: NSError? = nil
-        let crimes = context.executeFetchRequest(fetchRequest, error: &error)
-        if error != nil || crimes == nil {
+        var crimes: [DACrime]? = []
+        do {
+            crimes = try context.executeFetchRequest(fetchRequest) as? [DACrime]
+        }
+        catch {
+            crimes = nil
+        }
+        if crimes == nil {
             NSUserDefaults().setObject("", forKey: DAUserDefaults.CrimeYearMonth)
             NSUserDefaults().synchronize()
             return []
         }
-        return crimes as! Array<DACrime>
+        return crimes!
     }
 
     /**
@@ -81,11 +86,11 @@ class DACrime: NSManagedObject {
      * @param radius radius of miles
      * @return Array<DACrime>
      */
-    class func fetch(#location: CLLocation, radius: Double) -> Array<DACrime> {
-        var context = DACoreDataManager.sharedInstance.managedObjectContext
+    class func fetch(location location: CLLocation, radius: Double) -> [DACrime] {
+        let context = DACoreDataManager.sharedInstance.managedObjectContext
 
         // make fetch request
-        var fetchRequest = NSFetchRequest()
+        let fetchRequest = NSFetchRequest()
         let entity = NSEntityDescription.entityForName("DACrime", inManagedObjectContext:context)
         fetchRequest.entity = entity
         fetchRequest.fetchBatchSize = 20
@@ -109,18 +114,19 @@ class DACrime: NSManagedObject {
             NSPredicate(format: "(lat <= %@) AND (lat >= %@)", NSNumber(double: coordinate.latitude + latOffset), NSNumber(double: coordinate.latitude - latOffset)),
             NSPredicate(format: "(long <= %@) AND (long >= %@)", NSNumber(double: coordinate.longitude + longOffset), NSNumber(double: coordinate.longitude - longOffset)),
         ]
-        fetchRequest.predicate = NSCompoundPredicate.andPredicateWithSubpredicates(predicaets)
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicaets)
         fetchRequest.returnsObjectsAsFaults = false
 
         // return crimes
-        var error: NSError? = nil
-        let crimes = context.executeFetchRequest(fetchRequest, error: &error)
-        if error != nil || crimes == nil {
+        var crimes: [DACrime]? = []
+        do { crimes = try context.executeFetchRequest(fetchRequest) as? [DACrime] }
+        catch { crimes = nil }
+        if crimes == nil {
             NSUserDefaults().setObject("", forKey: DAUserDefaults.CrimeYearMonth)
             NSUserDefaults().synchronize()
             return []
         }
-        return crimes as! Array<DACrime>
+        return crimes!
     }
 
     /**
@@ -150,11 +156,11 @@ class DACrime: NSManagedObject {
      *   ...
      * ]
      */
-    class func save(#json: JSON) {
+    class func save(json json: JSON) {
         if DACrime.hasData() { return }
 
         let crimeDatas: Array<JSON> = json.arrayValue
-        var context = DACoreDataManager.sharedInstance.managedObjectContext
+        let context = DACoreDataManager.sharedInstance.managedObjectContext
 
         let dateFormatter = NSDateFormatter()
 
@@ -164,7 +170,7 @@ class DACrime: NSManagedObject {
             let timestamp = dateFormatter.dateFromString(yyyymmddhhmm)
             if timestamp == nil { continue }
 
-            var crime = NSEntityDescription.insertNewObjectForEntityForName("DACrime", inManagedObjectContext: context) as! DACrime
+            let crime = NSEntityDescription.insertNewObjectForEntityForName("DACrime", inManagedObjectContext: context) as! DACrime
             crime.category = crimeData["category"].stringValue
             crime.desc = crimeData["descript"].stringValue
             if let location = crimeData["location"].dictionary {
@@ -174,10 +180,10 @@ class DACrime: NSManagedObject {
             crime.timestamp = timestamp!
         }
 
-        var error: NSError? = nil
-        !context.save(&error)
+        do { try context.save() }
+        catch { return }
 
-        if error == nil && crimeDatas.count > 0 {
+        if crimeDatas.count > 0 {
             dateFormatter.dateFormat = "yyyy-MM-dd"
             let currentYearMonth = dateFormatter.stringFromDate(NSDate())
             NSUserDefaults().setObject(currentYearMonth, forKey: DAUserDefaults.CrimeYearMonth)

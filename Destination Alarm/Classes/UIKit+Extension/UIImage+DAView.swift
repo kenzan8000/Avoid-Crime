@@ -12,8 +12,8 @@ extension UIImage {
         let scale = UIScreen.mainScreen().scale
 
         UIGraphicsBeginImageContextWithOptions(view.frame.size, false, scale)
-        view.layer.renderInContext(UIGraphicsGetCurrentContext())
-        var image = UIGraphicsGetImageFromCurrentImageContext()
+        view.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext();
 
         return image

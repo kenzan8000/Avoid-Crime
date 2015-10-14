@@ -21,7 +21,30 @@ cd Avoid-Crime
 pod install
 ```
 
-##### 2. Add /Destination Alarm/Classes/DAConstant-Private.swift
+##### 2. Register Google Developer Console
+
+https://console.developers.google.com/
+
+- Request credential
+ - browser key
+ - ios key
+
+- Enable APIs
+ - Directions API
+ - Distance Matrix API
+ - Elevation API
+ - Geocoding API
+ - Google Maps Engine API
+ - Google Maps SDK for iOS
+ - Google Places API for iOS
+ - Google Places API Web Service
+ - Time Zone API
+
+- Check your api keys
+ - browser key
+ - iOS key
+
+##### 3. Add /Destination Alarm/Classes/DAConstant-Private.swift
 
 ```swift
 /// Google Map API key

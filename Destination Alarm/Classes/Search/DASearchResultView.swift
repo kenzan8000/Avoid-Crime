@@ -9,7 +9,7 @@ protocol DASearchResultViewDelegate {
      * @param searchResultView DASearchResultView
      * @param selectedDestination selected destination
      */
-    func didSelectRow(#searchResultView: DASearchResultView, selectedDestination: DADestination)
+    func didSelectRow(searchResultView searchResultView: DASearchResultView, selectedDestination: DADestination)
 
 }
 
@@ -40,7 +40,7 @@ class DASearchResultView: UIView {
         self.resultTableView.layer.shadowOffset = CGSizeMake(0.0, 0.0)
         self.resultTableView.layer.shadowColor = UIColor.blackColor().CGColor
         self.resultTableView.layer.shadowOpacity = 0.2
-        var rect = self.resultTableView.bounds
+        let rect = self.resultTableView.bounds
         self.resultTableView.layer.shadowPath = UIBezierPath(rect: rect).CGPath
     }
 
@@ -66,7 +66,7 @@ extension DASearchResultView: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let destination = self.destinations[indexPath.row]
 
-        var cell = UITableViewCell(
+        let cell = UITableViewCell(
             style: UITableViewCellStyle.Default,
             reuseIdentifier: DANSStringFromClass(DASearchResultView)
         )

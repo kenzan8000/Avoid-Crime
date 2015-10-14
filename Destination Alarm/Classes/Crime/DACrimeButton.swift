@@ -47,7 +47,7 @@ class DACrimeButton: UIView {
 
     /// MARK: - event listener
 
-    @IBAction func touchedUpInside(#button: UIButton) {
+    @IBAction func touchedUpInside(button button: UIButton) {
         if button == self.button {
             let isOn = (DACrime.hasData() && self.button.alpha < 0.8)
             self.setCheckBox(isOn: isOn)
@@ -72,7 +72,7 @@ class DACrimeButton: UIView {
      * toggle checkbox on and off
      * @param isOn Bool
      **/
-    func setCheckBox(#isOn: Bool) {
+    func setCheckBox(isOn isOn: Bool) {
         self.button.alpha = (isOn) ? 1.0 : 0.65
     }
 

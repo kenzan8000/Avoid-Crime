@@ -15,28 +15,29 @@ class DACoreDataManager {
     }
 
     var managedObjectContext: NSManagedObjectContext {
-        var coordinator = self.persistentStoreCoordinator
+        let coordinator = self.persistentStoreCoordinator
 
-        var managedObjectContext = NSManagedObjectContext()
+        let managedObjectContext = NSManagedObjectContext()
         managedObjectContext.persistentStoreCoordinator = coordinator
         return managedObjectContext
     }
 
     var persistentStoreCoordinator: NSPersistentStoreCoordinator {
         let documentsDirectories = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        let documentsDirectory = documentsDirectories[documentsDirectories.count - 1] as! NSURL
+        let documentsDirectory = documentsDirectories[documentsDirectories.count - 1] as NSURL
         let storeURL = documentsDirectory.URLByAppendingPathComponent("DAModel.sqlite")
 
-        var error: NSError? = nil
-        var persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        persistentStoreCoordinator.addPersistentStoreWithType(
-            NSSQLiteStoreType,
-            configuration: nil,
-            URL: storeURL,
-            options: nil,
-            error: &error
-        )
-
+        let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
+        do {
+            try persistentStoreCoordinator.addPersistentStoreWithType(
+                NSSQLiteStoreType,
+                configuration: nil,
+                URL: storeURL,
+                options: nil
+            )
+        } catch {
+        }
+        
         return persistentStoreCoordinator
     }
 

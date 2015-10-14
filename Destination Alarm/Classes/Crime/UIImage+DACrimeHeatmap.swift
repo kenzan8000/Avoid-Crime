@@ -7,7 +7,7 @@ extension UIImage {
      * get heatmap image
      * @return UIImage
      **/
-    class func heatmapImage(#map: GMSMapView, crimes: [DACrime]) -> UIImage {
+    class func heatmapImage(map map: GMSMapView, crimes: [DACrime]) -> UIImage {
         var locations: [CLLocation] = []
         var weights: [NSNumber] = []
         for crime in crimes {

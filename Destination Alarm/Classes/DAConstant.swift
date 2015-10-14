@@ -9,7 +9,7 @@ import Foundation
  */
 func DALOG(str: String) {
 #if DEBUG
-    println("////////// DA log\n" + str + "\n\n")
+    print("////////// DA log\n" + str + "\n\n")
 #endif
 }
 
