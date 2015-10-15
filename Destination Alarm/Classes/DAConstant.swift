@@ -108,6 +108,38 @@ struct DASFGovernment {
         static let MonthsAgo =                1
 
         static let Weights = [
+            "ASSAULT" : 1.5,
+            "ROBBERY" : 0.75,
+            "LARCENY/THEFT" : 0.25,
+            "DRUG/NARCOTIC" : 0.5,
+            "ARSON" : 0.75,
+            "WEAPON LAWS" : 1.5,
+            "MISSING PERSON" : 1.5,
+            "VANDALISM" : 0.5,
+            "VEHICLE THEFT" : 0.75,
+            "OTHER OFFENSES" : 0.5,
+            "STOLEN PROPERTY" : 1.0,
+            "PROSTITUTION" : 1.0,
+            "DRIVING UNDER THE INFLUENCE" : 0.75,
+            "DRUNKENNESS" : 0.75,
+            "BURGLARY" : 0.25,
+            "SUSPICIOUS OCC" : 0.5,
+            "SUICIDE" : 0.25,
+            "\"SEX OFFENSES, FORCIBLE\"" : 1.5,
+            "KIDNAPPING" : 1.5,
+            "DISORDERLY CONDUCT" : 0.5,
+            "SECONDARY CODES" : 0.5,
+            "RUNAWAY" : 0.25,
+            "TRESPASS" : 0.25,
+            "FRAUD" : 0.25,
+            "FORGERY/COUNTERFEITING" : 0.25,
+            "EMBEZZLEMENT" : 0.25,
+            "WARRANTS" : 0.25,
+            "LOITERING" : 1.0,
+            "THE OTHERS" : 0.25,
+        ]
+
+        static let Weights_number = [
             "ASSAULT" : NSNumber(double: 1.5),
             "ROBBERY" : NSNumber(double: 0.75),
             "LARCENY/THEFT" : NSNumber(double: 0.25),

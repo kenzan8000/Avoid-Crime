@@ -14,8 +14,8 @@ extension UIImage {
             let lat = crime.lat.doubleValue
             let long = crime.long.doubleValue
             locations.append(CLLocation(latitude: lat, longitude: long))
-            var weight = DASFGovernment.Crime.Weights[crime.category]
-            if weight == nil { weight = DASFGovernment.Crime.Weights["THE OTHERS"] }
+            var weight = DASFGovernment.Crime.Weights_number[crime.category]
+            if weight == nil { weight = DASFGovernment.Crime.Weights_number["THE OTHERS"] }
             weights.append(weight!)
         }
 

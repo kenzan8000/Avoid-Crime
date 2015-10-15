@@ -29,7 +29,8 @@ class DACrimeClient {
             ]
         )
 
-        MTStatusBarOverlay.sharedInstance().postMessage("Getting crime data")
+        JDStatusBarNotification.showWithStatus("Getting crime data")
+        JDStatusBarNotification.showActivityIndicator(true, indicatorStyle: .Gray)
 
         // request
         let request = NSURLRequest(URL: url!)
@@ -39,10 +40,10 @@ class DACrimeClient {
                 var responseJSON = JSON([:])
                 if object != nil {
                     responseJSON = JSON(data: object as! NSData)
-                    MTStatusBarOverlay.sharedInstance().postImmediateFinishMessage("Done", duration:2.0, animated:true)
+                    JDStatusBarNotification.showWithStatus("Done", dismissAfter: 2.0)
                 }
                 else {
-                    MTStatusBarOverlay.sharedInstance().postImmediateErrorMessage("Failed", duration:2.0, animated:true)
+                    JDStatusBarNotification.showWithStatus("Failed", dismissAfter: 2.0)
                 }
 
                 dispatch_async(dispatch_get_main_queue(), {

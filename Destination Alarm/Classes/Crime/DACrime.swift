@@ -205,4 +205,26 @@ class DACrime: NSManagedObject {
         return (crimeYearMonth == currentYearMonth)
     }
 
+    /**
+     * get density of cirme
+     * @param coordinate CLLocationCoordinate2D
+     * @return density Double
+     **/
+/*
+    class func density(coordinate coordinate: CLLocationCoordinate2D) -> Double {
+        let crimes = DACrime.fetch(
+            minimumCoordinate: CLLocationCoordinate2DMake(-180.0, -90.0),
+            maximumCoordinate: CLLocationCoordinate2DMake(180.0, 90.0)
+        )
+        for crime in crimes {
+            var weight = DASFGovernment.Crime.Weights[crime.category]
+            if weight == nil { weight = DASFGovernment.Crime.Weights["THE OTHERS"] }
+
+            //crime.lat, crime.long
+        }
+
+        return 0.0
+    }
+*/
+
 }

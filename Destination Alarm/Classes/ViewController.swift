@@ -22,6 +22,9 @@ class ViewController: UIViewController {
 
 
     /// MARK: - life cycle
+    override func loadView() {
+        super.loadView()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

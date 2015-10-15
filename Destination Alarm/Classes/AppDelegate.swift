@@ -9,7 +9,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Google Map
         GMSServices.provideAPIKey(DAGoogleMap.APIKey)
-
         // UI setting
         (application as! QTouchposeApplication).alwaysShowTouches = true
         (application as! QTouchposeApplication).touchEndAnimationDuration = 0.50
