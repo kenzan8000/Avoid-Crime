@@ -220,7 +220,7 @@ class DACrime: NSManagedObject {
      **/
     class func isHighRated(coordinate coordinate: CLLocationCoordinate2D) -> Bool {
         // get crimes Radius miles around
-        let Radius = 2.0
+        let Radius = 0.35
         let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
         let offsetLat = DAMapMath.degreeOfLatitudePerRadius(Radius, location: location)
         let offsetLong = DAMapMath.degreeOfLongitudePerRadius(Radius, location: location)
@@ -231,8 +231,8 @@ class DACrime: NSManagedObject {
 
         // caliculate density
             // Radius x Radius square miles' area divides into RowCount x ColumnCount kernels
-        let RowCount = 15
-        let ColumnCount = 15
+        let RowCount = 5
+        let ColumnCount = 5
         var kernels = Array<Array<Double>>()
         for var i = 0; i < ColumnCount; i++ {
             kernels.append(Array(count: RowCount, repeatedValue: 0.0))
@@ -249,15 +249,26 @@ class DACrime: NSManagedObject {
         }
 
         // detection
-        let Threshold = 1.0
-        let StartOffset = 6
-        let EndOffset = 8
-        for var i = StartOffset; i <= EndOffset; i++ {
-            for var j = StartOffset; j <= EndOffset; j++ {
-                if kernels[i][j] > Threshold { return true }
+        let DangerousThreshold = 1.5
+        let DangerousCountThreshold = 5
+        var dangerousAreaCount = 0
+        for var i = 0; i < ColumnCount; i++ {
+            for var j = 0; j < RowCount; j++ {
+                if kernels[i][j] >= DangerousThreshold { dangerousAreaCount++ }
             }
         }
-        return false
+/*
+        DALOG("---------------------------")
+        for var i = 0; i < ColumnCount; i++ {
+            var str = ""
+            for var j = 0; j < RowCount; j++ { str += String(format: "%.2f ", kernels[i][j]); }
+            DALOG(str)
+        }
+        let isDangerous = (dangerousAreaCount >= DangerousCountThreshold)
+        DALOG((isDangerous) ? "Dangerous!" : "OK!")
+*/
+        let isDangerous = (dangerousAreaCount >= DangerousCountThreshold)
+        return isDangerous
     }
 
 }

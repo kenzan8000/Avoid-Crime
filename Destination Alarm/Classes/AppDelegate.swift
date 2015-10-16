@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // notification setting
         if #available(iOS 8.0, *) {
-            let settings = UIUserNotificationSettings(forTypes: [.Badge, .Sound, .Alert], categories: nil)
+            let settings = UIUserNotificationSettings(forTypes: [.Sound, .Alert], categories: nil)
             UIApplication.sharedApplication().registerUserNotificationSettings(settings)
         }
 

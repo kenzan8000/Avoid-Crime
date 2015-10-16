@@ -123,7 +123,7 @@ class ViewController: UIViewController {
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         if #available(iOS 8.0, *) { self.locationManager.requestAlwaysAuthorization() }
         if #available(iOS 9.0, *) { self.locationManager.allowsBackgroundLocationUpdates = true }
-        self.locationManager.distanceFilter = 300
+        self.locationManager.distanceFilter = 100
         self.locationManager.pausesLocationUpdatesAutomatically = false
         self.locationManager.startUpdatingLocation()
 
@@ -291,6 +291,11 @@ extension ViewController: CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
     }
 
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if status == .Denied {
+            if #available(iOS 8.0, *) { self.locationManager.requestAlwaysAuthorization() }
+        }
+    }
 }
 
 

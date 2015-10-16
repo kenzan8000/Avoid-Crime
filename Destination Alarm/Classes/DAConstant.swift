@@ -9,7 +9,7 @@ import Foundation
  */
 func DALOG(str: String) {
 #if DEBUG
-    print("////////// DA log\n" + str + "\n\n")
+    print(str)
 #endif
 }
 
@@ -31,7 +31,7 @@ func DANSStringFromClass(classType:AnyClass) -> String {
 /// MARK: - UserDefaults
 
 struct DAUserDefaults {
-    static let CrimeYearMonth =         "DAUserDefaults.CrimeYearMonth"
+    static let CrimeYearMonth =            "DAUserDefaults.CrimeYearMonth"
     static let TutorialHasDone =           "DAUserDefaults.TutorialHasDone"
 }
 
