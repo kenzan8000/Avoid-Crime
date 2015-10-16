@@ -31,10 +31,18 @@ class DACrime: NSManagedObject {
     }
 
     /**
+     * fetch all data
+     * @return [DACrime]
+     **/
+    class func fetchAll() -> [DACrime] {
+        return DACrime.fetch(minimumCoordinate: CLLocationCoordinate2DMake(-180.0, -90.0), maximumCoordinate: CLLocationCoordinate2DMake(180.0, 90.0))
+    }
+
+    /**
      * fetch datas from coredata
      * @param minimumCoordinate CLLocationCoordinate2D
      * @param maximumCoordinate CLLocationCoordinate2D
-     * @return Array<DACrime>
+     * @return [DACrime]
      */
     class func fetch(minimumCoordinate minimumCoordinate: CLLocationCoordinate2D, maximumCoordinate: CLLocationCoordinate2D) -> [DACrime] {
         let context = DACoreDataManager.sharedInstance.managedObjectContext
@@ -84,7 +92,7 @@ class DACrime: NSManagedObject {
      * fetch datas from coredata
      * @param location location
      * @param radius radius of miles
-     * @return Array<DACrime>
+     * @return [DACrime]
      */
     class func fetch(location location: CLLocation, radius: Double) -> [DACrime] {
         let context = DACoreDataManager.sharedInstance.managedObjectContext
@@ -206,25 +214,50 @@ class DACrime: NSManagedObject {
     }
 
     /**
-     * get density of cirme
+     * return density of cirme 2 miles around
      * @param coordinate CLLocationCoordinate2D
-     * @return density Double
+     * @return if the coordinate is dangerous or not
      **/
-/*
-    class func density(coordinate coordinate: CLLocationCoordinate2D) -> Double {
+    class func isHighRated(coordinate coordinate: CLLocationCoordinate2D) -> Bool {
+        // get crimes Radius miles around
+        let Radius = 2.0
+        let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        let offsetLat = DAMapMath.degreeOfLatitudePerRadius(Radius, location: location)
+        let offsetLong = DAMapMath.degreeOfLongitudePerRadius(Radius, location: location)
         let crimes = DACrime.fetch(
-            minimumCoordinate: CLLocationCoordinate2DMake(-180.0, -90.0),
-            maximumCoordinate: CLLocationCoordinate2DMake(180.0, 90.0)
+            minimumCoordinate: CLLocationCoordinate2DMake(coordinate.latitude-offsetLat, coordinate.longitude-offsetLong),
+            maximumCoordinate: CLLocationCoordinate2DMake(coordinate.latitude+offsetLat, coordinate.longitude+offsetLong)
         )
+
+        // caliculate density
+            // Radius x Radius square miles' area divides into RowCount x ColumnCount kernels
+        let RowCount = 15
+        let ColumnCount = 15
+        var kernels = Array<Array<Double>>()
+        for var i = 0; i < ColumnCount; i++ {
+            kernels.append(Array(count: RowCount, repeatedValue: 0.0))
+        }
+            // weight kernels
+        let RowWidth = offsetLat * 2 / Double(RowCount)
+        let ColumnWidth = offsetLong * 2 / Double(ColumnCount)
         for crime in crimes {
             var weight = DASFGovernment.Crime.Weights[crime.category]
             if weight == nil { weight = DASFGovernment.Crime.Weights["THE OTHERS"] }
-
-            //crime.lat, crime.long
+            let row = Int((Double(crime.lat) - coordinate.latitude + offsetLat) / RowWidth)
+            let column = Int((Double(crime.long) - coordinate.longitude + offsetLong) / ColumnWidth)
+            kernels[column][row] += weight!
         }
 
-        return 0.0
+        //
+        let Threshold = 1.0
+        let StartOffset = 6
+        let EndOffset = 8
+        for var i = StartOffset; i <= EndOffset; i++ {
+            for var j = StartOffset; j <= EndOffset; j++ {
+                if kernels[i][j] >= Threshold { return true }
+            }
+        }
+        return false
     }
-*/
 
 }

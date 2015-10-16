@@ -502,6 +502,7 @@ extension ViewController: DACrimeButtonDelegate {
         else if crimeButton == self.crimeHeatmapButton {
             markerType = DAVisualization.CrimeHeatmap
             self.crimePointButton.setCheckBox(isOn: false)
+            //DACrime.isHighRated(coordinate: self.mapView.myLocation.coordinate)
         }
         self.mapView.setCrimeMarkerType(markerType)
         if markerType != DAVisualization.None { DACrime.requestToGetNewCrimes() }
