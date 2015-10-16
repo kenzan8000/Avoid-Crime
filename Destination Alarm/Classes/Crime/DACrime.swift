@@ -248,13 +248,13 @@ class DACrime: NSManagedObject {
             kernels[column][row] += weight!
         }
 
-        //
+        // detection
         let Threshold = 1.0
         let StartOffset = 6
         let EndOffset = 8
         for var i = StartOffset; i <= EndOffset; i++ {
             for var j = StartOffset; j <= EndOffset; j++ {
-                if kernels[i][j] >= Threshold { return true }
+                if kernels[i][j] > Threshold { return true }
             }
         }
         return false

@@ -27,7 +27,7 @@ class DAGMSMapView: GMSMapView {
     /// crime marker type
     private var crimeMarkerType = DAVisualization.None
 
-    
+
     /// MARK: - public api
 
     /**

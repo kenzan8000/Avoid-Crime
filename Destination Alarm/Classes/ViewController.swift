@@ -25,6 +25,7 @@ class ViewController: UIViewController {
     override func loadView() {
         super.loadView()
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -120,10 +121,10 @@ class ViewController: UIViewController {
         self.locationManager = CLLocationManager()
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        if #available(iOS 8.0, *) {
-            self.locationManager.requestAlwaysAuthorization()
-        }
+        if #available(iOS 8.0, *) { self.locationManager.requestAlwaysAuthorization() }
+        if #available(iOS 9.0, *) { self.locationManager.allowsBackgroundLocationUpdates = true }
         self.locationManager.distanceFilter = 300
+        self.locationManager.pausesLocationUpdatesAutomatically = false
         self.locationManager.startUpdatingLocation()
 
         self.setButtonPositions(offsetY: 0)
@@ -275,6 +276,16 @@ extension ViewController: CLLocationManagerDelegate {
             longitude: location.coordinate.longitude,
             zoom: DAGoogleMap.Zoom
         )
+
+        // if you are close to dangerous area, post local notification
+        if DACrime.isHighRated(coordinate: location.coordinate) {
+            let localNotification = UILocalNotification()
+            localNotification.alertBody = String(format: "Be careful! You are close to dangerous area. (%.2f, %.2f)", location.coordinate.latitude, location.coordinate.longitude)
+            localNotification.soundName = UILocalNotificationDefaultSoundName
+            localNotification.timeZone = NSTimeZone.defaultTimeZone()
+            localNotification.fireDate = NSDate(timeIntervalSinceNow: 1)
+            UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+        }
     }
 
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
@@ -502,7 +513,6 @@ extension ViewController: DACrimeButtonDelegate {
         else if crimeButton == self.crimeHeatmapButton {
             markerType = DAVisualization.CrimeHeatmap
             self.crimePointButton.setCheckBox(isOn: false)
-            //DACrime.isHighRated(coordinate: self.mapView.myLocation.coordinate)
         }
         self.mapView.setCrimeMarkerType(markerType)
         if markerType != DAVisualization.None { DACrime.requestToGetNewCrimes() }
