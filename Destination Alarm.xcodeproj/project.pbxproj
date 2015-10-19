@@ -341,7 +341,7 @@
 				TargetAttributes = {
 					E6E5C24B1AC6044E001FB516 = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = 6RYZ4RB738;
+						DevelopmentTeam = RZSN6RVCLX;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -458,6 +458,66 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		E6C6C0531BD5794A00988149 /* iSiD */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ISI-Dentsu of America, Inc. (RZSN6RVCLX)";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "0a166e65-71e6-43a3-9ec1-3d15075e8423";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = iSiD;
+		};
+		E6C6C0541BD5794A00988149 /* iSiD */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49B8C82E86FF40F43B94B2F3 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ISI-Dentsu of America, Inc. (RZSN6RVCLX)";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ICON_DISPLAY_NAME = "あっぷ";
+				INFOPLIST_FILE = "Destination Alarm/Resources/Plists/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LINKER_DISPLAYS_MANGLED_NAMES = NO;
+				OTHER_SWIFT_FLAGS = "-D iSiD";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.isidentsu.Destination-Alarm";
+				PRODUCT_NAME = "Destination Alarm";
+				PROVISIONING_PROFILE = "0a166e65-71e6-43a3-9ec1-3d15075e8423";
+				SWIFT_OBJC_BRIDGING_HEADER = "Destination Alarm/Classes/Destination Alarm-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = iSiD;
+		};
 		E6E5C2691AC6044E001FB516 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -548,13 +608,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ICON_DISPLAY_NAME = "でばっぐ";
 				INFOPLIST_FILE = "Destination Alarm/Resources/Plists/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LINKER_DISPLAYS_MANGLED_NAMES = NO;
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.kenzan8000.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.kenzan8000.Destination-Alarm";
+				PRODUCT_NAME = "Destination Alarm";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Destination Alarm/Classes/Destination Alarm-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -571,13 +632,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Kenzan Hase";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ICON_DISPLAY_NAME = "Avoid Crime SF";
 				INFOPLIST_FILE = "Destination Alarm/Resources/Plists/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LINKER_DISPLAYS_MANGLED_NAMES = NO;
 				OTHER_SWIFT_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.kenzan8000.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.kenzan8000.Destination-Alarm";
+				PRODUCT_NAME = "Destination Alarm";
 				PROVISIONING_PROFILE = "7be4a2cd-35df-4cdf-8ff5-2c0e09265e50";
 				SWIFT_OBJC_BRIDGING_HEADER = "Destination Alarm/Classes/Destination Alarm-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -592,6 +654,7 @@
 			buildConfigurations = (
 				E6E5C2691AC6044E001FB516 /* Debug */,
 				E6E5C26A1AC6044E001FB516 /* Release */,
+				E6C6C0531BD5794A00988149 /* iSiD */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -601,6 +664,7 @@
 			buildConfigurations = (
 				E6E5C26C1AC6044E001FB516 /* Debug */,
 				E6E5C26D1AC6044E001FB516 /* Release */,
+				E6C6C0541BD5794A00988149 /* iSiD */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

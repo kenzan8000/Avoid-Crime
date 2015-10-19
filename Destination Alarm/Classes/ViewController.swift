@@ -276,7 +276,7 @@ extension ViewController: CLLocationManagerDelegate {
             longitude: location.coordinate.longitude,
             zoom: DAGoogleMap.Zoom
         )
-
+/*
         // if you are close to dangerous area, post local notification
         if DACrime.isHighRated(coordinate: location.coordinate) {
             let localNotification = UILocalNotification()
@@ -286,6 +286,7 @@ extension ViewController: CLLocationManagerDelegate {
             localNotification.fireDate = NSDate(timeIntervalSinceNow: 1)
             UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
         }
+*/
     }
 
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
