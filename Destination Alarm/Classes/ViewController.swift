@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tutorialButton: UIButton!
     var crimePointButton: DACrimeButton!
     var crimeHeatmapButton: DACrimeButton!
+    var humidityHeatmapButton: DACrimeButton!
     var locationManager: CLLocationManager!
 
 
@@ -65,6 +66,7 @@ class ViewController: UIViewController {
         self.mapView.myLocationEnabled = true
         self.mapView.settings.myLocationButton = true
         self.mapView.delegate = self
+        //self.mapView.mapType = kGMSTypeTerrain
         self.view.addSubview(self.mapView)
         self.mapView.camera = GMSCameraPosition.cameraWithLatitude(
             DAGoogleMap.Latitude,
@@ -105,12 +107,14 @@ class ViewController: UIViewController {
         let crimeHeatmapButtonNib = UINib(nibName: DANSStringFromClass(DACrimeButton), bundle:nil)
         let crimeHeatmapButtons = crimeHeatmapButtonNib.instantiateWithOwner(nil, options: nil)
         self.crimeHeatmapButton = crimeHeatmapButtons[0] as! DACrimeButton
-        let crimeButtons = [self.crimeHeatmapButton, self.crimePointButton]
-        let crimeButtonImages = [UIImage(named: "button_crime_heatmap")!, UIImage(named: "button_crime_point")!]
+        let humidityHeatmapButtonNib = UINib(nibName: DANSStringFromClass(DACrimeButton), bundle:nil)
+        let humidityHeatmapButtons = humidityHeatmapButtonNib.instantiateWithOwner(nil, options: nil)
+        self.humidityHeatmapButton = humidityHeatmapButtons[0] as! DACrimeButton
+        let crimeButtons = [self.crimeHeatmapButton, self.crimePointButton, self.humidityHeatmapButton]
+        let crimeButtonImages = [UIImage(named: "button_crime_heatmap")!, UIImage(named: "button_crime_point")!, UIImage(named: "button_humidity_heatmap")!]
         for var i = 0; i < crimeButtons.count; i++ {
             let crimeButton = crimeButtons[i]
             crimeButton.setImage(crimeButtonImages[i])
-            self.view.addSubview(crimeButton)
             crimeButton.delegate = self
         }
 
@@ -197,7 +201,11 @@ class ViewController: UIViewController {
 
         self.mapView.padding = UIEdgeInsetsMake(0.0, 0.0, offsetY, 0.0)
 
+#if iSiD
+        let crimeButtons = [self.crimeHeatmapButton, self.crimePointButton, self.humidityHeatmapButton]
+#else
         let crimeButtons = [self.crimeHeatmapButton, self.crimePointButton]
+#endif
         let xOffset: CGFloat = 10.0
         let yOffset: CGFloat = 10.0
         for var i = 0; i < crimeButtons.count; i++ {
@@ -208,6 +216,8 @@ class ViewController: UIViewController {
                 crimeButton.frame.size.width,
                 crimeButton.frame.size.height
             )
+            crimeButton.removeFromSuperview()
+            self.view.addSubview(crimeButton)
         }
 
         self.tutorialButton.frame = CGRectMake(
@@ -512,19 +522,26 @@ extension ViewController: DACrimeButtonDelegate {
     func crimeButton(crimeButton: DACrimeButton, wasOn: Bool) {
         // crime visualization
         var markerType = DAVisualization.None
-        if crimeButton == self.crimePointButton {
-            markerType = DAVisualization.CrimePoint
-            self.crimeHeatmapButton.setCheckBox(isOn: false)
-        }
-        else if crimeButton == self.crimeHeatmapButton {
-            markerType = DAVisualization.CrimeHeatmap
-            self.crimePointButton.setCheckBox(isOn: false)
-        }
+        if crimeButton == self.crimePointButton { markerType = DAVisualization.CrimePoint }
+        else if crimeButton == self.crimeHeatmapButton { markerType = DAVisualization.CrimeHeatmap }
+        else if crimeButton == self.humidityHeatmapButton { markerType = DAVisualization.SensorHeatmap }
+        // button off
+        let buttons = [self.crimeHeatmapButton, self.crimePointButton, self.humidityHeatmapButton]
+        for button in buttons { button.setCheckBox(isOn: false) }
+        //
         self.mapView.setCrimeMarkerType(markerType)
-        if markerType != DAVisualization.None { DACrime.requestToGetNewCrimes() }
 
+        // get and display data
         let on = wasOn
-        self.mapView.setCrimes(on ? DACrime.fetch(minimumCoordinate: self.mapView.getMinimumCoordinate(), maximumCoordinate: self.mapView.getMaximumCoordinate()) : nil)
+        if markerType == DAVisualization.CrimeHeatmap || markerType == DAVisualization.CrimePoint {
+            DACrime.requestToGetNewCrimes()
+            self.mapView.setCrimes(on ? DACrime.fetch(minimumCoordinate: self.mapView.getMinimumCoordinate(), maximumCoordinate: self.mapView.getMaximumCoordinate()) : nil)
+        }
+        else if markerType == DAVisualization.SensorHeatmap {
+            DASensor.requestToGetNewSensors()
+            self.mapView.setSensors(on ? DASensor.fetch(minimumCoordinate: self.mapView.getMinimumCoordinate(), maximumCoordinate: self.mapView.getMaximumCoordinate()) : nil)
+        }
+        crimeButton.setCheckBox(isOn: on)
 
         self.mapView.draw()
     }

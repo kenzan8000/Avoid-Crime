@@ -13,7 +13,6 @@ class DACoreDataManager {
         let modelURL = NSBundle.mainBundle().URLForResource("DAModel", withExtension: "momd")
         return NSManagedObjectModel(contentsOfURL: modelURL!)!
     }
-
     var managedObjectContext: NSManagedObjectContext {
         let coordinator = self.persistentStoreCoordinator
 
@@ -29,15 +28,16 @@ class DACoreDataManager {
 
         let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
         do {
+            let options = [NSInferMappingModelAutomaticallyOption: true, NSMigratePersistentStoresAutomaticallyOption: true]
             try persistentStoreCoordinator.addPersistentStoreWithType(
                 NSSQLiteStoreType,
                 configuration: nil,
                 URL: storeURL,
-                options: nil
+                options: options
             )
         } catch {
         }
-        
+
         return persistentStoreCoordinator
     }
 

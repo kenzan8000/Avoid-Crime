@@ -24,6 +24,8 @@ class DAGMSMapView: GMSMapView {
     private var routeJSON: JSON?
     /// crimes
     private var crimes: [DACrime]?
+    /// sensors
+    private var sensors: [DASensor]?
     /// crime marker type
     private var crimeMarkerType = DAVisualization.None
 
@@ -36,18 +38,19 @@ class DAGMSMapView: GMSMapView {
     func draw() {
         self.clear()
 
-        // crime
-        if self.crimes != nil {
-            switch (self.crimeMarkerType) {
-                case DAVisualization.CrimePoint:
-                    self.drawCrimeMakers()
-                    break
-                case DAVisualization.CrimeHeatmap:
-                    self.drawCrimeHeatmap()
-                    break
-                default:
-                    break
-            }
+        // draw heatmap or marker
+        switch (self.crimeMarkerType) {
+            case DAVisualization.CrimePoint:
+                self.drawCrimeMakers()
+                break
+            case DAVisualization.CrimeHeatmap:
+                self.drawCrimeHeatmap()
+                break
+            case DAVisualization.SensorHeatmap:
+                self.drawSensorHeatmap()
+                break
+            default:
+                break
         }
 
         // route
@@ -87,8 +90,16 @@ class DAGMSMapView: GMSMapView {
      **/
     func setCrimes(crimes: [DACrime]?) {
         self.crimes = crimes
-        if self.crimes == nil { self.crimeMarkerType = DAVisualization.None }
-        else if self.crimes!.count == 0 { self.crimeMarkerType = DAVisualization.None }
+        if self.crimes == nil && self.sensors == nil { self.crimeMarkerType = DAVisualization.None }
+    }
+
+    /**
+     * set sensors
+     * @param sensors [DASensor]
+     **/
+    func setSensors(sensors: [DASensor]?) {
+        self.sensors = sensors
+        if self.crimes == nil && self.sensors == nil { self.crimeMarkerType = DAVisualization.None }
     }
 
     /**
@@ -363,6 +374,24 @@ class DAGMSMapView: GMSMapView {
         let overlay = GMSGroundOverlay(
             position: self.projection.coordinateForPoint(CGPointMake(self.frame.size.width / 2.0, self.frame.size.height / 2.0)),
             icon: UIImage.heatmapImage(map: self, crimes: drawingCrimes),
+            zoomLevel: CGFloat(self.camera.zoom)
+        )
+        overlay.bearing = self.camera.bearing
+        overlay.map = self
+        overlay.zIndex = DAGoogleMap.ZIndex.Heatmap
+    }
+
+    /**
+     * draw sensor heatmap
+     **/
+    private func drawSensorHeatmap() {
+        if self.sensors == nil { return }
+        let drawingSensors = self.sensors as [DASensor]!
+        if drawingSensors.count == 0 { return }
+
+        let overlay = GMSGroundOverlay(
+            position: self.projection.coordinateForPoint(CGPointMake(self.frame.size.width / 2.0, self.frame.size.height / 2.0)),
+            icon: UIImage.heatmapImage(map: self, sensors: drawingSensors),
             zoomLevel: CGFloat(self.camera.zoom)
         )
         overlay.bearing = self.camera.bearing

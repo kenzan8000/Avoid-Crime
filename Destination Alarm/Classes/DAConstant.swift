@@ -32,6 +32,7 @@ func DANSStringFromClass(classType:AnyClass) -> String {
 
 struct DAUserDefaults {
     static let CrimeYearMonth =            "DAUserDefaults.CrimeYearMonth"
+    static let SensorYearMonth =           "DAUserDefaults.SensorYearMonth"
     static let TutorialHasDone =           "DAUserDefaults.TutorialHasDone"
 }
 
@@ -174,6 +175,18 @@ struct DASFGovernment {
 }
 
 
+/// MARK: - Server
+
+let kURIDAServerAPI =               "https://vasp.herokuapp.com"
+
+struct DAServer {
+    /// MARK: - API
+    struct API {
+        static let GetSensor =                kURIDAServerAPI + "/sensor" /// Get Sensor
+    }
+}
+
+
 /// MARK: - marker
 enum DAVisualization {
     case None
@@ -181,4 +194,5 @@ enum DAVisualization {
     case Waypoint
     case CrimePoint
     case CrimeHeatmap
+    case SensorHeatmap
 }
