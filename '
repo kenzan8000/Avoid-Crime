@@ -7,9 +7,11 @@ import CoreLocation
 class DASensor: NSManagedObject {
 
     /// MARK: - constant
-    static let Humidity = 1
-    static let CO = 2
-    static let LivingRiskIndex = 3
+    struct Type {
+        static let Humidity = 1
+        static let CO = 2
+        static let LivingRiskIndex = 3
+    }
 
     /// MARK: - property
     @NSManaged var type: NSNumber
@@ -38,13 +40,20 @@ class DASensor: NSManagedObject {
     }
 
     /**
+     * fetch all data
+     * @return [DASensor]
+     **/
+    class func fetchAll() -> [DASensor] {
+        return DASensor.fetch(minimumCoordinate: CLLocationCoordinate2DMake(-180.0, -90.0), maximumCoordinate: CLLocationCoordinate2DMake(180.0, 90.0))
+    }
+
+    /**
      * fetch datas from coredata
-     * @param type sensor_type Int
      * @param minimumCoordinate CLLocationCoordinate2D
      * @param maximumCoordinate CLLocationCoordinate2D
      * @return [DASensor]
      */
-    class func fetch(type type: Int, minimumCoordinate: CLLocationCoordinate2D, maximumCoordinate: CLLocationCoordinate2D) -> [DASensor] {
+    class func fetch(minimumCoordinate minimumCoordinate: CLLocationCoordinate2D, maximumCoordinate: CLLocationCoordinate2D) -> [DASensor] {
         let context = DACoreDataManager.sharedInstance.managedObjectContext
 
         // make fetch request
@@ -54,7 +63,6 @@ class DASensor: NSManagedObject {
         fetchRequest.fetchBatchSize = 20
             // rect
         let predicaets = [
-            NSPredicate(format: "type == %d", type),
             NSPredicate(format: "(lat <= %@) AND (lat >= %@)", NSNumber(double: maximumCoordinate.latitude), NSNumber(double: minimumCoordinate.latitude)),
             NSPredicate(format: "(long <= %@) AND (long >= %@)", NSNumber(double: maximumCoordinate.longitude), NSNumber(double: minimumCoordinate.longitude)),
         ]
@@ -66,7 +74,7 @@ class DASensor: NSManagedObject {
         do { sensors = try context.executeFetchRequest(fetchRequest) as? [DASensor] }
         catch { sensors = nil }
         if sensors == nil {
-            NSUserDefaults().setObject("", forKey: DAUserDefaults.SensorYearMonth + "_Type\(type)")
+            NSUserDefaults().setObject("", forKey: DAUserDefaults.SensorYearMonth)
             NSUserDefaults().synchronize()
             return []
         }
@@ -92,6 +100,9 @@ class DASensor: NSManagedObject {
      * ]
      */
     class func save(type type: Int, json: JSON) {
+DASensor.Type.Humidity
+DASensor.Type.CO
+DASensor.Type.LivingRiskIndex
         if DASensor.hasData(type: type) { return }
 
         let sensorsJSON: [JSON]  = json.arrayValue
@@ -118,7 +129,7 @@ class DASensor: NSManagedObject {
         if sensorsJSON.count > 0 {
             dateFormatter.dateFormat = "yyyy-MM-dd"
             let currentYearMonth = dateFormatter.stringFromDate(NSDate())
-            NSUserDefaults().setObject(currentYearMonth, forKey: DAUserDefaults.SensorYearMonth + "_Type\(type)")
+            NSUserDefaults().setObject(currentYearMonth, forKey: DAUserDefaults.SensorYearMonth)
             NSUserDefaults().synchronize()
         }
     }

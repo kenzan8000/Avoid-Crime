@@ -12,15 +12,15 @@ class DASensorClient {
 
     /**
      * request DAServer.API.GetSensor
+     * @param type sensor_type Int
      * @param completionHandler (json: JSON) -> Void
      */
-    func getSensor(completionHandler completionHandler: (json: JSON) -> Void) {
-
+    func getSensor(type type: Int, completionHandler: (json: JSON) -> Void) {
         // API URL
         let url = NSURL(
             URLString: DAServer.API.GetSensor,
             queries: [
-                "type": "1",
+                "type": type,
                 "lat": "37.40525905",
                 "lng": "-121.984760117",
                 "radius": "50"

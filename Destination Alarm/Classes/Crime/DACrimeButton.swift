@@ -49,8 +49,8 @@ class DACrimeButton: UIView {
 
     @IBAction func touchedUpInside(button button: UIButton) {
         if button == self.button {
-            let isOn = (DACrime.hasData() && self.button.alpha < 0.8)
-            self.setCheckBox(isOn: isOn)
+            let isOn = (self.button.alpha < 0.8)
+            //self.setCheckBox(isOn: isOn)
 
             // delegate
             if self.delegate != nil { self.delegate?.crimeButton(self, wasOn: isOn) }

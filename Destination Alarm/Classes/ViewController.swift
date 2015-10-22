@@ -19,6 +19,8 @@ class ViewController: UIViewController {
     var crimePointButton: DACrimeButton!
     var crimeHeatmapButton: DACrimeButton!
     var humidityHeatmapButton: DACrimeButton!
+    var coHeatmapButton: DACrimeButton!
+    var lriHeatmapButton: DACrimeButton!
     var locationManager: CLLocationManager!
 
 
@@ -110,8 +112,14 @@ class ViewController: UIViewController {
         let humidityHeatmapButtonNib = UINib(nibName: DANSStringFromClass(DACrimeButton), bundle:nil)
         let humidityHeatmapButtons = humidityHeatmapButtonNib.instantiateWithOwner(nil, options: nil)
         self.humidityHeatmapButton = humidityHeatmapButtons[0] as! DACrimeButton
-        let crimeButtons = [self.crimeHeatmapButton, self.crimePointButton, self.humidityHeatmapButton]
-        let crimeButtonImages = [UIImage(named: "button_crime_heatmap")!, UIImage(named: "button_crime_point")!, UIImage(named: "button_humidity_heatmap")!]
+        let coHeatmapButtonNib = UINib(nibName: DANSStringFromClass(DACrimeButton), bundle:nil)
+        let coHeatmapButtons = coHeatmapButtonNib.instantiateWithOwner(nil, options: nil)
+        self.coHeatmapButton = coHeatmapButtons[0] as! DACrimeButton
+        let lriHeatmapButtonNib = UINib(nibName: DANSStringFromClass(DACrimeButton), bundle:nil)
+        let lriHeatmapButtons = lriHeatmapButtonNib.instantiateWithOwner(nil, options: nil)
+        self.lriHeatmapButton = lriHeatmapButtons[0] as! DACrimeButton
+        let crimeButtons = [self.crimeHeatmapButton, self.crimePointButton, self.humidityHeatmapButton, self.coHeatmapButton, self.lriHeatmapButton]
+        let crimeButtonImages = [UIImage(named: "button_crime_heatmap")!, UIImage(named: "button_crime_point")!, UIImage(named: "button_humidity_heatmap")!, UIImage(named: "button_co_heatmap")!, UIImage(named: "button_lri_heatmap")!]
         for var i = 0; i < crimeButtons.count; i++ {
             let crimeButton = crimeButtons[i]
             crimeButton.setImage(crimeButtonImages[i])
@@ -202,7 +210,7 @@ class ViewController: UIViewController {
         self.mapView.padding = UIEdgeInsetsMake(0.0, 0.0, offsetY, 0.0)
 
 #if iSiD
-        let crimeButtons = [self.crimeHeatmapButton, self.crimePointButton, self.humidityHeatmapButton]
+        let crimeButtons = [self.crimeHeatmapButton, self.crimePointButton, self.humidityHeatmapButton, self.coHeatmapButton, self.lriHeatmapButton]
 #else
         let crimeButtons = [self.crimeHeatmapButton, self.crimePointButton]
 #endif
@@ -520,29 +528,48 @@ extension ViewController: DADurationViewDelegate {
 extension ViewController: DACrimeButtonDelegate {
 
     func crimeButton(crimeButton: DACrimeButton, wasOn: Bool) {
+        var index = -1
+        let buttons = [self.crimePointButton, self.crimeHeatmapButton, self.humidityHeatmapButton, self.coHeatmapButton, self.lriHeatmapButton]
+        let markerTypes = [DAVisualization.CrimePoint, DAVisualization.CrimeHeatmap, DAVisualization.SensorHeatmap]
+        for var i = 0; i < buttons.count; i++ {
+            if crimeButton != buttons[i] { continue }
+            index = i
+            break
+        }
+
         // crime visualization
         var markerType = DAVisualization.None
-        if crimeButton == self.crimePointButton { markerType = DAVisualization.CrimePoint }
-        else if crimeButton == self.crimeHeatmapButton { markerType = DAVisualization.CrimeHeatmap }
-        else if crimeButton == self.humidityHeatmapButton { markerType = DAVisualization.SensorHeatmap }
-        // button off
-        let buttons = [self.crimeHeatmapButton, self.crimePointButton, self.humidityHeatmapButton]
-        for button in buttons { button.setCheckBox(isOn: false) }
-        //
+        markerType = (index < markerTypes.count) ? markerTypes[index] : DAVisualization.SensorHeatmap
         self.mapView.setCrimeMarkerType(markerType)
-
-        // get and display data
-        let on = wasOn
-        if markerType == DAVisualization.CrimeHeatmap || markerType == DAVisualization.CrimePoint {
-            DACrime.requestToGetNewCrimes()
-            self.mapView.setCrimes(on ? DACrime.fetch(minimumCoordinate: self.mapView.getMinimumCoordinate(), maximumCoordinate: self.mapView.getMaximumCoordinate()) : nil)
+        // button
+        for var i = 0; i < buttons.count; i++ {
+            if i != index { buttons[i].setCheckBox(isOn: false) }
         }
-        else if markerType == DAVisualization.SensorHeatmap {
-            DASensor.requestToGetNewSensors()
-            self.mapView.setSensors(on ? DASensor.fetch(minimumCoordinate: self.mapView.getMinimumCoordinate(), maximumCoordinate: self.mapView.getMaximumCoordinate()) : nil)
-        }
-        crimeButton.setCheckBox(isOn: on)
+        // data
+        switch (markerType) {
+            case DAVisualization.CrimeHeatmap, DAVisualization.CrimePoint:
+                DACrime.requestToGetNewCrimes()
+                self.mapView.setCrimes(wasOn ? DACrime.fetch(minimumCoordinate: self.mapView.getMinimumCoordinate(), maximumCoordinate: self.mapView.getMaximumCoordinate()) : nil)
+                crimeButton.setCheckBox(isOn: wasOn && DACrime.hasData())
+                break
+            case DAVisualization.SensorHeatmap:
+                let sensorButtons = [self.humidityHeatmapButton, self.coHeatmapButton, self.lriHeatmapButton]
+                let sensorTypes = [DASensor.Humidity, DASensor.CO, DASensor.LivingRiskIndex]
+                var sensorIndex = 0
+                for var i = 0; i < sensorButtons.count; i++ {
+                    if crimeButton != sensorButtons[i] { continue }
+                    sensorIndex = i
+                    break
+                }
+                let type = sensorTypes[sensorIndex]
 
+                DASensor.requestToGetNewSensors(type: type)
+                self.mapView.setSensors(wasOn ? DASensor.fetch(type: type, minimumCoordinate: self.mapView.getMinimumCoordinate(), maximumCoordinate: self.mapView.getMaximumCoordinate()) : nil)
+                crimeButton.setCheckBox(isOn: wasOn && DASensor.hasData(type: type))
+                break
+            default:
+                break
+        }
         self.mapView.draw()
     }
 
