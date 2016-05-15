@@ -1,4 +1,5 @@
 /// MARK: - DAWaypointMarker
+import ionicons
 class DAWaypointMarker: GMSMarker {
 
     /// MARK: - initialization

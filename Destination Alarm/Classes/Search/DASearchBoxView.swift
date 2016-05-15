@@ -2,6 +2,8 @@ import UIKit
 import SwiftyJSON
 import BFPaperButton
 import TYMActivityIndicatorView
+import ionicons
+
 
 /// MARK: - DASearchBoxViewDelegate
 protocol DASearchBoxViewDelegate {
