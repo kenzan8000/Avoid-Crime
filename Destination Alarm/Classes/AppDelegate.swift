@@ -1,7 +1,8 @@
 import UIKit
-
+import Touchpose
 
 /// MARK: - AppDelegate
+@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     /// MARK: - property
@@ -15,13 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // UI setting
         (application as! QTouchposeApplication).alwaysShowTouches = true
         (application as! QTouchposeApplication).touchEndAnimationDuration = 0.50
-/*
+
         // notification setting
-        if #available(iOS 8.0, *) {
-            let settings = UIUserNotificationSettings(forTypes: [.Sound, .Alert], categories: nil)
-            UIApplication.sharedApplication().registerUserNotificationSettings(settings)
-        }
-*/
+        let settings = UIUserNotificationSettings(forTypes: [.Sound, .Alert], categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+
+
         return true
     }
 

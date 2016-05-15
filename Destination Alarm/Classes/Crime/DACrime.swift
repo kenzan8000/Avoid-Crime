@@ -1,7 +1,7 @@
 import Foundation
 import CoreData
 import CoreLocation
-
+import SwiftyJSON
 
 /// MARK: - DACrime
 class DACrime: NSManagedObject {

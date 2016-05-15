@@ -1,5 +1,6 @@
 import UIKit
-
+import EAIntroView
+import ionicons
 
 /// MARK: - ViewController
 class ViewController: UIViewController {
