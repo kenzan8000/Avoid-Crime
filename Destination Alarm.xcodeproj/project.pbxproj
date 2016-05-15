@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D366E983623A2E8C3EB3D64F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 534D789B2FF603908C0DCECC /* libPods.a */; };
+		7114314829D14D9493B37EAC /* Pods_Destination_Alarm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 528CA0FB82686CA912DF2320 /* Pods_Destination_Alarm.framework */; };
 		E60F6C761B12E0FC009BC03B /* DAGMSMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60F6C751B12E0FC009BC03B /* DAGMSMapView.swift */; };
 		E60F6C7A1B13E07D009BC03B /* DADestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60F6C791B13E07D009BC03B /* DADestination.swift */; };
 		E60F6C7C1B13E62D009BC03B /* DASearchBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60F6C7B1B13E62D009BC03B /* DASearchBoxView.swift */; };
@@ -17,10 +17,10 @@
 		E61238761B536AB20004D643 /* DADurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61238741B536AB20004D643 /* DADurationView.swift */; };
 		E61238771B536AB20004D643 /* DADurationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61238751B536AB20004D643 /* DADurationView.xib */; };
 		E6151FF71B32573C0085A992 /* yelp_categories.json in Resources */ = {isa = PBXBuildFile; fileRef = E6151FF61B32573C0085A992 /* yelp_categories.json */; };
-		E62AC1011BD6DB7700485FC0 /* DASensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62AC1001BD6DB7700485FC0 /* DASensor.swift */; settings = {ASSET_TAGS = (); }; };
-		E62AC1041BD6DCAF00485FC0 /* DASensorClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62AC1021BD6DCAF00485FC0 /* DASensorClient.swift */; settings = {ASSET_TAGS = (); }; };
-		E62AC1051BD6DCAF00485FC0 /* DASensorOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62AC1031BD6DCAF00485FC0 /* DASensorOperationQueue.swift */; settings = {ASSET_TAGS = (); }; };
-		E62AC1091BD6E1D000485FC0 /* DAModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E62AC1071BD6E1D000485FC0 /* DAModel.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
+		E62AC1011BD6DB7700485FC0 /* DASensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62AC1001BD6DB7700485FC0 /* DASensor.swift */; };
+		E62AC1041BD6DCAF00485FC0 /* DASensorClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62AC1021BD6DCAF00485FC0 /* DASensorClient.swift */; };
+		E62AC1051BD6DCAF00485FC0 /* DASensorOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62AC1031BD6DCAF00485FC0 /* DASensorOperationQueue.swift */; };
+		E62AC1091BD6E1D000485FC0 /* DAModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E62AC1071BD6E1D000485FC0 /* DAModel.xcdatamodeld */; };
 		E62D9F2C1B1A812300AAE406 /* DAGoogleMapOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62D9F2B1B1A812300AAE406 /* DAGoogleMapOperationQueue.swift */; };
 		E62D9F2E1B1A813200AAE406 /* DACrimeOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62D9F2D1B1A813200AAE406 /* DACrimeOperationQueue.swift */; };
 		E638F9D91B2CF9060069A870 /* DACrimeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E638F9D81B2CF9060069A870 /* DACrimeButton.swift */; };
@@ -29,18 +29,15 @@
 		E662B5621B1132D300F0DAB2 /* DACoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B5611B1132D300F0DAB2 /* DACoreDataManager.swift */; };
 		E662B5651B1132F100F0DAB2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E662B5641B1132F100F0DAB2 /* CoreData.framework */; };
 		E662B56B1B113F6F00F0DAB2 /* DACrime.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B56A1B113F6F00F0DAB2 /* DACrime.swift */; };
-		E662B56F1B113FA300F0DAB2 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B56E1B113FA300F0DAB2 /* SwiftyJSON.swift */; };
 		E662B5741B1148BA00F0DAB2 /* DAMapMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B5731B1148BA00F0DAB2 /* DAMapMath.swift */; };
 		E662B57C1B114C0E00F0DAB2 /* NSMutableURLRequest+HTTPBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B5781B114C0E00F0DAB2 /* NSMutableURLRequest+HTTPBody.swift */; };
 		E662B57E1B114C0E00F0DAB2 /* NSURL+Queries.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B5791B114C0E00F0DAB2 /* NSURL+Queries.swift */; };
 		E671BC331B07F783002394F6 /* DASearchBoxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E671BC321B07F783002394F6 /* DASearchBoxView.xib */; };
-		E6978B811BCF2BAA00348F3D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6978B801BCF2BAA00348F3D /* main.swift */; settings = {ASSET_TAGS = (); }; };
 		E6A00A571B25305700994A57 /* NSDate+Ago.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A00A561B25305700994A57 /* NSDate+Ago.swift */; };
 		E6A936371B437D75003456A0 /* DACrimeHeatmap.m in Sources */ = {isa = PBXBuildFile; fileRef = E6A936361B437D75003456A0 /* DACrimeHeatmap.m */; };
 		E6C574441B251FF80011D795 /* DACrimeMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C574431B251FF80011D795 /* DACrimeMarker.swift */; };
 		E6C574471B2520780011D795 /* DADestinationMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C574451B2520780011D795 /* DADestinationMarker.swift */; };
 		E6C574481B2520780011D795 /* DAWaypointMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C574461B2520780011D795 /* DAWaypointMarker.swift */; };
-		E6E30E411B13FBA8003EB782 /* DAConstant-Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E30E401B13FBA8003EB782 /* DAConstant-Private.swift */; };
 		E6E5C2591AC6044E001FB516 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6E5C2581AC6044E001FB516 /* Images.xcassets */; };
 		E6E5C29D1AC60510001FB516 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5C2991AC60510001FB516 /* AppDelegate.swift */; };
 		E6E5C29F1AC60510001FB516 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6E5C29B1AC60510001FB516 /* Main.storyboard */; };
@@ -48,8 +45,8 @@
 		E6ED997D1B12CFE00071CD63 /* DAConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ED997C1B12CFE00071CD63 /* DAConstant.swift */; };
 		E6ED99831B12D00C0071CD63 /* DACrimeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ED99821B12D00C0071CD63 /* DACrimeClient.swift */; };
 		E6ED99861B12D8240071CD63 /* DAGoogleMapClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ED99851B12D8240071CD63 /* DAGoogleMapClient.swift */; };
-		E6F386071BD6EB290063B955 /* Model.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = E6F386061BD6EB290063B955 /* Model.xcmappingmodel */; settings = {ASSET_TAGS = (); }; };
-		E6F386091BD6EC120063B955 /* DASensorMigrationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F386081BD6EC120063B955 /* DASensorMigrationPolicy.swift */; settings = {ASSET_TAGS = (); }; };
+		E6F386071BD6EB290063B955 /* Model.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = E6F386061BD6EB290063B955 /* Model.xcmappingmodel */; };
+		E6F386091BD6EC120063B955 /* DASensorMigrationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F386081BD6EC120063B955 /* DASensorMigrationPolicy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -66,9 +63,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		49B8C82E86FF40F43B94B2F3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		4B670EFB4CC3DB0DBA3BB537 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		534D789B2FF603908C0DCECC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E86CA50C39133E0621880B6 /* Pods-Destination Alarm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Destination Alarm.release.xcconfig"; path = "Pods/Target Support Files/Pods-Destination Alarm/Pods-Destination Alarm.release.xcconfig"; sourceTree = "<group>"; };
+		33C5EEE6F287AF5A8562FC1C /* Pods-Destination Alarm.isid.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Destination Alarm.isid.xcconfig"; path = "Pods/Target Support Files/Pods-Destination Alarm/Pods-Destination Alarm.isid.xcconfig"; sourceTree = "<group>"; };
+		3D298052EA64DE2F97F9BCA2 /* Pods-Destination Alarm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Destination Alarm.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Destination Alarm/Pods-Destination Alarm.debug.xcconfig"; sourceTree = "<group>"; };
+		528CA0FB82686CA912DF2320 /* Pods_Destination_Alarm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Destination_Alarm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E60F6C751B12E0FC009BC03B /* DAGMSMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAGMSMapView.swift; sourceTree = "<group>"; };
 		E60F6C791B13E07D009BC03B /* DADestination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DADestination.swift; sourceTree = "<group>"; };
 		E60F6C7B1B13E62D009BC03B /* DASearchBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DASearchBoxView.swift; sourceTree = "<group>"; };
@@ -91,20 +89,16 @@
 		E662B5611B1132D300F0DAB2 /* DACoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DACoreDataManager.swift; sourceTree = "<group>"; };
 		E662B5641B1132F100F0DAB2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		E662B56A1B113F6F00F0DAB2 /* DACrime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DACrime.swift; sourceTree = "<group>"; };
-		E662B56D1B113FA300F0DAB2 /* SwiftyJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwiftyJSON.h; path = SwiftyJSON/Source/SwiftyJSON.h; sourceTree = "<group>"; };
-		E662B56E1B113FA300F0DAB2 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = SwiftyJSON/Source/SwiftyJSON.swift; sourceTree = "<group>"; };
 		E662B5731B1148BA00F0DAB2 /* DAMapMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAMapMath.swift; sourceTree = "<group>"; };
 		E662B5781B114C0E00F0DAB2 /* NSMutableURLRequest+HTTPBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMutableURLRequest+HTTPBody.swift"; sourceTree = "<group>"; };
 		E662B5791B114C0E00F0DAB2 /* NSURL+Queries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+Queries.swift"; sourceTree = "<group>"; };
 		E671BC321B07F783002394F6 /* DASearchBoxView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DASearchBoxView.xib; sourceTree = "<group>"; };
-		E6978B801BCF2BAA00348F3D /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		E6A00A561B25305700994A57 /* NSDate+Ago.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Ago.swift"; sourceTree = "<group>"; };
 		E6A936351B437D75003456A0 /* DACrimeHeatmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACrimeHeatmap.h; sourceTree = "<group>"; };
 		E6A936361B437D75003456A0 /* DACrimeHeatmap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACrimeHeatmap.m; sourceTree = "<group>"; };
 		E6C574431B251FF80011D795 /* DACrimeMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DACrimeMarker.swift; sourceTree = "<group>"; };
 		E6C574451B2520780011D795 /* DADestinationMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DADestinationMarker.swift; sourceTree = "<group>"; };
 		E6C574461B2520780011D795 /* DAWaypointMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAWaypointMarker.swift; sourceTree = "<group>"; };
-		E6E30E401B13FBA8003EB782 /* DAConstant-Private.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DAConstant-Private.swift"; sourceTree = "<group>"; };
 		E6E5C24C1AC6044E001FB516 /* Destination Alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Destination Alarm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6E5C2581AC6044E001FB516 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E6E5C2991AC60510001FB516 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -124,18 +118,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				E662B5651B1132F100F0DAB2 /* CoreData.framework in Frameworks */,
-				D366E983623A2E8C3EB3D64F /* libPods.a in Frameworks */,
+				7114314829D14D9493B37EAC /* Pods_Destination_Alarm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7A8D2390FA96E7F18342BC2D /* Pods */ = {
+		36F6E40D8499487FDA8E812D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4B670EFB4CC3DB0DBA3BB537 /* Pods.debug.xcconfig */,
-				49B8C82E86FF40F43B94B2F3 /* Pods.release.xcconfig */,
+				3D298052EA64DE2F97F9BCA2 /* Pods-Destination Alarm.debug.xcconfig */,
+				0E86CA50C39133E0621880B6 /* Pods-Destination Alarm.release.xcconfig */,
+				33C5EEE6F287AF5A8562FC1C /* Pods-Destination Alarm.isid.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -144,7 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				E662B5641B1132F100F0DAB2 /* CoreData.framework */,
-				534D789B2FF603908C0DCECC /* libPods.a */,
+				528CA0FB82686CA912DF2320 /* Pods_Destination_Alarm.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -244,22 +239,13 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
-		E67AD2711AFC46CD00FE0E28 /* SwiftyJSON */ = {
-			isa = PBXGroup;
-			children = (
-				E662B56D1B113FA300F0DAB2 /* SwiftyJSON.h */,
-				E662B56E1B113FA300F0DAB2 /* SwiftyJSON.swift */,
-			);
-			name = SwiftyJSON;
-			sourceTree = "<group>";
-		};
 		E6E5C2431AC6044E001FB516 = {
 			isa = PBXGroup;
 			children = (
 				E6E5C24E1AC6044E001FB516 /* Destination Alarm */,
 				E6E5C24D1AC6044E001FB516 /* Products */,
-				7A8D2390FA96E7F18342BC2D /* Pods */,
 				AE884208584959C1ECEA6CD8 /* Frameworks */,
+				36F6E40D8499487FDA8E812D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -284,8 +270,6 @@
 		E6E5C2981AC60510001FB516 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				E6978B801BCF2BAA00348F3D /* main.swift */,
-				E6E30E401B13FBA8003EB782 /* DAConstant-Private.swift */,
 				E6ED997C1B12CFE00071CD63 /* DAConstant.swift */,
 				E6E5C2991AC60510001FB516 /* AppDelegate.swift */,
 				E6E5C29C1AC60510001FB516 /* ViewController.swift */,
@@ -300,7 +284,6 @@
 				E662B55E1B11328100F0DAB2 /* Model */,
 				E61238711B531DE90004D643 /* UIKit+Extension */,
 				E662B5761B114C0E00F0DAB2 /* NSFoundation+Extension */,
-				E67AD2711AFC46CD00FE0E28 /* SwiftyJSON */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -337,12 +320,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E6E5C26B1AC6044E001FB516 /* Build configuration list for PBXNativeTarget "Destination Alarm" */;
 			buildPhases = (
-				54408AAD48FDE875217C902B /* Check Pods Manifest.lock */,
+				DEEF8B37C8F9CC5039242AB6 /* 📦 Check Pods Manifest.lock */,
 				E6E5C2481AC6044E001FB516 /* Sources */,
 				E6E5C2491AC6044E001FB516 /* Frameworks */,
 				E6E5C24A1AC6044E001FB516 /* Resources */,
 				E6E5C2971AC6046E001FB516 /* Embed App Extensions */,
-				571AC60B5517E72D7F12D213 /* Copy Pods Resources */,
+				43EBA3F84C9DC2A1658088B8 /* 📦 Embed Pods Frameworks */,
+				95E08A3E3B733129E8E255BD /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -365,7 +349,7 @@
 				TargetAttributes = {
 					E6E5C24B1AC6044E001FB516 = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = 6RYZ4RB738;
+						DevelopmentTeam = KL43C67G5Z;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -410,34 +394,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		54408AAD48FDE875217C902B /* Check Pods Manifest.lock */ = {
+		43EBA3F84C9DC2A1658088B8 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Destination Alarm/Pods-Destination Alarm-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		95E08A3E3B733129E8E255BD /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Destination Alarm/Pods-Destination Alarm-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DEEF8B37C8F9CC5039242AB6 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		571AC60B5517E72D7F12D213 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -457,13 +456,11 @@
 				E6ED99831B12D00C0071CD63 /* DACrimeClient.swift in Sources */,
 				E6F386071BD6EB290063B955 /* Model.xcmappingmodel in Sources */,
 				E61238731B531DE90004D643 /* UIImage+DAView.swift in Sources */,
-				E6978B811BCF2BAA00348F3D /* main.swift in Sources */,
 				E62AC1041BD6DCAF00485FC0 /* DASensorClient.swift in Sources */,
 				E6ED997D1B12CFE00071CD63 /* DAConstant.swift in Sources */,
 				E62AC1051BD6DCAF00485FC0 /* DASensorOperationQueue.swift in Sources */,
 				E62D9F2E1B1A813200AAE406 /* DACrimeOperationQueue.swift in Sources */,
 				E6F386091BD6EC120063B955 /* DASensorMigrationPolicy.swift in Sources */,
-				E6E30E411B13FBA8003EB782 /* DAConstant-Private.swift in Sources */,
 				E60F6C7E1B13F2E9009BC03B /* DASearchResultView.swift in Sources */,
 				E6E5C2A01AC60510001FB516 /* ViewController.swift in Sources */,
 				E6ED99861B12D8240071CD63 /* DAGoogleMapClient.swift in Sources */,
@@ -474,7 +471,6 @@
 				E6A936371B437D75003456A0 /* DACrimeHeatmap.m in Sources */,
 				E638F9D91B2CF9060069A870 /* DACrimeButton.swift in Sources */,
 				E61238761B536AB20004D643 /* DADurationView.swift in Sources */,
-				E662B56F1B113FA300F0DAB2 /* SwiftyJSON.swift in Sources */,
 				E662B56B1B113F6F00F0DAB2 /* DACrime.swift in Sources */,
 				E6C574481B2520780011D795 /* DAWaypointMarker.swift in Sources */,
 				E662B57E1B114C0E00F0DAB2 /* NSURL+Queries.swift in Sources */,
@@ -526,19 +522,18 @@
 		};
 		E6C6C0541BD5794A00988149 /* iSiD */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 49B8C82E86FF40F43B94B2F3 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 33C5EEE6F287AF5A8562FC1C /* Pods-Destination Alarm.isid.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: ISI-Dentsu of America, Inc. (RZSN6RVCLX)";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = "$(inherited)";
 				ICON_DISPLAY_NAME = "あっぷ";
 				INFOPLIST_FILE = "Destination Alarm/Resources/Plists/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LINKER_DISPLAYS_MANGLED_NAMES = NO;
-				OTHER_SWIFT_FLAGS = "-D iSiD";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.isidentsu.Destination-Alarm";
 				PRODUCT_NAME = "Destination Alarm";
 				PROVISIONING_PROFILE = "0a166e65-71e6-43a3-9ec1-3d15075e8423";
@@ -630,19 +625,18 @@
 		};
 		E6E5C26C1AC6044E001FB516 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4B670EFB4CC3DB0DBA3BB537 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 3D298052EA64DE2F97F9BCA2 /* Pods-Destination Alarm.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = "$(inherited)";
 				ICON_DISPLAY_NAME = "でばっぐ";
 				INFOPLIST_FILE = "Destination Alarm/Resources/Plists/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LINKER_DISPLAYS_MANGLED_NAMES = NO;
-				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.kenzan8000.Destination-Alarm";
 				PRODUCT_NAME = "Destination Alarm";
 				PROVISIONING_PROFILE = "";
@@ -654,19 +648,18 @@
 		};
 		E6E5C26D1AC6044E001FB516 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 49B8C82E86FF40F43B94B2F3 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 0E86CA50C39133E0621880B6 /* Pods-Destination Alarm.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Kenzan Hase";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = "$(inherited)";
 				ICON_DISPLAY_NAME = "Avoid Crime SF";
 				INFOPLIST_FILE = "Destination Alarm/Resources/Plists/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LINKER_DISPLAYS_MANGLED_NAMES = NO;
-				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.kenzan8000.Destination-Alarm";
 				PRODUCT_NAME = "Destination Alarm";
 				PROVISIONING_PROFILE = "7be4a2cd-35df-4cdf-8ff5-2c0e09265e50";
