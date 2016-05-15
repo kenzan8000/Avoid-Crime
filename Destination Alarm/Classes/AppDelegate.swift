@@ -1,8 +1,8 @@
 import UIKit
 import Touchpose
 
-/// MARK: - AppDelegate
-@UIApplicationMain
+
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     /// MARK: - property
