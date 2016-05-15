@@ -6,7 +6,7 @@ xcodeproj 'Destination Alarm'
 
 target 'Destination Alarm' do
 	# font
-	pod 'ionicons'
+	pod 'ionicons', '~> 2.0.3'
 
 	# map
 	pod 'GoogleMaps'
@@ -17,7 +17,7 @@ target 'Destination Alarm' do
 	# user interface
 	pod 'Touchpose'
 	pod 'BFPaperButton'
-	pod 'TYMActivityIndicatorView'
+	pod 'TYMActivityIndicatorView', '~> 0.3.3'
 	pod 'EAIntroView'
 	pod 'JDStatusBarNotification'
 	pod 'LFHeatMap'

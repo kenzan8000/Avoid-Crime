@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         (application as! QTouchposeApplication).touchEndAnimationDuration = 0.50
 
         // notification setting
-        let settings = UIUserNotificationSettings(forTypes: [.Sound, .Alert], categories: nil)
-        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+        //let settings = UIUserNotificationSettings(forTypes: [.Sound, .Alert], categories: nil)
+        //UIApplication.sharedApplication().registerUserNotificationSettings(settings)
 
 
         return true

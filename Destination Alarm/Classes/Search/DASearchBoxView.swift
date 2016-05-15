@@ -103,7 +103,7 @@ class DASearchBoxView: UIView {
         )
         self.cancelRequestRoutingButton.setImage(cancelImage, forState: .Normal)
 
-        self.indicatorView.hidesWhenStopped = true
+        self.indicatorView.hidesWhenStopped = 1
         self.indicatorView.stopAnimating()
     }
 
@@ -224,10 +224,10 @@ class DASearchBoxView: UIView {
     func startRequestRouting() {
         self.requestOverlayView.hidden = false
         self.indicatorView.activityIndicatorViewStyle = TYMActivityIndicatorViewStyle.Small
-        self.indicatorView.setBackgroundImage(
-            UIImage(named: "clear.png"),
-            forActivityIndicatorStyle:TYMActivityIndicatorViewStyle.Small
-        )
+//        self.indicatorView.setBackgroundImage(
+//            UIImage(named: "clear.png"),
+//            forActivityIndicatorStyle:TYMActivityIndicatorViewStyle.Small
+//        )
         self.indicatorView.startAnimating()
 
         self.modeButton.hidden = true
