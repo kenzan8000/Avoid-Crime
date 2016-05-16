@@ -1,1 +1,3 @@
-UIApplicationMain(Process.argc, Process.unsafeArgv, NSStringFromClass(QTouchposeApplication), NSStringFromClass(AppDelegate))
+import Touchpose
+
+UIApplicationMain(Process.argc, Process.unsafeArgv, NSStringFromClass(QTouchposeApplication.self), NSStringFromClass(AppDelegate.self))

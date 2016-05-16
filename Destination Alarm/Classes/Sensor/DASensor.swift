@@ -1,7 +1,7 @@
 import Foundation
 import CoreData
 import CoreLocation
-
+import SwiftyJSON
 
 /// MARK: - DASensor
 class DASensor: NSManagedObject {

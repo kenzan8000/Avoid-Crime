@@ -1,15 +1,16 @@
 /// map
 #import <GoogleMaps/GoogleMaps.h>
 /// font
-#import "IonIcons.h"
+#import <ionicons/IonIcons.h>
 /// ui
-#import "QTouchposeApplication.h"
-#import "BFPaperButton.h"
+#import <Touchpose/QTouchposeApplication.h>
+
+#import <BFPaperButton/BFPaperButton.h>
 #import "DACrimeHeatmap.h"
-#import "TYMActivityIndicatorView.h"
-#import "JDStatusBarNotification.h"
-#import "EAIntroView.h"
+#import <TYMActivityIndicatorView/TYMActivityIndicatorView.h>
+#import <JDStatusBarNotification/JDStatusBarNotification.h>
+#import <EAIntroView/EAIntroView.h>
 /// network
-#import "ISHTTPOperation.h"
+#import <ISHTTPOperation/ISHTTPOperation.h>
 /// json parser
-#import "SwiftyJSON.h"
+//#import <SwiftyJSON/SwiftyJSON.h>

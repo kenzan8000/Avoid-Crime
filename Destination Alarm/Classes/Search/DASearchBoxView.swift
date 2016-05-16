@@ -1,4 +1,8 @@
 import UIKit
+import SwiftyJSON
+import BFPaperButton
+import TYMActivityIndicatorView
+import ionicons
 
 
 /// MARK: - DASearchBoxViewDelegate
@@ -50,14 +54,14 @@ class DASearchBoxView: UIView {
     /// MARK: - property
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchTextFieldBackgroundView: UIView!
-    @IBOutlet weak var activeButton: BFPaperButton!
+    @IBOutlet var activeButton: BFPaperButton!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var modeButton: UIButton!
     @IBOutlet weak var clearButton: UIButton!
 
     @IBOutlet weak var cancelRequestRoutingButton: UIButton!
     @IBOutlet weak var requestOverlayView: UIView!
-    @IBOutlet weak var indicatorView: TYMActivityIndicatorView!
+    @IBOutlet  var indicatorView: TYMActivityIndicatorView!
 
     var delegate: DASearchBoxViewDelegate?
     var isActive: Bool {
@@ -99,7 +103,7 @@ class DASearchBoxView: UIView {
         )
         self.cancelRequestRoutingButton.setImage(cancelImage, forState: .Normal)
 
-        self.indicatorView.hidesWhenStopped = true
+        self.indicatorView.hidesWhenStopped = 1
         self.indicatorView.stopAnimating()
     }
 
@@ -220,10 +224,10 @@ class DASearchBoxView: UIView {
     func startRequestRouting() {
         self.requestOverlayView.hidden = false
         self.indicatorView.activityIndicatorViewStyle = TYMActivityIndicatorViewStyle.Small
-        self.indicatorView.setBackgroundImage(
-            UIImage(named: "clear.png"),
-            forActivityIndicatorStyle:TYMActivityIndicatorViewStyle.Small
-        )
+//        self.indicatorView.setBackgroundImage(
+//            UIImage(named: "clear.png"),
+//            forActivityIndicatorStyle:TYMActivityIndicatorViewStyle.Small
+//        )
         self.indicatorView.startAnimating()
 
         self.modeButton.hidden = true
