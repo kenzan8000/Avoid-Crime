@@ -17,10 +17,10 @@
 		E61238761B536AB20004D643 /* DADurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61238741B536AB20004D643 /* DADurationView.swift */; };
 		E61238771B536AB20004D643 /* DADurationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E61238751B536AB20004D643 /* DADurationView.xib */; };
 		E6151FF71B32573C0085A992 /* yelp_categories.json in Resources */ = {isa = PBXBuildFile; fileRef = E6151FF61B32573C0085A992 /* yelp_categories.json */; };
-		E62AC1011BD6DB7700485FC0 /* DASensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62AC1001BD6DB7700485FC0 /* DASensor.swift */; settings = {ASSET_TAGS = (); }; };
-		E62AC1041BD6DCAF00485FC0 /* DASensorClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62AC1021BD6DCAF00485FC0 /* DASensorClient.swift */; settings = {ASSET_TAGS = (); }; };
-		E62AC1051BD6DCAF00485FC0 /* DASensorOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62AC1031BD6DCAF00485FC0 /* DASensorOperationQueue.swift */; settings = {ASSET_TAGS = (); }; };
-		E62AC1091BD6E1D000485FC0 /* DAModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E62AC1071BD6E1D000485FC0 /* DAModel.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
+		E62AC1011BD6DB7700485FC0 /* DASensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62AC1001BD6DB7700485FC0 /* DASensor.swift */; };
+		E62AC1041BD6DCAF00485FC0 /* DASensorClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62AC1021BD6DCAF00485FC0 /* DASensorClient.swift */; };
+		E62AC1051BD6DCAF00485FC0 /* DASensorOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62AC1031BD6DCAF00485FC0 /* DASensorOperationQueue.swift */; };
+		E62AC1091BD6E1D000485FC0 /* DAModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E62AC1071BD6E1D000485FC0 /* DAModel.xcdatamodeld */; };
 		E62D9F2C1B1A812300AAE406 /* DAGoogleMapOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62D9F2B1B1A812300AAE406 /* DAGoogleMapOperationQueue.swift */; };
 		E62D9F2E1B1A813200AAE406 /* DACrimeOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62D9F2D1B1A813200AAE406 /* DACrimeOperationQueue.swift */; };
 		E638F9D91B2CF9060069A870 /* DACrimeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E638F9D81B2CF9060069A870 /* DACrimeButton.swift */; };
@@ -34,7 +34,7 @@
 		E662B57C1B114C0E00F0DAB2 /* NSMutableURLRequest+HTTPBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B5781B114C0E00F0DAB2 /* NSMutableURLRequest+HTTPBody.swift */; };
 		E662B57E1B114C0E00F0DAB2 /* NSURL+Queries.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662B5791B114C0E00F0DAB2 /* NSURL+Queries.swift */; };
 		E671BC331B07F783002394F6 /* DASearchBoxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E671BC321B07F783002394F6 /* DASearchBoxView.xib */; };
-		E6978B811BCF2BAA00348F3D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6978B801BCF2BAA00348F3D /* main.swift */; settings = {ASSET_TAGS = (); }; };
+		E6978B811BCF2BAA00348F3D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6978B801BCF2BAA00348F3D /* main.swift */; };
 		E6A00A571B25305700994A57 /* NSDate+Ago.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A00A561B25305700994A57 /* NSDate+Ago.swift */; };
 		E6A936371B437D75003456A0 /* DACrimeHeatmap.m in Sources */ = {isa = PBXBuildFile; fileRef = E6A936361B437D75003456A0 /* DACrimeHeatmap.m */; };
 		E6C574441B251FF80011D795 /* DACrimeMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C574431B251FF80011D795 /* DACrimeMarker.swift */; };
@@ -48,8 +48,8 @@
 		E6ED997D1B12CFE00071CD63 /* DAConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ED997C1B12CFE00071CD63 /* DAConstant.swift */; };
 		E6ED99831B12D00C0071CD63 /* DACrimeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ED99821B12D00C0071CD63 /* DACrimeClient.swift */; };
 		E6ED99861B12D8240071CD63 /* DAGoogleMapClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ED99851B12D8240071CD63 /* DAGoogleMapClient.swift */; };
-		E6F386071BD6EB290063B955 /* Model.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = E6F386061BD6EB290063B955 /* Model.xcmappingmodel */; settings = {ASSET_TAGS = (); }; };
-		E6F386091BD6EC120063B955 /* DASensorMigrationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F386081BD6EC120063B955 /* DASensorMigrationPolicy.swift */; settings = {ASSET_TAGS = (); }; };
+		E6F386071BD6EB290063B955 /* Model.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = E6F386061BD6EB290063B955 /* Model.xcmappingmodel */; };
+		E6F386091BD6EC120063B955 /* DASensorMigrationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F386081BD6EC120063B955 /* DASensorMigrationPolicy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
